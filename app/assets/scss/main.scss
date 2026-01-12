@@ -643,6 +643,22 @@ body {
   letter-spacing: normal;
   text-align: left;
   color: #000000;
+  position: relative;
+  z-index: 0;
+  &::before {
+    z-index: -1;
+    position: absolute;
+    content: "";
+    background: url('/images/line5.svg');
+    background-size: contain;
+    width: 100vw;
+    max-width: 400px;
+    height: 100vh;
+    max-height: 80px;
+    background-repeat: no-repeat;
+    top: 0vh;
+    left: -1vw;
+  }
   strong {  font-family: FONTSPRINGDEMO-RecoletaSemiBold !important;
 
     color: #000000;

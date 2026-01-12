@@ -163,7 +163,22 @@
       "title":"Beautiful Moments We’ve\nHelped Create",
      "text":"We see every event as an opportunity to create memorable moments around the table.  We give your venue a unique setting with our food and drink stands – where taste, freshness and conviviality come together to enhance the catering experience of your events.",
      "image":"images/image3.jpg"
-     }
+     },
+     "examples":[
+      {
+        "title":"Concession for Public\nCatering",
+        "texte":"From stadiums to arenas, we bring energy, flavor, and flawless service to every match and concert.\n\n We manage food and beverage concessions across major venues like the adidas Arena, Jean Bouin Stadium, Abbé-Deschamps Stadium, and Aix Arena. Our goal is to deliver high-quality, efficient, and crowd-pleasing service that enhances every spectator’s experience.",
+        "btn":"images/btnViewOurEvents.svg",
+        "link":"/events"
+      },
+      {
+        "title":"Powering Great Public\nEvents",
+        "texte":"From the Olympics to music festivals, we deliver large-scale catering that fuels excitement and connection.\n\n We proudly cater to some of the most prestigious public events in France, including the Paris 2024, Olympics, Rugby World Cup 2023, 24 Hours of Le Mans, Hellfest, Balmain Fashion Show, and Golden Coast Festival. bringing flavor, precision, and seamless service to every moment..", 
+        "btn":"images/btnGetInTouchAlt.svg",
+        "link":"/contact"
+      }
+     ]
+     
   },
   "careers": {
     "map_loading": "Loading map...",
