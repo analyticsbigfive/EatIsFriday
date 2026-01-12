@@ -236,12 +236,16 @@ onMounted(async () => {
             class="img-fluid mx-auto d-block">
         </div>
         <div id="lasalle" class="row mt-4">
-          <div v-for="(example, index) in content.examples" :key="index" class="col-md-6">
+          <div :id="`example-${index}`" v-for="(example, index) in content.examples" :key="index" class="col-md-6 example">
+            <div class="inner-example">
             <h4>{{ example.title }}</h4>
             <p>{{ example.texte }}</p>
             <nuxt-link :to="example.link">
               <nuxt-img :src="example.btn" :alt="example.title"></nuxt-img>
             </nuxt-link>
+
+            </div>
+
           </div>
         </div>
       </div>
@@ -511,4 +515,5 @@ onMounted(async () => {
     color: #000;
   }
 }
+
 </style>

@@ -785,3 +785,23 @@ body {
 .preserve-lines {
   white-space: pre-line;
 }
+
+#lasalle{
+  .example {
+    padding: 5px;
+    .inner-example{
+      padding:20px;
+      border-radius: 20px;
+    }
+  }
+  #example-0{
+    .inner-example{
+      background: #a7f49d;
+    }
+  }
+    #example-1{
+.inner-example{
+background: #93cbff;    
+
+  }  }
+}
