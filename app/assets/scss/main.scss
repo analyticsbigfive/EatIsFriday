@@ -432,6 +432,7 @@ background-position: 100% 102%;
 }
 #hero{
     background-color: #93cbff;
+    min-height: 718px;
     p {
         white-space: pre-line; /* conserve retours à la ligne */
         line-height: 1.25em;
@@ -498,6 +499,22 @@ background-position: 100% 102%;
 .recoleta{
   font-family: "Recoleta" !important;
 }
+#presentationEatIsFamily {
+  min-height:583px;
+  display: flex ;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;  
+  background:  url(images/slide1.svg) no-repeat center center; 
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
+  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
+  
+  
+}
 .kemiseba {
   max-width: 910px;
   flex-wrap:wrap;
@@ -531,4 +548,18 @@ background-position: 100% 102%;
     width:283px;
     height:auto;
   }
+}
+
+#services {
+  .font-heading {
+    text-align: left;
+   font-size: 50px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+}
 }

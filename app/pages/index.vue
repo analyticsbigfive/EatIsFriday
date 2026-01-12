@@ -72,7 +72,7 @@ onMounted(async () => {
 <section id="presentationEatIsFamily" class="py-5 bg-white">
 <div id="tromp" class="container">
   <div class="kemiseba" v-html="content.intro_section.texte"></div>
-  <NuxtLink to="/about" aria-label="En savoir plus sur nous" class="d-inline-block mt-4">
+  <NuxtLink to="/about" aria-label="En savoir plus sur nous" class="mt-4 d-inline-block mt-4">
     <NuxtImg src="/images/btnLearnMoreAboutUs.svg" alt="En savoir plus sur nous" />
   </NuxtLink>
 </div>
@@ -130,10 +130,9 @@ onMounted(async () => {
     </section>
 
     <!-- Services Section -->
-    <section class="py-5 bg-white">
+    <section id="services" class="py-5 bg-white">
       <div class="container">
-        <div class="text-center mb-5">
-          <span class="tag-yellow mb-3 d-inline-block">{{ content.services_section.tag }}</span>
+        <div class="text-left mb-5">
           <h2 class="font-heading display-4 fw-bold">
             {{ content.services_section.title.line_1 }}<br/>
             <span class="position-relative d-inline-block">
