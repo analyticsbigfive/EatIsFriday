@@ -23,9 +23,12 @@ export interface ContentImage {
 export interface Service {
   title: string
   description: string
-  icon: string
+  icon?: string
   bg_color?: string
   text_color?: string
+  thumbnail?: string
+  btnImage?: string
+  linkTo?: string
 }
 
 export interface Location {
@@ -44,8 +47,28 @@ export interface MapVenue {
 }
 
 export interface Partner {
-  name: string
-  logo_url: string
+  logo: string
+  alt: string
+}
+
+export interface SustainableService {
+  background: string
+  icone: string
+  title: string
+  description: string
+}
+
+export interface Beautiful {
+  title: string
+  text: string
+  image: string
+}
+
+export interface Example {
+  title: string
+  texte: string
+  btn: string
+  link: string
 }
 
 export interface HomepageContent {
@@ -63,6 +86,9 @@ export interface HomepageContent {
     }
     floating_badge: string
   }
+  intro_section: {
+    texte: string
+  }
   locations_section: {
     tag: string
     title: HeroTitle
@@ -77,19 +103,21 @@ export interface HomepageContent {
     services: Service[]
     learn_more_button: string
   }
-  partners_section: {
-    intro_text: string
-    partners: Partner[]
-  }
   cta_section: {
     title: string
     description: string
-    cta_primary: CtaButton
-    cta_secondary: CtaButton
+    cta_primary?: CtaButton
+    cta_secondary?: CtaButton
   }
   gallery_section: {
     images: ContentImage[]
   }
+  sustainable_service_title: string
+  sustainable_service: SustainableService[]
+  beautiful: Beautiful
+  examples: Example[]
+  partners_title: string
+  partners: Partner[]
 }
 
 export interface CareersContent {

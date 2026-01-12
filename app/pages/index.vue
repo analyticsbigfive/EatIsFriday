@@ -108,7 +108,7 @@ onMounted(async () => {
                 </div>
                 <div class="d-flex align-items-center gap-2">
                   <span class="text-brand-pink fw-bold">{{ loc.count }} {{ content.locations_section.jobs_suffix
-                    }}</span>
+                  }}</span>
                   <LucideArrowRight class="text-secondary" style="width: 1rem; height: 1rem;" />
                 </div>
               </li>
@@ -235,13 +235,14 @@ onMounted(async () => {
             class="img-fluid mx-auto d-block">
         </div>
         <div id="lasalle" class="row mt-4">
-          <div :id="`example-${index}`" v-for="(example, index) in content.examples" :key="index" class="col-md-6 example">
+          <div :id="`example-${index}`" v-for="(example, index) in content.examples" :key="index"
+            class="col-md-6 example">
             <div class="inner-example">
-            <h4>{{ example.title }}</h4>
-            <p>{{ example.texte }}</p>
-            <nuxt-link :to="example.link">
-              <nuxt-img :src="example.btn" :alt="example.title"></nuxt-img>
-            </nuxt-link>
+              <h4>{{ example.title }}</h4>
+              <p>{{ example.texte }}</p>
+              <nuxt-link :to="example.link">
+                <nuxt-img :src="example.btn" :alt="example.title"></nuxt-img>
+              </nuxt-link>
 
             </div>
 
@@ -249,7 +250,12 @@ onMounted(async () => {
         </div>
       </div>
     </section>
-<section class="py-5 bg-white"></section>
+    <section class="py-5 bg-white">
+      <h3 class="font-header center text-center preserve-lines">{{ content.partners_title }}</h3>
+      <ClientOnly>
+        <PartnersCarousel :partners="content.partners" />
+      </ClientOnly>
+    </section>
   </div>
 </template>
 
@@ -326,15 +332,6 @@ onMounted(async () => {
 
 .service-card:hover .service-btn {
   gap: 1rem !important;
-}
-
-.partner-item {
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-.partner-item:hover {
-  color: var(--brand-dark, #0d0a00) !important;
 }
 
 .cta-circle-1 {
@@ -514,5 +511,4 @@ onMounted(async () => {
     color: #000;
   }
 }
-
 </style>
