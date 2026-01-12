@@ -28,6 +28,14 @@ export default defineNuxtConfig({
         { property: 'og:description', content: 'Celebrate Food Every Day' },
         { property: 'og:type', content: 'website' }
       ],
+    },
+    // Préserve la position de scroll lors de la navigation
+    pageTransition: { name: 'page', mode: 'out-in' }
+  },
+
+  router: {
+    options: {
+      scrollBehaviorType: 'smooth'
     }
   },
 

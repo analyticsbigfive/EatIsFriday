@@ -77,7 +77,7 @@ const closeContactModal = () => {
   background:url(/images/headerBg.png) no-repeat center;
   background-size: contain;
     a{
-      font-family: "Recoleta",sans-serif;
+  font-family: FONTSPRINGDEMO-RecoletaMedium;
       font-size: 18px;
       font-weight: 500;
       font-stretch: normal;
@@ -155,7 +155,7 @@ const closeContactModal = () => {
   position: relative;
   display: flex;align-items:center;justify-content: center;flex-direction: column;
   span{
-    font-family: "Recoleta",sans-serif;
+  font-family: FONTSPRINGDEMO-RecoletaMedium;
       font-size: 18px;
       font-weight: 600;
       color:white;

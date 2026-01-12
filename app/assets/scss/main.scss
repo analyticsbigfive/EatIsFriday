@@ -1,16 +1,16 @@
 // Variables
-@use 'variables' as *;
+@use "variables" as *;
 
 // Bootstrap - Import functions, variables, and mixins first
-@import 'bootstrap/scss/functions';
-@import 'bootstrap/scss/variables';
-@import 'bootstrap/scss/variables-dark';
-@import 'bootstrap/scss/maps';
-@import 'bootstrap/scss/mixins';
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
 
 // Bootstrap utilities
-@import 'bootstrap/scss/utilities';
-@import 'bootstrap/scss/utilities/api';
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/utilities/api";
 
 // CSS Custom Properties for brand colors
 :root {
@@ -27,36 +27,36 @@
 
 // Custom Font Face
 @font-face {
-  font-family: 'Recoleta';
-  src: url('/fonts/Recoleta-Regular.woff2') format('woff2'),
-       url('/fonts/Recoleta-Regular.woff') format('woff');
+  font-family: FONTSPRINGDEMO-Recoleta-Regular;
+  src: url("/fonts/Recoleta-Regular.woff2") format("woff2"),
+    url("/fonts/Recoleta-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Recoleta';
-  src: url('/fonts/Recoleta-Medium.woff2') format('woff2'),
-       url('/fonts/Recoleta-Medium.woff') format('woff');
+  font-family: FONTSPRINGDEMO-RecoletaMedium;
+  src: url("/fonts/Recoleta-Medium.woff2") format("woff2"),
+    url("/fonts/Recoleta-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Recoleta';
-  src: url('/fonts/Recoleta-SemiBold.woff2') format('woff2'),
-       url('/fonts/Recoleta-SemiBold.woff') format('woff');
+  font-family: FONTSPRINGDEMO-RecoletaSemiBold-Regular;
+  src: url("/fonts/Recoleta-SemiBold.woff2") format("woff2"),
+    url("/fonts/Recoleta-SemiBold.woff") format("woff");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Recoleta';
-  src: url('/fonts/Recoleta-Bold.woff2') format('woff2'),
-       url('/fonts/Recoleta-Bold.woff') format('woff');
+  font-family: FONTSPRINGDEMO-RecoletaBold;
+  src: url("/fonts/Recoleta-Bold.woff2") format("woff2"),
+    url("/fonts/Recoleta-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -83,21 +83,49 @@ body {
 }
 
 // Brand Colors
-.text-brand-pink { color: $brand-pink; }
-.text-brand-lime { color: $brand-lime; }
-.text-brand-yellow { color: $brand-yellow; }
-.text-brand-blue { color: $brand-blue; }
-.text-brand-purple { color: $brand-purple; }
-.text-brand-dark { color: $brand-dark; }
-.text-brand-gray { color: $brand-gray; }
+.text-brand-pink {
+  color: $brand-pink;
+}
+.text-brand-lime {
+  color: $brand-lime;
+}
+.text-brand-yellow {
+  color: $brand-yellow;
+}
+.text-brand-blue {
+  color: $brand-blue;
+}
+.text-brand-purple {
+  color: $brand-purple;
+}
+.text-brand-dark {
+  color: $brand-dark;
+}
+.text-brand-gray {
+  color: $brand-gray;
+}
 
-.bg-brand-pink { background-color: $brand-pink; }
-.bg-brand-lime { background-color: $brand-lime; }
-.bg-brand-yellow { background-color: $brand-yellow; }
-.bg-brand-blue { background-color: $brand-blue; }
-.bg-brand-purple { background-color: $brand-purple; }
-.bg-brand-dark { background-color: $brand-dark; }
-.bg-brand-gray { background-color: $brand-gray; }
+.bg-brand-pink {
+  background-color: $brand-pink;
+}
+.bg-brand-lime {
+  background-color: $brand-lime;
+}
+.bg-brand-yellow {
+  background-color: $brand-yellow;
+}
+.bg-brand-blue {
+  background-color: $brand-blue;
+}
+.bg-brand-purple {
+  background-color: $brand-purple;
+}
+.bg-brand-dark {
+  background-color: $brand-dark;
+}
+.bg-brand-gray {
+  background-color: $brand-gray;
+}
 
 // Organic Shadows
 .shadow-organic {
@@ -291,7 +319,8 @@ body {
 
 // Animations
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -304,7 +333,8 @@ body {
 }
 
 @keyframes wiggle {
-  0%, 100% {
+  0%,
+  100% {
     transform: rotate(-3deg);
   }
   50% {
@@ -319,7 +349,11 @@ body {
 // Page styles
 .page-hero {
   padding: 6rem 0 4rem;
-  background: linear-gradient(135deg, $brand-pink 0%, darken($brand-pink, 15%) 100%);
+  background: linear-gradient(
+    135deg,
+    $brand-pink 0%,
+    darken($brand-pink, 15%) 100%
+  );
   color: white;
   text-align: center;
 
@@ -383,42 +417,98 @@ body {
   position: relative;
   background: white;
   clip-path: polygon(
-    0% 2%, 2% 0%, 5% 3%, 8% 1%, 12% 4%, 15% 2%, 18% 5%, 
-    22% 3%, 25% 6%, 28% 2%, 32% 5%, 35% 3%, 38% 6%, 
-    42% 4%, 45% 7%, 48% 3%, 52% 6%, 55% 4%, 58% 7%, 
-    62% 5%, 65% 8%, 68% 4%, 72% 7%, 75% 5%, 78% 8%, 
-    82% 6%, 85% 9%, 88% 5%, 92% 8%, 95% 6%, 98% 9%, 
-    100% 7%, 100% 100%, 0% 100%
+    0% 2%,
+    2% 0%,
+    5% 3%,
+    8% 1%,
+    12% 4%,
+    15% 2%,
+    18% 5%,
+    22% 3%,
+    25% 6%,
+    28% 2%,
+    32% 5%,
+    35% 3%,
+    38% 6%,
+    42% 4%,
+    45% 7%,
+    48% 3%,
+    52% 6%,
+    55% 4%,
+    58% 7%,
+    62% 5%,
+    65% 8%,
+    68% 4%,
+    72% 7%,
+    75% 5%,
+    78% 8%,
+    82% 6%,
+    85% 9%,
+    88% 5%,
+    92% 8%,
+    95% 6%,
+    98% 9%,
+    100% 7%,
+    100% 100%,
+    0% 100%
   );
 }
 
 /* Variante avec bordure du bas déchirée */
 .torn-paper-bottom {
   clip-path: polygon(
-    0% 0%, 100% 0%, 
-    100% 95%, 98% 98%, 95% 94%, 92% 97%, 88% 93%, 
-    85% 96%, 82% 92%, 78% 95%, 75% 91%, 72% 94%, 
-    68% 90%, 65% 93%, 62% 89%, 58% 92%, 55% 88%, 
-    52% 91%, 48% 87%, 45% 90%, 42% 86%, 38% 89%, 
-    35% 85%, 32% 88%, 28% 84%, 25% 87%, 22% 83%, 
-    18% 86%, 15% 82%, 12% 85%, 8% 81%, 5% 84%, 
-    2% 80%, 0% 83%
+    0% 0%,
+    100% 0%,
+    100% 95%,
+    98% 98%,
+    95% 94%,
+    92% 97%,
+    88% 93%,
+    85% 96%,
+    82% 92%,
+    78% 95%,
+    75% 91%,
+    72% 94%,
+    68% 90%,
+    65% 93%,
+    62% 89%,
+    58% 92%,
+    55% 88%,
+    52% 91%,
+    48% 87%,
+    45% 90%,
+    42% 86%,
+    38% 89%,
+    35% 85%,
+    32% 88%,
+    28% 84%,
+    25% 87%,
+    22% 83%,
+    18% 86%,
+    15% 82%,
+    12% 85%,
+    8% 81%,
+    5% 84%,
+    2% 80%,
+    0% 83%
   );
 }
 
 .blue {
-    background-color: #93cbff;
+  background-color: #93cbff;
 }
 body {
-  p, span{
-white-space: pre-line; /* conserve retours à la ligne */
-}}
+  p,
+  span {
+    white-space: pre-line; /* conserve retours à la ligne */
+  }
+}
 .blue {
-background-image:url(/images/heroBg.svg);
-background-repeat: no-repeat;
-background-size:auto;
-background-position: 100% 102%;
-&::after {
+  background-image: url(/images/heroBg.svg);
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: 100% 102%;
+  &::after {
     content: "";
     position: absolute;
     top: 0;
@@ -427,24 +517,22 @@ background-position: 100% 102%;
     height: 100%;
     background-color: rgba(147, 203, 255, 0.5); /* Couleur bleue avec opacité */
     pointer-events: none; /* Permet de cliquer à travers l'overlay */
-
+  }
 }
-}
-#hero{
-    background-color: #93cbff;
-    min-height: 718px;
-    p {
-        white-space: pre-line; /* conserve retours à la ligne */
-        line-height: 1.25em;
-    }
+#hero {
+  background-color: #93cbff;
+  min-height: 718px;
+  p {
+    white-space: pre-line; /* conserve retours à la ligne */
+    line-height: 1.25em;
+  }
 }
 #btnExplore {
-    width: 299px;
-  height:70px;
+  width: 299px;
+  height: 70px;
 }
 
 #blusy {
-
   background: url(images/heroBg.svg) no-repeat;
   background-size: contain;
   background-position: right 45vh;
@@ -453,40 +541,41 @@ background-position: 100% 102%;
 #heroTitle {
   position: relative;
   z-index: 21;
-  &::before{
-    z-index:-1;
+  white-space: pre-line;
+
+  &::before {
+    z-index: -1;
     position: absolute;
-    content:"";
-    background:url(images/decoHeaderBg.svg);
-    background-size:contain;
-    width:100vw;
-    max-width:400px;
-    height:100vh;
+    content: "";
+    background: url(images/decoHeaderBg.svg);
+    background-size: contain;
+    width: 100vw;
+    max-width: 400px;
+    height: 100vh;
     max-height: 80px;
     background-repeat: no-repeat;
-    top:15vh;
-    left:-1vw;
+    top: 9vh;
+    left: -1vw;
   }
-
 }
 
 .txtWrapper {
   position: relative;
   z-index: 1;
-    p{
-  font-family: "Recoleta";
-  font-size: 18px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.44;
-  letter-spacing: normal;
-  text-align: left;
-  color: #161616;
+  p {
+    font-family: FONTSPRINGDEMO-Recoleta-Regular;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.44;
+    letter-spacing: normal;
+    text-align: left;
+    color: #161616;
   }
 }
 .recoletaTitle {
-  font-family: "Recoleta";
+  font-family: FONTSPRINGDEMO-RecoletaBold;
   font-size: 48px;
   font-weight: 600;
   font-stretch: normal;
@@ -496,35 +585,33 @@ background-position: 100% 102%;
   text-align: left;
   color: #161616;
 }
-.recoleta{
-  font-family: "Recoleta" !important;
+.recoleta {
+  font-family: FONTSPRINGDEMO-Recoleta-Regular !important;
 }
 #presentationEatIsFamily {
-  min-height:583px;
-  display: flex ;
+  min-height: 583px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;  
-  background:  url(images/slide1.svg) no-repeat center center; 
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    -o-background-size: contain;
-    background-size: contain;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
+  background-color: #ffffff;
+  background: url(images/slide1.svg) no-repeat center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
   -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
-  
-  
 }
 .kemiseba {
   max-width: 910px;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   flex-direction: row;
   text-align: center;
-  margin:0 auto;
+  margin: 0 auto;
   display: flex;
-  align-items:center;
+  align-items: center;
   justify-content: center;
-  font-family: "Recoleta";
+  font-family: FONTSPRINGDEMO-Recoleta-Regular;
   font-size: 34px;
   font-weight: normal;
   font-stretch: normal;
@@ -533,33 +620,137 @@ background-position: 100% 102%;
   letter-spacing: normal;
   text-align: left;
   color: #000000;
-  strong{
+  strong {
     font-weight: normal;
     color: #f9375b;
   }
-} 
+}
 
-#tromp{
+.kemiseba-alt {
+  max-width: 1129px;
+  flex-wrap: wrap;
+  flex-direction: row;
+  text-align: center !important;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  font-family: FONTSPRINGDEMO-Recoleta-Regular;
+  font-size: 34px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.59;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+  strong {  font-family: FONTSPRINGDEMO-RecoletaSemiBold !important;
+
+    color: #000000;
+  }
+}
+
+#tromp {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  img{
-    width:283px;
-    height:auto;
+  img {
+    width: 283px;
+    height: auto;
   }
 }
 
 #services {
   .font-heading {
     text-align: left;
-   font-size: 50px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000;
+    font-size: 50px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+  }
+  h3 {
+    font-size: 50px;
+    font-weight: 700;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000b0f;
+  }
+  p {
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.56;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+  }
+   .innerService{
+    padding:30px !important;
+  }
 }
+
+.service {
+  min-height: 770px;
+
+  h3 {
+    font-family: FONTSPRINGDEMO-RecoletaBold !important;
+  }
+  .sanga,
+  a {
+    margin-top: 70px !important;
+  }
+}
+#service-0 {
+  .service-desc {
+    .innerService {
+      background: #93cbff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+    }
+  }
+  h3 {
+    position: relative;
+    z-index: 0;
+    &::before {
+      z-index: -1;
+      position: absolute;
+      content: "";
+      background: url(images/decoHeaderBg.svg);
+      background-size: contain;
+      width: 100vw;
+      max-width: 400px;
+      height: 100vh;
+      max-height: 80px;
+      background-repeat: no-repeat;
+      top: 1vh;
+      left: -1vw;
+    }
+  }
+}
+#service-1 {
+  .service-desc {
+    .innerService {
+      background: #f93257;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+    }
+    * {
+      color: #fff;
+    }
+  }
+  .lefun {
+    order: 2;
+  }
 }

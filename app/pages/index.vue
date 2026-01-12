@@ -28,7 +28,7 @@ const textColorMap: Record<string, string> = {
 
 onMounted(async () => {
   content.value = await getHomepageContent()
-  
+
   if (heroTitle.value && content.value) {
     gsap.from(heroTitle.value, {
       y: 60,
@@ -45,39 +45,40 @@ onMounted(async () => {
   <div class="overflow-hidden" v-if="content">
     <!-- Hero Section -->
     <section id="hero" class="container-fluid d-flex align-items-center v-90 px-0 w-100">
-       <div class="d-flex flex-row row w-100">
-            <!-- image de la nourriture -->
-      <div id="marr" class="col-lg-6 col-md-6 p-0 min-vh-100" :style="{ position: 'relative', backgroundImage: `url('${content.hero_section.bg}')`, backgroundSize: 'cover', backgroundPosition: 'center' }">
-        <span></span>
-       </div>
-        <!-- right: Text -->
-          <div id="blusy" class="col-lg-6 col-md-6 p-4 d-flex flex-wrap
-          flex-column  justify-content-center align-items-start min-vh-90">
-            
-              <div class="txtwrapper">
-                <h1 id="heroTitle" ref="heroTitle" class="font-heading display-1 fw-bold lh-1 text-brand-dark m-0">
-                {{ content.hero_section.title.line_1 }}
-            </h1>
-              <p class="position-relative d-inline-block m-0 recoleta mb-4 mt-4">
-                {{ content.hero_section.title.line_2 }}
-              </p>
-              </div>
-          
-            <NuxtLink to="/contact" aria-label="Contactez-nous" class="d-inline-block mt-4 m-0">
-              <NuxtImg id="btnExplore" src="/images/btnExplore.svg" alt="Contact" />
-            </NuxtLink>
-          </div>
+      <div class="d-flex flex-row row w-100">
+        <!-- image de la nourriture -->
+        <div id="marr" class="col-lg-6 col-md-6 p-0 min-vh-100"
+          :style="{ position: 'relative', backgroundImage: `url('${content.hero_section.bg}')`, backgroundSize: 'cover', backgroundPosition: 'center' }">
+          <span></span>
         </div>
-    </section>
-<section id="presentationEatIsFamily" class="py-5 bg-white">
-<div id="tromp" class="container">
-  <div class="kemiseba" v-html="content.intro_section.texte"></div>
-  <NuxtLink to="/about" aria-label="En savoir plus sur nous" class="mt-4 d-inline-block mt-4">
-    <NuxtImg src="/images/btnLearnMoreAboutUs.svg" alt="En savoir plus sur nous" />
-  </NuxtLink>
-</div>
+        <!-- right: Text -->
+        <div id="blusy" class="col-lg-6 col-md-6 p-4 d-flex flex-wrap
+          flex-column  justify-content-center align-items-start min-vh-90">
+          <div class="txtwrapper">
+            <h1 id="heroTitle" ref="heroTitle" class="font-heading display-1 fw-bold lh-1 text-brand-dark m-0">
+              {{ content.hero_section.title.line_1 }}
+              {{ content.hero_section.title.line_2 }}
+            </h1>
+            <p class="position-relative d-inline-block m-0 recoleta mb-4 mt-4">
+              {{ content.hero_section.title.line_3 }}
+            </p>
+          </div>
 
-</section>
+          <NuxtLink to="/contact" aria-label="Contactez-nous" class="d-inline-block mt-4 m-0 sanga">
+            <NuxtImg id="btnExplore" src="/images/btnExplore.svg" alt="Contact" />
+          </NuxtLink>
+        </div>
+      </div>
+    </section>
+    <section id="presentationEatIsFamily" class="py-5 bg-white">
+      <div id="tromp" class="container">
+        <div class="kemiseba" v-html="content.intro_section.texte"></div>
+        <NuxtLink to="/about" aria-label="En savoir plus sur nous" class="mt-4 d-inline-block mt-4">
+          <NuxtImg src="/images/btnLearnMoreAboutUs.svg" alt="En savoir plus sur nous" />
+        </NuxtLink>
+      </div>
+
+    </section>
     <!-- Map Preview Section -->
     <section class="py-5 bg-brand-gray overflow-hidden">
       <div class="container">
@@ -85,7 +86,7 @@ onMounted(async () => {
           <div class="col-lg-4">
             <span class="tag-blue mb-3 d-inline-block">{{ content.locations_section.tag }}</span>
             <h2 class="font-heading display-4 fw-bold mb-4">
-              {{ content.locations_section.title.line_1 }}<br/>
+              {{ content.locations_section.title.line_1 }}<br />
               <span class="position-relative d-inline-block">
                 {{ content.locations_section.title.line_2_highlight }}
                 <span class="position-absolute bottom-0 start-0 w-100 bg-brand-lime highlight-bar"></span>
@@ -96,15 +97,18 @@ onMounted(async () => {
             </p>
 
             <ul class="list-unstyled d-flex flex-column gap-3">
-              <li v-for="loc in content.locations_section.locations" :key="loc.name" class="d-flex align-items-center justify-content-between p-3 bg-white border-organic location-item">
+              <li v-for="loc in content.locations_section.locations" :key="loc.name"
+                class="d-flex align-items-center justify-content-between p-3 bg-white border-organic location-item">
                 <div class="d-flex align-items-center gap-3">
-                  <div class="location-icon rounded-circle bg-brand-pink d-flex align-items-center justify-content-center border border-2 border-dark">
+                  <div
+                    class="location-icon rounded-circle bg-brand-pink d-flex align-items-center justify-content-center border border-2 border-dark">
                     <LucideMapPin class="text-white" style="width: 1.25rem; height: 1.25rem;" />
                   </div>
                   <span class="fw-bold fs-5">{{ loc.name }}</span>
                 </div>
                 <div class="d-flex align-items-center gap-2">
-                  <span class="text-brand-pink fw-bold">{{ loc.count }} {{ content.locations_section.jobs_suffix }}</span>
+                  <span class="text-brand-pink fw-bold">{{ loc.count }} {{ content.locations_section.jobs_suffix
+                    }}</span>
                   <LucideArrowRight class="text-secondary" style="width: 1rem; height: 1rem;" />
                 </div>
               </li>
@@ -131,10 +135,10 @@ onMounted(async () => {
 
     <!-- Services Section -->
     <section id="services" class="py-5 bg-white">
-      <div class="container">
-        <div class="text-left mb-5">
+      <div class="container-fluid m-0 p-0">
+        <div class="text-left mb-5 p-4">
           <h2 class="font-heading display-4 fw-bold">
-            {{ content.services_section.title.line_1 }}<br/>
+            {{ content.services_section.title.line_1 }}<br />
             <span class="position-relative d-inline-block">
               {{ content.services_section.title.highlight }}
               <span class="position-absolute bottom-0 start-0 w-100 bg-brand-blue highlight-bar"></span>
@@ -142,73 +146,62 @@ onMounted(async () => {
           </h2>
         </div>
 
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-          <div
-            v-for="(service, i) in content.services_section.services"
-            :key="i"
-            class="col"
-          >
-            <div :class="['card-organic position-relative overflow-hidden h-100 service-card', bgColorMap[service.bg_color || 'pink'], textColorMap[service.text_color || 'white']]">
-              <component :is="iconMap[service.icon]" class="service-icon mb-4" style="width: 3rem; height: 3rem;" />
-              <h3 class="font-heading fs-3 fw-bold mb-3">{{ service.title }}</h3>
-              <p class="opacity-75 font-body">{{ service.description }}</p>
+        <div class="prod">
+          <div class="service-wrapper d-flex">
+            <div class="row m-0 p-0">
+              <div :id="`service-${i}`" v-for="(service, i) in content.services_section.services" :key="i"
+                class="service d-flex row  m-0 p-0">
+                <div class="col-lg-6 col-md-6 lefun p-2">
+                  <div
+                    :style="{ backgroundImage: service.thumbnail ? `url('${service.thumbnail}')` : 'none', backgroundSize: 'cover', backgroundPosition: 'center' }"
+                    class="rounded w-100 h-100 "></div>
+                </div>
+                <div class="col-lg-6 col-md-6 rounded p-2 service-desc">
+                  <div class="innerService rounded p-2">
+                    <h3 class="recoleta preserve-lines">{{ service.title }}</h3>
+                    <p class="recoleta mt-4 mb-4 preserve-lines">{{ service.description }}</p>
+                    <NuxtLink :to="service.linkTo">
+                      <NuxtImg :src="service.btnImage" alt="En savoir plus sur nos services" />
+                    </NuxtLink>
+                  </div>
 
-              <div class="service-circle position-absolute rounded-circle"></div>
+                </div>
+              </div>
 
-              <button class="mt-4 d-flex align-items-center gap-2 fw-bold border-0 bg-transparent service-btn">
-                {{ content.services_section.learn_more_button }} <LucideArrowRight style="width: 1rem; height: 1rem;" />
-              </button>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Partners Section -->
-    <section class="py-5 bg-brand-gray border-top border-bottom border-dark border-2">
-      <div class="container">
-        <p class="text-center font-heading fs-4 mb-4">
-          {{ content.partners_section.intro_text }}
-        </p>
-        <div class="d-flex flex-wrap justify-content-center align-items-center gap-4 gap-md-5">
-          <div v-for="(partner, i) in content.partners_section.partners" :key="i" class="fs-2 font-heading fw-bold text-secondary partner-item">
-            <img v-if="partner.logo_url" :src="partner.logo_url" :alt="partner.name" style="height: 3rem;" />
-            <span v-else>{{ partner.name }}</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- CTA Section -->
-    <section class="py-5 bg-brand-pink text-white text-center position-relative overflow-hidden">
-      <div class="position-absolute top-0 start-0 end-0 bottom-0 opacity-10">
-        <div class="position-absolute top-0 cta-circle-1 border border-2 border-white rounded-circle"></div>
-        <div class="position-absolute bottom-0 cta-circle-2 border border-2 border-white rounded-circle"></div>
-      </div>
-
-      <div class="container position-relative" style="z-index: 10;">
-        <h2 class="font-heading display-4 fw-bold mb-4">{{ content.cta_section.title }}</h2>
-        <p class="text-white-50 mx-auto mb-5 fs-5 font-body" style="max-width: 42rem;">
-          {{ content.cta_section.description }}
-        </p>
-        <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-          <BaseButton :to="content.cta_section.cta_primary.link" variant="lime" size="lg">{{ content.cta_section.cta_primary.text }}</BaseButton>
-          <BaseButton :to="content.cta_section.cta_secondary.link" variant="secondary" size="lg">{{ content.cta_section.cta_secondary.text }}</BaseButton>
-        </div>
-      </div>
+    <section class="py-5 bg-white">
+     <div class="container">
+      <div class="kemiseba-alt" v-html="content.cta_section.description"></div>
+     </div>
     </section>
 
     <!-- Food Gallery Section -->
-    <section class="py-5 bg-brand-dark">
+    <section class="py-5">
       <div class="container">
-        <div class="row row-cols-2 row-cols-md-4 g-3">
-          <div v-for="(image, i) in content.gallery_section.images" :key="i" class="col">
-            <div class="border-organic overflow-hidden gallery-item">
+        <div class="gallery-grid">
+          <!-- Grande image à gauche -->
+          <div class="gallery-item-large">
+            <div class="gallery-item-wrapper">
               <NuxtImg
-                :src="image.src"
-                class="w-100 h-100 object-fit-cover gallery-img"
-                :alt="image.alt"
+                :src="content.gallery_section.images[0].src"
+                class="w-100 gallery-img"
+                :alt="content.gallery_section.images[0].alt"
               />
+            </div>
+          </div>
+
+          <!-- 2 images à droite -->
+          <div class="gallery-items-right">
+            <div class="gallery-item-small" v-for="(image, i) in content.gallery_section.images.slice(1)" :key="i">
+              <div class="gallery-item-wrapper">
+                <NuxtImg :src="image.src" class="w-100 gallery-img" :alt="image.alt" />
+              </div>
             </div>
           </div>
         </div>
@@ -218,6 +211,11 @@ onMounted(async () => {
 </template>
 
 <style scoped>
+/* Préserve les retours à la ligne du JSON */
+.preserve-lines {
+  white-space: pre-line;
+}
+
 .tag-pink {
   display: inline-flex;
   align-items: center;
@@ -308,15 +306,68 @@ onMounted(async () => {
   right: 25%;
 }
 
-.gallery-item {
-  aspect-ratio: 1;
+/* Gallery Grid Layout */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  min-height: 600px;
+}
+
+.gallery-item-large {
+  grid-row: 1 / -1;
+  height: 100%;
+}
+
+.gallery-items-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.gallery-item-small {
+  flex: 1;
+}
+
+.gallery-item-wrapper {
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.gallery-item-wrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
 .gallery-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   transition: transform 0.5s ease;
 }
 
 .gallery-img:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
+}
+
+/* Responsive: sur mobile, passer en une seule colonne */
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .gallery-item-large {
+    grid-row: auto;
+    height: 400px;
+  }
+
+  .gallery-item-small {
+    height: 250px;
+  }
 }
 </style>

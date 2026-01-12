@@ -4,8 +4,9 @@
       "bg":"images/unsplash_6vfYbDwOuMo.jpg",
       "tag": "NEW LOCATIONS",
       "title": {
-        "line_1": "Feeding\nExperiences.\nServing\nMoments",
-        "line_2": "From intimate gatherings to grand celebrations, we craft\nunforgettable culinary experiences that bring people\n together and create lasting memories."
+        "line_1": "Feeding\nExperiences.\n",
+        "line_2": "Serving\nMoments",
+           "line_3": "From intimate gatherings to grand celebrations, we craft\nunforgettable culinary experiences that bring people\n together and create lasting memories."
       },
       "description": "We don't just serve food — we create experiences. From the bustling concessions at your favorite stadium to the elegant spreads at VIP events, we craft culinary moments that bring people together.",
       "cta_primary": {
@@ -89,69 +90,40 @@
       },
       "services": [
         {
-          "title": "Corporate Catering",
-          "description": "Premium culinary experiences for your business events and meetings.",
-          "icon": "chef-hat",
-          "bg_color": "pink",
-          "text_color": "white"
+          "title": "Feeding the Energy of \nEvery Moment",
+          "description": "We operate food and beverage programs inside stadiums, arenas, and large-scale cultural events—managing everything from kitchen production to guest service. \n\nOur teams are trained for fast-paced environments where quality, timing, and atmosphere matter. Whether it’s matchday energy or festival crowds, we create experiences that feel human, organized, and memorable.",
+          "thumbnail":"images/unsplash_6vfYbDwOuMo.jpg",
+          "btnImage":"images/btnGetInouchPartner.svg",
+          "linkTo": "/"
+
         },
         {
-          "title": "Stadium Concessions",
-          "description": "High-volume, high-quality food service for major arenas and venues.",
-          "icon": "utensils",
-          "bg_color": "lime",
-          "text_color": "dark"
-        },
-        {
-          "title": "Private Events",
-          "description": "Unforgettable moments crafted with passion and exceptional flavor.",
-          "icon": "party-popper",
-          "bg_color": "yellow",
-          "text_color": "dark"
+          "title": "Consulting Rooted in\nReal World Expertisery Moment",
+          "description": "We  support venue operators through operational consulting—helping optimize kitchen workflows, staffing structures, logistics, and service delivery. \n\nOur approach is grounded in real field expertise: the way teams communicate, how meals are prepared at scale, and how service truly runs when the pressure is high..",
+          "btnImage":"images/btnGetInouchConsult.svg",
+          "thumbnail":"images/unsplash_6vfYbDwOuMo.png",
+          "linkTo": "/"
         }
       ],
       "learn_more_button": "Learn more"
     },
-    "partners_section": {
-      "intro_text": "They Trusted Us For Their Restauration By The General Public. They Did Not Regret Their Choices",
-      "partners": [
-        { "name": "Partner 1", "logo_url": "" },
-        { "name": "Partner 2", "logo_url": "" },
-        { "name": "Partner 3", "logo_url": "" },
-        { "name": "Partner 4", "logo_url": "" },
-        { "name": "Partner 5", "logo_url": "" },
-        { "name": "Partner 6", "logo_url": "" }
-      ]
-    },
     "cta_section": {
       "title": "Ready to Make an Impact?",
-      "description": "Join our team and be part of creating unforgettable culinary experiences across France's most exciting venues.",
-      "cta_primary": {
-        "text": "Apply for a position",
-        "link": "/careers"
-      },
-      "cta_secondary": {
-        "text": "Get in touch",
-        "link": "/contact"
-      }
+    "description": "<strong>We deliver end to end catering experiences designed for every stage of your event — before, during, and after.</strong> From pre event planning that includes technical diagnosis, resource strategy, logistics, setup, and branding, to on-site moments filled with vibrant service, entertainment, and cocktails, and finally post event disassembly, we handle every detail with precision and flair."
     },
     "gallery_section": {
       "images": [
         {
-          "src": "https://images.unsplash.com/photo-1565299507177-b0ac66763828?q=80&w=400&auto=format&fit=crop",
+          "src": "images/buger.jpg",
           "alt": "Burger gourmet"
         },
         {
-          "src": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=400&auto=format&fit=crop",
+          "src": "images/image5.jpg",
           "alt": "Salade fraiche"
         },
         {
-          "src": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=400&auto=format&fit=crop",
+          "src": "images/neicurz.jpg",
           "alt": "Plat gastronomique"
-        },
-        {
-          "src": "https://images.unsplash.com/photo-1482049016gy?q=80&w=400&auto=format&fit=crop",
-          "alt": "Dessert"
         }
       ]
     }
