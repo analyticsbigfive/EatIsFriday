@@ -177,6 +177,33 @@
         "btn":"images/btnGetInTouchAlt.svg",
         "link":"/contact"
       }
+     ],
+     "partners_title":"They trusted us for their restoration by the general public, they did not regret their choices:",
+     "partners":[
+      {
+        "logo":"images/LOGO.svg",
+        "alt":"Adidas Logo"
+      },
+      {
+        "logo":"images/LOGO.svg",
+        "alt":"Rugby World Cup Logo"
+      },
+      {
+        "logo":"images/LOGO.svg",
+        "alt":"Le Mans Logo"
+      },
+      {
+        "logo":"images/LOGO.svg",
+        "alt":"Hellfest Logo"
+      },
+      {
+        "logo":"images/LOGO.svg",
+        "alt":"Balmain Logo"
+      },
+      {
+        "logo":"images/LOGO.svg",
+        "alt":"Golden Coast Logo"
+      }
      ]
      
   },

@@ -212,7 +212,6 @@ onMounted(async () => {
         <div :id="`sustainable-service-${index}`" v-for="(service, index) in content.sustainable_service" :key="index"
           class="sustainable-service-item col-md-4 text-center p-4">
           <div class="inner">
-
             <img :src="service.icone" :alt="service.title" />
             <h4>{{ service.title }}</h4>
             <p>{{ service.description }}</p>
@@ -250,7 +249,7 @@ onMounted(async () => {
         </div>
       </div>
     </section>
-
+<section class="py-5 bg-white"></section>
   </div>
 </template>
 
