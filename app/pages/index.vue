@@ -299,28 +299,7 @@ onMounted(async () => {
     </section>
 
     <!-- Food Gallery Section -->
-    <section class="py-5 bg-white">
-      <div class="container">
-        <div class="gallery-grid">
-          <!-- Grande image à gauche -->
-          <div class="gallery-item-large" v-if="content.gallery_section.images[0]">
-            <div class="gallery-item-wrapper">
-              <NuxtImg :src="content.gallery_section.images[0].src" class="w-100 gallery-img"
-                :alt="content.gallery_section.images[0].alt" />
-            </div>
-          </div>
-
-          <!-- 2 images à droite -->
-          <div class="gallery-items-right">
-            <div class="gallery-item-small" v-for="(image, i) in content.gallery_section.images.slice(1)" :key="i">
-              <div class="gallery-item-wrapper">
-                <NuxtImg :src="image.src" class="w-100 gallery-img" :alt="image.alt" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <GalleryGrid :images="content.gallery_section.images" />
     <!-- sustainable service  -->
     <section id="sustan" class="py-5 bg-white">
       <!-- une loop qui affiche les services durables -->
@@ -339,14 +318,7 @@ onMounted(async () => {
     <!-- concession powering great public events  -->
     <section id="beautiful-moments" class="py-5 bg-white">
       <div class="container-fluid">
-        <div class="row">
-          <div class="col">
-            <h3 class="damsnt" v-html="content.beautiful.title"></h3>
-          </div>
-          <div class="col">
-            <p class="kemi" v-html="content.beautiful.text"></p>
-          </div>
-        </div>
+        <TwoColumnText :title="content.beautiful.title" :text="content.beautiful.text" />
         <div class="row mt-4">
           <img :src="content.beautiful.image" alt="Beautiful Moments We’ve Helped Create"
             class="img-fluid mx-auto d-block">

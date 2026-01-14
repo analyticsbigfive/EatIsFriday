@@ -18,9 +18,17 @@ defineProps<{
 
 <style scoped lang="scss">
 .cta-block {
-  max-width: 800px;
+  max-width: 80vw;
   margin: 4em auto;
-
+  a{
+  width: 279px;
+  height: 70px;
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
   p {
     font-family: FONTSPRINGDEMO-RecoletaMedium;
     font-size: 34px;

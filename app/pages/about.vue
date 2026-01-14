@@ -29,19 +29,38 @@
       <h3 class="timeline-title white-text recoleta preserve-lines">{{ siteContent.about.timeline.title }}</h3>
 
       <div class="timeline-wrapper">
+        <!-- Navigation arrows -->
+        <button v-if="allEvents.length > 1" class="timeline-nav timeline-nav-prev" :class="{ disabled: !canGoPrev }"
+          :disabled="!canGoPrev" @click="goToPrevEvent">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </button>
+        <button v-if="allEvents.length > 1" class="timeline-nav timeline-nav-next" :class="{ disabled: !canGoNext }"
+          :disabled="!canGoNext" @click="goToNextEvent">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </button>
+
         <!-- Sound Wave with Playhead -->
         <div ref="soundWaveContainer" class="sound-wave-container">
+          <!-- Dashed center line -->
+          <div class="center-line"></div>
+
           <!-- Playhead (moves horizontally like a cursor) -->
           <div class="playhead" :class="{ 'dragging': isDragging }" :style="{ left: playheadX + '%' }"
             @mousedown="startDrag" @touchstart="startDrag">
             <!-- Top square -->
-            <div class="playhead-top-marker" :style="{ background: playheadColor }"></div>
+            <div class="playhead-top-marker"></div>
             <!-- Vertical line -->
-            <div class="playhead-line" :style="{ background: playheadColor }"></div>
+            <div class="playhead-line"></div>
             <!-- Circle on the wave line -->
-            <div class="playhead-circle" :style="{ background: playheadColor }"></div>
+            <div class="playhead-circle"></div>
             <!-- Year label at bottom -->
-            <div class="playhead-year" :style="{ background: playheadColor }">{{ selectedEvent ?
+            <div class="playhead-year">{{ selectedEvent ?
               getYearFromDate(selectedEvent.year) : '2015' }}</div>
 
             <!-- Event Card (positioned relative to playhead) -->
@@ -82,40 +101,23 @@
             </div>
           </div>
 
-          <!-- Sound wave bars -->
+          <!-- Sound wave bars - Organic waveform with cosine curve -->
           <div class="sound-wave">
-            <div v-for="i in 120" :key="i" class="wave-bar-wrapper">
-              <div class="wave-bar wave-bar-top" :style="getWaveBarStyle(i - 1)"></div>
-              <div class="wave-bar wave-bar-bottom" :style="getWaveBarStyle(i - 1)"></div>
+            <div v-for="(bar, i) in waveBarData" :key="i" class="wave-bar-wrapper">
+              <div class="wave-bar" :style="{ height: bar.height + '%' }"></div>
             </div>
           </div>
 
-          <!-- Event markers (dots on the center line) -->
+          <!-- Event markers (dots on the center line at peaks) -->
           <div v-for="(event, index) in allEvents" :key="'marker-' + event.id" class="wave-marker"
             :class="{ active: selectedEvent?.id === event.id }"
             :style="{ left: getMarkerPosition(index as number) + '%' }" @click="selectEvent(event, index as number)">
             <div class="wave-marker-dot" :style="{ background: getMarkerColor(index as number) }"></div>
           </div>
-
-          <!-- Navigation arrows for prev/next event -->
-          <button v-if="allEvents.length > 1" class="timeline-nav timeline-nav-prev" :class="{ disabled: !canGoPrev }"
-            :disabled="!canGoPrev" @click="goToPrevEvent">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg>
-          </button>
-          <button v-if="allEvents.length > 1" class="timeline-nav timeline-nav-next" :class="{ disabled: !canGoNext }"
-            :disabled="!canGoNext" @click="goToNextEvent">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg>
-          </button>
         </div>
       </div>
 
-      <h4 class="timeline-subtitle white-text recoleta preserve-lines">{{ siteContent.about.timeline.subtitle }}</h4>
+      <p class="timeline-instruction">{{ siteContent.about.timeline.subtitle }}</p>
     </section>
     <section v-if="siteContent?.about?.mission" id="mission">
       <div class="container-fluid">
@@ -146,11 +148,22 @@
         </div>
       </div>
     </section>
-    <PartnersSection
-      v-if="homepageContent?.partners"
-      :title="homepageContent.partners_title"
-      :partners="homepageContent.partners.map((p: any) => ({ ...p, name: p.alt }))"
-    />
+    <section v-if="siteContent?.about?.vision" id="vision" class="my-5">
+      <div class="container-fluid">
+        <TwoColumnText :title="siteContent.about.vision.title" :text="siteContent.about.vision.content" />
+        <img :src="siteContent.about.vision.image" :alt="siteContent.about.vision.image.alt"
+          class="img-fluid my-4 rounded w-100" />
+        <CtaBlock :text="homepageContent?.homepageCTA.additionalText" :link="homepageContent?.homepageCTA.link"
+          :button-image="homepageContent?.homepageCTA.button2" :button-alt="homepageContent?.homepageCTA.title" />
+      </div>
+    </section>
+    <GalleryGrid v-if="siteContent?.about?.gallery_section?.images"
+      :images="siteContent.about.gallery_section.images" />
+    <PartnersSection v-if="homepageContent?.partners" :title="homepageContent.partners_title"
+      :partners="homepageContent.partners.map((p: any) => ({ ...p, name: p.alt }))" />
+    
+      <GalleryGrid v-if="siteContent?.about?.gallery_section2?.images"
+      :images="siteContent.about.gallery_section2.images" />
   </div>
 </template>
 
@@ -167,9 +180,26 @@ const homepageContent = ref<any>(null)
 const selectedEvent = ref<any>(null)
 const playheadX = ref<number>(10) // Initial position at first event
 const isLastEvent = ref<boolean>(false) // To position card on left for last event
-const playheadColor = ref<string>('#FF6B6B') // Default playhead color (first event color)
+const playheadColor = ref<string>('#FFD600') // Default playhead color (yellow)
 const selectedEventIndex = ref<number>(0) // Track current event index
 const isCardVisible = ref<boolean>(false) // Control card visibility
+
+// Organic wave pattern configuration
+// More bars between peaks for denser waveform like in the reference image
+const BARS_BETWEEN_PEAKS = 35
+const PEAK_DISTANCE = BARS_BETWEEN_PEAKS + 1
+const PADDING_BARS = 20 // Bars before first and after last peak
+const MIN_HEIGHT = 8   // Hauteur du creux (en %) - plus petit pour contraste
+const MAX_HEIGHT = 100 // Hauteur du pic (en %)
+
+// Total bars needed
+const totalBars = computed(() => {
+  const numEvents = allEvents.value.length || 1
+  if (numEvents === 0) return 100
+  // Distance from first to last peak is (numEvents - 1) * PEAK_DISTANCE
+  // Plus padding on both sides
+  return PADDING_BARS + (Math.max(0, numEvents - 1) * PEAK_DISTANCE) + PADDING_BARS
+})
 
 // Drag state
 const isDragging = ref<boolean>(false)
@@ -239,7 +269,7 @@ onMounted(async () => {
     selectedEvent.value = firstEvent
     selectedEventIndex.value = 0
     playheadX.value = getMarkerPosition(0)
-    playheadColor.value = getMarkerColor(0)
+    playheadColor.value = '#FFD600' // Keep playhead yellow
     isCardVisible.value = false // Don't show card initially
   }
 
@@ -280,49 +310,78 @@ const getYearFromDate = (dateStr: string) => {
   return parts[parts.length - 1] || '2015'
 }
 
-// Get marker position as percentage (evenly distributed)
+// Get marker position as percentage
+// Markers are placed exactly at the peak indices
 const getMarkerPosition = (index: number): number => {
-  const count = allEvents.value.length
-  if (count <= 1) return 50
-  // Distribute markers from 8% to 92%
-  return 8 + (84 / (count - 1)) * index
+  if (allEvents.value.length === 0) return 50
+  
+  // Peak index for this event
+  const peakIndex = PADDING_BARS + (index * PEAK_DISTANCE)
+  
+  // Convert to percentage of total width
+  // We use (peakIndex + 0.5) to center it on the bar
+  return ((peakIndex + 0.5) / totalBars.value) * 100
 }
 
-// Get wave bar height style - PYRAMID/TRIANGLE shape (linear, not curved)
-const getWaveBarStyle = (barIndex: number) => {
-  const totalBars = 120
-  const numEvents = allEvents.value.length || 6
-
-  // Calculate bar position as percentage (0-100)
-  const barPosition = (barIndex / totalBars) * 100
-
-  // Find the nearest marker and calculate distance to it
-  let minDistance = Infinity
-  for (let i = 0; i < numEvents; i++) {
-    const markerPos = getMarkerPosition(i)
-    const distance = Math.abs(barPosition - markerPos)
-    if (distance < minDistance) {
-      minDistance = distance
-    }
-  }
-
-  // Max distance between markers
-  const maxDistance = 84 / (numEvents - 1) / 2
-
-  // LINEAR interpolation for pyramid shape (not cosine!)
-  // Distance 0 = 100% height, Distance max = 5% height
-  const normalizedDistance = Math.min(minDistance / maxDistance, 1)
-  const heightPercent = 100 - (normalizedDistance * 95) // Linear from 100 to 5
-
-  return {
-    height: heightPercent + '%'
-  }
+// Seeded random number generator for consistent "randomness"
+const seededRandom = (seed: number): number => {
+  const x = Math.sin(seed * 12.9898 + 78.233) * 43758.5453
+  return x - Math.floor(x)
 }
 
-// Get marker color based on index (matching reference image)
+// Calculate wave bar data - Organic waveform with natural variations
+const waveBarData = computed(() => {
+  const bars: { height: number }[] = []
+  const count = totalBars.value
+  
+  for (let i = 0; i < count; i++) {
+    // Calculate position relative to nearest peak
+    const relativePos = i - PADDING_BARS
+    const peakIndex = Math.round(relativePos / PEAK_DISTANCE) * PEAK_DISTANCE + PADDING_BARS
+    
+    // Distance from current bar to nearest peak
+    const dist = i - peakIndex
+    
+    // Calculate position in cycle (0 to 1) where 0 = peak, 0.5 = trough
+    const positionInCycle = Math.abs(dist) / (PEAK_DISTANCE / 2)
+    
+    // Base cosine curve for smooth envelope
+    const baseMultiplier = 0.5 + 0.5 * Math.cos(Math.PI * positionInCycle)
+    
+    // Add multiple layers of "noise" for organic feel
+    // Layer 1: Medium frequency variation (like audio amplitude)
+    const noise1 = seededRandom(i * 0.7) * 0.3 - 0.15
+    
+    // Layer 2: High frequency micro-variations
+    const noise2 = seededRandom(i * 2.3 + 100) * 0.15 - 0.075
+    
+    // Layer 3: Very subtle wobble based on position
+    const wobble = Math.sin(i * 0.4) * 0.08
+    
+    // Combine: base curve + variations (more variation near peaks, less at troughs)
+    const variationStrength = 0.3 + baseMultiplier * 0.7 // More variation when taller
+    const totalNoise = (noise1 + noise2 + wobble) * variationStrength
+    
+    // Apply noise to multiplier
+    let finalMultiplier = baseMultiplier + totalNoise
+    
+    // Clamp to valid range
+    finalMultiplier = Math.max(0.05, Math.min(1, finalMultiplier))
+    
+    // Calculate final height
+    const heightPercent = MIN_HEIGHT + (MAX_HEIGHT - MIN_HEIGHT) * finalMultiplier
+    
+    bars.push({ height: heightPercent })
+  }
+
+  return bars
+})
+
+// Get marker color based on index - alternating colors as in reference
+// Colors: Cyan, Coral, Yellow, Light Blue
 const getMarkerColor = (index: number): string => {
-  const colors: string[] = ['#FFD700', '#4ECDC4', '#FF6B6B', '#FFD700', '#45B7D1', '#4ECDC4']
-  return colors[index % colors.length] || '#FFD700'
+  const colors: string[] = ['#4ECDC4', '#FF6B6B', '#FFD700', '#45B7D1']
+  return colors[index % colors.length] || '#4ECDC4'
 }
 
 // Select event and move playhead
@@ -331,8 +390,8 @@ const selectEvent = (event: any, index: number) => {
   selectedEventIndex.value = index
   // Move playhead to the marker position
   playheadX.value = getMarkerPosition(index)
-  // Update playhead color based on index
-  playheadColor.value = getMarkerColor(index)
+  // Playhead color stays yellow
+  playheadColor.value = '#FFD600'
   // Check if this is the last event (for card positioning)
   isLastEvent.value = index >= allEvents.value.length - 2
   // Show the card
@@ -523,27 +582,29 @@ useHead(() => ({
 
 /* Timeline Styles */
 #timeline {
-  padding: 80px 20px 120px;
-  background: #1a1a1a;
-  min-height: 100vh;
+  padding: 80px 20px 60px;
+  background: #121212;
+  min-height: 80vh;
   position: relative;
   overflow: hidden;
 
   .timeline-title {
     font-size: 48px;
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
     line-height: 1.3;
     color: white;
   }
+}
 
-  .timeline-subtitle {
-    font-size: 20px;
-    text-align: center;
-    margin-top: 60px;
-    opacity: 0.7;
-    color: white;
-  }
+/* Instruction text below timeline */
+.timeline-instruction {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 40px;
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
 }
 
 .timeline-wrapper {
@@ -551,7 +612,7 @@ useHead(() => ({
   width: 100%;
   max-width: 1600px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 80px;
 }
 
 /* Event Card - positioned relative to playhead */
@@ -697,55 +758,62 @@ useHead(() => ({
 }
 
 /* Sound Wave Visualization */
+/* Sound Wave Visualization */
 .sound-wave-container {
   position: relative;
   width: 100%;
-  height: 250px;
-  margin-top: 320px;
+  max-width: 1100px; /* Constrain width to ensure bar density */
+  height: 220px;
+  //margin: 350px auto 0; /* Center horizontally */
 }
 
+/* Dashed center line - Horizon line */
+.center-line {
+  position: absolute;
+  top: 73%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.15);
+  transform: translateY(-50%);
+  z-index: 5;
+}
+
+/* Organic Sound Wave - Single centered bars */
 .sound-wave {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: center; /* Centre les barres sur l'axe horizontal */
+  justify-content: center;
   height: 100%;
   width: 100%;
-  gap: 2px;
+  gap: 3px; /* Espacement entre les traits */
   position: absolute;
   top: 0;
   left: 0;
-  padding: 0 2%;
+  margin-top: 50px;
+  padding: 0 10px;
 }
 
 .wave-bar-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100%;
   flex: 1;
-  min-width: 3px;
-  position: relative;
+  min-width: 2px;
 }
 
 .wave-bar {
-  width: 100%;
-  max-width: 4px;
-  background: #D6246E;
-  border-radius: 2px;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.wave-bar-top {
-  bottom: 50%;
-}
-
-.wave-bar-bottom {
-  top: 50%;
+  width: 2px;
+  background: #D81B60; /* Rose/Magenta vif */
+  border-radius: 20px; /* Extrémités arrondies (capsule) */
+  transition: height 0.3s ease;
 }
 
 /* Playhead - moves horizontally */
 .playhead {
   position: absolute;
-  top: -280px;
+  top: -10px;
   transform: translateX(-50%);
   z-index: 30;
   transition: left 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -763,32 +831,44 @@ useHead(() => ({
 }
 
 .playhead-top-marker {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
+  background: #FFD600;
 }
 
 .playhead-line {
   width: 3px;
-  height: 380px;
+  height: 300px;
+  background: #FFD600;
 }
 
 .playhead-circle {
-  display: none;
+  display:none;
+  position: absolute;
+  top: 24%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #FFD600;
+  margin-top: 210px;
 }
 
 .playhead-year {
-  font-family: FONTSPRINGDEMO-RecoletaMedium, sans-serif;
+  font-family: 'Arial Black', Arial, sans-serif;
   font-size: 14px;
-  font-weight: bold;
-  padding: 8px 12px;
+  font-weight: 900;
+  padding: 8px 14px;
   color: #000;
-  margin-top: 4px;
+  background: #FFD600;
+  margin-top: 8px;
 }
 
 
 .wave-marker {
   position: absolute;
-  top: 50%;
+  top: 73%;
   transform: translate(-50%, -50%);
   cursor: pointer;
   z-index: 25;
@@ -823,42 +903,43 @@ useHead(() => ({
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  color: white;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.6);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  z-index: 25;
+  z-index: 35;
 
   &:hover:not(.disabled) {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.5);
-    transform: translateY(-50%) scale(1.1);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: white;
+    transform: translateY(-50%) scale(1.05);
   }
 
   &.disabled {
-    opacity: 0.3;
+    opacity: 0.25;
     cursor: not-allowed;
   }
 
   svg {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
   }
 }
 
 .timeline-nav-prev {
-  left: -60px;
+  left: 20px;
 }
 
 .timeline-nav-next {
-  right: -60px;
+  right: 20px;
 }
 
 @keyframes fadeIn {
@@ -903,27 +984,31 @@ useHead(() => ({
     display: none;
   }
 
+  .timeline-wrapper {
+    padding: 0 60px;
+  }
+
   .sound-wave-container {
-    height: 280px;
-    margin-top: 280px;
+    height: 200px;
+    margin-top: 320px;
   }
 
   .playhead {
-    top: -240px;
+    top: -280px;
   }
 
   .playhead-line {
-    height: 240px;
+    height: 360px;
   }
 
-  .playhead-year {
-    margin-top: 240px;
+  .playhead-circle {
+    margin-top: 180px;
   }
 }
 
 @media (max-width: 992px) {
   .timeline-wrapper {
-    padding: 0 20px;
+    padding: 0 50px;
   }
 
   .event-card {
@@ -942,41 +1027,48 @@ useHead(() => ({
   }
 
   .sound-wave-container {
-    height: 200px;
-    margin-top: 320px;
+    height: 180px;
+    margin-top: 340px;
   }
 
   .playhead {
-    top: -280px;
+    top: -300px;
   }
 
   .playhead-line {
-    height: 280px;
+    height: 340px;
   }
 
-  .playhead-year {
-    margin-top: 200px;
+  .playhead-circle {
+    margin-top: 170px;
   }
-}
 
-@media (max-width: 992px) {
   .timeline-nav-prev {
-    left: -10px;
+    left: 10px;
   }
 
   .timeline-nav-next {
-    right: -10px;
+    right: 10px;
   }
 }
 
 @media (max-width: 768px) {
   #timeline {
-    padding: 40px 15px 80px;
+    padding: 40px 15px 40px;
 
     .timeline-title {
       font-size: 28px;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
     }
+  }
+
+  .timeline-wrapper {
+    padding: 0 40px;
+  }
+
+  .timeline-instruction {
+    font-size: 14px;
+    margin-top: 30px;
   }
 
   .event-card-content {
@@ -999,22 +1091,25 @@ useHead(() => ({
   }
 
   .sound-wave-container {
-    height: 150px;
-    margin-top: 300px;
+    height: 140px;
+    margin-top: 320px;
   }
 
   .playhead {
-    top: -260px;
+    top: -280px;
   }
 
   .playhead-line {
-    height: 260px;
+    height: 300px;
+  }
+
+  .playhead-circle {
+    margin-top: 140px;
   }
 
   .playhead-year {
-    margin-top: 150px;
-    font-size: 14px;
-    padding: 8px 12px;
+    font-size: 12px;
+    padding: 6px 10px;
   }
 
   .timeline-nav {
@@ -1022,8 +1117,8 @@ useHead(() => ({
     height: 36px;
 
     svg {
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
     }
   }
 

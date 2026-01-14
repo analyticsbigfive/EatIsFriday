@@ -233,7 +233,40 @@
         },
         "vision": {
             "title": "The Brains Behind Eat\nis family",
-            "content": "Founded by Adrien Clerc and Jimmy Herbaux, two restaurateurs and event caterers convinced that a comprehensive food service would greatly facilitate the organization of events."
+            "content": "Founded by Adrien Clerc and Jimmy Herbaux, two restaurateurs and event caterers convinced that a comprehensive food service would greatly facilitate the organization of events.",
+            "image": "images/lesgens.webp"
+        },
+        "gallery_section": {
+            "images": [
+                {
+                    "src": "images/unsplash_6vfYbDwOuMo.jpg",
+                    "alt": "Grilled food presentation"
+                },
+                {
+                    "src": "images/image5.jpg",
+                    "alt": "Gourmet breakfast plate"
+                },
+                {
+                    "src": "images/neicurz.jpg",
+                    "alt": "Fresh pizza"
+                }
+            ]
+        },
+        "gallery_section2": {
+            "images": [
+                {
+                    "src": "images/34.jpg",
+                    "alt": "Grilled food presentation"
+                },
+                {
+                    "src": "images/23.jpg",
+                    "alt": "Gourmet breakfast plate"
+                },
+                {
+                    "src": "images/56.jpg",
+                    "alt": "Fresh pizza"
+                }
+            ]
         },
         "trusted_by": {
             "title": "They trusted us for their restoration by the general public, they did not regret their choices:",
