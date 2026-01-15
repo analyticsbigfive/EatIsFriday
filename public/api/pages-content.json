@@ -639,10 +639,176 @@
       "btn2":"images/btnExploreMaps.svg",
       "link2":"/careers"
     },
-    "loading_text": "Loading activities...",
-    "seo": {
-      "title": "Activities - Eat Is Family",
-      "meta_description": "Explore our culinary workshops, cooking classes, and food experiences. Learn from expert chefs and discover new skills."
+    "section3":{
+      "title":"We help with:",
+      "liste":[
+        "Streamlining kitchen and service operations",
+        "Launching or revamping food concepts",
+        "Staff training  workflow alignment",
+        "Menu structure and production systems",
+        "Event scale food service setup",
+        "Cost control, quality control process optimisation"
+      ],
+      "image":"images/unsplash_6vfYbDwOuMos.jpg",
+      "sous":"Custom solutions tailored to your specific needs and challenges."
+    },
+    "textedelapage": {
+      "title": "Consulting services  Rooted in Real World Expertise",
+      "subtitle":"We dont just cook — we help teams build systems that work.",
+      "image":"images/unsplash_6vfYbDwOuMo2.jpg",
+      "meta_description": "Our consulting service supports restaurants, event venues, and food businesses looking to optimise workflows, scale operations, improve quality or launch new concepts.\n\nOur approach is grounded in real field expertise: the way teams communicate, how meals are prepared at scale, and how service truly runs when the pressure is high.",
+      "btn":"images/btnContacts.svg",
+      "link":"/contact"
+    },
+    "locations_section": {
+      "title": "Explore Where We Operate",
+      "description": "Tap any marker on the map to discover the story behind that event. Each marker clicked unlocks a snapshot of the venue, the experience we delivered, and the flavours we brought to life.",
+      "filter_label": "Click to filter by an event type",
+      "event_types": [
+        {
+          "id": "stadium",
+          "name": "Stadium",
+          "image": "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=300&auto=format&fit=crop"
+        },
+        {
+          "id": "festival",
+          "name": "Festival",
+          "image": "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=300&auto=format&fit=crop"
+        },
+        {
+          "id": "arena",
+          "name": "Arena",
+          "image": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=300&auto=format&fit=crop"
+        }
+      ],
+      "stats": [
+        {
+          "value": "250+",
+          "label": "Food & Beverage Events in 2024"
+        },
+        {
+          "value": "300,000",
+          "label": "People fed in 2024"
+        },
+        {
+          "value": "100%",
+          "label": "Homemade"
+        },
+        {
+          "value": "250+",
+          "label": "B2B clients & dealerships"
+        }
+      ],
+      "map_venues": [
+        {
+          "id": "1",
+          "name": "Stade Jean Bouin",
+          "location": "Paris, France",
+          "type": "stadium",
+          "lat": 48.8427,
+          "lng": 2.2536,
+          "image": "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=600&auto=format&fit=crop",
+          "image2": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=600&auto=format&fit=crop",
+          "logo": "/images/LOGO.svg",
+          "capacity": "20,000",
+          "staff_members": 120,
+          "recent_event": "Football - Paris FC vs Toulouse FC (Ligue 2)",
+          "guests_served": "15,000",
+          "shops_count": 3,
+          "menus_count": 5,
+          "description": "The Stade Jean Bouin is a multipurpose stadium in the 16th arrondissement of Paris, France. The 20,000 capacity facility serves as the home stadium for rugby union team Stade Français and the football club Paris FC."
+        },
+        {
+          "id": "2",
+          "name": "Groupama Stadium",
+          "location": "Lyon, France",
+          "type": "stadium",
+          "lat": 45.764,
+          "lng": 4.8357,
+          "image": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=600&auto=format&fit=crop",
+          "image2": "https://images.unsplash.com/photo-1577223625816-7546f13df25d?q=80&w=600&auto=format&fit=crop",
+          "logo": "/images/LOGO.svg",
+          "capacity": "59,186",
+          "staff_members": 250,
+          "recent_event": "Football - Olympique Lyonnais vs PSG (Ligue 1)",
+          "guests_served": "45,000",
+          "shops_count": 8,
+          "menus_count": 12,
+          "description": "The Groupama Stadium is a stadium in Décines-Charpieu, a suburb of Lyon, France. It is the home ground of Ligue 1 club Olympique Lyonnais. With a seating capacity of 59,186, it is the third-largest football stadium in France."
+        },
+        {
+          "id": "3",
+          "name": "Stade Vélodrome",
+          "location": "Marseille, France",
+          "type": "stadium",
+          "lat": 43.2965,
+          "lng": 5.3698,
+          "image": "https://images.unsplash.com/photo-1577223625816-7546f13df25d?q=80&w=600&auto=format&fit=crop",
+          "image2": "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=600&auto=format&fit=crop",
+          "logo": "/images/LOGO.svg",
+          "capacity": "67,394",
+          "staff_members": 280,
+          "recent_event": "Football - OM vs Lyon (Ligue 1)",
+          "guests_served": "55,000",
+          "shops_count": 10,
+          "menus_count": 15,
+          "description": "The Stade Vélodrome is a multi-use stadium in Marseille, France. It is home to the Olympique de Marseille football club of Ligue 1. The stadium is the largest club ground in France and the second largest in the country."
+        },
+        {
+          "id": "4",
+          "name": "Hellfest",
+          "location": "Clisson, France",
+          "type": "festival",
+          "lat": 47.0833,
+          "lng": -1.2833,
+          "image": "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=600&auto=format&fit=crop",
+          "image2": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+          "logo": "/images/LOGO.svg",
+          "capacity": "60,000",
+          "staff_members": 350,
+          "recent_event": "Hellfest Open Air 2024 - Metal Festival",
+          "guests_served": "180,000",
+          "shops_count": 25,
+          "menus_count": 20,
+          "description": "Hellfest is a French rock and metal festival that takes place annually in Clisson. It is one of the largest music festivals in France and one of the biggest heavy metal festivals in Europe, attracting over 60,000 visitors daily."
+        },
+        {
+          "id": "5",
+          "name": "Accor Arena",
+          "location": "Paris, France",
+          "type": "arena",
+          "lat": 48.8383,
+          "lng": 2.3783,
+          "image": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+          "image2": "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=600&auto=format&fit=crop",
+          "logo": "/images/LOGO.svg",
+          "capacity": "20,300",
+          "staff_members": 180,
+          "recent_event": "Concert - Beyoncé Renaissance World Tour",
+          "guests_served": "18,500",
+          "shops_count": 6,
+          "menus_count": 8,
+          "description": "The Accor Arena, formerly known as Bercy Arena, is an indoor arena located in the 12th arrondissement of Paris. It hosts concerts, sports events, and shows, with a capacity of up to 20,300 spectators."
+        },
+        {
+          "id": "6",
+          "name": "Wembley Stadium",
+          "location": "London, UK",
+          "type": "stadium",
+          "lat": 51.556,
+          "lng": -0.2795,
+          "image": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=600&auto=format&fit=crop",
+          "image2": "https://images.unsplash.com/photo-1577223625816-7546f13df25d?q=80&w=600&auto=format&fit=crop",
+          "logo": "/images/LOGO.svg",
+          "capacity": "90,000",
+          "staff_members": 500,
+          "recent_event": "Football - England vs France (UEFA Nations League)",
+          "guests_served": "85,000",
+          "shops_count": 15,
+          "menus_count": 25,
+          "description": "Wembley Stadium is a football stadium in Wembley, London. It is the national stadium of England and serves as the home of the England national football team. With 90,000 seats, it is the largest stadium in the UK."
+        }
+      ]
     }
   },
   "apply_jobs": {

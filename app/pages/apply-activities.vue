@@ -18,9 +18,9 @@
     </nuxtlink>
     </div>
   </div>
-
 </section>
-
+<section>  <HomeExploreSection />
+</section>
   </div>
 </template>
 
