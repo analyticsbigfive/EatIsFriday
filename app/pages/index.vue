@@ -174,24 +174,15 @@ onMounted(async () => {
     <!-- clients -->
     <PartnersSection :title="content.partners_title" :partners="content.partners.map(p => ({ ...p, name: p.alt }))" />
     <!--  ready to make an impact -->
-      <section id="ready-to-make-an-impact" class="py-5 bg-white position-relative">
-        <div class="container-fluid position-relative d-flex justify-content-center align-items-center">
-          <img :src="content.homepageCTA.image" alt=""/>
-          <div id="leforme" class="position-absolute d-flex flex-column justify-content-center align-items-center text-center p-4 mx-auto">
-            <h2>{{ content.homepageCTA.title }}</h2>
-            <p class="preserve-lines" v-html="content.homepageCTA.description"></p>
-              <nuxt-link :to="content.homepageCTA.link">
-                <nuxt-img :src="content.homepageCTA.button" :alt="content.homepageCTA.title"></nuxt-img>
-              </nuxt-link>
-          </div>
-        </div>
-        <CtaBlock
-          :text="content.homepageCTA.additionalText"
-          :link="content.homepageCTA.link"
-          :button-image="content.homepageCTA.button2"
-          :button-alt="content.homepageCTA.title"
-        />
-      </section>
+    <HomepageCTA
+      :image="content.homepageCTA.image"
+      :title="content.homepageCTA.title"
+      :description="content.homepageCTA.description"
+      :link="content.homepageCTA.link"
+      :button-image="content.homepageCTA.button"
+      :additional-text="content.homepageCTA.additionalText"
+      :button-image2="content.homepageCTA.button2"
+    />
   </div>
 </template>
 
@@ -474,47 +465,4 @@ nuxt-link:has(img) {
     color: #000;
   }
 }
-#leforme{
-  max-width: 1098px;
-  max-height: 400px;  
-  width:100vw;
-  height:100vh;
-    border-radius: 20px;
-  border: solid 3px #ed2e52;
-  background-color: #f83156;
-  position: absolute;
-  top:0;
-  left:0;
-  right: 0;
-  margin:auto !important;
-  bottom:0;
-  h2{
-      font-family: FONTSPRINGDEMO-RecoletaBold;
-  font-size: 50px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #fff;
-  margin-bottom:20px;
-
-  }
-  p{  font-family: FONTSPRINGDEMO-RecoletaAlt;
-  font-size: 18px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.56;
-  letter-spacing: normal;
-  text-align: center;
-  color: #fff;
-
-
-  margin-bottom:20px;
-}
-}
-
-
 </style>

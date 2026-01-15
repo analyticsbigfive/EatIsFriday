@@ -19,23 +19,46 @@
     </div>
   </div>
 </section>
-<section>  <HomeExploreSection />
+<section v-if="activities" class="explore-section">  
+  <HomeExploreSection />
+</section>
+<section>
+  <!-- parteners  -->
+   <PartnersSection v-if="homepageContent?.partners" :title="homepageContent.partners_title"
+      :partners="homepageContent.partners.map((p: any) => ({ ...p, name: p.alt }))" />
+    <!-- gallery grid -->
+      <GalleryGrid v-if="siteContent?.about?.gallery_section2?.images"
+      :images="siteContent.about.gallery_section2.images" />
+   <!--  ready to make an impact -->
+    <HomepageCTA v-if="content?.homepageCTA"
+      :image="content.homepageCTA.image"
+      :title="content.homepageCTA.title"
+      :description="content.homepageCTA.description"
+      :link="content.homepageCTA.link"
+      :button-image="content.homepageCTA.button"
+      :additional-text="content.homepageCTA.additionalText"
+      :button-image2="content.homepageCTA.button2"
+    />
 </section>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+const { getSiteContent } = useSiteContent()
 
 const { getActivities } = useActivities()
-const { getContentByPath } = usePageContent()
-
+const { getContentByPath , getHomepageContent} = usePageContent()
+const homepageContent = ref<any>(null)
+const siteContent = ref<any>(null)
 const activities = ref<any>(null)
 const content = ref<any>(null)
 
 onMounted(async () => {
   content.value = await getContentByPath('apply_activities')
   activities.value = await getActivities()
+  homepageContent.value = await getHomepageContent()
+  siteContent.value = await getSiteContent()
 })
 
 useHead(() => ({

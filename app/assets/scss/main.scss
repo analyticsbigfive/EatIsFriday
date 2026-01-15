@@ -978,12 +978,10 @@ body {
 }
 .decradr {
   position: relative;
-
   .inner-encadre {
     position: relative;
-
     padding: 5px;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     border-radius: 20px;
     padding: 4em;

@@ -583,7 +583,7 @@ useHead(() => ({
 /* Timeline Styles */
 #timeline {
   padding: 80px 20px 60px;
-  background: #121212;
+  background: #fff;
   min-height: 80vh;
   position: relative;
   overflow: hidden;
@@ -593,7 +593,7 @@ useHead(() => ({
     text-align: center;
     margin-bottom: 40px;
     line-height: 1.3;
-    color: white;
+    color: #000;
   }
 }
 
@@ -603,7 +603,7 @@ useHead(() => ({
   font-size: 16px;
   text-align: center;
   margin-top: 40px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
   font-style: italic;
 }
 
@@ -774,7 +774,7 @@ useHead(() => ({
   left: 0;
   right: 0;
   height: 1px;
-  border-top: 1px dashed rgba(255, 255, 255, 0.15);
+  border-top: 1px dashed rgba(0, 0, 0, 0.15);
   transform: translateY(-50%);
   z-index: 5;
 }
@@ -906,9 +906,9 @@ useHead(() => ({
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.6);
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.6);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -917,9 +917,9 @@ useHead(() => ({
   z-index: 35;
 
   &:hover:not(.disabled) {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.4);
-    color: white;
+    background: rgba(0, 0, 0, 0.15);
+    border-color: rgba(0, 0, 0, 0.4);
+    color: #000;
     transform: translateY(-50%) scale(1.05);
   }
 

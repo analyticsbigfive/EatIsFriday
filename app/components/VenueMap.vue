@@ -85,8 +85,8 @@ onMounted(async () => {
         attributionControl: false
       }).setView(MAP_CENTER, MAP_ZOOM)
 
-      // Utiliser les tuiles OpenStreetMap France (en français)
-      L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+      // Utiliser CartoDB Positron (style épuré, similaire au thème Snazzy Maps)
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
         attribution: '',
         maxZoom: 19
       }).addTo(map)
@@ -139,9 +139,18 @@ watch(() => props.selectedVenue, (newId) => {
 .venue-map-container {
   width: 100%;
   height: 100%;
-  background-color: #f0f0f0;
+  background-color: #e0efef;
   border-radius: 0;
   overflow: hidden;
+}
+
+/* Style personnalisé pour simuler le thème Snazzy Maps (mint/teal) */
+.venue-map-container :deep(.leaflet-tile-pane) {
+  filter: sepia(0.2) saturate(0.8) brightness(1.05) hue-rotate(120deg);
+}
+
+.venue-map-container :deep(.leaflet-container) {
+  background-color: #7dcdcd;
 }
 
 /* Marqueur personnalisé avec image */
