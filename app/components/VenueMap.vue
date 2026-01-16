@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, onUnmounted, ref, watch } from 'vue'
 
 const props = defineProps<{
   venues: Array<{
@@ -31,10 +31,13 @@ let map: any = null
 let markers: any[] = []
 
 // Centre pour voir France et sud de l'Angleterre
-const MAP_CENTER: [number, number] = [48.5, 2.0]
+const MAP_CENTER: [number, number] = [2.0, 48.5] // [lng, lat] pour MapLibre
 const MAP_ZOOM = 5
 
-const createMarkers = async (L: any) => {
+// MapTiler custom style URL
+const MAPTILER_STYLE = 'https://api.maptiler.com/maps/019bc79b-b5ae-7523-a6d0-a73039e2ca18/style.json?key=ktSs6eRMmo4o70YLtDSA'
+
+const createMarkers = (maplibregl: any) => {
   // Supprimer les anciens marqueurs
   markers.forEach(m => m.marker.remove())
   markers = []
@@ -48,25 +51,30 @@ const createMarkers = async (L: any) => {
   filteredVenues.forEach((venue) => {
     const markerImage = venue.image || 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=200&auto=format&fit=crop'
 
-    const customIcon = L.divIcon({
-      className: 'custom-venue-marker',
-      html: `
-        <div class="venue-marker-container">
-          <div class="venue-marker-image" style="background-image: url('${markerImage}')"></div>
-        </div>
-      `,
-      iconSize: [56, 56],
-      iconAnchor: [28, 28]
+    // Créer l'élément HTML pour le marqueur
+    const el = document.createElement('div')
+    el.className = 'custom-venue-marker'
+    el.innerHTML = `
+      <div class="venue-marker-container">
+        <div class="venue-marker-image" style="background-image: url('${markerImage}')"></div>
+      </div>
+    `
+
+    // Ajouter l'événement click
+    el.addEventListener('click', () => {
+      emit('select-venue', venue.id)
+      emit('venue-clicked', venue)
+      // Centrer la carte sur le marqueur cliqué
+      map.flyTo({
+        center: [venue.lng, venue.lat],
+        zoom: 8,
+        duration: 500
+      })
     })
 
-    const marker = L.marker([venue.lat, venue.lng], { icon: customIcon })
+    const marker = new maplibregl.Marker({ element: el })
+      .setLngLat([venue.lng, venue.lat])
       .addTo(map)
-      .on('click', () => {
-        emit('select-venue', venue.id)
-        emit('venue-clicked', venue)
-        // Centrer la carte sur le marqueur cliqué
-        map.flyTo([venue.lat, venue.lng], 8, { duration: 0.5 })
-      })
 
     markers.push({ id: venue.id, marker, type: venue.type })
   })
@@ -74,41 +82,48 @@ const createMarkers = async (L: any) => {
 
 onMounted(async () => {
   if (typeof window !== 'undefined') {
-    const L = await import('leaflet')
-    await import('leaflet/dist/leaflet.css')
+    const maplibregl = await import('maplibre-gl')
+    await import('maplibre-gl/dist/maplibre-gl.css')
 
     if (mapContainer.value) {
-      // Initialiser la carte centrée pour voir France et sud de l'Angleterre
-      map = L.map(mapContainer.value, {
-        zoomControl: false,
-        scrollWheelZoom: true,
+      // Initialiser la carte avec MapLibre GL JS
+      map = new maplibregl.default.Map({
+        container: mapContainer.value,
+        style: MAPTILER_STYLE,
+        center: MAP_CENTER,
+        zoom: MAP_ZOOM,
         attributionControl: false
-      }).setView(MAP_CENTER, MAP_ZOOM)
+      })
 
-      // Utiliser CartoDB Positron (style épuré, similaire au thème Snazzy Maps)
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-        attribution: '',
-        maxZoom: 19
-      }).addTo(map)
+      // Ajouter les contrôles de zoom
+      map.addControl(new maplibregl.default.NavigationControl({ showCompass: false }), 'bottom-right')
 
-      // Ajouter les contrôles de zoom en bas à droite
-      L.control.zoom({
-        position: 'bottomright'
-      }).addTo(map)
-
-      // Créer les marqueurs
-      await createMarkers(L)
+      // Attendre que la carte soit chargée avant d'ajouter les marqueurs
+      map.on('load', () => {
+        createMarkers(maplibregl.default)
+      })
     }
+  }
+})
+
+onUnmounted(() => {
+  if (map) {
+    map.remove()
+    map = null
   }
 })
 
 // Watch for filter changes
 watch(() => props.activeFilter, async () => {
   if (map && typeof window !== 'undefined') {
-    const L = await import('leaflet')
-    await createMarkers(L)
+    const maplibregl = await import('maplibre-gl')
+    createMarkers(maplibregl.default)
     // Réinitialiser le zoom à la vue initiale
-    map.flyTo(MAP_CENTER, MAP_ZOOM, { duration: 0.5 })
+    map.flyTo({
+      center: MAP_CENTER,
+      zoom: MAP_ZOOM,
+      duration: 500
+    })
   }
 })
 
@@ -117,7 +132,11 @@ watch(() => props.selectedVenue, (newId) => {
   if (map && newId) {
     const venue = props.venues.find(v => v.id === newId)
     if (venue) {
-      map.flyTo([venue.lat, venue.lng], 10, { duration: 0.5 })
+      map.flyTo({
+        center: [venue.lng, venue.lat],
+        zoom: 10,
+        duration: 500
+      })
     }
   }
 })
@@ -139,24 +158,14 @@ watch(() => props.selectedVenue, (newId) => {
 .venue-map-container {
   width: 100%;
   height: 100%;
-  background-color: #e0efef;
+  background-color: #e8f4f4;
   border-radius: 0;
   overflow: hidden;
 }
 
-/* Style personnalisé pour simuler le thème Snazzy Maps (mint/teal) */
-.venue-map-container :deep(.leaflet-tile-pane) {
-  filter: sepia(0.2) saturate(0.8) brightness(1.05) hue-rotate(120deg);
-}
-
-.venue-map-container :deep(.leaflet-container) {
-  background-color: #7dcdcd;
-}
-
 /* Marqueur personnalisé avec image */
 .custom-venue-marker {
-  background: transparent !important;
-  border: none !important;
+  cursor: pointer;
 }
 
 .venue-marker-container {
@@ -183,41 +192,27 @@ watch(() => props.selectedVenue, (newId) => {
   background-repeat: no-repeat;
 }
 
-/* Override Leaflet default styles */
-.leaflet-container {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-}
-
-/* Style des contrôles de zoom */
-.leaflet-control-zoom {
+/* Style des contrôles de navigation MapLibre */
+.maplibregl-ctrl-group {
   border: none !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
   border-radius: 8px !important;
   overflow: hidden;
 }
 
-.leaflet-control-zoom a {
+.maplibregl-ctrl-group button {
   width: 36px !important;
   height: 36px !important;
-  line-height: 36px !important;
-  font-size: 18px !important;
-  color: #333 !important;
-  background-color: #fff !important;
   border: none !important;
+  background-color: #fff !important;
   transition: background-color 0.2s ease;
 }
 
-.leaflet-control-zoom a:hover {
+.maplibregl-ctrl-group button:hover {
   background-color: #f5f5f5 !important;
-  color: #FF4D6D !important;
 }
 
-.leaflet-control-zoom-in {
-  border-radius: 8px 8px 0 0 !important;
-  border-bottom: 1px solid #eee !important;
-}
-
-.leaflet-control-zoom-out {
-  border-radius: 0 0 8px 8px !important;
+.maplibregl-ctrl-group button + button {
+  border-top: 1px solid #eee !important;
 }
 </style>

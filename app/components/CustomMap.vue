@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, onUnmounted, watch, computed } from 'vue'
 import { LucideSearch, LucideMapPin, LucideX } from 'lucide-vue-next'
 
 const props = defineProps({
@@ -27,38 +27,131 @@ const props = defineProps({
 
 const emit = defineEmits(['locationSelect'])
 
+const mapContainer = ref<HTMLElement | null>(null)
+let map: any = null
+let markers: any[] = []
+
 const searchQuery = ref('')
 const selectedLocation = ref<any>(null)
-const mapReady = ref(false)
-const center = ref<[number, number]>([48.8566, 2.3522]) // Paris center
-const zoom = ref(11)
 
-// CartoDB Positron - Clean, light tiles perfect for the design
-const tileUrl = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
-const tileAttribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+// MapTiler custom style URL
+const MAPTILER_STYLE = 'https://api.maptiler.com/maps/019bc79b-b5ae-7523-a6d0-a73039e2ca18/style.json?key=ktSs6eRMmo4o70YLtDSA'
 
 const filteredLocations = computed(() => {
   if (!searchQuery.value) return props.locations
-  return props.locations.filter(loc => 
+  return props.locations.filter(loc =>
     loc.name.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
     loc.address.toLowerCase().includes(searchQuery.value.toLowerCase())
   )
 })
 
-const selectLocation = (location: any) => {
+const createMarkers = (maplibregl: any) => {
+  // Supprimer les anciens marqueurs
+  markers.forEach(m => m.remove())
+  markers = []
+
+  // Ajouter les marqueurs pour chaque lieu
+  filteredLocations.value.forEach((location) => {
+    const isSelected = selectedLocation.value?.id === location.id
+
+    // Créer l'élément HTML pour le marqueur
+    const el = document.createElement('div')
+    el.className = 'custom-marker flex flex-col items-center'
+    el.innerHTML = `
+      <div class="w-8 h-8 rounded-full border-2 border-white shadow-lg flex items-center justify-center text-white text-xs font-bold transition-all duration-300 ${isSelected ? 'bg-brand-yellow scale-125' : 'bg-brand-pink'}" style="background-color: ${isSelected ? '#FFDD00' : '#FF4D6D'};">
+        ${location.jobs || '•'}
+      </div>
+      <div class="w-0 h-0" style="border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 8px solid ${isSelected ? '#FFDD00' : '#FF4D6D'};"></div>
+    `
+
+    el.style.cursor = 'pointer'
+
+    // Ajouter l'événement click
+    el.addEventListener('click', () => {
+      selectLocation(location)
+    })
+
+    const marker = new maplibregl.Marker({ element: el, anchor: 'bottom' })
+      .setLngLat([location.lng, location.lat])
+      .addTo(map)
+
+    markers.push(marker)
+  })
+}
+
+const selectLocation = async (location: any) => {
   selectedLocation.value = location
-  center.value = [location.lat, location.lng]
-  zoom.value = 14
   emit('locationSelect', location)
+
+  if (map) {
+    map.flyTo({
+      center: [location.lng, location.lat],
+      zoom: 14,
+      duration: 500
+    })
+
+    // Recréer les marqueurs pour mettre à jour le style sélectionné
+    if (typeof window !== 'undefined') {
+      const maplibregl = await import('maplibre-gl')
+      createMarkers(maplibregl.default)
+    }
+  }
 }
 
-const closePanel = () => {
+const closePanel = async () => {
   selectedLocation.value = null
-  zoom.value = 11
+
+  if (map) {
+    map.flyTo({
+      center: [2.3522, 48.8566],
+      zoom: 11,
+      duration: 500
+    })
+
+    // Recréer les marqueurs pour mettre à jour le style
+    if (typeof window !== 'undefined') {
+      const maplibregl = await import('maplibre-gl')
+      createMarkers(maplibregl.default)
+    }
+  }
 }
 
-onMounted(() => {
-  mapReady.value = true
+onMounted(async () => {
+  if (typeof window !== 'undefined') {
+    const maplibregl = await import('maplibre-gl')
+    await import('maplibre-gl/dist/maplibre-gl.css')
+
+    if (mapContainer.value) {
+      // Initialiser la carte avec MapLibre GL JS
+      map = new maplibregl.default.Map({
+        container: mapContainer.value,
+        style: MAPTILER_STYLE,
+        center: [2.3522, 48.8566], // Paris [lng, lat]
+        zoom: 11,
+        attributionControl: false
+      })
+
+      // Attendre que la carte soit chargée avant d'ajouter les marqueurs
+      map.on('load', () => {
+        createMarkers(maplibregl.default)
+      })
+    }
+  }
+})
+
+onUnmounted(() => {
+  if (map) {
+    map.remove()
+    map = null
+  }
+})
+
+// Watch for search query changes
+watch(() => searchQuery.value, async () => {
+  if (map && typeof window !== 'undefined') {
+    const maplibregl = await import('maplibre-gl')
+    createMarkers(maplibregl.default)
+  }
 })
 </script>
 
@@ -69,15 +162,15 @@ onMounted(() => {
       <div class="flex-1 relative">
         <div class="bg-brand-dark border-organic flex items-center px-4 py-3 gap-3">
           <LucideSearch class="w-5 h-5 text-white/70" />
-          <input 
+          <input
             v-model="searchQuery"
-            type="text" 
-            placeholder="Search job title and category here" 
+            type="text"
+            placeholder="Search job title and category here"
             class="bg-transparent text-white placeholder:text-white/50 outline-none flex-1 font-body"
           />
         </div>
       </div>
-      
+
       <div class="bg-brand-dark border-organic px-4 py-3 flex items-center gap-2 cursor-pointer hover:bg-brand-dark/90 transition-colors">
         <span class="text-white font-medium">All job types</span>
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -87,43 +180,7 @@ onMounted(() => {
     </div>
 
     <!-- Map -->
-    <div v-if="mapReady" class="w-full h-full">
-      <LMap 
-        :zoom="zoom" 
-        :center="center"
-        :use-global-leaflet="false"
-        class="w-full h-full z-0"
-      >
-        <LTileLayer
-          :url="tileUrl"
-          :attribution="tileAttribution"
-        />
-        
-        <!-- Custom Markers -->
-        <LMarker 
-          v-for="location in filteredLocations" 
-          :key="location.id"
-          :lat-lng="[location.lat, location.lng]"
-          @click="selectLocation(location)"
-        >
-          <LIcon :icon-size="[32, 32]" :icon-anchor="[16, 32]">
-            <div class="custom-marker flex flex-col items-center">
-              <div 
-                :class="[
-                  'w-8 h-8 rounded-full border-2 border-white shadow-lg flex items-center justify-center text-white text-xs font-bold transition-all duration-300',
-                  selectedLocation?.id === location.id ? 'bg-brand-yellow scale-125' : 'bg-brand-pink'
-                ]"
-              >
-                {{ location.jobs || '•' }}
-              </div>
-              <div class="w-0 h-0 border-l-4 border-r-4 border-t-8 border-l-transparent border-r-transparent"
-                   :class="selectedLocation?.id === location.id ? 'border-t-brand-yellow' : 'border-t-brand-pink'">
-              </div>
-            </div>
-          </LIcon>
-        </LMarker>
-      </LMap>
-    </div>
+    <div ref="mapContainer" class="w-full h-full"></div>
 
     <!-- Location Panel (when selected) -->
     <Transition
@@ -136,13 +193,13 @@ onMounted(() => {
     >
       <div v-if="selectedLocation" class="absolute bottom-4 left-4 right-4 z-[1000]">
         <div class="bg-white border-organic p-6 relative">
-          <button 
-            @click="closePanel" 
+          <button
+            @click="closePanel"
             class="absolute top-4 right-4 w-8 h-8 bg-brand-yellow rounded-full flex items-center justify-center border-2 border-black hover:scale-110 transition-transform"
           >
             <LucideX class="w-4 h-4" />
           </button>
-          
+
           <div class="flex items-start gap-3 mb-4">
             <div class="w-8 h-8 bg-brand-pink rounded-full flex items-center justify-center">
               <LucideMapPin class="w-4 h-4 text-white" />
@@ -152,12 +209,12 @@ onMounted(() => {
               <p class="text-gray-500 text-sm">{{ selectedLocation.address }}</p>
             </div>
           </div>
-          
+
           <div class="flex items-center gap-4">
             <span class="text-brand-lime font-bold">•</span>
             <span class="text-sm font-medium">{{ selectedLocation.jobs }} Open Positions</span>
           </div>
-          
+
           <div class="mt-4 flex gap-3">
             <button class="btn-primary flex-1">View All Jobs</button>
             <button class="btn-secondary">Get Directions</button>
@@ -167,3 +224,25 @@ onMounted(() => {
     </Transition>
   </div>
 </template>
+
+<style>
+/* Style des contrôles de navigation MapLibre */
+.maplibregl-ctrl-group {
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+}
+
+.maplibregl-ctrl-group button {
+  width: 36px !important;
+  height: 36px !important;
+  border: none !important;
+  background-color: #fff !important;
+  transition: background-color 0.2s ease;
+}
+
+.maplibregl-ctrl-group button:hover {
+  background-color: #f5f5f5 !important;
+}
+</style>
