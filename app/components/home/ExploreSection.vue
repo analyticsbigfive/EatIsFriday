@@ -1,4 +1,18 @@
 <script setup lang="ts">
+export interface Shop {
+  id: string
+  name: string
+  image: string
+}
+
+export interface MenuItem {
+  id: string
+  name: string
+  price: string
+  description: string
+  thumbnail: string
+}
+
 export interface Venue {
   id: string
   name: string
@@ -16,6 +30,9 @@ export interface Venue {
   shops_count?: number
   menus_count?: number
   description?: string
+  services?: string[]
+  shops?: Shop[]
+  menu_items?: MenuItem[]
 }
 
 export interface EventType {
@@ -42,6 +59,15 @@ const { data: locationsData } = await useFetch<LocationsData>('/api/locations.js
 
 const activeEventFilter = ref<string | undefined>(undefined)
 const selectedVenue = ref<Venue | null>(null)
+const activeTab = ref<'overview' | 'shops' | 'menus'>('overview')
+
+// Shops carousel state
+const shopsPage = ref(0)
+const SHOPS_PER_PAGE = 3
+
+// Menu pagination state
+const menuPage = ref(0)
+const MENU_ITEMS_PER_PAGE = 4
 
 const toggleEventFilter = (filterId: string) => {
   selectedVenue.value = null
@@ -54,10 +80,69 @@ const toggleEventFilter = (filterId: string) => {
 
 const handleVenueClick = (venue: Venue) => {
   selectedVenue.value = venue
+  activeTab.value = 'overview'
+  shopsPage.value = 0
+  menuPage.value = 0
 }
 
 const closeVenueDetails = () => {
   selectedVenue.value = null
+}
+
+const setActiveTab = (tab: 'overview' | 'shops' | 'menus') => {
+  activeTab.value = tab
+}
+
+// Shops carousel computed
+const totalShopsPages = computed(() => {
+  if (!selectedVenue.value?.shops) return 0
+  return Math.ceil(selectedVenue.value.shops.length / SHOPS_PER_PAGE)
+})
+
+const currentShops = computed(() => {
+  if (!selectedVenue.value?.shops) return []
+  const start = shopsPage.value * SHOPS_PER_PAGE
+  return selectedVenue.value.shops.slice(start, start + SHOPS_PER_PAGE)
+})
+
+const nextShopsPage = () => {
+  if (shopsPage.value < totalShopsPages.value - 1) {
+    shopsPage.value++
+  }
+}
+
+const prevShopsPage = () => {
+  if (shopsPage.value > 0) {
+    shopsPage.value--
+  }
+}
+
+// Menu pagination computed
+const totalMenuPages = computed(() => {
+  if (!selectedVenue.value?.menu_items) return 0
+  return Math.ceil(selectedVenue.value.menu_items.length / MENU_ITEMS_PER_PAGE)
+})
+
+const currentMenuItems = computed(() => {
+  if (!selectedVenue.value?.menu_items) return []
+  const start = menuPage.value * MENU_ITEMS_PER_PAGE
+  return selectedVenue.value.menu_items.slice(start, start + MENU_ITEMS_PER_PAGE)
+})
+
+const nextMenuPage = () => {
+  if (menuPage.value < totalMenuPages.value - 1) {
+    menuPage.value++
+  }
+}
+
+const prevMenuPage = () => {
+  if (menuPage.value > 0) {
+    menuPage.value--
+  }
+}
+
+const goToMenuPage = (page: number) => {
+  menuPage.value = page
 }
 </script>
 
@@ -128,28 +213,139 @@ const closeVenueDetails = () => {
 
           <!-- Tabs -->
           <div class="venue-tabs">
-            <button class="venue-tab active">
-              <span class="tab-icon">◉</span> OVERVIEW
+            <button
+              class="venue-tab"
+              :class="{ active: activeTab === 'overview' }"
+              @click="setActiveTab('overview')"
+            >
+              <span class="tab-icon"><nuxt-img src="/images/iconInfo.svg" alt="Overview Icon" /></span> OVERVIEW
             </button>
-            <button class="venue-tab">
-              <span class="tab-icon">🏪</span> SHOPS ({{ selectedVenue.shops_count }})
+            <button
+              class="venue-tab"
+              :class="{ active: activeTab === 'shops' }"
+              @click="setActiveTab('shops')"
+            >
+              <span class="tab-icon"><nuxt-img src="/images/iconShop.svg" alt="Shops Icon" /></span> SHOPS ({{ selectedVenue.shops?.length || selectedVenue.shops_count }})
             </button>
-            <button class="venue-tab">
-              <span class="tab-icon">🍽️</span> MENUS ({{ selectedVenue.menus_count }})
+            <button
+              class="venue-tab"
+              :class="{ active: activeTab === 'menus' }"
+              @click="setActiveTab('menus')"
+            >
+              <span class="tab-icon"><nuxt-img src="/images/iconFood.svg" alt="Menus Icon" /></span> MENUS ({{ selectedVenue.menu_items?.length || selectedVenue.menus_count }})
             </button>
           </div>
 
-          <!-- Description -->
-          <div class="venue-about">
-            <h4 class="venue-about-title">ABOUT THIS VENUE</h4>
-            <p class="venue-about-text">{{ selectedVenue.description }}</p>
+          <!-- Tab Content: Overview -->
+          <div v-if="activeTab === 'overview'" class="tab-content">
+            <div class="venue-about">
+              <h4 class="venue-about-title">ABOUT THIS VENUE</h4>
+              <p class="venue-about-text">{{ selectedVenue.description }}</p>
+            </div>
+
+            <!-- Services List -->
+            <div v-if="selectedVenue.services && selectedVenue.services.length > 0" class="venue-services">
+              <h4 class="venue-services-title">SERVICES : </h4>
+              <ul class="venue-services-list">
+                <li v-for="service in selectedVenue.services" :key="service" class="venue-service-item">
+                  {{ service }}
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Tab Content: Shops Carousel -->
+          <div v-if="activeTab === 'shops'" class="tab-content">
+            <div class="shops-carousel">
+              <div class="shops-grid">
+                <div v-for="shop in currentShops" :key="shop.id" class="shop-card">
+                  <div class="shop-image-wrapper">
+                    <img :src="shop.image" :alt="shop.name" class="shop-image" />
+                  </div>
+                  <p class="shop-name">{{ shop.name }}</p>
+                </div>
+              </div>
+
+              <!-- Carousel Navigation -->
+              <div v-if="totalShopsPages > 1" class="carousel-nav">
+                <button
+                  class="carousel-btn prev"
+                  :disabled="shopsPage === 0"
+                  @click="prevShopsPage"
+                >
+                  ‹
+                </button>
+                <div class="carousel-dots">
+                  <span
+                    v-for="page in totalShopsPages"
+                    :key="page"
+                    class="carousel-dot"
+                    :class="{ active: shopsPage === page - 1 }"
+                    @click="shopsPage = page - 1"
+                  ></span>
+                </div>
+                <button
+                  class="carousel-btn next"
+                  :disabled="shopsPage === totalShopsPages - 1"
+                  @click="nextShopsPage"
+                >
+                  ›
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab Content: Menu Carousel (2 colonnes x 2 lignes) -->
+          <div v-if="activeTab === 'menus'" class="tab-content">
+            <div class="menus-carousel">
+              <div class="menus-grid">
+                <div v-for="item in currentMenuItems" :key="item.id" class="menu-card">
+                  <div class="menu-image-wrapper">
+                    <img :src="item.thumbnail" :alt="item.name" class="menu-image" />
+                  </div>
+                  <div class="menu-card-info">
+                    <p class="menu-card-name">{{ item.name }}</p>
+                    <p class="menu-card-description">{{ item.description }}</p>
+                  </div>
+                  <span class="menu-card-price">€{{ item.price }}</span>
+                </div>
+              </div>
+
+              <!-- Carousel Navigation -->
+              <div v-if="totalMenuPages > 1" class="carousel-nav">
+                <button
+                  class="carousel-btn prev"
+                  :disabled="menuPage === 0"
+                  @click="prevMenuPage"
+                >
+                  ‹
+                </button>
+                <div class="carousel-dots">
+                  <span
+                    v-for="page in totalMenuPages"
+                    :key="page"
+                    class="carousel-dot"
+                    :class="{ active: menuPage === page - 1 }"
+                    @click="goToMenuPage(page - 1)"
+                  ></span>
+                </div>
+                <button
+                  class="carousel-btn next"
+                  :disabled="menuPage === totalMenuPages - 1"
+                  @click="nextMenuPage"
+                >
+                  ›
+                </button>
+              </div>
+            </div>
           </div>
 
           <!-- Join Now Button -->
           <NuxtLink
             :to="`/jobs?location=${encodeURIComponent(selectedVenue.location)}`"
-            class="venue-join-btn"
-          >Job offers in {{ selectedVenue.name }}
+            class="d-flex align-items-start justify-content-start venue-join-btn"
+          >
+          <nuxt-img src="/images/joinNowBtn.svg" alt="Join Now Button" class="img-fluid"></nuxt-img>
           </NuxtLink>
         </div>
 
@@ -547,7 +743,7 @@ const closeVenueDetails = () => {
 
 .venue-event-banner {
   display: flex;
-  background:url(images/infoContainer.svg);background-repeat:no-repeat;
+  background:url(/images/infoContainer.svg);background-repeat:no-repeat;
   background-size:contain;
   border-radius: 8px;
   padding: 0.75rem;
@@ -567,7 +763,7 @@ const closeVenueDetails = () => {
     content:"";
     height:100%;
     width:1px;
-    background:url(images/divider.svg) no-repeat;
+    background:url(/images/divider.svg) no-repeat;
     position:absolute;
     left:0;
   }}
@@ -591,15 +787,15 @@ const closeVenueDetails = () => {
   margin-right: 6px;
   content: "";
   display:block;
-    background: url(images/iconCal.svg) no-repeat;
-  width: 16px;height:16px;  
+    background: url(/images/iconCal.svg) no-repeat;
+  width: 16px;height:16px;
 }
 
 .venue-event-item:last-child .venue-event-label::before {
   content: "";
   display:block;
-    background: url(images/iconPeople.svg) no-repeat;
-  width: 16px;height:16px;  } 
+    background: url(/images/iconPeople.svg) no-repeat;
+  width: 16px;height:16px;  }
 
 .venue-event-value {
    font-family: FONTSPRINGDEMO-RecoletaMedium;
@@ -633,12 +829,15 @@ const closeVenueDetails = () => {
   letter-spacing: 0.34px;
   text-align: left;
   color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease;
 
 filter: alpha(opacity=50); /* internet explorer */
   -khtml-opacity: 0.5;      /* khtml, old safari */
   -moz-opacity: 0.5;       /* mozilla, netscape */
   opacity: 0.5;           /* fx, safari, opera */
-  
+
 }
 
 .venue-tab.active {
@@ -649,26 +848,33 @@ filter: alpha(opacity=50); /* internet explorer */
         -khtml-opacity: 1;      /* khtml, old safari */
         -moz-opacity: 1;       /* mozilla, netscape */
         opacity: 1;           /* fx, safari, opera */
-          
+
 }
 
 .venue-tab:hover {
   color: #FF4D6D;
-  
-  
+
+
          filter: alpha(opacity=100); /* internet explorer */
           -khtml-opacity: 1;      /* khtml, old safari */
           -moz-opacity: 1;       /* mozilla, netscape */
           opacity: 1;           /* fx, safari, opera */
-          
+
 }
 
 .tab-icon {
   font-size: 0.8rem;
 }
 
-.venue-about {
+/* Tab Content */
+.tab-content {
   flex: 1;
+  overflow-y: auto;
+  position:relative;
+}
+
+.venue-about {
+  margin-bottom: 1.5rem;
 }
 
 .venue-about-title {
@@ -681,6 +887,7 @@ filter: alpha(opacity=50); /* internet explorer */
   letter-spacing: 0.26px;
   text-align: left;
   color: rgba(26, 26, 26, 0.8);
+  margin-bottom: 0.5rem;
 }
 
 .venue-about-text {
@@ -695,11 +902,295 @@ filter: alpha(opacity=50); /* internet explorer */
   color: #000;
 }
 
+/* Services List */
+.venue-services {
+  margin-top: 1.5rem;
+}
+
+.venue-services-title {
+  font-family: FONTSPRINGDEMO-RecoletaMedium;
+  font-size: 16px;
+  font-weight: normal;
+  letter-spacing: 0.26px;
+  color: rgba(26, 26, 26, 0.8);
+  margin-bottom: 0.75rem;
+}
+
+.venue-services-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.tab-icon{
+  flex-wrap:wrap;
+  display:flex;
+  justify-content:center;
+  img, svg, nuxt-image {
+    margin-right: 16px;
+    display: block;
+    width: 16px;
+    height: 16px;
+    transition: all 0.2s ease;
+  }
+}
+
+/* Changer la couleur de l'icône quand l'onglet est actif */
+.venue-tab.active .tab-icon img,
+.venue-tab.active .tab-icon svg,
+.venue-tab.active .tab-icon nuxt-image {
+  filter: brightness(0) saturate(100%) invert(62%) sepia(75%) saturate(486%) hue-rotate(329deg) brightness(104%) contrast(100%);
+}
+
+/* Changer la couleur de l'icône au survol */
+.venue-tab:hover .tab-icon img,
+.venue-tab:hover .tab-icon svg,
+.venue-tab:hover .tab-icon nuxt-image {
+  filter: brightness(0) saturate(100%) invert(62%) sepia(75%) saturate(486%) hue-rotate(329deg) brightness(104%) contrast(100%);
+}
+.venue-tab{
+
+  flex-wrap:wrap;
+  display:flex;
+  justify-content:center;
+
+}
+.venue-service-item {
+ font-family: FONTSPRINGDEMO-Recoleta;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #000;
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.25rem;
+
+  &::before {
+    content: "";
+    background:url(/images/listeAPuces.svg) no-repeat;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom:0;
+    width:8.49px;
+    height:8.49px;
+    margin:auto;
+  }
+}
+
+/* Shops Carousel */
+.shops-carousel {
+  padding: 1rem 0;
+}
+
+.shops-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.shop-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position:relative;
+}
+
+.shop-image-wrapper {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  position:relative;
+  z-index:0;
+}
+.shop-image-wrapper{
+  position:relative;
+  border-radius:10px;
+}
+.shop-image {
+  z-index:0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position:relative;
+}
+
+.shop-name {
+ font-family: FONTSPRINGDEMO-RecoletaSemiBold;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.56;
+  letter-spacing: normal;
+  text-align: center;
+  color: #fff;
+    -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background-color: rgba(64, 64, 64, 0.3);
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:1000;
+}
+
+.carousel-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.carousel-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #FF4D6D;
+  background: white;
+  color: #FF4D6D;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background: #FF4D6D;
+    color: white;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ddd;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &.active {
+    background-color: #FF4D6D;
+  }
+
+  &:hover {
+    background-color: #FF4D6D;
+  }
+}
+
+/* Menus Carousel (style similaire à Shops) */
+.menus-carousel {
+  padding: 1rem 0;
+}
+
+.menus-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.menu-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.menu-image-wrapper {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  position: relative;
+  z-index: 0;
+}
+
+.menu-image {
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+}
+
+.menu-card-info {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background-color: rgba(64, 64, 64, 0.3);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  padding: 0.5rem;
+  border-radius: 0 0 12px 12px;
+}
+
+.menu-card-name {
+  font-family: FONTSPRINGDEMO-RecoletaSemiBold;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.3;
+  text-align: left;
+  color: #fff;
+  margin: 1rem 0 1rem 0;
+}
+
+.menu-card-description {
+    font-family: FONTSPRINGDEMO-Recoleta;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff;
+}
+
+.menu-card-price {
+  font-family: FONTSPRINGDEMO-RecoletaBold;
+  font-size: 14px;
+  color: #FF4D6D;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 4px 8px;
+  border-radius: 8px;
+  z-index: 1001;
+}
+
 /* Join Now Button */
-.venue-join-btn {    background: url(images/button.svg);
-    width: 295px;
+.venue-join-btn {
+  border-top:1px solid #000;
+  padding:1rem 0;   
+    width: 100%;
     height: 104px;
-    background-size: contain;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -715,6 +1206,74 @@ filter: alpha(opacity=50); /* internet explorer */
     text-decoration: none;
     margin: 2rem auto 1rem auto;
     transition: all 0.2s ease;
+    img{
+      width:287px;
+      height:60px;
+    }
 }
 
+/* Mobile responsiveness for tabs */
+@media (max-width: 768px) {
+  .shops-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .menus-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .venue-tabs {
+    flex-wrap: wrap;
+  }
+
+  .venue-tab {
+    font-size: 13px;
+    padding: 0.4rem 0.75rem;
+  }
+
+  .menu-card-name {
+    font-size: 14px;
+  }
+
+  .menu-card-description {
+    font-size: 10px;
+    -webkit-line-clamp: 2;
+  }
+
+  .menu-card-price {
+    font-size: 12px;
+    padding: 3px 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .shops-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .menus-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .menu-card-info {
+    padding: 0.35rem;
+  }
+
+  .menu-card-name {
+    font-size: 12px;
+  }
+
+  .menu-card-description {
+    font-size: 9px;
+    -webkit-line-clamp: 1;
+  }
+
+  .menu-card-price {
+    font-size: 11px;
+    padding: 2px 5px;
+  }
+}
 </style>

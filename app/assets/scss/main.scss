@@ -910,7 +910,7 @@ body {
   margin-top: 2rem;
   align-items: flex-start;
   padding: 2em;
-  background: url(images/backgroundBgAbout.svg) no-repeat center;
+  background: url(/images/backgroundBgAbout.svg) no-repeat center;
   background-size: contain;
   justify-content: space-around;
   a {
@@ -949,7 +949,7 @@ body {
 #timeline {
   margin-top: -20px;
   z-index: 1;
-  background: url(images/timelineBg.svg);
+  background: url(/images/timelineBg.svg);
   padding: 1em;
   h3 {
     font-family: FONTSPRINGDEMO-RecoletaBold;
@@ -1037,11 +1037,11 @@ body {
   }
   &:nth-of-type(1) {
     .inner-encadre {
-      background: url(images/bgRE2.svg);
+      background: url(/images/bgRE2.svg);
     }
     h3 {
       &::after {
-        background: url(images/line6.svg);
+        background: url(/images/line6.svg);
         background-repeat: no-repeat;
         background-size: contain;
         content: "";
@@ -1058,7 +1058,7 @@ body {
   }
   &:nth-of-type(2) {
     .inner-encadre {
-      background: url(images/bgRE.svg);
+      background: url(/images/bgRE.svg);
       &::after {
         content: "";
         position: absolute;

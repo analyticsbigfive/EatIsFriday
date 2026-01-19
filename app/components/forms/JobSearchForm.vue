@@ -232,7 +232,7 @@ onUnmounted(() => {
     gap: 0.75rem;
     padding: 1rem 1.25rem;
     border-radius: 30px;
-    background: url(images/bgInputForm.svg);
+    background: url(/images/bgInputForm.svg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     cursor: pointer;

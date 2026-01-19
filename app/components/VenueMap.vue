@@ -92,12 +92,6 @@ const createMarkers = (maplibregl: any) => {
     el.addEventListener('click', () => {
       emit('select-venue', venue.id)
       emit('venue-clicked', venue)
-      // Centrer la carte sur le marqueur cliqué
-      map.flyTo({
-        center: [venue.lng, venue.lat],
-        zoom: 8,
-        duration: 500
-      })
     })
 
     const marker = new maplibregl.Marker({ element: el })
@@ -120,11 +114,11 @@ onMounted(async () => {
         style: MAPTILER_STYLE,
         center: MAP_CENTER,
         zoom: MAP_ZOOM,
-        attributionControl: false
+        attributionControl: false,
+        scrollZoom: false,
+        dragRotate: false,
+        touchPitch: false
       })
-
-      // Ajouter les contrôles de zoom
-      map.addControl(new maplibregl.default.NavigationControl({ showCompass: false }), 'bottom-right')
 
       // Attendre que la carte soit chargée avant d'ajouter les marqueurs
       map.on('load', () => {
@@ -160,11 +154,7 @@ watch(() => props.selectedVenue, (newId) => {
   if (map && newId) {
     const venue = props.venues.find(v => v.id === newId)
     if (venue) {
-      map.flyTo({
-        center: [venue.lng, venue.lat],
-        zoom: 10,
-        duration: 500
-      })
+      // Aucun zoom au clic
     }
   }
 })

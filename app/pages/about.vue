@@ -493,7 +493,7 @@ useHead(() => ({
   margin: 0 0 14px;
   padding: 22px 60.4px 56px 70px;
   border-radius: 2px;
-  background: url(images/vectorBgAbout.svg) no-repeat center 20% #a7f49d !important;
+  background: url(/images/vectorBgAbout.svg) no-repeat center 20% #a7f49d !important;
 
   h1 {
     font-family: FONTSPRINGDEMO-RecoletaBold;
