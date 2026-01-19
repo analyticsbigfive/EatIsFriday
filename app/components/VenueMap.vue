@@ -198,8 +198,8 @@ watch(() => props.selectedVenue, (newId) => {
 
 .venue-marker-container {
   position: relative;
-  width: 56px;
-  height: 56px;
+  width: 79.53px;
+  height: 84px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -212,8 +212,8 @@ watch(() => props.selectedVenue, (newId) => {
 
 /* Icône du stade */
 .venue-marker-icon {
-  width: 48px;
-  height: 48px;
+  width: 79.53px;
+  height: 84px;
   object-fit: contain;
   filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
   transition: transform 0.25s ease;
