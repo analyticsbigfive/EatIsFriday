@@ -2,16 +2,33 @@
 import { LucideMapPin, LucideBriefcase, LucideDollarSign, LucideCalendar, LucideCheck, LucideStar, LucideArrowLeft, LucideShare2, LucideHeart } from 'lucide-vue-next'
 import type { Job } from '~/composables/useJobs'
 
+// IMMEDIATE LOG - should appear when script loads
+console.log('!!!!! [slug].vue SCRIPT SETUP EXECUTING !!!!!')
+
 const route = useRoute()
 const { getJobBySlug, getJobs } = useJobs()
 
 const job = ref<Job | null>(null)
 const relatedJobs = ref<Job[]>([])
 const isLoading = ref(true)
+const showApplyModal = ref(false)
+
+// Add click listener to entire document to debug
+if (typeof window !== 'undefined') {
+  console.log('Adding global click listener...')
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement
+    console.log('CLICK DETECTED on:', target.tagName, target.className, target.textContent?.substring(0, 30))
+  })
+}
 
 onMounted(async () => {
+  console.log('=== [slug].vue PAGE MOUNTED ===')
+  alert('Page [slug].vue mounted!') // This should show a popup!
   const slug = route.params.slug as string
+  console.log('Loading job with slug:', slug)
   job.value = await getJobBySlug(slug)
+  console.log('Job loaded:', job.value?.title)
 
   // Get related jobs (same job_type, excluding current)
   const allJobs = await getJobs()
@@ -41,11 +58,22 @@ const formatDate = (dateString: string) => {
   return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
 }
 
-const scrollToApply = () => {
-  const applySection = document.getElementById('apply')
-  if (applySection) {
-    applySection.scrollIntoView({ behavior: 'smooth' })
-  }
+const openApplyModal = () => {
+  console.log('========== OPEN APPLY MODAL ==========')
+  console.log('showApplyModal BEFORE:', showApplyModal.value)
+  showApplyModal.value = true
+  console.log('showApplyModal AFTER:', showApplyModal.value)
+  console.log('=======================================')
+}
+
+// Debug watcher
+watch(showApplyModal, (newVal) => {
+  console.log('>>> showApplyModal CHANGED TO:', newVal)
+})
+
+const closeApplyModal = () => {
+  console.log('closeApplyModal called')
+  showApplyModal.value = false
 }
 
 useHead(() => ({
@@ -126,7 +154,7 @@ useHead(() => ({
             </div>
 
             <div class="hero-actions">
-              <button class="btn-apply-hero" @click="scrollToApply">
+              <button class="btn-apply-hero" @click="openApplyModal">
                 Apply for This Position
               </button>
               <button class="btn-icon-action" aria-label="Save job">
@@ -186,7 +214,9 @@ useHead(() => ({
                 <h3 class="apply-title">Ready to Join Us?</h3>
                 <p class="apply-subtitle">Take the next step in your career journey.</p>
 
-                <FormsJobApplicationForm />
+                <button class="btn-apply-sidebar" @click="openApplyModal">
+                  Apply Now
+                </button>
               </div>
 
               <!-- Quick Info -->
@@ -194,7 +224,7 @@ useHead(() => ({
                 <h4>Quick Info</h4>
                 <div class="info-item">
                   <span class="info-label">Department</span>
-                  <span class="info-value">Culinary & Hospitality</span>
+                  <span class="info-value">{{ job.department || 'Culinary & Hospitality' }}</span>
                 </div>
                 <div class="info-item">
                   <span class="info-label">Experience</span>
@@ -243,12 +273,21 @@ useHead(() => ({
           <div class="cta-content">
             <h2>Interested in This Role?</h2>
             <p>Don't miss this opportunity to join our team.</p>
-            <button class="btn-apply-bottom" @click="scrollToApply">
+            <button class="btn-apply-bottom" @click="openApplyModal">
               Apply Now
             </button>
           </div>
         </div>
       </section>
+
+      <!-- Apply Modal -->
+      <JobApplyModal
+        :is-open="showApplyModal"
+        :job-title="getJobTitle(job)"
+        :job-location="job.location"
+        :job-slug="job.slug"
+        @close="closeApplyModal"
+      />
     </template>
   </div>
 </template>
@@ -623,6 +662,26 @@ useHead(() => ({
 .apply-subtitle {
   color: rgba(0, 0, 0, 0.6);
   margin: 0 0 1.5rem;
+}
+
+.btn-apply-sidebar {
+  width: 100%;
+  padding: 1rem 2rem;
+  background: var(--brand-pink);
+  color: white;
+  border: 2px solid var(--brand-dark);
+  border-radius: 0.75rem;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: var(--brand-lime);
+    color: var(--brand-dark);
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 0 var(--brand-dark);
+  }
 }
 
 .quick-info-card {
