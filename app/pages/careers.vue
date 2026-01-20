@@ -143,58 +143,64 @@ const goToPage = (page: number) => {
 <template>
   <div class="careers-page">
     <div v-if="content" class="min-vh-100 bg-brand-gray">
-    <!-- Dynamic Hero Section -->
-    <section class="hero-section" :class="{ 'has-venue': activeVenue }">
-      <!-- Background with venue image or gradient -->
+    
+    <!-- ========================================== -->
+    <!-- Hero Section WITHOUT venue (Default View) -->
+    <!-- ========================================== -->
+    <section v-if="!activeVenue" class="careers-hero-default">
+      <div class="careers-hero-container">
+        <!-- Left: Image -->
+        <div class="careers-hero-image">
+          <img src="/images/enteteSansJob.jpg" alt="Join our team" />
+        </div>
+        <!-- Right: Content -->
+        <div class="careers-hero-content">
+          <div class="careers-hero-inner">
+            <h1 class="careers-hero-title">
+              Join France's<br/>
+              leading catering<br/>
+              company
+            </h1>
+            <p class="careers-hero-subtitle">
+              Discover exciting opportunities in hospitality & culinary excellence
+            </p>
+            <div class="careers-hero-stats">
+              <div class="stat-box">
+                <span class="stat-number">{{ allJobs.length }}</span>
+                <span class="stat-label">Open Positions</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-number">{{ venueOptions.length - 1 }}</span>
+                <span class="stat-label">Locations</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- Hero Section WITH venue (When job/venue selected) -->
+    <!-- ========================================== -->
+    <section v-else class="hero-section has-venue">
+      <!-- Background with venue image -->
       <div
         class="hero-background"
-        :style="activeVenue ? { backgroundImage: `url('${activeVenue.image}')` } : {}"
+        :style="{ backgroundImage: `url('${activeVenue.image}')` }"
       >
         <div class="hero-overlay"></div>
       </div>
 
       <!-- Hero Content -->
       <div class="container hero-content">
-        <span class="hero-tag">{{ activeVenue ? 'Now Hiring' : 'Careers' }}</span>
+        <span class="hero-tag">Now Hiring</span>
         <h1 class="hero-title">
-          <template v-if="activeVenue">
-            Join Our Team At {{ activeVenue.name }}
-          </template>
-          <template v-else>
-            Join France's leading catering company
-          </template>
+          Join Our Team At {{ activeVenue.name }}
         </h1>
         <p class="hero-subtitle">
-          <template v-if="activeVenue">
-            <LucideMapPin class="subtitle-icon" /> {{ activeVenue.location }}
-            <span class="subtitle-divider">•</span>
-            {{ filteredJobs.length }} Open Position{{ filteredJobs.length !== 1 ? 's' : '' }}
-          </template>
-          <template v-else>
-            Discover exciting opportunities in hospitality & culinary excellence
-          </template>
-        </p>
-        <!-- Stats (only when no venue selected) -->
-        <div v-if="!activeVenue" class="hero-stats">
-          <div class="stat-item">
-            <span class="stat-number">{{ allJobs.length }}</span>
-            <span class="stat-label">Open Positions</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <span class="stat-number">{{ venueOptions.length - 1 }}</span>
-            <span class="stat-label">Locations</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Introduction Section (only when no venue selected) -->
-    <section v-if="!activeVenue" class="intro-section py-5">
-      <div class="container text-center">
-        <h2 class="font-heading fs-1 fw-bold mb-3">Find Your Perfect Role</h2>
-        <p class="fs-5 text-muted mb-0" style="max-width: 48rem; margin-left: auto; margin-right: auto;">
-          We're looking for passionate people who want to create unforgettable experiences. Explore more than 100 open positions across France.
+          <LucideMapPin class="subtitle-icon" /> {{ activeVenue.location }}
+          <span class="subtitle-divider">•</span>
+          {{ filteredJobs.length }} Open Position{{ filteredJobs.length !== 1 ? 's' : '' }}
         </p>
       </div>
     </section>
@@ -416,6 +422,129 @@ const goToPage = (page: number) => {
 </template>
 
 <style scoped>
+/* ============================================
+   CAREERS HERO DEFAULT (No venue selected)
+   ============================================ */
+.careers-hero-default {
+  background-color: #F5F5F0;
+  padding-top: 6rem;
+}
+
+.careers-hero-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 70vh;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.careers-hero-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.careers-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.careers-hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  background-color: #F5F5F0;
+}
+
+.careers-hero-inner {
+  max-width: 520px;
+}
+
+.careers-hero-title {
+  font-family: var(--font-heading), 'Recoleta', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 600;
+  line-height: 1.1;
+  color: #1a1a1a;
+  margin: 0 0 1.5rem;
+}
+
+.careers-hero-subtitle {
+  font-size: 1.125rem;
+  color: #555;
+  line-height: 1.6;
+  margin: 0 0 2.5rem;
+  max-width: 380px;
+}
+
+.careers-hero-stats {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.careers-hero-stats .stat-box {
+  background: #1a1a1a;
+  color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 0.75rem;
+  text-align: center;
+  min-width: 140px;
+}
+
+.careers-hero-stats .stat-number {
+  display: block;
+  font-family: var(--font-heading), 'Recoleta', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #c8f560;
+}
+
+.careers-hero-stats .stat-label {
+  display: block;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive: Tablet & Mobile */
+@media (max-width: 991px) {
+  .careers-hero-container {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .careers-hero-image {
+    height: 50vh;
+    min-height: 300px;
+  }
+
+  .careers-hero-content {
+    padding: 3rem 1.5rem;
+  }
+
+  .careers-hero-title {
+    font-size: 2.25rem;
+  }
+
+  .careers-hero-stats {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .careers-hero-stats .stat-box {
+    min-width: auto;
+    width: 100%;
+  }
+}
+
+/* ============================================
+   Dynamic Hero Section (with venue)
+   ============================================ */
 /* Dynamic Hero Section */
 .hero-section {
   position: relative;
@@ -558,13 +687,15 @@ const goToPage = (page: number) => {
   background: rgba(255, 255, 255, 0.3);
 }
 
-.intro-section {
-  background-color: #F5F5F0;
+.search-bar-section {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  z-index: 20;
 }
 
-.search-bar-section {
+/* Adjust search bar when venue is active (overlapping hero) */
+.has-venue ~ .search-bar-section {
   margin-top: -1.5rem;
-  z-index: 20;
 }
 
 .search-input::placeholder {
