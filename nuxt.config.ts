@@ -40,6 +40,7 @@ export default defineNuxtConfig({
 
   vite: {
     css: {
+      devSourcemap: true, // Active les source maps CSS pour Chrome DevTools
       preprocessorOptions: {
         scss: {
           additionalData: '@use "~/assets/scss/_variables.scss" as *;'

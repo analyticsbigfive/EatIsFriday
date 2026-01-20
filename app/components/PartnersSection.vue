@@ -19,9 +19,3 @@ defineProps<{
   partners: Partner[]
 }>()
 </script>
-
-<style scoped lang="scss">
-#partners {
-  overflow: hidden;
-}
-</style>

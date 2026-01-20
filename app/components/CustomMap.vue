@@ -224,25 +224,3 @@ watch(() => searchQuery.value, async () => {
     </Transition>
   </div>
 </template>
-
-<style>
-/* Style des contrôles de navigation MapLibre */
-.maplibregl-ctrl-group {
-  border: none !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
-  border-radius: 8px !important;
-  overflow: hidden;
-}
-
-.maplibregl-ctrl-group button {
-  width: 36px !important;
-  height: 36px !important;
-  border: none !important;
-  background-color: #fff !important;
-  transition: background-color 0.2s ease;
-}
-
-.maplibregl-ctrl-group button:hover {
-  background-color: #f5f5f5 !important;
-}
-</style>

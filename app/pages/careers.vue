@@ -479,6 +479,9 @@ const goToPage = (page: number) => {
 }
 
 .hero-tag {
+  padding:1em;
+  border-radius: 30px;
+  background-color: #93cbff;
   font-family: FONTSPRINGDEMO-RecoletaMedium;
   font-size: 14px;
   font-weight: normal;

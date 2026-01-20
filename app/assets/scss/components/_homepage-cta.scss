@@ -1,0 +1,74 @@
+// HomepageCTA.vue styles
+#ready-to-make-an-impact {
+  .preserve-lines {
+    white-space: pre-line;
+  }
+
+  #leforme {
+    max-width: 1098px;
+    max-height: 400px;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 20px;
+    border: solid 3px #ed2e52;
+    background-color: #f83156;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto !important;
+    bottom: 0;
+
+    h2 {
+      font-family: FONTSPRINGDEMO-RecoletaBold;
+      font-size: 50px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-family: FONTSPRINGDEMO-RecoletaAlt;
+      font-size: 18px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.56;
+      letter-spacing: normal;
+      text-align: center;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+  }
+
+  // Effets de survol pour les boutons
+  a:has(img),
+  nuxt-link:has(img) {
+    display: inline-block;
+    transition: transform 0.3s ease, filter 0.3s ease;
+
+    img {
+      transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease, border-radius 0.3s ease;
+      border-radius: 50px;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+
+      img {
+        filter: brightness(1.1);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        border-radius: 60px;
+      }
+    }
+
+    &:active {
+      transform: translateY(-2px) scale(0.98);
+    }
+  }
+}

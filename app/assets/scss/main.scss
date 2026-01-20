@@ -12,6 +12,9 @@
 @import "bootstrap/scss/utilities";
 @import "bootstrap/scss/utilities/api";
 
+// Component styles
+@import "components/index";
+
 // CSS Custom Properties for brand colors
 :root {
   --brand-pink: #{$brand-pink};
