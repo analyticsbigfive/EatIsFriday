@@ -98,6 +98,19 @@
                 ></textarea>
               </div>
 
+              <!-- Honeypot field (hidden from users, trap for bots) -->
+              <div class="form-group honeypot-field" aria-hidden="true">
+                <label for="apply-website">Website</label>
+                <input
+                  v-model="form.website"
+                  type="text"
+                  id="apply-website"
+                  name="website"
+                  autocomplete="off"
+                  tabindex="-1"
+                />
+              </div>
+
               <div class="form-group checkbox-group">
                 <label class="checkbox-label">
                   <input
@@ -109,6 +122,12 @@
                     I agree to the processing of my personal data in accordance with the <a href="/privacy" target="_blank">Privacy Policy</a> *
                   </span>
                 </label>
+              </div>
+
+              <!-- Error Message Display -->
+              <div v-if="submitError" class="error-message">
+                <LucideAlertCircle style="width: 1.25rem; height: 1.25rem;" />
+                <span>{{ submitError }}</span>
               </div>
 
               <button type="submit" class="btn-submit" :disabled="isSubmitting">
@@ -137,7 +156,7 @@
 
 <script setup lang="ts">
 import { ref, watch, onMounted, onUnmounted } from 'vue'
-import { LucideX, LucideBriefcase, LucideMapPin, LucideUpload, LucideSend, LucideCheck } from 'lucide-vue-next'
+import { LucideX, LucideBriefcase, LucideMapPin, LucideUpload, LucideSend, LucideCheck, LucideAlertCircle } from 'lucide-vue-next'
 
 const props = defineProps<{
   isOpen: boolean
@@ -167,11 +186,13 @@ const form = ref({
   resume: null as File | null,
   resumeName: '',
   coverLetter: '',
-  consent: false
+  consent: false,
+  website: '' // Honeypot field
 })
 
 const isSubmitting = ref(false)
 const submitSuccess = ref(false)
+const submitError = ref<string | null>(null)
 
 const close = () => {
   emit('close')
@@ -187,18 +208,56 @@ const handleFileChange = (event: Event) => {
 
 const handleSubmit = async () => {
   isSubmitting.value = true
+  submitError.value = null
   
-  // Simulate API call
-  await new Promise(resolve => setTimeout(resolve, 2000))
-  
-  isSubmitting.value = false
-  submitSuccess.value = true
+  try {
+    // Create FormData for multipart/form-data submission
+    const formData = new FormData()
+    formData.append('name', form.value.name)
+    formData.append('email', form.value.email)
+    formData.append('phone', form.value.phone)
+    formData.append('linkedin', form.value.linkedin || '')
+    formData.append('coverLetter', form.value.coverLetter || '')
+    formData.append('jobSlug', props.jobSlug)
+    formData.append('website', form.value.website) // Honeypot
+    
+    if (form.value.resume) {
+      formData.append('resume', form.value.resume)
+    }
+    
+    // Submit to API
+    const response = await $fetch('/api/applications/apply', {
+      method: 'POST',
+      body: formData
+    })
+    
+    if (response.success) {
+      isSubmitting.value = false
+      submitSuccess.value = true
+    }
+  } catch (error: any) {
+    isSubmitting.value = false
+    
+    // Handle API errors
+    if (error.data?.message) {
+      submitError.value = error.data.message
+    } else if (error.data?.errors && Array.isArray(error.data.errors)) {
+      submitError.value = error.data.errors.join(', ')
+    } else if (error.statusCode === 429) {
+      submitError.value = 'Trop de candidatures envoyées. Veuillez réessayer plus tard.'
+    } else {
+      submitError.value = 'Une erreur est survenue. Veuillez réessayer.'
+    }
+    
+    console.error('Application submission error:', error)
+  }
 }
 
 // Reset form when modal opens
 watch(() => props.isOpen, (isOpen) => {
   if (isOpen) {
     submitSuccess.value = false
+    submitError.value = null
     form.value = {
       name: '',
       email: '',
@@ -207,7 +266,8 @@ watch(() => props.isOpen, (isOpen) => {
       resume: null,
       resumeName: '',
       coverLetter: '',
-      consent: false
+      consent: false,
+      website: ''
     }
   }
 })
@@ -236,3 +296,35 @@ watch(() => props.isOpen, (isOpen) => {
   }
 })
 </script>
+
+<style scoped lang="scss">
+/* Honeypot field - hidden from users but visible to bots */
+.honeypot-field {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Error message styling */
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1rem;
+  background: #FEE2E2;
+  border: 1px solid #F87171;
+  border-radius: 0.5rem;
+  color: #DC2626;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  
+  svg {
+    flex-shrink: 0;
+    color: #DC2626;
+  }
+}
+</style>

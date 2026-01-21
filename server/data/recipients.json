@@ -1,0 +1,23 @@
+{
+    "default": [
+        "hr@eatisfamily.com"
+    ],
+    "departments": {
+        "Culinary": [
+            "chef@eatisfamily.com",
+            "kitchen@eatisfamily.com"
+        ],
+        "Service": [
+            "manager@eatisfamily.com"
+        ],
+        "Management": [
+            "director@eatisfamily.com"
+        ]
+    },
+    "notifications": {
+        "enabled": true,
+        "bcc": [
+            "archives@eatisfamily.com"
+        ]
+    }
+}

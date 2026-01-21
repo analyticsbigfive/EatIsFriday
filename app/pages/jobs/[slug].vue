@@ -247,11 +247,11 @@ useHead(() => ({
               <h2>Ready To Make An Impact?</h2>
               <p>Join our team and be part of creating unforgettable experiences at one of France's most exciting venues.</p>
               <div class="bottom-cta-buttons">
-                <button class="btn-apply-bottom" @click="openApplyModal">
-                  Apply for this position
+                <button class="bg-transparent border-0" @click="openApplyModal">
+                  <nuxt-img src="/images/btnApplyForPosition.svg" alt="apply icon" width="240" height="" />
                 </button>
-                <button class="btn-back-jobs" @click="goBack">
-                  Go back to jobs
+                <button class="bg-transparent border-0" @click="goBack">
+                  <nuxt-img src="/images/btnGoBackToJobs.svg" alt="back icon" width="240" height="" />
                 </button>
               </div>
             </div>
@@ -901,5 +901,41 @@ img{
   width:310px;
   height:auto;
 }
+}
+
+#mahamad{
+    background: url(/images/ctaBgCareers.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    max-width: 1400px;
+    width:100%;
+    .bottom-cta-content{
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 auto;
+    }
+    h2{
+        font-family: FONTSPRINGDEMO-RecoletaBold;
+  font-size: 50px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #fff;
+    }
+    p{
+        font-family: FONTSPRINGDEMO-RecoletaMedium;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.84;
+  letter-spacing: normal;
+  text-align: center;
+  color: #fff !important;
+    }
 }
 </style>
