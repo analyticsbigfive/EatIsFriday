@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { LucideX, LucideMapPin, LucideBriefcase, LucideClock, LucideDollarSign, LucideHeart, LucideShare2, LucideChevronRight } from 'lucide-vue-next'
-import type { Job } from '~/composables/useJobs'
+import type { JobWithVenue } from '~/composables/useJobs'
 
 const route = useRoute()
 const router = useRouter()
-const { getJobBySlug, getJobs } = useJobs()
+const { getJobWithVenue } = useJobs()
 
-const job = ref<Job | null>(null)
+const job = ref<JobWithVenue | null>(null)
 const isLoading = ref(true)
 const showApplyModal = ref(false)
 
@@ -20,16 +20,26 @@ const galleryImages = [
 
 onMounted(async () => {
   const slug = route.params.slug as string
-  job.value = await getJobBySlug(slug)
+  job.value = await getJobWithVenue(slug)
   isLoading.value = false
 })
 
-const getJobTitle = (j: Job) => {
+const getJobTitle = (j: JobWithVenue) => {
   return typeof j.title === 'string' ? j.title : j.title?.rendered || ''
 }
 
-const getJobExcerpt = (j: Job) => {
+const getJobExcerpt = (j: JobWithVenue) => {
   return typeof j.excerpt === 'string' ? j.excerpt : j.excerpt?.rendered || ''
+}
+
+// Helper pour obtenir le nom de la venue
+const getVenueName = (j: JobWithVenue) => {
+  return j.venue?.name || 'Various Locations'
+}
+
+// Helper pour obtenir la location de la venue
+const getVenueLocation = (j: JobWithVenue) => {
+  return j.venue?.location || ''
 }
 
 const openApplyModal = () => {
@@ -97,7 +107,7 @@ useHead(() => ({
         <div class="header-inner">
           <div class="location-info">
             <LucideMapPin class="location-icon" />
-            <span>{{ job.location }}</span>
+            <span class="kuffar">{{ getVenueLocation(job) }}</span>
           </div>
           <button class="close-btn" @click="goBack" aria-label="Close">
             <LucideX :size="20" :stroke-width="2.5" />
@@ -108,7 +118,7 @@ useHead(() => ({
 
       <!-- Main Content -->
       <main class="detail-main">
-        <div class="container">
+        <div class="container-fluid">
           <!-- Job Title & Tags -->
           <section class="job-intro">
             <h1 class="job-title">{{ getJobTitle(job) }}</h1>
@@ -118,11 +128,11 @@ useHead(() => ({
                 Department - {{ job.department || 'Culinary' }}
               </span>
               <span class="tag tag-lime">
-                <LucideBriefcase :size="14" />
+                <nuxt-img src="/images/streamline-emojis_briefcase.png" alt="briefcase icon" width="16" height="16" />
                 {{ job.job_type }}
               </span>
               <span class="tag tag-yellow">
-                <LucideDollarSign :size="14" />
+               <nuxt-img src="/images/streamline-emojis_moneybag.svg" alt="money bag icon" width="16" height="16" />
                 {{ job.salary }}
               </span>
             </div>
@@ -136,17 +146,17 @@ useHead(() => ({
               <h3>Ready To Join Our Team?</h3>
               <p>Apply now and be part of something special</p>
             </div>
-            <button class="btn-apply-pink" @click="openApplyModal">
-              Apply for this position
+            <button id="apply-button" class="border-0 bg-transparent" @click="openApplyModal">
+              <nuxt-img src="/images/ApplyForThisOh.svg" alt="briefcase icon" width="16" height="16" />
             </button>
           </div>
 
           <!-- Life at Location Section -->
           <section class="life-section">
-            <h2 class="section-title">Life at {{ job.location }}</h2>
+            <h2 class="section-title">Life at {{ getVenueName(job) }}</h2>
             <div class="gallery-grid">
               <div v-for="(img, index) in galleryImages" :key="index" class="gallery-item">
-                <img :src="job.featured_media || `/images/placeholder-${index + 1}.jpg`" :alt="`Life at ${job.location}`" />
+                <img :src="job.featured_media || `/images/placeholder-${index + 1}.jpg`" :alt="`Life at ${getVenueName(job)}`" />
               </div>
             </div>
           </section>
@@ -204,7 +214,7 @@ useHead(() => ({
               <div class="facts-list">
                 <div class="fact-item">
                   <span class="fact-label">LOCATION</span>
-                  <span class="fact-value">{{ job.location }}</span>
+                  <span class="fact-value">{{ getVenueLocation(job) }}</span>
                 </div>
                 <div class="fact-item">
                   <span class="fact-label">DEPARTMENT</span>
@@ -225,14 +235,14 @@ useHead(() => ({
             <div class="info-card card-blue">
               <h3>Do You Know Someone That Is Perfect For This Position?</h3>
               <p>Kindly Share This Job To The Person</p>
-              <button class="btn-share" @click="shareJob">
-                Share this job
+              <button class="btn-sharesd border-0 background-transparent bg-transparent" @click="shareJob">
+                <nuxtImg src="/images/ShareThisJobOh.svg" alt="share icon" width="240" height="" />
               </button>
             </div>
           </div>
 
           <!-- Bottom CTA Section -->
-          <section class="bottom-cta">
+          <section id="mahamad" class="bottom-cta">
             <div class="bottom-cta-content">
               <h2>Ready To Make An Impact?</h2>
               <p>Join our team and be part of creating unforgettable experiences at one of France's most exciting venues.</p>
@@ -253,7 +263,7 @@ useHead(() => ({
       <JobApplyModal
         :is-open="showApplyModal"
         :job-title="getJobTitle(job)"
-        :job-location="job.location"
+        :job-location="getVenueLocation(job)"
         :job-slug="job.slug"
         @close="closeApplyModal"
       />
@@ -263,6 +273,7 @@ useHead(() => ({
 
 <style scoped lang="scss">
 .job-detail-page {
+  padding-top:120px;
   min-height: 100vh;
   background: #FAFAFA;
 }
@@ -373,12 +384,15 @@ useHead(() => ({
 }
 
 .job-title {
-  font-family: var(--font-heading);
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: 700;
-  color: var(--brand-dark);
-  margin: 0 0 1rem;
-  line-height: 1.2;
+  font-family: FONTSPRINGDEMO-RecoletaBold;
+  font-size: 50px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
 }
 
 .job-tags {
@@ -415,10 +429,15 @@ useHead(() => ({
 }
 
 .job-excerpt {
-  font-size: 0.9375rem;
-  line-height: 1.7;
-  color: rgba(0, 0, 0, 0.7);
-  margin: 0;
+    font-family: FONTSPRINGDEMO-RecoletaMedium;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.84;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
 }
 
 // CTA Banner
@@ -436,17 +455,28 @@ useHead(() => ({
 
 .cta-content {
   h3 {
-    font-family: var(--font-heading);
-    font-size: 1.375rem;
-    font-weight: 700;
-    margin: 0 0 0.25rem;
-    color: var(--brand-dark);
+      font-family: FONTSPRINGDEMO-RecoletaSemiBold;
+  font-size: 34px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+
   }
 
   p {
-    margin: 0;
-    color: rgba(0, 0, 0, 0.6);
-    font-size: 0.9375rem;
+   font-family: FONTSPRINGDEMO-RecoletaMedium;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.84;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
   }
 }
 
@@ -513,22 +543,36 @@ useHead(() => ({
 
 .description-card {
   background: white;
-  border: 2px dashed rgba(0, 0, 0, 0.2);
+  border: 2px solid black;
   border-radius: 1rem;
   padding: 1.5rem;
+  &:nth-of-type(2){
+      background-color: #a7f49d;
+
+  }
 
   h3 {
-    font-family: var(--font-heading);
-    font-size: 1.125rem;
-    font-weight: 700;
-    margin: 0 0 0.5rem;
-    color: var(--brand-dark);
+     font-family: FONTSPRINGDEMO-RecoletaBold;
+  font-size: 24px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
   }
 
   .card-intro {
-    font-size: 0.875rem;
-    color: rgba(0, 0, 0, 0.6);
-    margin: 0 0 1rem;
+  font-family: FONTSPRINGDEMO-Recoleta;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.35;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
   }
 }
 
@@ -541,18 +585,23 @@ useHead(() => ({
   gap: 0.625rem;
 
   li {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.5rem;
-    font-size: 0.875rem;
-    color: rgba(0, 0, 0, 0.75);
-    line-height: 1.4;
+     font-family: FONTSPRINGDEMO-RecoletaMedium;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.7;
+  letter-spacing: normal;
+  text-align: left;
+  color: #333;
   }
 
   .list-icon {
     flex-shrink: 0;
     margin-top: 2px;
-    color: rgba(0, 0, 0, 0.4);
+    color: #f9375b
+
+
   }
 }
 
@@ -569,10 +618,14 @@ useHead(() => ({
   padding: 1.5rem;
 
   h3 {
-    font-family: var(--font-heading);
-    font-size: 1rem;
-    font-weight: 700;
-    margin: 0 0 1rem;
+     font-family: FONTSPRINGDEMO-RecoletaBold;
+  font-size: 24px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
     color: var(--brand-dark);
   }
 }
@@ -609,11 +662,14 @@ useHead(() => ({
   gap: 0.5rem;
 
   li {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.375rem;
-    font-size: 0.8125rem;
-    line-height: 1.4;
+     font-family: FONTSPRINGDEMO-RecoletaMedium;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.7;
+  letter-spacing: normal;
+  text-align: left
   }
 
   .list-icon {
@@ -641,17 +697,28 @@ useHead(() => ({
 }
 
 .fact-label {
-  font-size: 0.6875rem;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.5);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+ font-family: FONTSPRINGDEMO-RecoletaMedium;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: 0.3px;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.7);
+    text-transform: uppercase;
 }
 
 .fact-value {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--brand-dark);
+  font-family: FONTSPRINGDEMO-RecoletaMedium;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.35;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
 }
 
 .fact-highlight {
@@ -662,18 +729,30 @@ useHead(() => ({
   background: var(--brand-blue);
 
   h3 {
-    font-size: 1rem;
-    line-height: 1.3;
-    margin-bottom: 0.5rem;
+  font-family: FONTSPRINGDEMO-RecoletaMedium;
+  font-size: 24px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.42;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+
   }
 
   p {
-    font-size: 0.8125rem;
-    color: rgba(0, 0, 0, 0.6);
-    margin: 0 0 1rem;
-    line-height: 1.4;
-  }
+  font-family: FONTSPRINGDEMO-RecoletaMedium;
+  font-size: 24px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.42;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
 }
+  }
 
 .btn-share {
   background: var(--brand-pink);
@@ -805,5 +884,22 @@ useHead(() => ({
   .bottom-cta-content h2 {
     font-size: 1.5rem;
   }
+}
+.kuffar{
+    font-family: FONTSPRINGDEMO-RecoletaMedium;
+  font-size: 24px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+}
+#apply-button{
+img{
+  width:310px;
+  height:auto;
+}
 }
 </style>

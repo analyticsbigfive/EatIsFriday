@@ -2,21 +2,21 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import { LucideSearch, LucideMapPin, LucideChevronLeft, LucideChevronRight } from 'lucide-vue-next'
 import type { CareersContent } from '~/composables/usePageContent'
-import type { Job } from '~/composables/useJobs'
-import type { LocationsData, Venue } from '~/composables/useLocations'
+import type { JobWithVenue } from '~/composables/useJobs'
+import type { Venue } from '~/composables/useVenues'
 
 const route = useRoute()
 const { getCareersContent } = usePageContent()
-const { getJobs } = useJobs()
-const { getLocations } = useLocations()
+const { getJobsWithVenues, getJobVenueOptions } = useJobs()
+const { getVenues } = useVenues()
 
 const content = ref<CareersContent | null>(null)
-const allJobs = ref<Job[]>([])
-const locationsData = ref<LocationsData | null>(null)
+const allJobs = ref<JobWithVenue[]>([])
+const allVenues = ref<Venue[]>([])
 
 const searchQuery = ref('')
 const selectedJobType = ref('')
-const selectedVenue = ref('')
+const selectedVenueId = ref('')
 const showJobTypeDropdown = ref(false)
 const showVenueDropdown = ref(false)
 
@@ -24,20 +24,19 @@ const showVenueDropdown = ref(false)
 const currentPage = ref(1)
 const itemsPerPage = 6
 
-// Find the venue matching the selected location
+// Find the venue matching the selected venue ID
 const activeVenue = computed(() => {
-  if (!selectedVenue.value || !locationsData.value?.map_venues) return null
-  return locationsData.value.map_venues.find(venue =>
-    venue.location === selectedVenue.value ||
-    venue.name.toLowerCase().includes(selectedVenue.value.toLowerCase()) ||
-    selectedVenue.value.toLowerCase().includes(venue.name.toLowerCase())
-  ) || null
+  if (!selectedVenueId.value || !allVenues.value.length) return null
+  return allVenues.value.find(venue => venue.id === selectedVenueId.value) || null
 })
 
 onMounted(async () => {
   content.value = await getCareersContent()
-  locationsData.value = await getLocations()
-  const fetchedJobs = await getJobs()
+  const fetchedVenues = await getVenues()
+  if (fetchedVenues) {
+    allVenues.value = fetchedVenues
+  }
+  const fetchedJobs = await getJobsWithVenues()
   if (fetchedJobs) {
     allJobs.value = fetchedJobs
   }
@@ -47,7 +46,16 @@ onMounted(async () => {
 
   // Apply URL query parameters
   if (route.query.venue) {
-    selectedVenue.value = route.query.venue as string
+    // Try to find venue by name or ID from query
+    const queryVenue = route.query.venue as string
+    const matchedVenue = allVenues.value.find(v =>
+      v.id === queryVenue ||
+      v.location.toLowerCase().includes(queryVenue.toLowerCase()) ||
+      v.name.toLowerCase().includes(queryVenue.toLowerCase())
+    )
+    if (matchedVenue) {
+      selectedVenueId.value = matchedVenue.id
+    }
   }
   if (route.query.search) {
     searchQuery.value = route.query.search as string
@@ -64,23 +72,37 @@ const allSitesLabel = computed(() => {
 
 // Extraire toutes les venues uniques des jobs
 const venueOptions = computed(() => {
-  const locations = new Set<string>()
+  const venueIds = new Set<string>()
   allJobs.value.forEach(job => {
-    if (job.location) {
-      locations.add(job.location)
+    if (job.venue_id) {
+      venueIds.add(job.venue_id)
     }
   })
-  return [allSitesLabel.value, ...Array.from(locations)]
+  // Get venue objects for display
+  const venues = Array.from(venueIds)
+    .map(id => allVenues.value.find(v => v.id === id))
+    .filter((v): v is Venue => v !== undefined)
+  return venues
 })
 
 // Helper pour obtenir le titre du job
-const getJobTitle = (job: Job) => {
+const getJobTitle = (job: JobWithVenue) => {
   return typeof job.title === 'string' ? job.title : job.title?.rendered || ''
 }
 
 // Helper pour obtenir l'extrait du job
-const getJobExcerpt = (job: Job) => {
+const getJobExcerpt = (job: JobWithVenue) => {
   return typeof job.excerpt === 'string' ? job.excerpt : job.excerpt?.rendered || ''
+}
+
+// Helper pour obtenir le nom de la venue du job
+const getJobVenueName = (job: JobWithVenue) => {
+  return job.venue?.name || 'Various Locations'
+}
+
+// Helper pour obtenir la location de la venue du job
+const getJobVenueLocation = (job: JobWithVenue) => {
+  return job.venue?.location || ''
 }
 
 // Helper pour formater la date relative
@@ -102,11 +124,14 @@ const filteredJobs = computed(() => {
   return allJobs.value.filter(job => {
     const title = getJobTitle(job)
     const excerpt = getJobExcerpt(job)
+    const venueName = getJobVenueName(job)
+    const venueLocation = getJobVenueLocation(job)
 
     const matchesSearch = !searchQuery.value ||
       title.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
       excerpt.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
-      job.location.toLowerCase().includes(searchQuery.value.toLowerCase())
+      venueName.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+      venueLocation.toLowerCase().includes(searchQuery.value.toLowerCase())
 
     // Normaliser les types de job pour la comparaison
     const normalizedJobType = job.job_type.toLowerCase().replace('-', ' ')
@@ -115,10 +140,9 @@ const filteredJobs = computed(() => {
     const matchesType = selectedJobType.value === content.value!.search_section.job_types[0] ||
       normalizedJobType.includes(normalizedSelectedType)
 
-    // Filtre par venue/location depuis le dropdown
-    const matchesVenueFilter = selectedVenue.value === '' ||
-      selectedVenue.value === allSitesLabel.value ||
-      job.location.toLowerCase().includes(selectedVenue.value.toLowerCase())
+    // Filtre par venue_id depuis le dropdown
+    const matchesVenueFilter = selectedVenueId.value === '' ||
+      job.venue_id === selectedVenueId.value
 
     return matchesSearch && matchesType && matchesVenueFilter
   })
@@ -134,7 +158,7 @@ const paginatedJobs = computed(() => {
 })
 
 // Reset to page 1 when filters change
-watch([searchQuery, selectedJobType, selectedVenue], () => {
+watch([searchQuery, selectedJobType, selectedVenueId], () => {
   currentPage.value = 1
 })
 
@@ -227,7 +251,7 @@ const goToPage = (page: number) => {
             <button @click="showVenueDropdown = !showVenueDropdown; showJobTypeDropdown = false"
               class="border-start border-white border-opacity-25 px-4 py-2 d-flex align-items-center gap-3 text-white w-100 w-md-auto justify-content-between dropdown-btn">
               <LucideMapPin style="width: 1rem; height: 1rem;" class="opacity-75" />
-              <span>{{ selectedVenue || allSitesLabel }}</span>
+              <span>{{ activeVenue?.name || allSitesLabel }}</span>
               <img src="/images/chevronDown.svg" alt="chevron" class="chevron-icon" :class="{ 'rotated': showVenueDropdown }" />
             </button>
 
@@ -235,12 +259,17 @@ const goToPage = (page: number) => {
         <Transition enter-active-class="transition-fade-in" leave-active-class="transition-fade-out">
           <div v-if="showVenueDropdown"
             class="position-absolute top-100 end-0 mt-2 bg-white border-organic shadow-organic-lg dropdown-menu-custom dropdown-menu-venue">
-            <button v-for="venue in venueOptions" :key="venue"
-          @click="selectedVenue = venue === allSitesLabel ? '' : venue; showVenueDropdown = false" :class="[
-            'w-100 text-start px-3 py-2 border-0 fw-medium dropdown-item-custom',
-            (selectedVenue === venue || (venue === allSitesLabel && !selectedVenue)) ? 'active' : ''
-          ]">
-          {{ venue }}
+            <!-- All Sites option -->
+            <button
+              @click="selectedVenueId = ''; showVenueDropdown = false"
+              :class="['w-100 text-start px-3 py-2 border-0 fw-medium dropdown-item-custom', !selectedVenueId ? 'active' : '']">
+              {{ allSitesLabel }}
+            </button>
+            <!-- Venue options -->
+            <button v-for="venue in venueOptions" :key="venue.id"
+              @click="selectedVenueId = venue.id; showVenueDropdown = false"
+              :class="['w-100 text-start px-3 py-2 border-0 fw-medium dropdown-item-custom', selectedVenueId === venue.id ? 'active' : '']">
+              {{ venue.name }} - {{ venue.location }}
             </button>
           </div>
         </Transition>
@@ -298,14 +327,14 @@ const goToPage = (page: number) => {
                   <div class="d-flex flex-wrap gap-2 mb-3">
                     <span class="tag-blue">{{ job.department }}</span>
                    <!-- <span class="tag-outline d-flex align-items-center gap-1">
-                      <LucideMapPin style="width: 0.75rem; height: 0.75rem;" /> {{ job.location }}
+                      <LucideMapPin style="width: 0.75rem; height: 0.75rem;" /> {{ getJobVenueLocation(job) }}
                     </span>-->
                     <span class="tag-lime d-flex align-items-center gap-1">
                       <nuxt-img src="/images/streamline-emojis_briefcase.png" alt="briefcase icon" width="16" height="16" />
                       {{ job.job_type }}
                     </span>
                     <span class="tag-yellow d-flex align-items-center gap-1">
-                      <nuxt-img src="/images/streamline-emojis_moneybag.png" alt="money bag icon" width="16" height="16" />
+                      <nuxt-img src="/images/streamline-emojis_moneybag.svg" alt="money bag icon" width="16" height="16" />
                       {{ job.salary }}
                     </span>
                   </div>
@@ -318,11 +347,11 @@ const goToPage = (page: number) => {
 
                 <!-- Buttons -->
                 <div class="d-flex gap-3 mt-auto">
-                  <NuxtLink :to="`/jobs/${job.slug}`" class="btn-primary flex-grow-1 text-center small">
-                    {{ content.job_listing.apply_button }}
+                  <NuxtLink class="matiti":to="`/jobs/${job.slug}`">
+                    <nuxt-img src="/images/btnApplu.svg"></nuxt-img>
                   </NuxtLink>
-                  <NuxtLink :to="`/jobs/${job.slug}`" class="btn-secondary flex-grow-1 text-center small">
-                    {{ content.job_listing.view_details_button }}
+                  <NuxtLink class="matiti" :to="`/jobs/${job.slug}`">
+                    <nuxt-img src="/images/btnVieu.svg"></nuxt-img>
                   </NuxtLink>
                 </div>
               </div>
@@ -335,7 +364,7 @@ const goToPage = (page: number) => {
           <p class="fs-5 text-muted mb-2">{{ content.no_results.title }}</p>
           <p class="text-secondary mb-3">{{ content.no_results.description }}</p>
           <button
-            @click="searchQuery = ''; selectedJobType = content.search_section.job_types[0] || ''; selectedVenue = ''"
+            @click="searchQuery = ''; selectedJobType = content.search_section.job_types[0] || ''; selectedVenueId = ''"
             class="text-brand-pink fw-bold btn btn-link text-decoration-none">
             {{ content.no_results.clear_filters_button }}
           </button>
@@ -364,7 +393,7 @@ const goToPage = (page: number) => {
       </section>
 
       <!-- CTA Section -->
-      <section class="py-5 text-center">
+      <section id="mahamad" class="py-5 text-center">
         <div class="container">
           <h2 class="font-heading display-5 fw-bold text-white mb-4">
             {{ content.cta_section.title }}
@@ -373,12 +402,15 @@ const goToPage = (page: number) => {
             {{ content.cta_section.description }}
           </p>
           <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-            <button class="btn-lime fs-5 px-5 py-3">
+            <!-- <button class="btn-lime fs-5 px-5 py-3">
               {{ content.cta_section.explore_venues_button }}
             </button>
             <button class="btn-secondary fs-5 px-5 py-3">
               {{ content.cta_section.general_application_button }}
-            </button>
+            </button> -->
+            <nuxt-link to="/careers">
+              <nuxt-img src="/images/btnDiscoverAndApply.svg"></nuxt-img>
+            </nuxt-link>
           </div>
         </div>
       </section>
@@ -1078,6 +1110,17 @@ const goToPage = (page: number) => {
   }
 
   #jobcardheader{
+    p{
+        font-family: FONTSPRINGDEMO-RecoletaMedium;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.52 !important;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000 !important;
+    }
     .job-date{
       font-family: FONTSPRINGDEMO-RecoletaMedium;
   font-size: 16px;
@@ -1103,4 +1146,46 @@ const goToPage = (page: number) => {
   color: rgba(0, 0, 0, 0.7);
     }
   }
+  .matiti{
+    width:100vw;
+    height:100vh;
+      max-width: 298px;
+      max-height: 64px;
+    img{
+      width:100%;
+      
+    }
+  }
+#mahamad{
+    background: url(/images/ctaBgCareers.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 6em 0 !important;
+    margin: 4em auto 0 auto;
+    text-align: center;
+    max-width: 1400px;
+    width:100%;
+    h2{
+        font-family: FONTSPRINGDEMO-RecoletaBold;
+  font-size: 50px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #fff;
+    }
+    p{
+        font-family: FONTSPRINGDEMO-RecoletaMedium;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.84;
+  letter-spacing: normal;
+  text-align: center;
+  color: #fff !important;
+    }
+}
 </style>

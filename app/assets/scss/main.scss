@@ -213,23 +213,25 @@ body {
 }
 
 .tag-blue {
+     font-family: FONTSPRINGDEMO-RecoletaMedium;
+  font-size: 17px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000;
+}
+
+.tag-yellow {  
     flex-grow: 0;
   padding: 9px 16px;
   border-radius: 30px;
-  border: solid 1px #add7fe;
-  background-color: #add7fe;
-}
-
-.tag-yellow {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  border: 2px solid $brand-dark;
-  background-color: $brand-yellow;
-  color: $brand-dark;
-  border-radius: 50px 10px 45px 10px / 10px 45px 10px 50px;
+  border: solid 1px #ffe600;
+  background-color: #ffe600;
+    font-family: FONTSPRINGDEMO-RecoletaMedium;
+  font-size: 15px;
 }
 
 .tag-lime {
@@ -1237,6 +1239,15 @@ body {
       text-align: left;
       color: #1a1a1a;
       border-bottom: solid 2.7px #ffe600;
+    }
+  }
+}
+#leforme{
+  a{
+    width:316px !important;
+    height:74px !important;
+    img{
+        width:100% !important;
     }
   }
 }

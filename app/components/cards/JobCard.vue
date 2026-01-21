@@ -12,7 +12,7 @@
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
             <circle cx="12" cy="10" r="3"></circle>
           </svg>
-          {{ job.location }}
+          {{ getVenueLocation() }}
         </span>
         <span class="meta-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -32,10 +32,10 @@
 </template>
 
 <script setup lang="ts">
-import type { Job } from '~/composables/useJobs'
+import type { JobWithVenue } from '~/composables/useJobs'
 
 const props = defineProps<{
-  job: Job
+  job: JobWithVenue
 }>()
 
 const getJobTitle = () => {
@@ -44,6 +44,10 @@ const getJobTitle = () => {
 
 const getJobExcerpt = () => {
   return typeof props.job.excerpt === 'string' ? props.job.excerpt : props.job.excerpt?.rendered || ''
+}
+
+const getVenueLocation = () => {
+  return props.job.venue?.location || ''
 }
 
 const getBadgeClass = () => {

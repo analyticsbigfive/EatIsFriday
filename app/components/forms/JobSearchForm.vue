@@ -1,20 +1,31 @@
 <script setup lang="ts">
 import { LucideBriefcase, LucideMapPin, LucideArrowRight } from 'lucide-vue-next'
-import type { Job } from '~/composables/useJobs'
+import type { JobWithVenue } from '~/composables/useJobs'
+import type { Venue } from '~/composables/useVenues'
 
 const selectedJobTitle = ref('')
 const selectedSite = ref('')
 const showJobTitleDropdown = ref(false)
 const showSiteDropdown = ref(false)
 
-// Use useLazyFetch for client-side data loading
-const { data: jobs, pending, error } = useLazyFetch<Job[]>('/api/jobs.json', {
-  default: () => [],
-  server: false
+const { getJobsWithVenues } = useJobs()
+const { getVenues } = useVenues()
+
+const jobs = ref<JobWithVenue[]>([])
+const venues = ref<Venue[]>([])
+const pending = ref(true)
+
+onMounted(async () => {
+  const [fetchedJobs, fetchedVenues] = await Promise.all([
+    getJobsWithVenues(),
+    getVenues()
+  ])
+  jobs.value = fetchedJobs || []
+  venues.value = fetchedVenues || []
+  pending.value = false
 })
 
-
-const getJobTitle = (job: Job) => {
+const getJobTitle = (job: JobWithVenue) => {
   return typeof job.title === 'string' ? job.title : job.title?.rendered || ''
 }
 
@@ -29,13 +40,17 @@ const uniqueJobTitles = computed(() => {
   return [...new Set(titles)].filter(Boolean)
 })
 
+// Get unique venues from jobs that have venues
 const uniqueSites = computed(() => {
   if (!jobs.value) return []
-  const sites = jobs.value.map(job => job.location).filter(Boolean)
-  return [...new Set(sites)]
+  const venueLocations = jobs.value
+    .filter(job => job.venue)
+    .map(job => job.venue!.location)
+    .filter(Boolean)
+  return [...new Set(venueLocations)]
 })
 
-const navigateToJob = (job: Job) => {
+const navigateToJob = (job: JobWithVenue) => {
   showJobTitleDropdown.value = false
   // Navigate to careers page with search filter for the job title
   const title = getJobTitle(job)

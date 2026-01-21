@@ -1,64 +1,37 @@
-export interface Shop {
-  id: string
-  name: string
-  image: string
-}
+// This composable is now a wrapper around useVenues for backwards compatibility
+// New code should use useVenues() directly
 
-export interface MenuItem {
-  id: string
-  name: string
-  price: string
-  description: string
-  thumbnail: string
-}
+import type { Venue, VenuesData, EventType, Stat, Shop, MenuItem } from './useVenues'
 
-export interface Venue {
-  id: string
-  name: string
-  location: string
-  type?: string
-  lat: number
-  lng: number
-  image?: string
-  image2?: string
-  logo?: string
-  capacity?: string
-  staff_members?: number
-  recent_event?: string
-  guests_served?: string
-  shops_count?: number
-  menus_count?: number
-  description?: string
-  services?: string[]
-  shops?: Shop[]
-  menu_items?: MenuItem[]
-}
+// Re-export types for backwards compatibility
+export type { Shop, MenuItem, Venue, EventType, Stat }
 
-export interface EventType {
-  id: string
-  name: string
-  image: string
-}
-
-export interface Stat {
-  value: string
-  label: string
-}
-
+// Legacy interface that maps to the new VenuesData structure
 export interface LocationsData {
-  title: string
-  description: string
-  filter_label: string
-  event_types: EventType[]
-  stats: Stat[]
-  map_venues: Venue[]
+    title: string
+    description: string
+    filter_label: string
+    event_types: EventType[]
+    stats: Stat[]
+    map_venues: Venue[]
 }
 
 export const useLocations = () => {
-    const { fetchData } = useApi()
+    const { getVenuesData } = useVenues()
 
+    // Transform VenuesData to LocationsData for backwards compatibility
     const getLocations = async (): Promise<LocationsData | null> => {
-        return await fetchData<LocationsData>('locations.json')
+        const venuesData = await getVenuesData()
+        if (!venuesData) return null
+
+        return {
+            title: venuesData.metadata.title,
+            description: venuesData.metadata.description,
+            filter_label: venuesData.metadata.filter_label,
+            event_types: venuesData.event_types,
+            stats: venuesData.stats,
+            map_venues: venuesData.venues
+        }
     }
 
     return {

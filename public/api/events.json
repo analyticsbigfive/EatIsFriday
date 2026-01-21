@@ -1,52 +1,56 @@
 [
-    {
+  {
     "id": 1,
     "slug": "adidas-arena-street-food-concession",
     "title": "The Adidas\nArena",
     "image": "/images/vap.jpg",
-    "description": "We are proud to announce our partnership as the street food concessionaire for the Didas Arena for four consecutive years. As specialists in catering for the general public , we are passionate and dedicated to delighting visitors to this iconic sporting and cultural venue with our delicious selection of street food.\n\nAt Eat is Family, we pride ourselves on using fresh, local, and homemade ingredients. We believe in showcasing our local produce in every dish, to offer you an authentic and flavorful experience.",
-    "event_type": "Venue Partnership"
+    "description": "We are proud to announce our partnership as the street food concessionaire for the Didas Arena for four consecutive years. As specialists in catering for the general public , we are passionate and dedicated to delighting visitors to this iconic sporting and cultural venue with our delicious selection of street food.\n\nAt Eat is Family, we pride ourselves on using fresh, local, and homemade ingredients. We believe in showcasing our local produce in every dish, to offer you an authentic and flavorful experience.",
+    "event_type": "Venue Partnership",
+    "venue_id": "accor-arena"
   },
   {
     "id": 2,
     "slug": "garorock-festival",
     "title": "Garorock\nLolapalooza",
     "image": "/images/vap.jpg",
-    "description": "The Beast, our iconic brand, has delighted more than 50,000 festival-goers at prestigious events such as Garorock and Lolapalooza.\n\nA memorable collaboration with Adrien Cachot at the Garorock Festival gave birth to a revisited Smash Burger , accompanied by a smoked mussel mayonnaise, offering an epic taste experience.",
-    "event_type": "Festival"
+    "description": "The Beast, our iconic brand, has delighted more than 50,000 festival-goers at prestigious events such as Garorock and Lolapalooza.\n\nA memorable collaboration with Adrien Cachot at the Garorock Festival gave birth to a revisited Smash Burger , accompanied by a smoked mussel mayonnaise, offering an epic taste experience.",
+    "event_type": "Festival",
+    "venue_id": null
   },
-  
   {
     "id": 3,
     "slug": "24-hours-of-le-mans",
     "title": "24 Hours of Le\nMans",
     "image": "/images/voup.jpg",
-    "description": "For the past three years, we have been proud to support each event, whether it’s the Le Mans car, motorcycle, or truck races, or the Explorer GP. \n\nOur iconic brand, Saucette, has delighted thrill-seekers at every edition. See 24 Hours of Le Mans public catering.",
-    "event_type": "Sports Event"
+    "description": "For the past three years, we have been proud to support each event, whether it's the Le Mans car, motorcycle, or truck races, or the Explorer GP. \n\nOur iconic brand, Saucette, has delighted thrill-seekers at every edition. See 24 Hours of Le Mans public catering.",
+    "event_type": "Sports Event",
+    "venue_id": null
   },
   {
     "id": 4,
     "slug": "paris-basket-event",
     "title": "Paris Basket Event",
     "image": "/images/voup.jpg",
-    "description": "Eat is Family is proud to be the annual partner of Paris Basketball. As a trusted food provider, we have supported the team for several years at all their games, showcasing our specialties such as burgers, sausages, and hot dogs . \n\nThis ongoing commitment strengthens our special connection with the world of sport, while offering exceptional culinary experiences during these sporting events .",
-    "event_type": "Festival"
+    "description": "Eat is Family is proud to be the annual partner of Paris Basketball. As a trusted food provider, we have supported the team for several years at all their games, showcasing our specialties such as burgers, sausages, and hot dogs . \n\nThis ongoing commitment strengthens our special connection with the world of sport, while offering exceptional culinary experiences during these sporting events .",
+    "event_type": "Sports Event",
+    "venue_id": "accor-arena"
   },
-
   {
     "id": 5,
     "slug": "hellfest-open-air",
     "title": "The Hellfest\nFestival",
     "image": "/images/vap.jpg",
-    "description": "For two consecutive years, our brand, The Beast, has been a key player in the Hellfest festival. \n– More than 2000 burgers sold per day\n– In 2023, we were voted “best smash burger”",
-    "event_type": "Festival"
+    "description": "For two consecutive years, our brand, The Beast, has been a key player in the Hellfest festival. \n– More than 2000 burgers sold per day\n– In 2023, we were voted "best smash burger"",
+    "event_type": "Festival",
+    "venue_id": "hellfest"
   },
   {
     "id": 6,
     "slug": "balmain-festival",
     "title": "The Balmain Festival",
     "image": "/images/voup.jpg",
-    "description": "We  support venue operators through operational consulting—helping optimize kitchen workflows, staffing structures, logistics, and service delivery.  \n \nOur approach is grounded in real field expertise: the way teams communicate, how meals are prepared at scale, and how service truly runs when the pressure is high.",
-    "event_type": "Sports Event"
+    "description": "We  support venue operators through operational consulting—helping optimize kitchen workflows, staffing structures, logistics, and service delivery.  \n \nOur approach is grounded in real field expertise: the way teams communicate, how meals are prepared at scale, and how service truly runs when the pressure is high.",
+    "event_type": "Fashion Event",
+    "venue_id": "paris-generic"
   }
 ]

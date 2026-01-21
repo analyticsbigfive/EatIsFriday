@@ -516,4 +516,5 @@ nuxt-link:has(img) {
     color: #000;
   }
 }
+
 </style>

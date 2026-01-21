@@ -1,0 +1,497 @@
+{
+  "metadata": {
+    "title": "Explore Where We Operate",
+    "description": "Tap any marker on the map to discover the story behind that event. Each marker clicked unlocks a snapshot of the venue, the experience we delivered, and the flavours we brought to life.",
+    "filter_label": "Click to filter by an event type"
+  },
+  "event_types": [
+    {
+      "id": "stadium",
+      "name": "Stadium",
+      "image": "/images/stadium.png"
+    },
+    {
+      "id": "festival",
+      "name": "Festival",
+      "image": "/images/festival.png"
+    },
+    {
+      "id": "arena",
+      "name": "Arena",
+      "image": "/images/arena.png"
+    }
+  ],
+  "stats": [
+    {
+      "value": "250+",
+      "label": "Food & Beverage Events in 2024"
+    },
+    {
+      "value": "300,000",
+      "label": "People fed in 2024"
+    },
+    {
+      "value": "100%",
+      "label": "Homemade"
+    },
+    {
+      "value": "250+",
+      "label": "B2B clients & dealerships"
+    }
+  ],
+  "venues": [
+    {
+      "id": "stade-jean-bouin",
+      "name": "Stade Jean Bouin",
+      "location": "Paris, France",
+      "city": "Paris",
+      "country": "France",
+      "type": "stadium",
+      "lat": 48.8427,
+      "lng": 2.2536,
+      "image": "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=600&auto=format&fit=crop",
+      "image2": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=600&auto=format&fit=crop",
+      "logo": "/images/LOGO.svg",
+      "capacity": "20,000",
+      "staff_members": 120,
+      "recent_event": "Football - Paris FC vs Toulouse FC (Ligue 2)",
+      "guests_served": "15,000",
+      "shops_count": 3,
+      "menus_count": 5,
+      "description": "The Stade Jean Bouin is a multipurpose stadium in the 16th arrondissement of Paris, France. The 20,000 capacity facility serves as the home stadium for rugby union team Stade Français and the football club Paris FC.",
+      "services": [
+        "Premium catering for VIP boxes",
+        "Stadium-wide concession stands",
+        "Mobile food carts",
+        "Event day staffing",
+        "Custom menu creation"
+      ],
+      "shops": [
+        {
+          "id": "s1",
+          "name": "Le Gourmet Corner",
+          "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=200&h=200&fit=crop"
+        },
+        {
+          "id": "s2",
+          "name": "Quick Bites Express",
+          "image": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=200&h=200&fit=crop"
+        },
+        {
+          "id": "s3",
+          "name": "Drinks & More",
+          "image": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=200&h=200&fit=crop"
+        }
+      ],
+      "menu_items": [
+        {
+          "id": "m1",
+          "name": "Classic Stadium Burger",
+          "price": "12.50",
+          "description": "Juicy beef patty with cheddar, lettuce, and special sauce",
+          "thumbnail": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&h=300&fit=crop"
+        },
+        {
+          "id": "m2",
+          "name": "Crispy Chicken Wings",
+          "price": "9.00",
+          "description": "Golden fried wings with your choice of dipping sauce",
+          "thumbnail": "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=300&h=300&fit=crop"
+        },
+        {
+          "id": "m3",
+          "name": "Loaded Nachos",
+          "price": "8.50",
+          "description": "Tortilla chips topped with cheese, jalapeños, and guacamole",
+          "thumbnail": "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=300&h=300&fit=crop"
+        },
+        {
+          "id": "m4",
+          "name": "Hot Dog Deluxe",
+          "price": "7.00",
+          "description": "All-beef hot dog with caramelized onions and mustard",
+          "thumbnail": "https://images.unsplash.com/photo-1612392062126-67662f65ee39?w=300&h=300&fit=crop"
+        },
+        {
+          "id": "m5",
+          "name": "Fresh Caesar Salad",
+          "price": "10.00",
+          "description": "Crisp romaine with parmesan and house-made dressing",
+          "thumbnail": "https://images.unsplash.com/photo-1546793665-c74683f339c1?w=300&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      "id": "groupama-stadium",
+      "name": "Groupama Stadium",
+      "location": "Lyon, France",
+      "city": "Lyon",
+      "country": "France",
+      "type": "stadium",
+      "lat": 45.764,
+      "lng": 4.8357,
+      "image": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=600&auto=format&fit=crop",
+      "image2": "https://images.unsplash.com/photo-1577223625816-7546f13df25d?q=80&w=600&auto=format&fit=crop",
+      "logo": "/images/LOGO.svg",
+      "capacity": "59,186",
+      "staff_members": 250,
+      "recent_event": "Football - Olympique Lyonnais vs PSG (Ligue 1)",
+      "guests_served": "45,000",
+      "shops_count": 8,
+      "menus_count": 12,
+      "description": "The Groupama Stadium is a stadium in Décines-Charpieu, a suburb of Lyon, France. It is the home ground of Ligue 1 club Olympique Lyonnais. With a seating capacity of 59,186, it is the third-largest football stadium in France.",
+      "services": [
+        "Full-service hospitality lounges",
+        "Premium box catering",
+        "Main concourse food stands",
+        "VIP butler service",
+        "Custom corporate events",
+        "Post-match celebrations catering",
+        "Dietary-specific menu options",
+        "Beverage management"
+      ],
+      "shops": [
+        {
+          "id": "s1",
+          "name": "Lyon Gourmet",
+          "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=200&h=200&fit=crop"
+        },
+        {
+          "id": "s2",
+          "name": "Pizza Express",
+          "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200&h=200&fit=crop"
+        },
+        {
+          "id": "s3",
+          "name": "Burger Station",
+          "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=200&h=200&fit=crop"
+        },
+        {
+          "id": "s4",
+          "name": "Fresh Drinks Bar",
+          "image": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=200&h=200&fit=crop"
+        }
+      ],
+      "menu_items": [
+        {
+          "id": "m1",
+          "name": "Lyonnaise Sausage",
+          "price": "11.00",
+          "description": "Traditional Lyon sausage with Dijon mustard",
+          "thumbnail": "https://images.unsplash.com/photo-1601628828688-632f38a5a7d0?w=300&h=300&fit=crop"
+        },
+        {
+          "id": "m2",
+          "name": "Quenelle Lyonnaise",
+          "price": "14.00",
+          "description": "Classic Lyon dumpling with creamy sauce",
+          "thumbnail": "https://images.unsplash.com/photo-1544025162-d76694265947?w=300&h=300&fit=crop"
+        },
+        {
+          "id": "m3",
+          "name": "Artisan Pizza Margherita",
+          "price": "12.00",
+          "description": "Wood-fired pizza with fresh mozzarella and basil",
+          "thumbnail": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=300&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      "id": "stade-velodrome",
+      "name": "Stade Vélodrome",
+      "location": "Marseille, France",
+      "city": "Marseille",
+      "country": "France",
+      "type": "stadium",
+      "lat": 43.2965,
+      "lng": 5.3698,
+      "image": "https://images.unsplash.com/photo-1577223625816-7546f13df25d?q=80&w=600&auto=format&fit=crop",
+      "image2": "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=600&auto=format&fit=crop",
+      "logo": "/images/LOGO.svg",
+      "capacity": "67,394",
+      "staff_members": 280,
+      "recent_event": "Football - OM vs Lyon (Ligue 1)",
+      "guests_served": "55,000",
+      "shops_count": 10,
+      "menus_count": 15,
+      "description": "The Stade Vélodrome is a multi-use stadium in Marseille, France. It is home to the Olympique de Marseille football club of Ligue 1. The stadium is the largest club ground in France and the second largest in the country.",
+      "services": [
+        "Mediterranean cuisine specialists",
+        "Large-scale event catering",
+        "Premium hospitality suites",
+        "Fan zone food services",
+        "Mobile vendor operations",
+        "Halal food options",
+        "Fresh seafood counters",
+        "VIP dining experiences",
+        "Corporate event hosting",
+        "Match day staffing solutions"
+      ],
+      "shops": [
+        {
+          "id": "s1",
+          "name": "Marseille Flavors",
+          "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=200&h=200&fit=crop"
+        },
+        {
+          "id": "s2",
+          "name": "Pizza Napoletana",
+          "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200&h=200&fit=crop"
+        },
+        {
+          "id": "s3",
+          "name": "Seafood Stand",
+          "image": "https://images.unsplash.com/photo-1579631542720-3a87824fff86?w=200&h=200&fit=crop"
+        }
+      ],
+      "menu_items": [
+        {
+          "id": "m1",
+          "name": "Bouillabaisse Bowl",
+          "price": "16.00",
+          "description": "Traditional Marseille fish stew with rouille",
+          "thumbnail": "https://images.unsplash.com/photo-1534939561126-855b8675edd7?w=300&h=300&fit=crop"
+        },
+        {
+          "id": "m2",
+          "name": "Panisse Fries",
+          "price": "6.50",
+          "description": "Crispy chickpea flour fries, Marseille specialty",
+          "thumbnail": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=300&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      "id": "hellfest",
+      "name": "Hellfest",
+      "location": "Clisson, France",
+      "city": "Clisson",
+      "country": "France",
+      "type": "festival",
+      "lat": 47.0833,
+      "lng": -1.2833,
+      "image": "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=600&auto=format&fit=crop",
+      "image2": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+      "logo": "/images/LOGO.svg",
+      "capacity": "60,000",
+      "staff_members": 350,
+      "recent_event": "Hellfest Open Air 2024 - Metal Festival",
+      "guests_served": "180,000",
+      "shops_count": 25,
+      "menus_count": 20,
+      "description": "Hellfest is a French rock and metal festival that takes place annually in Clisson. It is one of the largest music festivals in France and one of the biggest heavy metal festivals in Europe, attracting over 60,000 visitors daily.",
+      "services": [
+        "Festival-scale food operations",
+        "24-hour service availability",
+        "Multiple cuisine stations",
+        "Vegan and vegetarian options",
+        "High-volume beer service",
+        "Food truck coordination",
+        "Backstage artist catering",
+        "Camping zone food delivery",
+        "Emergency food supplies",
+        "Sustainable packaging solutions",
+        "Multi-day event logistics",
+        "VIP area exclusive dining"
+      ],
+      "shops": [
+        {
+          "id": "s1",
+          "name": "Hell's Kitchen",
+          "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=200&h=200&fit=crop"
+        },
+        {
+          "id": "s2",
+          "name": "Metal Burger",
+          "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=200&h=200&fit=crop"
+        },
+        {
+          "id": "s3",
+          "name": "Vegan Fury",
+          "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=200&h=200&fit=crop"
+        }
+      ],
+      "menu_items": [
+        {
+          "id": "m1",
+          "name": "Hell Burger",
+          "price": "14.00",
+          "description": "Spicy double patty with ghost pepper sauce",
+          "thumbnail": "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=300&h=300&fit=crop"
+        },
+        {
+          "id": "m2",
+          "name": "Vegan Metal Bowl",
+          "price": "12.00",
+          "description": "Plant-based protein with quinoa and veggies",
+          "thumbnail": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=300&h=300&fit=crop"
+        },
+        {
+          "id": "m3",
+          "name": "BBQ Ribs Platter",
+          "price": "18.00",
+          "description": "Slow-cooked ribs with smoky BBQ glaze",
+          "thumbnail": "https://images.unsplash.com/photo-1544025162-d76694265947?w=300&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      "id": "accor-arena",
+      "name": "Accor Arena",
+      "location": "Paris, France",
+      "city": "Paris",
+      "country": "France",
+      "type": "arena",
+      "lat": 48.8383,
+      "lng": 2.3783,
+      "image": "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop",
+      "image2": "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=600&auto=format&fit=crop",
+      "logo": "/images/LOGO.svg",
+      "capacity": "20,300",
+      "staff_members": 180,
+      "recent_event": "Concert - Beyoncé Renaissance World Tour",
+      "guests_served": "18,500",
+      "shops_count": 6,
+      "menus_count": 8,
+      "description": "The Accor Arena, formerly known as Bercy Arena, is an indoor arena located in the 12th arrondissement of Paris. It hosts concerts, sports events, and shows, with a capacity of up to 20,300 spectators.",
+      "services": [
+        "Concert event catering",
+        "VIP lounge services",
+        "Quick-service food stands",
+        "Premium wine and spirits bar",
+        "Corporate hospitality packages",
+        "Artist greenroom catering"
+      ],
+      "shops": [
+        {
+          "id": "s1",
+          "name": "Arena Gourmet",
+          "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=200&h=200&fit=crop"
+        },
+        {
+          "id": "s2",
+          "name": "Fast Bites",
+          "image": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=200&h=200&fit=crop"
+        },
+        {
+          "id": "s3",
+          "name": "Parisian Café",
+          "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=200&h=200&fit=crop"
+        }
+      ],
+      "menu_items": [
+        {
+          "id": "m1",
+          "name": "Premium Charcuterie Board",
+          "price": "22.00",
+          "description": "Selection of French cured meats and cheeses",
+          "thumbnail": "https://images.unsplash.com/photo-1541529086526-db283c563270?w=300&h=300&fit=crop"
+        },
+        {
+          "id": "m2",
+          "name": "Champagne Flute",
+          "price": "15.00",
+          "description": "French champagne for special occasions",
+          "thumbnail": "https://images.unsplash.com/photo-1594372365401-3b5ff14eaaed?w=300&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      "id": "wembley-stadium",
+      "name": "Wembley Stadium",
+      "location": "London, UK",
+      "city": "London",
+      "country": "UK",
+      "type": "stadium",
+      "lat": 51.556,
+      "lng": -0.2795,
+      "image": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=600&auto=format&fit=crop",
+      "image2": "https://images.unsplash.com/photo-1577223625816-7546f13df25d?q=80&w=600&auto=format&fit=crop",
+      "logo": "/images/LOGO.svg",
+      "capacity": "90,000",
+      "staff_members": 500,
+      "recent_event": "Football - England vs France (UEFA Nations League)",
+      "guests_served": "85,000",
+      "shops_count": 15,
+      "menus_count": 25,
+      "description": "Wembley Stadium is a football stadium in Wembley, London. It is the national stadium of England and serves as the home of the England national football team. With 90,000 seats, it is the largest stadium in the UK.",
+      "services": [
+        "Premium hospitality suites",
+        "Club Wembley member catering",
+        "Corporate box services",
+        "General concession operations",
+        "Mobile food vendors",
+        "VIP dining rooms",
+        "Pre-match event catering",
+        "Post-match celebrations",
+        "International cuisine specialists",
+        "Halal and Kosher options",
+        "Allergen-free menu alternatives",
+        "Family-friendly meal deals",
+        "Executive chef services",
+        "Sustainable sourcing programs",
+        "Large-scale logistics management"
+      ],
+      "shops": [
+        {
+          "id": "s1",
+          "name": "Wembley Grill",
+          "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=200&h=200&fit=crop"
+        },
+        {
+          "id": "s2",
+          "name": "Fish & Chips",
+          "image": "https://images.unsplash.com/photo-1579631542720-3a87824fff86?w=200&h=200&fit=crop"
+        },
+        {
+          "id": "s3",
+          "name": "British Pies",
+          "image": "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=200&h=200&fit=crop"
+        }
+      ],
+      "menu_items": [
+        {
+          "id": "m1",
+          "name": "Fish & Chips",
+          "price": "14.00",
+          "description": "Classic battered cod with chunky chips",
+          "thumbnail": "https://images.unsplash.com/photo-1579208030886-b1a5764bac5e?w=300&h=300&fit=crop"
+        },
+        {
+          "id": "m2",
+          "name": "Beef & Ale Pie",
+          "price": "12.00",
+          "description": "Traditional British pie with mash",
+          "thumbnail": "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=300&h=300&fit=crop"
+        },
+        {
+          "id": "m3",
+          "name": "Wembley Burger",
+          "price": "13.50",
+          "description": "Double patty with British cheddar",
+          "thumbnail": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&h=300&fit=crop"
+        }
+      ]
+    },
+    {
+      "id": "paris-generic",
+      "name": "Paris Events",
+      "location": "Paris, France",
+      "city": "Paris",
+      "country": "France",
+      "type": "arena",
+      "lat": 48.8566,
+      "lng": 2.3522,
+      "image": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=600&auto=format&fit=crop",
+      "image2": "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=600&auto=format&fit=crop",
+      "logo": "/images/LOGO.svg",
+      "capacity": "Various",
+      "staff_members": 200,
+      "recent_event": "Various Paris Events",
+      "guests_served": "50,000",
+      "shops_count": 10,
+      "menus_count": 15,
+      "description": "Our Paris-based operations cover various events and venues across the capital city, from corporate gatherings to private celebrations."
+    }
+  ]
+}

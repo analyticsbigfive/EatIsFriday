@@ -9,7 +9,7 @@
     "content": {
       "rendered": "<p>We are looking for an experienced Head Chef to lead VIP culinary operations during high-profile sporting events and concerts. You will oversee menu execution, kitchen coordination, and service standards for premium guests.</p><p>You will manage a team of chefs, ensure HACCP compliance, collaborate with hospitality teams, and deliver consistent fine-dining quality under event-time pressure.</p>"
     },
-    "location": "Stade Jean Bouin, Paris",
+    "venue_id": "stade-jean-bouin",
     "department": "Culinary",
     "job_type": "Full-time",
     "salary": "$150 - $200 / hour",
@@ -41,7 +41,7 @@
     "content": {
       "rendered": "<p>As Sous Chef, you will support VIP production and service execution, ensuring quality, timing, and consistency across premium guest areas.</p><p>You will supervise stations, coordinate prep, assist with ordering and inventory, and maintain hygiene standards throughout event operations.</p>"
     },
-    "location": "Paris, France",
+    "venue_id": "paris-generic",
     "department": "Culinary",
     "job_type": "Full-time",
     "salary": "$90 - $130 / hour",
@@ -73,7 +73,7 @@
     "content": {
       "rendered": "<p>We are seeking a Pastry Chef to design and execute elegant desserts for VIP hospitality lounges and suites. You will manage pastry production, plating standards, and seasonal creations aligned with event menus.</p><p>You will work closely with the culinary leadership team to ensure premium presentation and consistent output at high volume.</p>"
     },
-    "location": "Paris, France",
+    "venue_id": "paris-generic",
     "department": "Culinary",
     "job_type": "Full-time",
     "salary": "$70 - $110 / hour",
@@ -103,9 +103,9 @@
       "rendered": "Manage guest experience and service teams across VIP lounges, suites, and premium zones."
     },
     "content": {
-      "rendered": "<p>As VIP Hospitality Service Manager, you will oversee front-of-house operations for premium guests during events. You’ll coordinate service teams, ensure timing and quality, and resolve guest needs proactively.</p><p>You will partner with culinary leadership, logistics, and venue ops to deliver seamless high-end hospitality.</p>"
+      "rendered": "<p>As VIP Hospitality Service Manager, you will oversee front-of-house operations for premium guests during events. You'll coordinate service teams, ensure timing and quality, and resolve guest needs proactively.</p><p>You will partner with culinary leadership, logistics, and venue ops to deliver seamless high-end hospitality.</p>"
     },
-    "location": "Stade Jean Bouin, Paris",
+    "venue_id": "stade-jean-bouin",
     "department": "Service",
     "job_type": "Full-time",
     "salary": "€45,000 - €60,000",
@@ -137,7 +137,7 @@
     "content": {
       "rendered": "<p>We are hiring an Event Catering Coordinator to support planning and on-the-day execution of catering operations. You will manage schedules, deliveries, stock flow, and coordination between kitchen and service teams.</p><p>This role is critical to ensure the right resources are in the right place at the right time during high-attendance events.</p>"
     },
-    "location": "Paris, France",
+    "venue_id": "paris-generic",
     "department": "Operations",
     "job_type": "Full-time",
     "salary": "€35,000 - €45,000",
@@ -169,7 +169,7 @@
     "content": {
       "rendered": "<p>We are looking for skilled Line Cooks to join our VIP hospitality kitchen team. You will run a station, execute recipes to standard, and support service during peak event periods.</p><p>Ideal candidates are fast, precise, and comfortable in high-volume environments with elevated presentation standards.</p>"
     },
-    "location": "Paris, France",
+    "venue_id": "paris-generic",
     "department": "Culinary",
     "job_type": "Part-time",
     "salary": "€18 - €28 / hour",
@@ -201,7 +201,7 @@
     "content": {
       "rendered": "<p>We are seeking an experienced Bartender to provide high-end beverage service in VIP lounges and suites. You will prepare cocktails, manage bar stock, and ensure an exceptional guest experience.</p><p>You will work closely with service managers to maintain speed, presentation, and a polished, welcoming atmosphere.</p>"
     },
-    "location": "Paris, France",
+    "venue_id": "paris-generic",
     "department": "Beverage",
     "job_type": "Part-time",
     "salary": "€16 - €24 / hour",
@@ -231,9 +231,9 @@
       "rendered": "Welcome VIP guests, guide seating, and ensure a seamless premium experience."
     },
     "content": {
-      "rendered": "<p>As a Guest Experience Host, you will be the face of our VIP hospitality spaces. You’ll welcome guests, support check-in, coordinate seating, and ensure guests feel cared for throughout the event.</p><p>You will communicate with service teams and respond quickly to guest needs with professionalism and warmth.</p>"
+      "rendered": "<p>As a Guest Experience Host, you will be the face of our VIP hospitality spaces. You'll welcome guests, support check-in, coordinate seating, and ensure guests feel cared for throughout the event.</p><p>You will communicate with service teams and respond quickly to guest needs with professionalism and warmth.</p>"
     },
-    "location": "Stade Jean Bouin, Paris",
+    "venue_id": "stade-jean-bouin",
     "department": "Service",
     "job_type": "Part-time",
     "salary": "€14 - €18 / hour",
@@ -265,7 +265,7 @@
     "content": {
       "rendered": "<p>We are seeking a Food Safety & Quality Supervisor to enforce hygiene, labeling, temperature controls, and process standards across kitchen and service areas during events.</p><p>You will conduct checks, support corrective actions, and help teams maintain consistent compliance in a fast-paced environment.</p>"
     },
-    "location": "Paris, France",
+    "venue_id": "paris-generic",
     "department": "Quality",
     "job_type": "Full-time",
     "salary": "€40,000 - €55,000",
@@ -297,7 +297,7 @@
     "content": {
       "rendered": "<p>We are hiring Kitchen Stewards to support event operations by maintaining cleanliness, washing dishes, organizing equipment, and ensuring work areas stay safe and efficient.</p><p>This role is essential to keeping service flowing during busy event periods.</p>"
     },
-    "location": "Paris, France",
+    "venue_id": "paris-generic",
     "department": "Operations",
     "job_type": "Part-time",
     "salary": "€12 - €15 / hour",
@@ -329,7 +329,7 @@
     "content": {
       "rendered": "<p>Join our culinary team at Groupama Stadium in Lyon! As Chef de Partie, you will manage your station during high-profile Olympique Lyonnais matches and large-scale events.</p><p>You will prepare dishes to the highest standards, coordinate with sous chefs, and ensure smooth service for thousands of guests.</p>"
     },
-    "location": "Groupama Stadium, Lyon",
+    "venue_id": "groupama-stadium",
     "department": "Culinary",
     "job_type": "Full-time",
     "salary": "€35,000 - €45,000",
@@ -361,7 +361,7 @@
     "content": {
       "rendered": "<p>We're looking for an experienced Bar Manager to oversee beverage service at Groupama Stadium. You'll manage bar teams, stock levels, and service quality across VIP and public areas.</p><p>Ensure fast, efficient service while maintaining premium standards for 59,000+ spectators.</p>"
     },
-    "location": "Groupama Stadium, Lyon",
+    "venue_id": "groupama-stadium",
     "department": "Beverage",
     "job_type": "Full-time",
     "salary": "€38,000 - €48,000",
@@ -393,7 +393,7 @@
     "content": {
       "rendered": "<p>An exceptional opportunity to lead the culinary team at the iconic Stade Vélodrome in Marseille. As Executive Chef, you'll oversee all food operations for 67,000+ capacity events.</p><p>Manage menus, kitchen teams, and premium hospitality while bringing Mediterranean flavors to match days and concerts.</p>"
     },
-    "location": "Stade Vélodrome, Marseille",
+    "venue_id": "stade-velodrome",
     "department": "Culinary",
     "job_type": "Full-time",
     "salary": "€55,000 - €75,000",
@@ -425,7 +425,7 @@
     "content": {
       "rendered": "<p>Join the Stade Vélodrome team as a Concession Team Leader! You'll supervise food and beverage kiosks, manage staff schedules, and ensure excellent guest experience during events.</p><p>Fast-paced role perfect for someone who thrives in high-energy environments.</p>"
     },
-    "location": "Stade Vélodrome, Marseille",
+    "venue_id": "stade-velodrome",
     "department": "Operations",
     "job_type": "Part-time",
     "salary": "€18 - €25 / hour",
@@ -457,7 +457,7 @@
     "content": {
       "rendered": "<p>Accor Arena is seeking talented Event Chefs to deliver exceptional food for concerts, sports events, and shows. You'll prepare dishes for VIP suites, artist hospitality, and premium guest areas.</p><p>Work with world-class artists and athletes while showcasing your culinary skills.</p>"
     },
-    "location": "Accor Arena, Paris",
+    "venue_id": "accor-arena",
     "department": "Culinary",
     "job_type": "Full-time",
     "salary": "€40,000 - €52,000",
@@ -489,7 +489,7 @@
     "content": {
       "rendered": "<p>Join our VIP service team at Accor Arena! You'll provide exceptional table service in premium lounges, corporate suites, and backstage areas during major events.</p><p>Perfect role for hospitality professionals who want to work exciting events while delivering five-star service.</p>"
     },
-    "location": "Accor Arena, Paris",
+    "venue_id": "accor-arena",
     "department": "Service",
     "job_type": "Part-time",
     "salary": "€20 - €30 / hour",
@@ -521,7 +521,7 @@
     "content": {
       "rendered": "<p>Hellfest is looking for an experienced Kitchen Manager to oversee festival food operations. You'll manage multiple food stations, coordinate with vendors, and ensure quality across the festival grounds.</p><p>This is a unique seasonal opportunity to feed the metal community at one of Europe's legendary festivals.</p>"
     },
-    "location": "Hellfest, Clisson",
+    "venue_id": "hellfest",
     "department": "Operations",
     "job_type": "Seasonal",
     "salary": "€4,000 - €6,000 (festival period)",
@@ -553,7 +553,7 @@
     "content": {
       "rendered": "<p>Be part of the Hellfest experience! We're hiring energetic crew members to work food stalls during the festival. You'll prepare and serve food, handle cash, and keep the metal community fed.</p><p>Perfect for students or anyone wanting a unique summer job at an unforgettable event.</p>"
     },
-    "location": "Hellfest, Clisson",
+    "venue_id": "hellfest",
     "department": "Service",
     "job_type": "Seasonal",
     "salary": "€15 - €20 / hour",
@@ -585,7 +585,7 @@
     "content": {
       "rendered": "<p>An exceptional opportunity to join Wembley Stadium as Head Chef for VIP hospitality. You'll oversee premium dining for England international matches, FA Cup finals, and major concerts.</p><p>Lead a team of 25+ chefs and deliver world-class cuisine to corporate guests and VIP visitors.</p>"
     },
-    "location": "Wembley Stadium, London",
+    "venue_id": "wembley-stadium",
     "department": "Culinary",
     "job_type": "Full-time",
     "salary": "£55,000 - £70,000",
@@ -617,7 +617,7 @@
     "content": {
       "rendered": "<p>Join the Wembley hospitality team as a Runner! You'll support service in VIP boxes, transport food and beverages, and help create memorable experiences for premium guests.</p><p>Great entry-level opportunity to work at iconic events while building your hospitality career.</p>"
     },
-    "location": "Wembley Stadium, London",
+    "venue_id": "wembley-stadium",
     "department": "Service",
     "job_type": "Part-time",
     "salary": "£12 - £16 / hour",
