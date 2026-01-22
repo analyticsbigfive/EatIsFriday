@@ -12,45 +12,15 @@
     },
     "hero_section": {
       "bg": "images/unsplash_6vfYbDwOuMo.jpg",
-      "tag": "NEW LOCATIONS",
       "title": {
         "line_1": "Feeding\nExperiences.\n",
         "line_2": "Serving\nMoments",
         "line_3": "From intimate gatherings to grand celebrations, we craft\nunforgettable culinary experiences that bring people\n together and create lasting memories."
-      },
-      "description": "We don't just serve food — we create experiences. From the bustling concessions at your favorite stadium to the elegant spreads at VIP events, we craft culinary moments that bring people together.",
-      "cta_primary": {
-        "text": "Start a Project",
-        "link": "/contact"
-      },
-      "cta_secondary": {
-        "text": "Join Our Team",
-        "link": "/careers"
-      },
-      "images": [
-        {
-          "src": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=600&auto=format&fit=crop",
-          "alt": "Grilled food presentation"
-        },
-        {
-          "src": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=600&auto=format&fit=crop",
-          "alt": "Gourmet breakfast plate"
-        },
-        {
-          "src": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=600&auto=format&fit=crop",
-          "alt": "Fresh pizza"
-        }
-      ],
-      "experience_badge": {
-        "number": "15+",
-        "label": "Years Experience"
-      },
-      "floating_badge": "Open for Events"
+      }
     },
     "intro_section": {
       "texte": "<strong>We Are Eat Is Family!</strong>&nbsp;We create&nbsp;<span>food experiences</span>&nbsp;where people gather, celebrate, and connect. From kitchen operations to service delivery, our teams bring passion, precision, and genuine hospitality to every venue we support."
     },
-    "_note_locations": "Venues data is now in venues.json - use useVenues() composable",
     "services_section": {
       "tag": "OUR SERVICES",
       "title": {
@@ -73,8 +43,7 @@
           "thumbnail": "images/unsplash_6vfYbDwOuMo.png",
           "linkTo": "/"
         }
-      ],
-      "learn_more_button": "Learn more"
+      ]
     },
     "cta_section": {
       "title": "Ready to Make an Impact?",
@@ -303,23 +272,6 @@
       "guests_placeholder": "Number of Guests",
       "message_placeholder": "Message",
       "submit_button": "Send Message"
-    }
-  },
-  "events": {
-    "page_hero": {
-      "title": "Food Events",
-      "subtitle": "Discover and join our upcoming culinary events and celebrations"
-    },
-    "loading_text": "Loading events...",
-    "seo": {
-      "title": "Events - Eat Is Family",
-      "description": "Join our food festivals, tastings, and culinary celebrations. Discover upcoming events and book your spot.",
-      "keywords": "food events, culinary events, food festivals, tastings, cooking events, France events",
-      "og_title": "Food Events - Eat Is Family",
-      "og_description": "Discover and join our upcoming culinary events and celebrations across France.",
-      "og_image": "/images/og-events.jpg",
-      "twitter_card": "summary_large_image",
-      "canonical": "/events"
     }
   },
   "blog": {
