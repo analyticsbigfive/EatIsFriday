@@ -5,16 +5,16 @@
     </div>
     <div class="card-content">
       <div class="post-meta">
-        <span class="author">
+        <span v-if="post.author" class="author">
           <img :src="post.author.avatar" :alt="post.author.name" class="author-avatar" />
           {{ post.author.name }}
         </span>
         <span class="date">{{ formatDate(post.date) }}</span>
-        <span class="reading-time">{{ post.reading_time }}</span>
+        <span v-if="post.reading_time" class="reading-time">{{ post.reading_time }}</span>
       </div>
       <h3>{{ post.title.rendered }}</h3>
       <div class="excerpt" v-html="post.excerpt.rendered"></div>
-      <div class="categories">
+      <div v-if="post.categories && post.categories.length > 0" class="categories">
         <span v-for="category in post.categories" :key="category.id" class="category-tag">
           {{ category.name }}
         </span>

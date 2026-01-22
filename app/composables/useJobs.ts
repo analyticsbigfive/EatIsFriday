@@ -19,8 +19,6 @@ export interface Job {
     requirements: string[]
     benefits: string[]
     featured_media: string
-    date: string
-    status: string
 }
 
 export interface JobWithVenue extends Job {

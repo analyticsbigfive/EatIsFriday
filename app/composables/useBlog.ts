@@ -11,20 +11,17 @@ export interface BlogPost {
         rendered: string
     }
     date: string
-    modified: string
-    author: {
-        id: number
+    featured_media: string
+    // Champs optionnels
+    author?: {
         name: string
         avatar: string
     }
-    categories: Array<{
+    reading_time?: string
+    categories?: Array<{
         id: number
         name: string
-        slug: string
     }>
-    tags: string[]
-    featured_media: string
-    reading_time: string
 }
 
 export const useBlog = () => {

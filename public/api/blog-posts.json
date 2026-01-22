@@ -12,32 +12,7 @@
             "rendered": "<p>France is home to over 400 varieties of cheese, each with its own unique character and history. In this guide, we'll explore the top 10 French cheeses that every cheese lover should experience at least once.</p><h2>1. Camembert de Normandie</h2><p>This soft, creamy cheese from Normandy is one of France's most iconic exports. With its white, bloomy rind and rich, buttery interior, Camembert is perfect on a crusty baguette.</p><h2>2. Roquefort</h2><p>Known as the 'King of Cheeses,' Roquefort is a blue cheese made from sheep's milk. Aged in the natural caves of Roquefort-sur-Soulzon, it has a distinctive tangy and salty flavor.</p><h2>3. Comté</h2><p>This hard cheese from the Jura region is aged for at least 4 months, developing complex nutty and fruity flavors. It's perfect for both cooking and eating on its own.</p><h2>4. Brie de Meaux</h2><p>Often called the 'Queen of Cheeses,' Brie de Meaux has a soft, creamy texture and earthy, mushroomy notes. It pairs beautifully with champagne.</p><h2>5. Reblochon</h2><p>This washed-rind cheese from the Alps is the star ingredient in tartiflette. It has a creamy texture and a mild, slightly nutty flavor.</p><p>Continue reading to discover the remaining five cheeses that complete our top 10 list...</p>"
         },
         "date": "2025-12-20T10:00:00",
-        "modified": "2025-12-20T10:00:00",
-        "author": {
-            "id": 1,
-            "name": "Marie Dubois",
-            "avatar": "https://i.pravatar.cc/150?img=5"
-        },
-        "categories": [
-            {
-                "id": 1,
-                "name": "Cheese",
-                "slug": "cheese"
-            },
-            {
-                "id": 2,
-                "name": "French Cuisine",
-                "slug": "french-cuisine"
-            }
-        ],
-        "tags": [
-            "cheese",
-            "french food",
-            "gastronomy",
-            "dairy"
-        ],
-        "featured_media": "https://images.unsplash.com/photo-1452195100486-9cc805987862?w=800",
-        "reading_time": "5 min read"
+        "featured_media": "https://images.unsplash.com/photo-1452195100486-9cc805987862?w=800"
     },
     {
         "id": 2,
@@ -52,32 +27,7 @@
             "rendered": "<p>Wine pairing can seem intimidating, but with a few basic principles, you can elevate any meal. Whether you're hosting a dinner party or enjoying a quiet evening at home, the right wine can transform your dining experience.</p><h2>Understanding the Basics</h2><p>The fundamental rule of wine pairing is to match the weight and intensity of the wine with the food. Light dishes pair well with light wines, while rich, hearty meals call for fuller-bodied wines.</p><h2>Red Wine Pairings</h2><h3>Cabernet Sauvignon</h3><p>This bold red wine pairs beautifully with red meats, especially grilled steaks and lamb. Its tannins cut through the fat and complement the rich flavors.</p><h3>Pinot Noir</h3><p>A versatile wine that works well with salmon, duck, and mushroom dishes. Its lighter body and earthy notes make it incredibly food-friendly.</p><h2>White Wine Pairings</h2><h3>Chardonnay</h3><p>Perfect with creamy pasta dishes, roasted chicken, and seafood in butter sauce. Oaked Chardonnay can stand up to richer preparations.</p><h3>Sauvignon Blanc</h3><p>Its crisp acidity makes it ideal for goat cheese, salads, and light seafood dishes. The citrus notes refresh the palate between bites.</p><p>Remember, these are guidelines, not rules. The best pairing is the one you enjoy most!</p>"
         },
         "date": "2025-12-18T14:30:00",
-        "modified": "2025-12-18T14:30:00",
-        "author": {
-            "id": 2,
-            "name": "Pierre Laurent",
-            "avatar": "https://i.pravatar.cc/150?img=12"
-        },
-        "categories": [
-            {
-                "id": 3,
-                "name": "Wine",
-                "slug": "wine"
-            },
-            {
-                "id": 4,
-                "name": "Food Pairing",
-                "slug": "food-pairing"
-            }
-        ],
-        "tags": [
-            "wine",
-            "pairing",
-            "sommelier",
-            "dining"
-        ],
-        "featured_media": "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800",
-        "reading_time": "7 min read"
+        "featured_media": "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800"
     },
     {
         "id": 3,
@@ -92,32 +42,7 @@
             "rendered": "<p>Sourdough bread has experienced a renaissance in recent years, and for good reason. The tangy flavor, chewy texture, and artisanal quality make it worth the effort. This guide will walk you through creating your first sourdough loaf.</p><h2>Creating Your Starter</h2><p>A sourdough starter is a living culture of wild yeast and bacteria. To create one, you'll need just flour and water.</p><h3>Day 1</h3><p>Mix 50g of whole wheat flour with 50g of water in a jar. Cover loosely and leave at room temperature.</p><h3>Days 2-7</h3><p>Each day, discard half the starter and feed it with 50g flour and 50g water. By day 7, it should be bubbly and active.</p><h2>Making Your First Loaf</h2><h3>Ingredients:</h3><ul><li>500g bread flour</li><li>350g water</li><li>100g active starter</li><li>10g salt</li></ul><h3>Method:</h3><p>Mix flour and water, let rest for 30 minutes (autolyse). Add starter and salt, mix well. Perform stretch and folds every 30 minutes for 3 hours. Shape, proof overnight in the fridge, then bake at 230°C in a Dutch oven for 45 minutes.</p><p>Don't be discouraged if your first loaves aren't perfect. Sourdough is a skill that improves with practice!</p>"
         },
         "date": "2025-12-15T09:00:00",
-        "modified": "2025-12-15T09:00:00",
-        "author": {
-            "id": 3,
-            "name": "Sophie Martin",
-            "avatar": "https://i.pravatar.cc/150?img=9"
-        },
-        "categories": [
-            {
-                "id": 5,
-                "name": "Baking",
-                "slug": "baking"
-            },
-            {
-                "id": 6,
-                "name": "Tutorials",
-                "slug": "tutorials"
-            }
-        ],
-        "tags": [
-            "sourdough",
-            "bread",
-            "baking",
-            "tutorial"
-        ],
-        "featured_media": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800",
-        "reading_time": "8 min read"
+        "featured_media": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800"
     },
     {
         "id": 4,
@@ -132,32 +57,7 @@
             "rendered": "<p>Winter vegetables often get overlooked, but they're some of the most flavorful and nutritious ingredients available. This guide will help you make the most of winter's bounty.</p><h2>Winter's Best Vegetables</h2><h3>Root Vegetables</h3><p>Carrots, parsnips, turnips, and beets are at their sweetest in winter. Roasting them caramelizes their natural sugars, creating deep, complex flavors.</p><h3>Cruciferous Vegetables</h3><p>Brussels sprouts, cabbage, and kale thrive in cold weather. Their slight bitterness pairs beautifully with rich, savory dishes.</p><h3>Winter Squash</h3><p>Butternut, acorn, and kabocha squash are versatile ingredients perfect for soups, roasting, or stuffing.</p><h2>Recipe: Roasted Root Vegetable Medley</h2><h3>Ingredients:</h3><ul><li>2 carrots, chopped</li><li>2 parsnips, chopped</li><li>1 small butternut squash, cubed</li><li>3 beets, quartered</li><li>3 tbsp olive oil</li><li>Fresh thyme</li><li>Salt and pepper</li></ul><h3>Method:</h3><p>Toss vegetables with olive oil, thyme, salt, and pepper. Roast at 200°C for 40-45 minutes, stirring halfway through. The vegetables should be tender and caramelized.</p><p>Serve as a side dish or toss with grains for a complete meal.</p>"
         },
         "date": "2025-12-10T11:00:00",
-        "modified": "2025-12-10T11:00:00",
-        "author": {
-            "id": 1,
-            "name": "Marie Dubois",
-            "avatar": "https://i.pravatar.cc/150?img=5"
-        },
-        "categories": [
-            {
-                "id": 7,
-                "name": "Seasonal Cooking",
-                "slug": "seasonal-cooking"
-            },
-            {
-                "id": 8,
-                "name": "Recipes",
-                "slug": "recipes"
-            }
-        ],
-        "tags": [
-            "winter",
-            "vegetables",
-            "seasonal",
-            "healthy"
-        ],
-        "featured_media": "https://images.unsplash.com/photo-1542838132-92c53300491e?w=800",
-        "reading_time": "6 min read"
+        "featured_media": "https://images.unsplash.com/photo-1542838132-92c53300491e?w=800"
     },
     {
         "id": 5,
@@ -172,31 +72,6 @@
             "rendered": "<p>The way you brew your coffee dramatically affects its flavor, body, and aroma. Let's explore the most popular brewing methods and what makes each unique.</p><h2>French Press</h2><p><strong>Pros:</strong> Full-bodied, rich flavor; easy to use; no paper filters needed.<br><strong>Cons:</strong> Some sediment in cup; requires coarse grind.</p><p>The French press produces a robust, full-bodied coffee with oils that would otherwise be filtered out. Steep for 4 minutes for best results.</p><h2>Pour-Over (V60, Chemex)</h2><p><strong>Pros:</strong> Clean, bright flavor; highlights coffee's nuances; precise control.<br><strong>Cons:</strong> Requires practice; needs specific equipment.</p><p>Pour-over methods produce a clean, complex cup that showcases the coffee's origin characteristics. Perfect for single-origin beans.</p><h2>Espresso</h2><p><strong>Pros:</strong> Concentrated flavor; base for many drinks; quick brewing.<br><strong>Cons:</strong> Expensive equipment; steep learning curve.</p><p>Espresso is the foundation of cappuccinos, lattes, and Americanos. It requires finely ground coffee and precise pressure.</p><h2>Cold Brew</h2><p><strong>Pros:</strong> Smooth, low acidity; can be made in batches; refreshing.<br><strong>Cons:</strong> Long brewing time (12-24 hours); different flavor profile.</p><p>Cold brew is perfect for hot summer days. Its smooth, sweet flavor comes from the long, cold extraction process.</p><h2>AeroPress</h2><p><strong>Pros:</strong> Versatile; portable; quick brewing; easy cleanup.<br><strong>Cons:</strong> Small batch size; requires paper filters.</p><p>The AeroPress is beloved by coffee enthusiasts for its versatility and ability to produce excellent coffee with minimal equipment.</p>"
         },
         "date": "2025-12-05T08:00:00",
-        "modified": "2025-12-05T08:00:00",
-        "author": {
-            "id": 4,
-            "name": "Lucas Bernard",
-            "avatar": "https://i.pravatar.cc/150?img=15"
-        },
-        "categories": [
-            {
-                "id": 9,
-                "name": "Coffee",
-                "slug": "coffee"
-            },
-            {
-                "id": 6,
-                "name": "Tutorials",
-                "slug": "tutorials"
-            }
-        ],
-        "tags": [
-            "coffee",
-            "brewing",
-            "barista",
-            "guide"
-        ],
-        "featured_media": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800",
-        "reading_time": "6 min read"
+        "featured_media": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800"
     }
 ]

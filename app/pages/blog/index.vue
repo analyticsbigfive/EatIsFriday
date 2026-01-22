@@ -15,10 +15,9 @@ const allPosts = computed(() => posts.value?.slice(2) || [])
   <div class="blog-page">
     <!-- Hero Section -->
     <section class="blog-hero">
-      <div class="hero-decoration pink-blob"></div>
       <div class="container">
         <h1 class="hero-title">
-          <span class="title-black">Insightful Stories From The Kitchen</span>
+          <span class="title-black">Insightful Stories From<br>The Kitchen</span>
         </h1>
       </div>
     </section>
@@ -35,35 +34,36 @@ const allPosts = computed(() => posts.value?.slice(2) || [])
               <img :src="featuredPosts[0].featured_media" :alt="featuredPosts[0].title.rendered" />
             </NuxtLink>
           </div>
-          <div class="post-content">
+          <div class="post-content d-flex align-items-center flex-wrap flex-row">
             <h3 class="post-title">
               <NuxtLink :to="`/blog/${featuredPosts[0].slug}`">
                 {{ featuredPosts[0].title.rendered }}
               </NuxtLink>
             </h3>
             <p class="post-excerpt">{{ featuredPosts[0].excerpt.rendered }}</p>
-            <NuxtLink :to="`/blog/${featuredPosts[0].slug}`" class="read-more-btn">
-              Read more
+            <NuxtLink :to="`/blog/${featuredPosts[0].slug}`" class="bg-transparent border-0 p-0 m-0">
+              <NuxtImg src="/images/btnReadMore.svg" alt="Read more" width="247"/>
             </NuxtLink>
           </div>
         </article>
 
         <!-- Featured Post 2 - Image Right -->
-        <article v-if="featuredPosts[1]" class="featured-post reverse">
+        <!--<article v-if="featuredPosts[1]" class="featured-post reverse">-->
+        <article v-if="featuredPosts[1]" class="featured-post second">
           <div class="post-image">
             <NuxtLink :to="`/blog/${featuredPosts[1].slug}`">
               <img :src="featuredPosts[1].featured_media" :alt="featuredPosts[1].title.rendered" />
             </NuxtLink>
           </div>
-          <div class="post-content">
+          <div class="post-content d-flex align-items-center flex-wrap flex-row">
             <h3 class="post-title">
               <NuxtLink :to="`/blog/${featuredPosts[1].slug}`">
                 {{ featuredPosts[1].title.rendered }}
               </NuxtLink>
             </h3>
             <p class="post-excerpt">{{ featuredPosts[1].excerpt.rendered }}</p>
-            <NuxtLink :to="`/blog/${featuredPosts[1].slug}`" class="read-more-btn">
-              Read more
+            <NuxtLink :to="`/blog/${featuredPosts[1].slug}`" class="bg-transparent border-0 p-0 m-0">
+              <NuxtImg src="/images/btnReadMore.svg" alt="Read more" width="247"/>
             </NuxtLink>
           </div>
         </article>
@@ -102,16 +102,22 @@ const allPosts = computed(() => posts.value?.slice(2) || [])
 
 <style scoped lang="scss">
 .blog-page {
+  padding-top:8em;
   min-height: 100vh;
   background: #fff;
 }
 
 // Hero Section
 .blog-hero {
-  position: relative;
-  background: #4ECDC4;
-  padding: 4rem 0;
-  overflow: hidden;
+      background: url(/images/bBlog.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 1400px;
+    max-height: 405px;
+    margin: 0 auto;
+    height: 100vh;
+    display: flex;
+    align-items: center;
 }
 
 .hero-decoration.pink-blob {
@@ -180,12 +186,30 @@ const allPosts = computed(() => posts.value?.slice(2) || [])
 .featured-post {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  gap: 1rem;
   align-items: center;
-  margin-bottom: 3rem;
-  padding-bottom: 3rem;
-  border-bottom: 1px solid #eee;
-
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  .post-content{
+       width: 100%;
+    height: 100%;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    padding: 2em;
+  }
+  &:nth-of-type(1){
+    .post-content{
+    background:url(/images/bgFeatured1.svg);  
+    }
+  }
+  &:nth-of-type(2){
+    .post-content{
+    background:url(/images/bgFeatured.svg);
+      
+    }
+  
+  }
+  
   &:last-child {
     border-bottom: none;
     margin-bottom: 0;
@@ -208,7 +232,7 @@ const allPosts = computed(() => posts.value?.slice(2) || [])
 
   img {
     width: 100%;
-    height: 300px;
+    height: 390px;
     object-fit: cover;
     display: block;
     transition: transform 0.3s ease;
@@ -224,16 +248,27 @@ const allPosts = computed(() => posts.value?.slice(2) || [])
 }
 
 .post-title {
-  font-family: var(--font-heading, 'Recoleta', serif);
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1.3;
-  margin: 0 0 1rem;
+  font-family: FONTSPRINGDEMO-RecoletaBold;
+  font-size: 34px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000b0f;
 
   a {
-    color: #1a1a1a;
-    text-decoration: none;
-    transition: color 0.2s ease;
+    font-family: FONTSPRINGDEMO-RecoletaBold;
+  font-size: 34px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  text-decoration:none;
+  color: #000b0f;
 
     &:hover {
       color: #FF4D6D;
@@ -242,11 +277,15 @@ const allPosts = computed(() => posts.value?.slice(2) || [])
 }
 
 .post-excerpt {
-  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.9375rem;
-  color: #666;
-  line-height: 1.7;
-  margin: 0 0 1.5rem;
+   font-family: FONTSPRINGDEMO-RecoletaMedium;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.56;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
 }
 
 .read-more-btn {

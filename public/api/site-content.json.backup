@@ -28,6 +28,83 @@
             "linkedin": "https://linkedin.com/company/eatisfamily"
         }
     },
+    "home": {
+        "seo": {
+            "title": "Eat Is Family - Event Catering & Culinary Experiences",
+            "description": "We create food experiences where people gather, celebrate, and connect. From stadiums to festivals, discover our passion for exceptional catering across France.",
+            "keywords": "event catering, food experiences, stadium catering, festival food, VIP hospitality, France",
+            "og_title": "Eat Is Family - Where Every Day Feels Like Friday",
+            "og_description": "Creating unforgettable culinary experiences at stadiums, arenas, and festivals across France.",
+            "og_image": "/images/og-home.jpg"
+        },
+        "hero": {
+            "title": "We Are Eat Is Family",
+            "subtitle": "Where Every Day Feels Like Friday",
+            "description": "We Are Eat Is Family! We create <span>food experiences</span> where people gather, celebrate, and connect. From kitchen operations to service delivery, our teams bring passion, precision, and genuine hospitality to every venue we support.",
+            "cta_primary": {
+                "text": "Explore Activities",
+                "link": "/apply-activities"
+            },
+            "cta_secondary": {
+                "text": "View Events",
+                "link": "/events"
+            },
+            "background_image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600"
+        },
+        "intro": {
+            "title": "Your attention to detail? Entrust it to us, that's our added value!",
+            "description": "As an event caterer, we offer a personalized, homemade, seasonal and balanced catering service for your technical teams, the general public and the guests at your reception.",
+            "tagline": "Opt for stress free restaurant management, and your fingers will tell you: \"Mmm, that's delicious...\""
+        },
+        "features": [
+            {
+                "id": 1,
+                "title": "Culinary Workshops",
+                "description": "Learn from expert chefs and master new cooking techniques in our hands-on workshops.",
+                "icon": "chef-hat",
+                "link": "/apply-activities"
+            },
+            {
+                "id": 2,
+                "title": "Food Events",
+                "description": "Join us for exciting food festivals, tastings, and culinary celebrations throughout the year.",
+                "icon": "calendar",
+                "link": "/events"
+            },
+            {
+                "id": 3,
+                "title": "Career Opportunities",
+                "description": "Build your career in the food industry with our exciting job openings and internships.",
+                "icon": "briefcase",
+                "link": "/careers"
+            },
+            {
+                "id": 4,
+                "title": "Food Blog",
+                "description": "Explore recipes, tips, and stories from the world of gastronomy on our blog.",
+                "icon": "book",
+                "link": "/blog"
+            }
+        ],
+        "stats": [
+            {
+                "number": "500+",
+                "label": "Happy Participants"
+            },
+            {
+                "number": "50+",
+                "label": "Workshops Hosted"
+            },
+            {
+                "number": "20+",
+                "label": "Expert Chefs"
+            },
+            {
+                "number": "100+",
+                "label": "Events Organized"
+            }
+        ]
+    },
     "about": {
         "seo": {
             "title": "About Us - Eat Is Family",
