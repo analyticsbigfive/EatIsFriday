@@ -1,0 +1,102 @@
+{
+  "name": "eatisfamily-wordpress-theme",
+  "version": "1.0.0",
+  "description": "Custom WordPress theme with REST API endpoints for Eat Is Family application",
+  "author": "Eat Is Family",
+  "license": "GPL-2.0-or-later",
+  "homepage": "https://eatisfamily.fr",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/eatisfamily-theme.git"
+  },
+  "keywords": [
+    "wordpress",
+    "theme",
+    "rest-api",
+    "custom-post-types",
+    "event-catering",
+    "food-service"
+  ],
+  "engines": {
+    "wordpress": ">=6.0",
+    "php": ">=8.0"
+  },
+  "theme": {
+    "name": "Eat Is Family",
+    "uri": "https://eatisfamily.fr",
+    "author": "Eat Is Family Team",
+    "author_uri": "https://eatisfamily.fr",
+    "description": "Custom WordPress theme with REST API endpoints for activities, blog posts, events, jobs, venues, and site content management.",
+    "version": "1.0.0",
+    "license": "GPL-2.0-or-later",
+    "license_uri": "http://www.gnu.org/licenses/gpl-2.0.html",
+    "text_domain": "eatisfamily",
+    "tags": [
+      "custom-api",
+      "event-catering",
+      "food-service",
+      "rest-api",
+      "custom-post-types"
+    ]
+  },
+  "features": {
+    "custom_post_types": [
+      "activity",
+      "event",
+      "job",
+      "venue"
+    ],
+    "rest_endpoints": [
+      "/eatisfamily/v1/activities",
+      "/eatisfamily/v1/blog-posts",
+      "/eatisfamily/v1/events",
+      "/eatisfamily/v1/jobs",
+      "/eatisfamily/v1/venues",
+      "/eatisfamily/v1/site-content",
+      "/eatisfamily/v1/pages-content"
+    ],
+    "supports": [
+      "title-tag",
+      "post-thumbnails",
+      "custom-logo",
+      "menus"
+    ]
+  },
+  "requirements": {
+    "wordpress": {
+      "minimum": "6.0",
+      "tested": "6.5"
+    },
+    "php": {
+      "minimum": "8.0",
+      "tested": "8.2"
+    },
+    "mysql": {
+      "minimum": "5.7"
+    }
+  },
+  "recommended_plugins": [
+    "Advanced Custom Fields",
+    "WP All Import",
+    "REST API Cache"
+  ],
+  "installation": {
+    "steps": [
+      "Upload the theme folder to /wp-content/themes/",
+      "Activate the theme in WordPress admin",
+      "Go to Settings > Permalinks and save to refresh",
+      "Import data using import-data.php (optional)",
+      "Test API endpoints at /wp-json/eatisfamily/v1/"
+    ]
+  },
+  "documentation": {
+    "readme": "README.md",
+    "quick_start": "QUICK-START.md",
+    "api_reference": "API-REFERENCE.md",
+    "file_structure": "FILES-STRUCTURE.md"
+  },
+  "support": {
+    "email": "hello@eatisfamily.fr",
+    "issues": "https://github.com/yourusername/eatisfamily-theme/issues"
+  }
+}
