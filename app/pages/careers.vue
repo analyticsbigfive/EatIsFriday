@@ -40,7 +40,7 @@ onMounted(async () => {
   if (fetchedJobs) {
     allJobs.value = fetchedJobs
   }
-  if (content.value) {
+  if (content.value?.search_section?.job_types) {
     selectedJobType.value = content.value.search_section.job_types[0] || ''
   }
 
@@ -106,7 +106,8 @@ const getJobVenueLocation = (job: JobWithVenue) => {
 }
 
 // Helper pour formater la date relative
-const getPostedTime = (dateString: string) => {
+const getPostedTime = (dateString?: string) => {
+  if (!dateString) return 'Recently'
   const date = new Date(dateString)
   const now = new Date()
   const diffMs = now.getTime() - date.getTime()
@@ -181,20 +182,20 @@ const goToPage = (page: number) => {
           <div class="careers-hero-content col-7">
             <div class="careers-hero-inner">
               <h1 class="careers-hero-title">
-                {{ content.hero_default.title_line_1 }}<br />
-                {{ content.hero_default.title_line_2 }}<br />
+                {{ content.hero_default?.title_line_1 }}<br />
+                {{ content.hero_default?.title_line_2 }}<br />
               </h1>
               
             </div>
           </div>
           <div class="careers-hero-image col-5">
-            <img :src="content.hero_default.image" alt="Join our team"  />
+            <img :src="content.hero_default?.image" alt="Join our team"  />
           </div>
         </div>
         <div id="limam" class="container d-flex flex-column justify-content-center text-center flex-wrap">
-          <h3> {{ content.join_box.title }}</h3>
+          <h3> {{ content.join_box?.title }}</h3>
               <p class="kougar">
-                {{ content.join_box.description }}
+                {{ content.join_box?.description }}
               </p>
         </div>
       </section>
@@ -208,23 +209,23 @@ const goToPage = (page: number) => {
           <div class="hero-overlay"></div>
         </div>
         <p class="careers-hero-subtitle">
-          {{ content.hero_with_venue.subtitle }}
+          {{ content.hero_with_venue?.subtitle }}
         </p><!-- 
         <div class="careers-hero-stats">
           <div class="stat-box">
             <span class="stat-number">{{ allJobs.length }}</span>
-            <span class="stat-label">{{ content.hero_with_venue.stats.open_positions_label }}</span>
+            <span class="stat-label">{{ content.hero_with_venue?.stats?.open_positions_label }}</span>
           </div>
           <div class="stat-box">
             <span class="stat-number">{{ venueOptions.length - 1 }}</span>
-            <span class="stat-label">{{ content.hero_with_venue.stats.locations_label }}</span>
+            <span class="stat-label">{{ content.hero_with_venue?.stats?.locations_label }}</span>
           </div>
         </div> -->
         <!-- Hero Content -->
         <div class="container hero-content">
-          <span class="hero-tag">{{ content.hero_with_venue.tag }}</span>
+          <span class="hero-tag">{{ content.hero_with_venue?.tag }}</span>
           <h1 class="hero-title">
-            {{ content.hero_with_venue.title_prefix }} {{ activeVenue.name }}
+            {{ content.hero_with_venue?.title_prefix }} {{ activeVenue.name }}
           </h1>
           <p class="hero-subtitle">
             <LucideMapPin style="width: 1.25rem; height: 1.25rem;" /> {{ activeVenue.location }}
@@ -241,7 +242,7 @@ const goToPage = (page: number) => {
           <div class="flex-grow-1 position-relative musuc">
             <div id="neilcruz" class="d-flex align-items-center gap-3 px-3">
               <LucideSearch class="text-white opacity-75" style="width: 1.25rem; height: 1.25rem;" />
-              <input v-model="searchQuery" type="text" :placeholder="content.search_section.search_placeholder"
+              <input v-model="searchQuery" type="text" :placeholder="content.search_section?.search_placeholder || 'Search jobs...'"
                 class="bg-transparent text-white border-0 flex-grow-1 py-2 font-body search-input" />
             </div>
           </div>
@@ -286,7 +287,7 @@ const goToPage = (page: number) => {
         <Transition enter-active-class="transition-fade-in" leave-active-class="transition-fade-out">
           <div v-if="showJobTypeDropdown"
             class="position-absolute top-100 end-0 mt-2 bg-white border-organic shadow-organic-lg dropdown-menu-custom">
-            <button v-for="type in content.search_section.job_types" :key="type"
+            <button v-for="type in content.search_section?.job_types || []" :key="type"
           @click="selectedJobType = type; showJobTypeDropdown = false" :class="[
             'w-100 text-start px-3 py-2 border-0 fw-medium dropdown-item-custom',
             selectedJobType === type ? 'active' : ''
@@ -299,8 +300,8 @@ const goToPage = (page: number) => {
         </div>
         <hr>
         <p id="bananasleep">
-            {{ filteredJobs.length }} {{ filteredJobs.length === 1 ? content.job_listing.positions_available_singular :
-              content.job_listing.positions_available_plural }} {{ content.job_listing.positions_available_suffix }}
+            {{ filteredJobs.length }} {{ filteredJobs.length === 1 ? content.job_listing?.positions_available_singular :
+              content.job_listing?.positions_available_plural }} {{ content.job_listing?.positions_available_suffix }}
           </p>
       </section>
 
@@ -308,7 +309,7 @@ const goToPage = (page: number) => {
       <section id="jobgrid" class="container py-5">
         <div class="d-flex align-items-center justify-content-between mb-4">
           
-          <p v-if+="totalPages > 1" class="text-muted small mb-0">
+          <p v-if="totalPages > 1" class="text-muted small mb-0">
             Page {{ currentPage }} of {{ totalPages }}
           </p>
         </div>
@@ -320,7 +321,7 @@ const goToPage = (page: number) => {
                 <!-- Header -->
                 <div id="jobcardheader">
                   <h3 class="font-heading fw-bold fs-5 lh-sm mb-1">{{ getJobTitle(job) }}</h3>
-                  <p class="job-date small text-muted fw-medium mb-3">{{ content.job_listing.posted_prefix }} {{
+                  <p class="job-date small text-muted fw-medium mb-3">{{ content.job_listing?.posted_prefix }} {{
                     getPostedTime(job.date) }}</p>
 
                   <!-- Tags Row -->
@@ -361,12 +362,12 @@ const goToPage = (page: number) => {
 
         <!-- No Results -->
         <div v-if="filteredJobs.length === 0" class="text-center py-5 bg-white border-organic">
-          <p class="fs-5 text-muted mb-2">{{ content.no_results.title }}</p>
-          <p class="text-secondary mb-3">{{ content.no_results.description }}</p>
+          <p class="fs-5 text-muted mb-2">{{ content.no_results?.title }}</p>
+          <p class="text-secondary mb-3">{{ content.no_results?.description }}</p>
           <button
-            @click="searchQuery = ''; selectedJobType = content.search_section.job_types[0] || ''; selectedVenueId = ''"
+            @click="searchQuery = ''; selectedJobType = content.search_section?.job_types?.[0] || ''; selectedVenueId = ''"
             class="text-brand-pink fw-bold btn btn-link text-decoration-none">
-            {{ content.no_results.clear_filters_button }}
+            {{ content.no_results?.clear_filters_button }}
           </button>
         </div>
 
@@ -396,21 +397,21 @@ const goToPage = (page: number) => {
       <section id="mahamad" class="py-5 text-center">
         <div class="container">
           <h2 class="font-heading display-5 fw-bold text-white mb-4">
-            {{ content.cta_section.title }}
+            {{ content.cta_section?.title }}
           </h2>
           <p class="text-secondary mx-auto mb-4 font-body" style="max-width: 42rem;">
-            {{ content.cta_section.description }}
+            {{ content.cta_section?.description }}
           </p>
           <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
             <!-- <button class="btn-lime fs-5 px-5 py-3">
-              {{ content.cta_section.explore_venues_button }}
+              {{ content.cta_section?.explore_venues_button }}
             </button>
             <button class="btn-secondary fs-5 px-5 py-3">
-              {{ content.cta_section.general_application_button }}
+              {{ content.cta_section?.general_application_button }}
             </button> -->
-            <nuxt-link to="/careers">
-              <nuxt-img src="/images/btnDiscoverAndApply.svg" width="316"></nuxt-img>
-            </nuxt-link>
+            <NuxtLink to="/careers">
+              <NuxtImg src="/images/btnDiscoverAndApply.svg" width="316" />
+            </NuxtLink>
           </div>
         </div>
       </section>
@@ -475,7 +476,7 @@ const goToPage = (page: number) => {
   align-items: center;
   justify-content: center;
   padding: 4rem;
-  marign:0 !important;
+  margin:0 !important;
   
 }
 
@@ -1023,9 +1024,6 @@ const goToPage = (page: number) => {
     align-items: center;
     justify-content: center;
 
-    > div {
-    }
-
     input {
         font-family: FONTSPRINGDEMO-RecoletaMedium;
         font-size: 18px;
@@ -1066,11 +1064,6 @@ const goToPage = (page: number) => {
   width:100%;
   svg{
   color:black !important;
-  }
-}
-#rallah{
-  input{
-    
   }
 }
 #bananasleep{       width: 94%;

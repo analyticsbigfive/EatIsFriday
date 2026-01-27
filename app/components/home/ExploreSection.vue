@@ -130,7 +130,7 @@ const goToMenuPage = (page: number) => {
 
           <!-- Name and logo -->
           <div class="venue-header">
-            <img :src="selectedVenue.logo" :alt="selectedVenue.name" class="venue-logo" />
+            <img v-if="selectedVenue.logo" :src="selectedVenue.logo" :alt="selectedVenue.name" class="venue-logo" />
             <h3 class="venue-name">{{ selectedVenue.name }}</h3>
           </div>
 
@@ -153,7 +153,7 @@ const goToMenuPage = (page: number) => {
           <!-- Recent event banner -->
           <div class="venue-event-banner">
             <div class="venue-event-item">
-               <nuxt-image src="images/iconCal.svg" alt="Staff Icon"></nuxt-image>
+               <NuxtImg src="/images/iconCal.svg" alt="Staff Icon" />
               <span class="venue-event-label">RECENT EVENT</span>
               <span class="venue-event-value">{{ selectedVenue.recent_event }}</span>
             </div>
@@ -212,7 +212,7 @@ const goToMenuPage = (page: number) => {
               <div class="shops-grid">
                 <div v-for="shop in currentShops" :key="shop.id" class="shop-card">
                   <div class="shop-image-wrapper">
-                    <img :src="shop.image" :alt="shop.name" class="shop-image" />
+                    <img v-if="shop.image" :src="shop.image" :alt="shop.name" class="shop-image" />
                   </div>
                   <p class="shop-name">{{ shop.name }}</p>
                 </div>
@@ -253,7 +253,7 @@ const goToMenuPage = (page: number) => {
               <div class="menus-grid">
                 <div v-for="item in currentMenuItems" :key="item.id" class="menu-card">
                   <div class="menu-image-wrapper">
-                    <img :src="item.thumbnail" :alt="item.name" class="menu-image" />
+                    <img v-if="item.thumbnail" :src="item.thumbnail" :alt="item.name" class="menu-image" />
                   </div>
                   <div class="menu-card-info">
                     <p class="menu-card-name">{{ item.name }}</p>

@@ -35,10 +35,14 @@ export const useApi = () => {
         }
 
         try {
-            // Fetch from WordPress API
+            // Fetch from WordPress API with cache disabled via timestamp
             console.log(`%c[API] 📡 Fetching from WordPress: ${apiBaseUrl}/${endpoint}`, 'color: #A0C4FF;')
             const data = await $fetch<T>(`${apiBaseUrl}/${endpoint}`, {
                 timeout: 10000, // 10 second timeout
+                // Add timestamp to bust cache (no custom headers to avoid CORS issues)
+                query: {
+                    _t: Date.now()
+                }
             })
             console.log(`%c[API] ✅ Success: ${endpoint}`, 'color: green;')
             return data
@@ -76,6 +80,10 @@ export const useApi = () => {
             console.log(`%c[API] 📡 Fetching single: ${apiBaseUrl}/${endpoint}/${identifier}`, 'color: #A0C4FF;')
             const data = await $fetch<T>(`${apiBaseUrl}/${endpoint}/${identifier}`, {
                 timeout: 10000,
+                // Add timestamp to bust cache (no custom headers to avoid CORS issues)
+                query: {
+                    _t: Date.now()
+                }
             })
             console.log(`%c[API] ✅ Success: ${endpoint}/${identifier}`, 'color: green;')
             return data

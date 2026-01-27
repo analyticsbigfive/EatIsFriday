@@ -4,7 +4,7 @@
       <div class="footer-grid">
         <div class="footer-section">
           <div v-if="content" class="titlewrapper d-flex align-items-center justify-content-start mb-4">
-            <img :src="content.logoFooter" alt="Logo" />
+            <img v-if="content.logoFooter" :src="content.logoFooter" alt="Logo" />
             <h3 class="mb-0">{{ content.brand_name }}</h3>
           </div>
           <p v-if="content">{{ content.brand_description }}</p>
@@ -13,7 +13,7 @@
           <ul class="d-flex flex-row gap-2">
             <li v-for="(item, index) in content?.social_links || []" :key="index" class="social-links">
               <a :href="item.url" target="_blank" rel="noopener noreferrer">
-                <img :src="item.icon" :alt="item.name" width="40" height="40" />
+                <img v-if="item.icon" :src="item.icon" :alt="item.name" width="40" height="40" />
               </a>
             </li>
           </ul>

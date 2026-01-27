@@ -42,13 +42,22 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="overflow-hidden" v-if="content">
+  <div class="overflow-hidden">
+    <!-- Loading state -->
+    <div v-if="!content" class="d-flex justify-content-center align-items-center min-vh-100">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Chargement...</span>
+      </div>
+    </div>
+    
+    <!-- Main content -->
+    <template v-else>
     <!-- Hero Section -->
     <section id="hero" class="container-fluid d-flex align-items-center v-90 px-0 w-100">
       <div class="d-flex flex-row row w-100">
         <!-- image de la nourriture avec formulaire de recherche d'emploi -->
         <div id="marr" class="col-lg-6 col-md-6 p-0 min-vh-100 position-relative"
-          :style="{ backgroundImage: `url('${content.hero_section.bg}')`, backgroundSize: 'cover', backgroundPosition: 'center' }">
+          :style="{ backgroundImage: content.hero_section?.bg ? `url('${content.hero_section.bg}')` : 'none', backgroundSize: 'cover', backgroundPosition: 'center' }">
          
           <!-- Job Search Form -->
           <div class="job-search-form-wrapper">
@@ -60,11 +69,11 @@ onMounted(async () => {
           flex-column  justify-content-center align-items-start min-vh-90">
           <div class="txtwrapper">
             <h1 id="heroTitle" ref="heroTitle" class="font-heading display-1 fw-bold lh-1 text-brand-dark m-0">
-              {{ content.hero_section.title.line_1 }}
-              {{ content.hero_section.title.line_2 }}
+              {{ content.hero_section?.title?.line_1 }}
+              {{ content.hero_section?.title?.line_2 }}
             </h1>
             <p class="position-relative d-inline-block m-0 recoleta mb-4 mt-4">
-              {{ content.hero_section.title.line_3 }}
+              {{ content.hero_section?.title?.line_3 }}
             </p>
           </div>
 
@@ -76,7 +85,7 @@ onMounted(async () => {
     </section>
     <section id="presentationEatIsFamily" class="py-5 bg-white">
       <div id="tromp" class="container">
-        <div class="kemiseba" v-html="content.intro_section.texte"></div>
+        <div class="kemiseba" v-html="content.intro_section?.texte"></div>
         <NuxtLink to="/about" aria-label="En savoir plus sur nous" class="mt-4 d-inline-block mt-4">
           <NuxtImg src="/images/btnLearnMoreAboutUs.svg" alt="En savoir plus sur nous" />
         </NuxtLink>
@@ -91,18 +100,18 @@ onMounted(async () => {
       <div class="container-fluid m-0 p-0">
         <div class="text-left mb-5 p-4">
           <h2 class="font-heading display-4 fw-bold">
-            {{ content.services_section.title.line_1 }}<br />
+            {{ content.services_section?.title?.line_1 }}<br />
             <span class="position-relative d-inline-block">
-              {{ content.services_section.title.highlight }}
+              {{ content.services_section?.title?.highlight }}
               <span class="position-absolute bottom-0 start-0 w-100 bg-brand-blue highlight-bar"></span>
-            </span> {{ content.services_section.title.line_2 }}
+            </span> {{ content.services_section?.title?.line_2 }}
           </h2>
         </div>
 
         <div class="prod">
           <div class="service-wrapper d-flex">
             <div class="row m-0 p-0">
-              <div :id="`service-${i}`" v-for="(service, i) in content.services_section.services" :key="i"
+              <div :id="`service-${i}`" v-for="(service, i) in content.services_section?.services || []" :key="i"
                 class="service d-flex row  m-0 p-0">
                 <div class="col-lg-6 col-md-6 lefun p-2">
                   <div
@@ -130,18 +139,18 @@ onMounted(async () => {
     <!-- CTA Section -->
     <section class="py-5 bg-white">
       <div class="container">
-        <div class="kemiseba-alt" v-html="content.cta_section.description"></div>
+        <div class="kemiseba-alt" v-html="content.cta_section?.description"></div>
       </div>
     </section>
 
     <!-- Food Gallery Section -->
-    <GalleryGrid :images="content.gallery_section.images" />
+    <GalleryGrid :images="content.gallery_section?.images || []" />
     <!-- sustainable service  -->
     <section id="sustan" class="py-5 bg-white">
       <!-- une loop qui affiche les services durables -->
       <h3 class="font-header center text-center">{{ content.sustainable_service_title }}</h3>
       <div id="brik" class="row mx-auto ">
-        <div :id="`sustainable-service-${index}`" v-for="(service, index) in content.sustainable_service" :key="index"
+        <div :id="`sustainable-service-${index}`" v-for="(service, index) in content.sustainable_service || []" :key="index"
           class="sustainable-service-item col-md-4 text-center p-4">
           <div class="inner">
             <img :src="service.icone" :alt="service.title" />
@@ -154,20 +163,20 @@ onMounted(async () => {
     <!-- concession powering great public events  -->
     <section id="beautiful-moments" class="py-5 bg-white">
       <div class="container-fluid">
-        <TwoColumnText :title="content.beautiful.title" :text="content.beautiful.text" />
+        <TwoColumnText :title="content.beautiful?.title" :text="content.beautiful?.text" />
         <div class="row mt-4">
-          <img :src="content.beautiful.image" alt="Beautiful Moments We’ve Helped Create"
+          <img :src="content.beautiful?.image" alt="Beautiful Moments We've Helped Create"
             class="img-fluid mx-auto d-block">
         </div>
         <div id="lasalle" class="row mt-4">
-          <div :id="`example-${index}`" v-for="(example, index) in content.examples" :key="index"
+          <div :id="`example-${index}`" v-for="(example, index) in content.examples || []" :key="index"
             class="col-md-6 example">
             <div class="inner-example">
               <h4>{{ example.title }}</h4>
               <p>{{ example.texte }}</p>
-              <nuxt-link :to="example.link">
-                <nuxt-img :src="example.btn" :alt="example.title"></nuxt-img>
-              </nuxt-link>
+              <NuxtLink :to="example.link">
+                <NuxtImg :src="example.btn" :alt="example.title" />
+              </NuxtLink>
 
             </div>
 
@@ -176,17 +185,18 @@ onMounted(async () => {
       </div>
     </section>
     <!-- clients -->
-    <PartnersSection :title="content.partners_title" :partners="content.partners.map(p => ({ ...p, name: p.alt }))" />
+    <PartnersSection :title="content.partners_title" :partners="(content.partners || []).map(p => ({ ...p, name: p.alt }))" />
     <!--  ready to make an impact -->
     <HomepageCTA
-      :image="content.homepageCTA.image"
-      :title="content.homepageCTA.title"
-      :description="content.homepageCTA.description"
-      :link="content.homepageCTA.link"
-      :button-image="content.homepageCTA.button"
-      :additional-text="content.homepageCTA.additionalText"
-      :button-image2="content.homepageCTA.button2"
+      :image="content.homepageCTA?.image"
+      :title="content.homepageCTA?.title"
+      :description="content.homepageCTA?.description"
+      :link="content.homepageCTA?.link"
+      :button-image="content.homepageCTA?.button"
+      :additional-text="content.homepageCTA?.additionalText"
+      :button-image2="content.homepageCTA?.button2"
     />
+    </template>
   </div>
 </template>
 

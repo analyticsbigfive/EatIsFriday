@@ -1,7 +1,7 @@
 <template>
   <div class="event-card" :class="[colorClass, { 'is-even': !isEven, 'is-odd': isEven }]">
     <div class="card-image">
-      <img :src="event.image" :alt="event.title" loading="lazy" />
+      <img v-if="event.image" :src="event.image" :alt="event.title" loading="lazy" />
       <span class="event-type-badge">{{ event.event_type }}</span>
     </div>
     <div

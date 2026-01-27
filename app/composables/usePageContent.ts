@@ -162,6 +162,10 @@ export interface CareersContent {
     image: string
     background_image: string
   }
+  join_box?: {
+    title: string
+    description: string
+  }
   hero_with_venue: {
     tag: string
     title_prefix: string
@@ -327,13 +331,129 @@ export interface PagesContent {
 }
 
 export const usePageContent = () => {
-  const { fetchData } = useApi()
+  const { fetchData, fetchLocalData } = useApi()
 
   /**
-   * Get all pages content from WordPress API or local fallback
+   * Deep merge two objects - WordPress data takes priority
+   */
+  const deepMerge = (target: any, source: any): any => {
+    const result = { ...target }
+    for (const key in source) {
+      if (source[key] !== null && source[key] !== undefined && source[key] !== '') {
+        if (typeof source[key] === 'object' && !Array.isArray(source[key])) {
+          result[key] = deepMerge(target[key] || {}, source[key])
+        } else {
+          result[key] = source[key]
+        }
+      }
+    }
+    return result
+  }
+
+  /**
+   * Map WordPress structure to Nuxt expected structure
+   * WordPress returns: { hero: { title, subtitle } }
+   * Nuxt expects: { hero_section: { title: { line_1, line_2 }, bg } }
+   */
+  const mapWordPressToNuxt = (wpData: any, localData: any): any => {
+    if (!wpData) return localData
+    if (!localData) return wpData
+
+    const result = { ...localData }
+
+    // Map homepage
+    if (wpData.homepage?.hero) {
+      result.homepage = result.homepage || {}
+      result.homepage.hero_section = result.homepage.hero_section || {}
+      
+      // Map hero title - WordPress has flat title, Nuxt has structured title
+      if (wpData.homepage.hero.title) {
+        result.homepage.hero_section.title = result.homepage.hero_section.title || {}
+        result.homepage.hero_section.title.line_1 = wpData.homepage.hero.title
+      }
+      if (wpData.homepage.hero.subtitle) {
+        result.homepage.hero_section.title = result.homepage.hero_section.title || {}
+        result.homepage.hero_section.title.line_3 = wpData.homepage.hero.subtitle
+      }
+      if (wpData.homepage.hero.background_image) {
+        result.homepage.hero_section.bg = wpData.homepage.hero.background_image
+      }
+    }
+
+    // Map about page
+    if (wpData.about?.hero) {
+      result.about = result.about || {}
+      result.about.hero_section = result.about.hero_section || {}
+      if (wpData.about.hero.title) {
+        result.about.hero_section.title = wpData.about.hero.title
+      }
+      if (wpData.about.hero.subtitle) {
+        result.about.hero_section.subtitle = wpData.about.hero.subtitle
+      }
+      if (wpData.about.hero.background_image) {
+        result.about.hero_section.background_image = wpData.about.hero.background_image
+      }
+    }
+
+    // Map contact page
+    if (wpData.contact?.hero) {
+      result.contact = result.contact || {}
+      result.contact.hero_section = result.contact.hero_section || {}
+      if (wpData.contact.hero.title) {
+        result.contact.hero_section.title = result.contact.hero_section.title || {}
+        result.contact.hero_section.title.line_1 = wpData.contact.hero.title
+      }
+      if (wpData.contact.hero.subtitle) {
+        result.contact.hero_section.subtitle = wpData.contact.hero.subtitle
+      }
+    }
+
+    // Map careers page
+    if (wpData.careers?.hero) {
+      result.careers = result.careers || {}
+      result.careers.hero_default = result.careers.hero_default || {}
+      if (wpData.careers.hero.title) {
+        result.careers.hero_default.title_line_1 = wpData.careers.hero.title
+      }
+      if (wpData.careers.hero.subtitle) {
+        result.careers.hero_default.title_line_2 = wpData.careers.hero.subtitle
+      }
+    }
+
+    // Map events page
+    if (wpData.events?.hero) {
+      result.events = result.events || {}
+      result.events.hero_section = result.events.hero_section || {}
+      if (wpData.events.hero.title) {
+        result.events.hero_section.title = wpData.events.hero.title
+      }
+      if (wpData.events.hero.subtitle) {
+        result.events.hero_section.subtitle = wpData.events.hero.subtitle
+      }
+    }
+
+    return result
+  }
+
+  /**
+   * Get all pages content - ALWAYS fetches from WordPress API first
+   * Then merges with local data for complete structure
    */
   const getPageContent = async (): Promise<PagesContent | null> => {
-    return await fetchData<PagesContent>('pages-content', 'pages-content.json')
+    // Always fetch local data for complete structure
+    const localData = await fetchLocalData<PagesContent>('pages-content.json')
+    
+    // Fetch from WordPress API
+    const wpData = await fetchData<any>('pages-content')
+    
+    if (wpData) {
+      console.log('%c[PageContent] 🔄 Merging WordPress data with local structure', 'color: #FF4D6D;')
+      return mapWordPressToNuxt(wpData, localData)
+    }
+    
+    // If WordPress API fails, use local data
+    console.log('%c[PageContent] ⚠️ WordPress API unavailable, using local data', 'color: orange;')
+    return localData
   }
 
   /**

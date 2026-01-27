@@ -122,7 +122,7 @@
     <section v-if="siteContent?.about?.mission" id="mission">
       <div class="container-fluid">
         <h3 class="font-heading preserve-lines mt-5">{{ siteContent.about.mission.title }}</h3>
-        <img :src="siteContent.about.mission.image" :alt="siteContent.about.mission.image.alt" class="img-fluid my-4" />
+        <img v-if="siteContent.about.mission.image" :src="siteContent.about.mission.image" :alt="siteContent.about.mission.title" class="img-fluid my-4" />
       </div>
       <div id="lasalle" class="row mt-4 p-3">
         <div v-for="(encadre, index) in siteContent.about.mission.encadres" :key="index" :id="`encadres-${index}`"
@@ -130,7 +130,7 @@
           <div class="inner-encadre">
             <h3 class="mb-2">{{ encadre.title }}</h3>
             <p class="mt-5 mb-5">{{ encadre.desc }}</p>
-            <a v-if="encadre.link" :href="encadre.link" class="btn"><img :src="encadre.btn" alt=""></a>
+            <a v-if="encadre.link && encadre.btn" :href="encadre.link" class="btn"><img :src="encadre.btn" alt=""></a>
           </div>
         </div>
       </div>
