@@ -115,6 +115,8 @@ onMounted(async () => {
           <div class="txtwrapper">
             <h1 id="heroTitle" ref="heroTitle" class="font-heading display-1 fw-bold lh-1 text-brand-dark m-0">
               {{ content.hero_section?.title?.line_1 }}
+            </h1>
+             <h1 id="heroTitleAlt" ref="heroTitle" class="font-heading display-1 fw-bold lh-1 text-brand-dark m-0">
               {{ content.hero_section?.title?.line_2 }}
             </h1>
             <p class="position-relative d-inline-block m-0 recoleta mb-4 mt-4">
@@ -246,7 +248,10 @@ onMounted(async () => {
 </template>
 
 <style scoped lang="scss">
-/* Préserve les retours à la ligne du JSON */
+.txtwrapper{
+  max-width:800px;
+}
+  /* Préserve les retours à la ligne du JSON */
 .preserve-lines {
   white-space: pre-line;
 }

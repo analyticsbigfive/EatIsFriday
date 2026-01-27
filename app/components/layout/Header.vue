@@ -12,7 +12,7 @@
         <!-- Center Logo -->
         <div class="logo-container">
           <NuxtLink to="/" class="logo">
-            {{ content.logo }}
+            <img src="/images/imageLogo.png" alt="Logo" class="logo-image" />
           </NuxtLink>
         </div>
 
@@ -139,6 +139,14 @@ onMounted(async () => {
   color: var(--color-text-dark);
   text-decoration: none;
   letter-spacing: -1px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
 }
 
 .mobile-toggle {

@@ -4,7 +4,7 @@
       <div class="footer-grid">
         <div class="footer-section">
           <div v-if="content" class="titlewrapper d-flex align-items-center justify-content-start mb-4">
-            <img v-if="content.logoFooter" :src="content.logoFooter" alt="Logo" />
+            <img :src="content.logoFooter || '/images/imageLogo.png'" alt="Logo" />
             <h3 class="mb-0">{{ content.brand_name }}</h3>
           </div>
           <p v-if="content">{{ content.brand_description }}</p>

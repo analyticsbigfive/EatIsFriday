@@ -3,7 +3,7 @@
  * EIF Backend Theme Functions
  *
  * @package EIFBackend
- * @version 4.0.0
+ * @version 5.0.0
  */
 
 // Exit if accessed directly
@@ -25,6 +25,12 @@ require_once get_template_directory() . '/inc/admin-pages.php';
  * Include Extended Admin Pages (Partners, Services, Gallery, etc.)
  */
 require_once get_template_directory() . '/inc/admin-pages-extended.php';
+
+/**
+ * Include Admin Pages V5 (Unified interface with Forms & Components)
+ * This adds the new unified admin interface with all fields administrable
+ */
+require_once get_template_directory() . '/inc/admin-pages-v5.php';
 
 /**
  * Include Theme Customizer (Logo, Header, Markers, SEO, etc.)

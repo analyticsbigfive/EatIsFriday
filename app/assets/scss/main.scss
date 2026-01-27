@@ -547,6 +547,8 @@ body {
   p {
     white-space: pre-line; /* conserve retours à la ligne */
     line-height: 1.25em;
+    
+  font-size: 2em;
   }
 }
 #btnExplore {
@@ -564,22 +566,21 @@ body {
   position: relative;
   z-index: 21;
   white-space: pre-line;
-
-  &::before {
-    z-index: -1;
-    position: absolute;
-    content: "";
-    background: url(/images/decoHeaderBg.svg);
-    background-size: contain;
-    width: 100vw;
-    max-width: 400px;
-    height: 100vh;
-    max-height: 80px;
-    background-repeat: no-repeat;
-    top: 9vh;
-    left: -1vw;
+   &::before {
+      z-index: -1;
+      position: absolute;
+      content: "";
+      background: url(/images/decoHeaderBg.svg);
+      background-size: contain;
+      width: 100vw;
+      max-width: 400px;
+      height: 100vh;
+      max-height: 80px;
+      background-repeat: no-repeat;
+      top: 1vh;
+      left: -1vw;
+    }
   }
-}
 
 .txtWrapper {
   position: relative;
