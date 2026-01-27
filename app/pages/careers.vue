@@ -22,6 +22,7 @@ const btnDiscoverApply = computed(() => settings.value?.icons?.btn_discover_appl
 const content = ref<CareersContent | null>(null)
 const allJobs = ref<JobWithVenue[]>([])
 const allVenues = ref<Venue[]>([])
+const isLoadingJobs = ref(true)
 
 const searchQuery = ref('')
 const selectedJobType = ref('')
@@ -40,6 +41,7 @@ const activeVenue = computed(() => {
 })
 
 onMounted(async () => {
+  isLoadingJobs.value = true
   content.value = await getCareersContent()
   const fetchedVenues = await getVenues()
   if (fetchedVenues) {
@@ -49,6 +51,7 @@ onMounted(async () => {
   if (fetchedJobs) {
     allJobs.value = fetchedJobs
   }
+  isLoadingJobs.value = false
   if (content.value?.search_section?.job_types) {
     selectedJobType.value = content.value.search_section.job_types[0] || ''
   }
@@ -369,8 +372,16 @@ const goToPage = (page: number) => {
           </div>
         </div>
 
+        <!-- Loading state for jobs -->
+        <div v-if="isLoadingJobs" class="text-center py-5 bg-white border-organic">
+          <div class="spinner-border text-primary mb-3" role="status">
+            <span class="visually-hidden">Chargement...</span>
+          </div>
+          <p class="fs-5 text-muted mb-2">En cours de chargement...</p>
+        </div>
+
         <!-- No Results -->
-        <div v-if="filteredJobs.length === 0" class="text-center py-5 bg-white border-organic">
+        <div v-else-if="filteredJobs.length === 0" class="text-center py-5 bg-white border-organic">
           <p class="fs-5 text-muted mb-2">{{ content.no_results?.title }}</p>
           <p class="text-secondary mb-3">{{ content.no_results?.description }}</p>
           <button

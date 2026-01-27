@@ -274,18 +274,19 @@ onUnmounted(() => {
 }
 
 .select-field {
-      display: flex;
+         display: flex;
     align-items: center;
     gap: 0.75rem;
     padding: 1rem 1.25rem;
     border-radius: 30px;
-    background: url(/images/bgInputForm.svg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     cursor: pointer;
     transition: all 0.2s ease;
     max-height: 74px;
     max-width: 270px;
+    min-height: 61px;
+    border: 2px solid white;
 
   &:hover {
     border-color: var(--brand-pink);
