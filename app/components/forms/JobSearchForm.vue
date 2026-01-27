@@ -23,13 +23,13 @@ const formLabels = ref<any>(null)
 
 // Default labels (fallback)
 const defaultLabels = {
-  title: 'Find Your Perfect Role',
-  subtitle: 'Explore open positions across France',
-  job_title_placeholder: 'Select job title',
-  site_placeholder: 'Select sites',
-  all_jobs_label: 'All job titles',
-  all_sites_label: 'All sites',
-  loading_text: 'Loading...'
+  title: 'Trouvez le poste qui vous correspond',
+  subtitle: 'Découvrez plus de 100 offres d’emploi partout en France',
+  job_title_placeholder: 'Titre de poste',
+  site_placeholder: 'Sites',
+  all_jobs_label: 'Tous les titres de poste',
+  all_sites_label: 'Tous les sites',
+  loading_text: 'Chargement...'
 }
 
 // Computed labels with fallback
