@@ -34,6 +34,7 @@ const textColorMap: Record<string, string> = {
 // Hero video computed properties
 const heroVideoType = computed(() => content.value?.hero_section?.video_type || 'image')
 const heroYoutubeId = computed(() => content.value?.hero_section?.youtube_id || '')
+const heroWistiaId = computed(() => content.value?.hero_section?.wistia_id || '')
 const heroVideoUrl = computed(() => content.value?.hero_section?.video_url || '')
 const heroBackgroundStyle = computed(() => {
   // Only show background image if video_type is 'image' or not set
@@ -83,7 +84,7 @@ onMounted(async () => {
           
           <!-- YouTube Video Background -->
           <div v-if="heroVideoType === 'youtube' && heroYoutubeId" class="hero-video-wrapper">
-            <iframe 
+            <iframe
               :src="`https://www.youtube.com/embed/${heroYoutubeId}?autoplay=1&mute=1&loop=1&playlist=${heroYoutubeId}&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1`"
               frameborder="0"
               allow="autoplay; encrypted-media"
@@ -91,7 +92,18 @@ onMounted(async () => {
               class="hero-youtube-iframe"
             ></iframe>
           </div>
-          
+
+          <!-- Wistia Video Background -->
+          <div v-else-if="heroVideoType === 'wistia' && heroWistiaId" class="hero-video-wrapper">
+            <iframe
+              :src="`https://fast.wistia.net/embed/iframe/${heroWistiaId}?autoplay=1&muted=1&loop=1&silentAutoPlay=true&controlsVisibleOnLoad=false&playbar=false&fullscreenButton=false&playButton=false&settingsControl=false&volumeControl=false&smallPlayButton=false`"
+              frameborder="0"
+              allow="autoplay; fullscreen"
+              allowfullscreen
+              class="hero-wistia-iframe"
+            ></iframe>
+          </div>
+
           <!-- MP4 Video Background -->
           <video 
             v-else-if="heroVideoType === 'mp4' && heroVideoUrl" 
@@ -324,7 +336,8 @@ nuxt-link:has(img) {
   pointer-events: none;
 }
 
-.hero-youtube-iframe {
+.hero-youtube-iframe,
+.hero-wistia-iframe {
   position: absolute;
   top: 50%;
   left: 50%;

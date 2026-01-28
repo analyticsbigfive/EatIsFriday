@@ -25,6 +25,8 @@ services:
       - wordpress_data:/var/www/html
       # Custom uploads directory (optional)
       - ./wordpress-uploads:/var/www/html/wp-content/uploads
+      # Custom PHP config for upload limits
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     depends_on:
       - db
     networks:

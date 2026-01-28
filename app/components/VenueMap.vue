@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, watch, computed } from 'vue'
+import type { VenueType } from '~/composables/useVenues'
 
 const props = defineProps<{
   venues: Array<{
@@ -20,6 +21,7 @@ const props = defineProps<{
     menus_count?: number
     description?: string
   }>
+  venueTypes?: VenueType[]
   selectedVenue?: string
   activeFilter?: string
 }>()
@@ -55,18 +57,28 @@ const maptilerStyle = computed(() => {
   return 'https://api.maptiler.com/maps/019bc79b-b5ae-7523-a6d0-a73039e2ca18/style.json?key=ktSs6eRMmo4o70YLtDSA'
 })
 
-// Get marker image for venue type from global settings
+// Get marker image for venue type - first from venue_types props, then from global settings
 const getMarkerIcon = (venueType?: string): string => {
-  const markers = settings.value?.markers
-  if (!markers) return '/images/stadiumIcon.svg'
-  
   const type = venueType?.toLowerCase() || ''
-  if (type === 'stadium' && markers.stadium) return markers.stadium
-  if (type === 'arena' && markers.arena) return markers.arena
-  if (type === 'festival' && markers.festival) return markers.festival
-  if (markers.default) return markers.default
-  
-  return '/images/stadiumIcon.svg' // Fallback
+
+  // First, try to get icon from venue_types prop
+  if (props.venueTypes && props.venueTypes.length > 0) {
+    const venueTypeData = props.venueTypes.find(vt => vt.id.toLowerCase() === type)
+    if (venueTypeData?.map_icon) {
+      return venueTypeData.map_icon
+    }
+  }
+
+  // Fallback to global settings markers
+  const markers = settings.value?.markers
+  if (markers) {
+    if (type === 'stadium' && markers.stadium) return markers.stadium
+    if (type === 'arena' && markers.arena) return markers.arena
+    if (type === 'festival' && markers.festival) return markers.festival
+    if (markers.default) return markers.default
+  }
+
+  return '/images/stadiumIcon.svg' // Final fallback
 }
 
 const createMarkers = (maplibregl: any) => {

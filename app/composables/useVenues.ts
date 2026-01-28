@@ -36,11 +36,15 @@ export interface Venue {
     menu_items?: MenuItem[]
 }
 
-export interface EventType {
+export interface VenueType {
     id: string
     name: string
     image: string
+    map_icon?: string
 }
+
+// Alias for backwards compatibility
+export type EventType = VenueType
 
 export interface Stat {
     value: string
@@ -53,7 +57,9 @@ export interface VenuesData {
         description: string
         filter_label: string
     }
-    event_types: EventType[]
+    venue_types: VenueType[]
+    // Fallback for backwards compatibility with old API responses
+    event_types?: VenueType[]
     stats: Stat[]
     venues: Venue[]
 }
@@ -111,11 +117,19 @@ export const useVenues = () => {
     }
 
     /**
-     * Get event types
+     * Get venue types
      */
-    const getEventTypes = async (): Promise<EventType[] | null> => {
+    const getVenueTypes = async (): Promise<VenueType[] | null> => {
         const data = await getVenuesData()
-        return data?.event_types || null
+        // Support both venue_types (new) and event_types (legacy)
+        return data?.venue_types || data?.event_types || null
+    }
+
+    /**
+     * @deprecated Use getVenueTypes instead
+     */
+    const getEventTypes = async (): Promise<VenueType[] | null> => {
+        return getVenueTypes()
     }
 
     /**
@@ -140,7 +154,8 @@ export const useVenues = () => {
         getVenueById,
         getVenuesByType,
         getVenuesByCity,
-        getEventTypes,
+        getVenueTypes,
+        getEventTypes, // deprecated, use getVenueTypes
         getStats,
         getMetadata
     }

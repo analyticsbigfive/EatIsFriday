@@ -2,23 +2,26 @@
   "metadata": {
     "title": "Explore Where We Operate",
     "description": "Tap any marker on the map to discover the story behind that event. Each marker clicked unlocks a snapshot of the venue, the experience we delivered, and the flavours we brought to life.",
-    "filter_label": "Click to filter by an event type"
+    "filter_label": "Click to filter by venue type"
   },
-  "event_types": [
+  "venue_types": [
     {
       "id": "stadium",
       "name": "Stadium",
-      "image": "/images/stadium.png"
+      "image": "/images/stadium.png",
+      "map_icon": "/images/stadiumIcon.svg"
     },
     {
       "id": "festival",
       "name": "Festival",
-      "image": "/images/festival.png"
+      "image": "/images/festival.png",
+      "map_icon": "/images/stadiumIcon.svg"
     },
     {
       "id": "arena",
       "name": "Arena",
-      "image": "/images/arena.png"
+      "image": "/images/arena.png",
+      "map_icon": "/images/stadiumIcon.svg"
     }
   ],
   "stats": [

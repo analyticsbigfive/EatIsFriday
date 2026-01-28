@@ -1273,9 +1273,11 @@ function eatisfamily_get_venues($request) {
         'filter_label' => 'Click to filter by an event type',
     ));
     
-    // Event types - from unified option or fallback
-    $event_types = !empty($venues_data['event_types']) ? $venues_data['event_types'] : get_option('eatisfamily_event_types', array());
-    
+    // Venue types - from unified option (supports both new venue_types and legacy event_types)
+    $venue_types = !empty($venues_data['venue_types'])
+        ? $venues_data['venue_types']
+        : (!empty($venues_data['event_types']) ? $venues_data['event_types'] : get_option('eatisfamily_event_types', array()));
+
     // Stats - from unified option or fallback
     $stats = !empty($venues_data['stats']) ? $venues_data['stats'] : get_option('eatisfamily_stats', array());
     
@@ -1301,7 +1303,7 @@ function eatisfamily_get_venues($request) {
     
     return rest_ensure_response(array(
         'metadata' => $metadata,
-        'event_types' => $event_types,
+        'venue_types' => $venue_types,
         'stats' => $stats,
         'venues' => $venues,
     ));

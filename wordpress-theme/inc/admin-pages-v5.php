@@ -543,19 +543,20 @@ function eatisfamily_build_venues_content_v5($data) {
     $metadata = array(
         'title' => sanitize_text_field(wp_strip_all_tags($data['venues_meta_title'] ?? 'Explore Where We Operate')),
         'description' => wp_kses_post($data['venues_meta_description'] ?? ''),
-        'filter_label' => sanitize_text_field($data['venues_meta_filter_label'] ?? 'Click to filter by an event type'),
+        'filter_label' => sanitize_text_field($data['venues_meta_filter_label'] ?? 'Click to filter by venue type'),
     );
     
-    // Event Types (up to 10)
-    $event_types = array();
+    // Venue Types (up to 10)
+    $venue_types = array();
     for ($i = 1; $i <= 10; $i++) {
         $id = sanitize_text_field($data["event_type_{$i}_id"] ?? '');
         $name = sanitize_text_field($data["event_type_{$i}_name"] ?? '');
         if (!empty($id) && !empty($name)) {
-            $event_types[] = array(
+            $venue_types[] = array(
                 'id' => $id,
                 'name' => $name,
                 'image' => esc_url_raw($data["event_type_{$i}_image"] ?? ''),
+                'map_icon' => esc_url_raw($data["event_type_{$i}_map_icon"] ?? ''),
             );
         }
     }
@@ -575,7 +576,7 @@ function eatisfamily_build_venues_content_v5($data) {
     
     return array(
         'metadata' => $metadata,
-        'event_types' => $event_types,
+        'venue_types' => $venue_types,
         'stats' => $stats,
     );
 }
@@ -1301,7 +1302,8 @@ function eatisfamily_venues_page_v5() {
     // Get current values
     $venues = get_option('eatisfamily_venues', array());
     $metadata = $venues['metadata'] ?? array();
-    $event_types = $venues['event_types'] ?? array();
+    // Support both venue_types (new) and event_types (legacy)
+    $venue_types = $venues['venue_types'] ?? $venues['event_types'] ?? array();
     $stats = $venues['stats'] ?? array();
     
     ?>
@@ -1316,7 +1318,7 @@ function eatisfamily_venues_page_v5() {
             
             <h2 class="nav-tab-wrapper">
                 <a href="#metadata" class="nav-tab nav-tab-active"><?php _e('📍 Metadata', 'eatisfamily'); ?></a>
-                <a href="#event-types" class="nav-tab"><?php _e('🏟️ Event Types', 'eatisfamily'); ?></a>
+                <a href="#venue-types" class="nav-tab"><?php _e('🏟️ Venue Types', 'eatisfamily'); ?></a>
                 <a href="#stats" class="nav-tab"><?php _e('📊 Statistics', 'eatisfamily'); ?></a>
             </h2>
             
@@ -1352,37 +1354,45 @@ function eatisfamily_venues_page_v5() {
                 </div>
             </div>
             
-            <!-- EVENT TYPES -->
-            <div id="event-types" class="tab-content" style="display: none;">
-                <h3><?php _e('🏟️ Event Types', 'eatisfamily'); ?></h3>
-                <p class="description"><?php _e('Types d\'événements utilisés pour filtrer les venues sur la carte (Stadium, Festival, Arena, etc.)', 'eatisfamily'); ?></p>
-                
-                <?php for ($i = 1; $i <= 10; $i++): 
-                    $event_type = $event_types[$i - 1] ?? array();
+            <!-- VENUE TYPES -->
+            <div id="venue-types" class="tab-content" style="display: none;">
+                <h3><?php _e('🏟️ Venue Types', 'eatisfamily'); ?></h3>
+                <p class="description"><?php _e('Types de venues utilisés pour filtrer sur la carte (Stadium, Festival, Arena, etc.)', 'eatisfamily'); ?></p>
+
+                <?php for ($i = 1; $i <= 10; $i++):
+                    $venue_type = $venue_types[$i - 1] ?? array();
                 ?>
                 <div class="eatisfamily-section">
-                    <h4><?php printf(__('Event Type %d', 'eatisfamily'), $i); ?></h4>
+                    <h4><?php printf(__('Venue Type %d', 'eatisfamily'), $i); ?></h4>
                     <table class="form-table">
                         <tr>
                             <th scope="row"><label for="event_type_<?php echo $i; ?>_id"><?php _e('ID (slug)', 'eatisfamily'); ?></label></th>
                             <td>
-                                <input type="text" name="event_type_<?php echo $i; ?>_id" id="event_type_<?php echo $i; ?>_id" value="<?php echo esc_attr($event_type['id'] ?? ''); ?>" class="regular-text">
+                                <input type="text" name="event_type_<?php echo $i; ?>_id" id="event_type_<?php echo $i; ?>_id" value="<?php echo esc_attr($venue_type['id'] ?? ''); ?>" class="regular-text">
                                 <p class="description"><?php _e('Ex: "stadium", "festival", "arena" (en minuscules, sans espaces)', 'eatisfamily'); ?></p>
                             </td>
                         </tr>
                         <tr>
                             <th scope="row"><label for="event_type_<?php echo $i; ?>_name"><?php _e('Name', 'eatisfamily'); ?></label></th>
                             <td>
-                                <input type="text" name="event_type_<?php echo $i; ?>_name" id="event_type_<?php echo $i; ?>_name" value="<?php echo esc_attr($event_type['name'] ?? ''); ?>" class="regular-text">
+                                <input type="text" name="event_type_<?php echo $i; ?>_name" id="event_type_<?php echo $i; ?>_name" value="<?php echo esc_attr($venue_type['name'] ?? ''); ?>" class="regular-text">
                                 <p class="description"><?php _e('Ex: "Stadium", "Festival", "Arena"', 'eatisfamily'); ?></p>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row"><label for="event_type_<?php echo $i; ?>_image"><?php _e('Image', 'eatisfamily'); ?></label></th>
+                            <th scope="row"><label for="event_type_<?php echo $i; ?>_image"><?php _e('Filter Image', 'eatisfamily'); ?></label></th>
                             <td>
-                                <input type="text" name="event_type_<?php echo $i; ?>_image" id="event_type_<?php echo $i; ?>_image" value="<?php echo esc_attr($event_type['image'] ?? ''); ?>" class="regular-text">
+                                <input type="text" name="event_type_<?php echo $i; ?>_image" id="event_type_<?php echo $i; ?>_image" value="<?php echo esc_attr($venue_type['image'] ?? ''); ?>" class="regular-text">
                                 <button type="button" class="button eatisfamily-upload-media" data-target="event_type_<?php echo $i; ?>_image"><?php _e('Select', 'eatisfamily'); ?></button>
-                                <p class="description"><?php _e('Image/icône représentant ce type d\'événement', 'eatisfamily'); ?></p>
+                                <p class="description"><?php _e('Image affichée dans les boutons de filtre (180x185px recommandé)', 'eatisfamily'); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="event_type_<?php echo $i; ?>_map_icon"><?php _e('Map Icon', 'eatisfamily'); ?></label></th>
+                            <td>
+                                <input type="text" name="event_type_<?php echo $i; ?>_map_icon" id="event_type_<?php echo $i; ?>_map_icon" value="<?php echo esc_attr($venue_type['map_icon'] ?? ''); ?>" class="regular-text">
+                                <button type="button" class="button eatisfamily-upload-media" data-target="event_type_<?php echo $i; ?>_map_icon"><?php _e('Select', 'eatisfamily'); ?></button>
+                                <p class="description"><?php _e('Icône affichée sur la carte pour ce type de venue (SVG ou PNG, ~40x40px recommandé)', 'eatisfamily'); ?></p>
                             </td>
                         </tr>
                     </table>
@@ -1619,10 +1629,46 @@ function eatisfamily_pages_content_page_v5() {
                     <h4><?php _e('Hero Section', 'eatisfamily'); ?></h4>
                     <table class="form-table">
                         <tr>
+                            <th scope="row"><label for="homepage_hero_video_type"><?php _e('Background Type', 'eatisfamily'); ?></label></th>
+                            <td>
+                                <?php $video_type = $homepage['hero_section']['video_type'] ?? 'image'; ?>
+                                <select name="homepage_hero_video_type" id="homepage_hero_video_type" class="regular-text">
+                                    <option value="image" <?php selected($video_type, 'image'); ?>><?php _e('Image', 'eatisfamily'); ?></option>
+                                    <option value="youtube" <?php selected($video_type, 'youtube'); ?>><?php _e('YouTube Video', 'eatisfamily'); ?></option>
+                                    <option value="wistia" <?php selected($video_type, 'wistia'); ?>><?php _e('Wistia Video', 'eatisfamily'); ?></option>
+                                    <option value="mp4" <?php selected($video_type, 'mp4'); ?>><?php _e('MP4 Video', 'eatisfamily'); ?></option>
+                                </select>
+                                <p class="description"><?php _e('Choisissez le type de média pour l\'arrière-plan du hero', 'eatisfamily'); ?></p>
+                            </td>
+                        </tr>
+                        <tr class="hero-media-field hero-media-image">
                             <th scope="row"><label for="homepage_hero_bg"><?php _e('Background Image', 'eatisfamily'); ?></label></th>
                             <td>
                                 <input type="text" name="homepage_hero_bg" id="homepage_hero_bg" value="<?php echo esc_attr($homepage['hero_section']['bg'] ?? ''); ?>" class="regular-text">
                                 <button type="button" class="button eatisfamily-upload-media" data-target="homepage_hero_bg"><?php _e('Select', 'eatisfamily'); ?></button>
+                                <p class="description"><?php _e('Image affichée quand le type est "Image"', 'eatisfamily'); ?></p>
+                            </td>
+                        </tr>
+                        <tr class="hero-media-field hero-media-youtube">
+                            <th scope="row"><label for="homepage_hero_youtube_id"><?php _e('YouTube Video ID', 'eatisfamily'); ?></label></th>
+                            <td>
+                                <input type="text" name="homepage_hero_youtube_id" id="homepage_hero_youtube_id" value="<?php echo esc_attr($homepage['hero_section']['youtube_id'] ?? ''); ?>" class="regular-text" placeholder="dQw4w9WgXcQ">
+                                <p class="description"><?php _e('ID de la vidéo YouTube (ex: dQw4w9WgXcQ dans https://youtube.com/watch?v=dQw4w9WgXcQ)', 'eatisfamily'); ?></p>
+                            </td>
+                        </tr>
+                        <tr class="hero-media-field hero-media-wistia">
+                            <th scope="row"><label for="homepage_hero_wistia_id"><?php _e('Wistia Video ID', 'eatisfamily'); ?></label></th>
+                            <td>
+                                <input type="text" name="homepage_hero_wistia_id" id="homepage_hero_wistia_id" value="<?php echo esc_attr($homepage['hero_section']['wistia_id'] ?? ''); ?>" class="regular-text" placeholder="abc123xyz">
+                                <p class="description"><?php _e('ID de la vidéo Wistia (ex: abc123xyz)', 'eatisfamily'); ?></p>
+                            </td>
+                        </tr>
+                        <tr class="hero-media-field hero-media-mp4">
+                            <th scope="row"><label for="homepage_hero_video_url"><?php _e('MP4 Video URL', 'eatisfamily'); ?></label></th>
+                            <td>
+                                <input type="text" name="homepage_hero_video_url" id="homepage_hero_video_url" value="<?php echo esc_attr($homepage['hero_section']['video_url'] ?? ''); ?>" class="regular-text">
+                                <button type="button" class="button eatisfamily-upload-media" data-target="homepage_hero_video_url"><?php _e('Select', 'eatisfamily'); ?></button>
+                                <p class="description"><?php _e('URL du fichier vidéo MP4', 'eatisfamily'); ?></p>
                             </td>
                         </tr>
                         <tr>
@@ -1638,6 +1684,17 @@ function eatisfamily_pages_content_page_v5() {
                             <td><input type="text" name="homepage_hero_title_line3" id="homepage_hero_title_line3" value="<?php echo esc_attr(wp_strip_all_tags($homepage['hero_section']['title']['line_3'] ?? '')); ?>" class="large-text"></td>
                         </tr>
                     </table>
+                    <script>
+                    jQuery(document).ready(function($) {
+                        function toggleHeroMediaFields() {
+                            var type = $('#homepage_hero_video_type').val();
+                            $('.hero-media-field').hide();
+                            $('.hero-media-' + type).show();
+                        }
+                        toggleHeroMediaFields();
+                        $('#homepage_hero_video_type').on('change', toggleHeroMediaFields);
+                    });
+                    </script>
                 </div>
                 
                 <!-- Intro Section -->
@@ -2427,7 +2484,11 @@ function eatisfamily_build_pages_content_v5($data) {
                 'keywords' => sanitize_text_field($data['homepage_seo_keywords'] ?? ''),
             ),
             'hero_section' => array(
+                'video_type' => sanitize_text_field($data['homepage_hero_video_type'] ?? 'image'),
                 'bg' => esc_url_raw($data['homepage_hero_bg'] ?? ''),
+                'youtube_id' => sanitize_text_field($data['homepage_hero_youtube_id'] ?? ''),
+                'wistia_id' => sanitize_text_field($data['homepage_hero_wistia_id'] ?? ''),
+                'video_url' => esc_url_raw($data['homepage_hero_video_url'] ?? ''),
                 'title' => array(
                     'line_1' => sanitize_text_field(wp_strip_all_tags($data['homepage_hero_title_line1'] ?? '')),
                     'line_2' => sanitize_text_field(wp_strip_all_tags($data['homepage_hero_title_line2'] ?? '')),

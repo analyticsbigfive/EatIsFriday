@@ -120,28 +120,37 @@ function eatisfamily_get_venues_dropdown_options() {
 }
 
 /**
- * Get event types for dropdown
+ * Get venue types for dropdown
+ * Fetches from eatisfamily_venues option (v5) with fallback to legacy eatisfamily_event_types
  */
 function eatisfamily_get_event_types_dropdown() {
-    $event_types = get_option('eatisfamily_event_types', array());
-    
-    // Default event types if none set
-    if (empty($event_types)) {
-        $event_types = array(
+    // First try to get from unified venues option (v5)
+    $venues_data = get_option('eatisfamily_venues', array());
+
+    // Support both venue_types (new) and event_types (legacy) keys
+    $venue_types = !empty($venues_data['venue_types'])
+        ? $venues_data['venue_types']
+        : (!empty($venues_data['event_types']) ? $venues_data['event_types'] : array());
+
+    // Fallback to old separate option if nothing found
+    if (empty($venue_types)) {
+        $venue_types = get_option('eatisfamily_event_types', array());
+    }
+
+    // Default venue types if still empty
+    if (empty($venue_types)) {
+        $venue_types = array(
             array('id' => 'stadium', 'name' => 'Stadium'),
             array('id' => 'festival', 'name' => 'Festival'),
             array('id' => 'arena', 'name' => 'Arena'),
-            array('id' => 'sports', 'name' => 'Sports Event'),
-            array('id' => 'fashion', 'name' => 'Fashion Event'),
-            array('id' => 'partnership', 'name' => 'Venue Partnership'),
         );
     }
-    
-    $options = array('' => __('-- Select Event Type --', 'eatisfamily'));
-    foreach ($event_types as $type) {
+
+    $options = array('' => __('-- Select Venue Type --', 'eatisfamily'));
+    foreach ($venue_types as $type) {
         $options[$type['id']] = $type['name'];
     }
-    
+
     return $options;
 }
 

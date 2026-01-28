@@ -13,7 +13,7 @@ const iconShop = computed(() => settings.value?.icons?.icon_shop || '/images/ico
 const iconFood = computed(() => settings.value?.icons?.icon_food || '/images/iconFood.svg')
 const btnJoinNow = computed(() => settings.value?.icons?.btn_join_now || '/images/joinNowBtn.svg')
 
-const activeEventFilter = ref<string | undefined>(undefined)
+const activeVenueFilter = ref<string | undefined>(undefined)
 const selectedVenue = ref<Venue | null>(null)
 const activeTab = ref<'overview' | 'shops' | 'menus'>('overview')
 
@@ -30,12 +30,12 @@ const SHOPS_PER_PAGE = 3
 const menuPage = ref(0)
 const MENU_ITEMS_PER_PAGE = 4
 
-const toggleEventFilter = (filterId: string) => {
+const toggleVenueFilter = (filterId: string) => {
   selectedVenue.value = null
-  if (activeEventFilter.value === filterId) {
-    activeEventFilter.value = undefined
+  if (activeVenueFilter.value === filterId) {
+    activeVenueFilter.value = undefined
   } else {
-    activeEventFilter.value = filterId
+    activeVenueFilter.value = filterId
   }
 }
 
@@ -115,7 +115,8 @@ const goToMenuPage = (page: number) => {
         <ClientOnly>
           <VenueMap
             :venues="locationsData.map_venues"
-            :active-filter="activeEventFilter"
+            :venue-types="locationsData.venue_types"
+            :active-filter="activeVenueFilter"
             @venue-clicked="handleVenueClick"
           />
         </ClientOnly>
@@ -315,17 +316,18 @@ const goToMenuPage = (page: number) => {
           <h2 class="explore-title">{{ locationsData.title }}</h2>
           <p class="explore-description" v-html="locationsData.description"></p>
 
-          <!-- Event Type Filters -->
+          <!-- Venue Type Filters -->
           <p class="filter-label">{{ locationsData.filter_label }}</p>
-          <div class="event-filters">
+          <div class="venue-filters">
             <button
-              v-for="eventType in locationsData.event_types"
-              :key="eventType.id"
-              class="event-filter-btn"
-              :class="{ active: activeEventFilter === eventType.id }"
-              @click="toggleEventFilter(eventType.id)"
+              v-for="venueType in locationsData.venue_types"
+              :key="venueType.id"
+              class="venue-filter-btn"
+              :class="{ active: activeVenueFilter === venueType.id }"
+              @click="toggleVenueFilter(venueType.id)"
             >
-              <div class="event-filter-image" :style="{ backgroundImage: `url('${eventType.image}')` }"></div>
+              <div class="venue-filter-image" :style="{ backgroundImage: `url('${venueType.image}')` }"></div>
+              <span class="guignol">{{ venueType.name }}</span>
             </button>
           </div>
 
@@ -414,13 +416,13 @@ const goToMenuPage = (page: number) => {
 
 }
 
-.event-filters {
+.venue-filters {
   display: flex;
   gap: 1rem;
   margin-bottom: 2rem;
 }
 
-.event-filter-btn {
+.venue-filter-btn {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -431,16 +433,16 @@ const goToMenuPage = (page: number) => {
   transition: transform 0.2s ease;
 }
 
-.event-filter-btn:hover {
+.venue-filter-btn:hover {
   transform: translateY(-4px);
 }
 
-.event-filter-btn.active .event-filter-image {
+.venue-filter-btn.active .venue-filter-image {
   border-color: #FF4D6D;
   box-shadow: 0 4px 12px rgba(255, 77, 109, 0.3);
 }
 
-.event-filter-image {
+.venue-filter-image {
   width: 180px;
   height: 185px;
   border-radius: 12px;
@@ -517,7 +519,7 @@ const goToMenuPage = (page: number) => {
     font-size: 2rem;
   }
 
-  .event-filters {
+  .venue-filters {
     justify-content: center;
   }
 
@@ -527,7 +529,7 @@ const goToMenuPage = (page: number) => {
 }
 
 @media (max-width: 576px) {
-  .event-filter-image {
+  .venue-filter-image {
     width: 80px;
     height: 55px;
   }
@@ -1236,5 +1238,37 @@ filter: alpha(opacity=50); /* internet explorer */
     font-size: 11px;
     padding: 2px 5px;
   }
+}
+.guignol{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width: 100%;
+  height: 47px;
+  padding: 8px 54px 11px 55px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background-color: rgba(45, 45, 45, 0.2);
+    font-family: FONTSPRINGDEMO-RecoletaSemiBold;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.56;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff6f0;
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  margin:auto;
+  z-index:1;  
+
+}
+.venue-filter-btn{
+  position:relative;
+  overflow:hidden;
+  border-radius:10px;
 }
 </style>
