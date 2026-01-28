@@ -594,8 +594,10 @@ function eatisfamily_venue_meta_box_callback($post) {
     $services = get_post_meta($post->ID, 'services', true);
     $logo_url = get_post_meta($post->ID, 'logo_url', true);
     
-    // Additional image fields
-    $image2 = get_post_meta($post->ID, 'image2', true);
+    // Additional image fields for the grid
+    $grid_image_1 = get_post_meta($post->ID, 'grid_image_1', true);
+    $grid_image_2 = get_post_meta($post->ID, 'grid_image_2', true);
+    $image2 = get_post_meta($post->ID, 'image2', true); // Legacy field
     $shops = get_post_meta($post->ID, 'shops', true);
     $menu_items = get_post_meta($post->ID, 'menu_items', true);
     
@@ -671,22 +673,34 @@ function eatisfamily_venue_meta_box_callback($post) {
             </div>
         </div>
         
-        <!-- Images -->
+        <!-- Images for Venue Details Grid -->
         <div class="field-group">
-            <h4><?php _e('Images & Branding', 'eatisfamily'); ?></h4>
-            <p class="description"><?php _e('The main image is set via the Featured Image. Add additional images below.', 'eatisfamily'); ?></p>
+            <h4><?php _e('🖼️ Images de la Grille (Venue Details)', 'eatisfamily'); ?></h4>
+            <p class="description"><?php _e('Ces deux images s\'affichent côte à côte dans la grille de détails de la venue sur la carte.', 'eatisfamily'); ?></p>
             
             <div class="field-row">
-                <label for="image2"><?php _e('Secondary Image', 'eatisfamily'); ?></label>
+                <label for="grid_image_1"><?php _e('Image Gauche (avec badge)', 'eatisfamily'); ?></label>
                 <div>
-                    <?php eatisfamily_render_media_field('image2', $image2, __('Additional venue photo', 'eatisfamily')); ?>
+                    <?php eatisfamily_render_media_field('grid_image_1', $grid_image_1, __('Première image de la grille - le badge du type de venue sera affiché dessus', 'eatisfamily')); ?>
                 </div>
             </div>
             
             <div class="field-row">
-                <label for="logo_url"><?php _e('Venue Logo', 'eatisfamily'); ?></label>
+                <label for="grid_image_2"><?php _e('Image Droite (avec bouton fermer)', 'eatisfamily'); ?></label>
                 <div>
-                    <?php eatisfamily_render_media_field('logo_url', $logo_url, __('Logo displayed on venue card', 'eatisfamily')); ?>
+                    <?php eatisfamily_render_media_field('grid_image_2', $grid_image_2, __('Deuxième image de la grille - le bouton fermer sera affiché dessus', 'eatisfamily')); ?>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Logo -->
+        <div class="field-group">
+            <h4><?php _e('🏷️ Logo de la Venue', 'eatisfamily'); ?></h4>
+            
+            <div class="field-row">
+                <label for="logo_url"><?php _e('Logo', 'eatisfamily'); ?></label>
+                <div>
+                    <?php eatisfamily_render_media_field('logo_url', $logo_url, __('Logo affiché à côté du nom de la venue', 'eatisfamily')); ?>
                 </div>
             </div>
         </div>
@@ -767,7 +781,7 @@ function eatisfamily_save_venue_meta_box($post_id) {
     }
     
     // Save text fields
-    $text_fields = array('venue_slug', 'location', 'city', 'country', 'venue_type', 'capacity', 'recent_event', 'guests_served', 'logo_url', 'image2');
+    $text_fields = array('venue_slug', 'location', 'city', 'country', 'venue_type', 'capacity', 'recent_event', 'guests_served', 'logo_url', 'image2', 'grid_image_1', 'grid_image_2');
     foreach ($text_fields as $field) {
         if (isset($_POST[$field])) {
             update_post_meta($post_id, $field, sanitize_text_field($_POST[$field]));

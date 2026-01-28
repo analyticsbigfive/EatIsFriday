@@ -1375,6 +1375,48 @@ function eatisfamily_get_venue_by_id($request) {
 }
 
 function eatisfamily_format_venue($post) {
+    // Get shops data
+    $shops_raw = get_post_meta($post->ID, 'shops', true);
+    $shops = array();
+    if (!empty($shops_raw)) {
+        if (is_string($shops_raw)) {
+            $shops_raw = json_decode($shops_raw, true);
+        }
+        if (is_array($shops_raw)) {
+            foreach ($shops_raw as $shop) {
+                if (!empty($shop['name'])) {
+                    $shops[] = array(
+                        'id' => sanitize_title($shop['name']),
+                        'name' => $shop['name'],
+                        'image' => $shop['image'] ?? '',
+                    );
+                }
+            }
+        }
+    }
+    
+    // Get menu items data
+    $menu_items_raw = get_post_meta($post->ID, 'menu_items', true);
+    $menu_items = array();
+    if (!empty($menu_items_raw)) {
+        if (is_string($menu_items_raw)) {
+            $menu_items_raw = json_decode($menu_items_raw, true);
+        }
+        if (is_array($menu_items_raw)) {
+            foreach ($menu_items_raw as $item) {
+                if (!empty($item['name'])) {
+                    $menu_items[] = array(
+                        'id' => sanitize_title($item['name']),
+                        'name' => $item['name'],
+                        'price' => $item['price'] ?? '',
+                        'description' => $item['description'] ?? '',
+                        'thumbnail' => $item['image'] ?? $item['thumbnail'] ?? '',
+                    );
+                }
+            }
+        }
+    }
+    
     return array(
         'id' => $post->post_name,
         'name' => get_the_title($post->ID),
@@ -1385,10 +1427,20 @@ function eatisfamily_format_venue($post) {
         'lat' => (float) get_post_meta($post->ID, 'latitude', true),
         'lng' => (float) get_post_meta($post->ID, 'longitude', true),
         'description' => apply_filters('the_content', $post->post_content),
-        'capacity' => (int) get_post_meta($post->ID, 'capacity', true),
+        'capacity' => get_post_meta($post->ID, 'capacity', true),
+        'staff_members' => (int) get_post_meta($post->ID, 'staff_members', true),
+        'recent_event' => get_post_meta($post->ID, 'recent_event', true),
+        'guests_served' => get_post_meta($post->ID, 'guests_served', true),
         'amenities' => eatisfamily_parse_array_field(get_post_meta($post->ID, 'amenities', true)),
         'services' => eatisfamily_parse_array_field(get_post_meta($post->ID, 'services', true)),
-        'image' => get_the_post_thumbnail_url($post->ID, 'large'),
+        // Grid images - use new fields with fallback to legacy fields
+        'image' => get_post_meta($post->ID, 'grid_image_1', true) ?: get_the_post_thumbnail_url($post->ID, 'large'),
+        'image2' => get_post_meta($post->ID, 'grid_image_2', true) ?: get_post_meta($post->ID, 'image2', true),
+        'logo' => get_post_meta($post->ID, 'logo_url', true),
+        'shops' => $shops,
+        'shops_count' => count($shops),
+        'menu_items' => $menu_items,
+        'menus_count' => count($menu_items),
     );
 }
 

@@ -163,12 +163,11 @@ const goToMenuPage = (page: number) => {
           <!-- Recent event banner -->
           <div class="venue-event-banner">
             <div class="venue-event-item">
-               <NuxtImg :src="iconCalendar" alt="Staff Icon" />
-              <span class="venue-event-label">RECENT EVENT</span>
+              <span class="venue-event-label" style="text-transform: uppercase;">Evenememnts récents</span>
               <span class="venue-event-value">{{ selectedVenue.recent_event }}</span>
             </div>
             <div class="venue-event-item">
-              <span class="venue-event-label">GUEST SERVED</span>
+              <span class="venue-event-label">INVITÉS SERVIS</span>
               <span class="venue-event-value">{{ selectedVenue.guests_served }} Guest Served</span>
             </div>
           </div>
@@ -176,35 +175,34 @@ const goToMenuPage = (page: number) => {
           <!-- Tabs -->
           <div class="venue-tabs">
             <button
-              class="venue-tab"
+            style="text-transform: uppercase;"
+              class="venue-tab "
               :class="{ active: activeTab === 'overview' }"
               @click="setActiveTab('overview')"
             >
-              <span class="tab-icon"><nuxt-img :src="iconInfo" alt="Overview Icon" /></span> OVERVIEW
+              <span class="tab-icon"><nuxt-img :src="iconInfo" alt="Overview Icon" /></span> Présentation
             </button>
             <button
               class="venue-tab"
               :class="{ active: activeTab === 'shops' }"
               @click="setActiveTab('shops')"
             >
-              <span class="tab-icon"><nuxt-img :src="iconShop" alt="Shops Icon" /></span> SHOPS ({{ selectedVenue.shops?.length || selectedVenue.shops_count }})
+              <span class="tab-icon"><nuxt-img :src="iconShop" alt="Shops Icon" /></span> BOUTIQUES ({{ selectedVenue.shops?.length || selectedVenue.shops_count }})
             </button>
             <button
               class="venue-tab"
               :class="{ active: activeTab === 'menus' }"
               @click="setActiveTab('menus')"
             >
-              <span class="tab-icon"><nuxt-img :src="iconFood" alt="Menus Icon" /></span> MENUS ({{ selectedVenue.menu_items?.length || selectedVenue.menus_count }})
+              <span class="tab-icon"><nuxt-img :src="iconFood" alt="Menus Icon" /></span> MENU ({{ selectedVenue.menu_items?.length || selectedVenue.menus_count }})
             </button>
           </div>
 
           <!-- Tab Content: Overview -->
           <div v-if="activeTab === 'overview'" class="tab-content">
             <div class="venue-about">
-              <h4 class="venue-about-title">ABOUT THIS VENUE</h4>
-              <p class="venue-about-text">{{ selectedVenue.description }}</p>
+              <div class="mt-0 venue-about-text" v-html="selectedVenue.description"></div>
             </div>
-
             <!-- Services List -->
             <div v-if="selectedVenue.services && selectedVenue.services.length > 0" class="venue-services">
               <h4 class="venue-services-title">SERVICES : </h4>
@@ -837,7 +835,7 @@ filter: alpha(opacity=50); /* internet explorer */
 }
 
 .venue-about {
-  margin-bottom: 1.5rem;
+  //margin-bottom: 1.5rem;
 }
 
 .venue-about-title {
@@ -867,7 +865,7 @@ filter: alpha(opacity=50); /* internet explorer */
 
 /* Services List */
 .venue-services {
-  margin-top: 1.5rem;
+  //margin-top: 1.5rem;
 }
 
 .venue-services-title {
