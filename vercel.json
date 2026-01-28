@@ -4,6 +4,7 @@
   "buildCommand": "npm run build",
   "outputDirectory": ".output/public",
   "env": {
-    "NUXT_PUBLIC_USE_LOCAL_FALLBACK": "true"
+    "NUXT_PUBLIC_USE_LOCAL_FALLBACK": "false",
+    "NUXT_PUBLIC_API_BASE_URL": "https://bigfive.dev/eatisfamily/wp-json/eatisfamily/v1"
   }
 }
