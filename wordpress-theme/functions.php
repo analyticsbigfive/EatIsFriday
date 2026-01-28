@@ -1466,6 +1466,32 @@ function eatisfamily_get_site_content($request) {
         );
     }
     
+    // Merge about galleries from WordPress admin
+    $about_galleries = get_option('eatisfamily_about_galleries', array());
+    if (!empty($about_galleries)) {
+        if (!isset($site_content['about'])) {
+            $site_content['about'] = array();
+        }
+        // Gallery 1 for about page
+        if (!empty($about_galleries['gallery_section']['images'])) {
+            $site_content['about']['gallery_section'] = $about_galleries['gallery_section'];
+        }
+        // Gallery 2 for about page
+        if (!empty($about_galleries['gallery_section2']['images'])) {
+            $site_content['about']['gallery_section2'] = $about_galleries['gallery_section2'];
+        }
+    }
+    
+    // Merge events gallery
+    $events_gallery = get_option('eatisfamily_events_gallery', array());
+    if (!empty($events_gallery['images'])) {
+        if (!isset($site_content['about'])) {
+            $site_content['about'] = array();
+        }
+        // Events gallery is also accessible via about for backwards compatibility
+        $site_content['about']['events_gallery'] = array('images' => $events_gallery['images']);
+    }
+    
     return rest_ensure_response($site_content);
 }
 
@@ -1505,25 +1531,49 @@ function eatisfamily_get_pages_content($request) {
         );
     }
     
-    // Merge with gallery data
+    // Merge with gallery data - Now supports multiple galleries per page
     $gallery_data = get_option('eatisfamily_gallery', array());
     if (!empty($gallery_data)) {
+        // Homepage gallery
         if (!isset($pages_content['homepage'])) {
             $pages_content['homepage'] = array();
         }
+        // Support both old format (images) and new format (homepage.images)
+        $homepage_images = $gallery_data['homepage']['images'] ?? $gallery_data['images'] ?? array();
         $pages_content['homepage']['gallery_section'] = array(
-            'images' => $gallery_data['images'] ?? array()
+            'images' => $homepage_images
         );
+        
+        // About page galleries - add to about section in site-content
+        if (!empty($gallery_data['about_1']['images']) || !empty($gallery_data['about_2']['images'])) {
+            // These will be returned in site-content endpoint
+            // Store in a separate option that site-content can read
+            update_option('eatisfamily_about_galleries', array(
+                'gallery_section' => array('images' => $gallery_data['about_1']['images'] ?? array()),
+                'gallery_section2' => array('images' => $gallery_data['about_2']['images'] ?? array())
+            ));
+        }
+        
+        // Events page gallery
+        if (!empty($gallery_data['events']['images'])) {
+            update_option('eatisfamily_events_gallery', array(
+                'images' => $gallery_data['events']['images'] ?? array()
+            ));
+        }
     }
     
-    // Merge with sustainability data
+    // Merge with sustainability data from option OR keep existing from JSON file
     $sustainability_data = get_option('eatisfamily_sustainability', array());
-    if (!empty($sustainability_data)) {
-        if (!isset($pages_content['homepage'])) {
-            $pages_content['homepage'] = array();
-        }
-        $pages_content['homepage']['sustainable_service_title'] = $sustainability_data['title'] ?? '';
-        $pages_content['homepage']['sustainable_service'] = $sustainability_data['items'] ?? array();
+    if (!isset($pages_content['homepage'])) {
+        $pages_content['homepage'] = array();
+    }
+    
+    // Only override if we have data from the option
+    if (!empty($sustainability_data['title'])) {
+        $pages_content['homepage']['sustainable_service_title'] = $sustainability_data['title'];
+    }
+    if (!empty($sustainability_data['items'])) {
+        $pages_content['homepage']['sustainable_service'] = $sustainability_data['items'];
     }
     
     return rest_ensure_response($pages_content);
@@ -1540,6 +1590,40 @@ function eatisfamily_get_global_settings($request) {
     // Get site content for additional data
     $site_content = get_option('eatisfamily_site_content', array());
     
+    // Get components (header/footer from admin page)
+    $components = get_option('eatisfamily_components', array());
+    $header_components = $components['header'] ?? array();
+    $footer_components = $components['footer'] ?? array();
+    
+    // Build navigation links from components (admin page) - takes priority
+    $nav_links_from_components = array();
+    $component_nav_links = $header_components['nav_links'] ?? array();
+    if (!empty($component_nav_links)) {
+        // Map component nav_links to the format expected by frontend
+        $link_mappings = array(
+            'about' => '/about',
+            'activities' => '/activities',
+            'events' => '/events',
+            'careers' => '/careers',
+            'blogs' => '/blog',
+            'contact' => '/contact'
+        );
+        foreach ($link_mappings as $key => $url) {
+            $text = $component_nav_links[$key] ?? '';
+            if (!empty($text)) {
+                $nav_links_from_components[] = array(
+                    'text' => $text,
+                    'to' => $url
+                );
+            }
+        }
+    }
+    
+    // Use component nav_links if available, otherwise fall back to customizer
+    $final_nav_links = !empty($nav_links_from_components) 
+        ? $nav_links_from_components 
+        : ($customizer_settings['navigation']['links'] ?? array());
+    
     // Build complete settings object
     $settings = array(
         // Brand & Identity
@@ -1552,17 +1636,31 @@ function eatisfamily_get_global_settings($request) {
         ),
         
         // Header Configuration
-        'header' => $customizer_settings['header'],
+        'header' => array_merge(
+            $customizer_settings['header'],
+            array(
+                'logo' => $header_components['logo'] ?? $customizer_settings['header']['logo'] ?? ''
+            )
+        ),
         
-        // Navigation
-        'navigation' => $customizer_settings['navigation'],
+        // Navigation - merge customizer with components
+        'navigation' => array(
+            'links' => $final_nav_links
+        ),
         
-        // Footer
+        // Footer - merge customizer with components
         'footer' => array_merge(
             $customizer_settings['footer'],
             array(
-                'contact_email' => $customizer_settings['contact']['email'],
-                'contact_phone' => $customizer_settings['contact']['phone'],
+                'contact_email' => $footer_components['contact_email'] ?? $customizer_settings['contact']['email'] ?? '',
+                'contact_phone' => $footer_components['contact_phone'] ?? $customizer_settings['contact']['phone'] ?? '',
+                'logoFooter' => $footer_components['logoFooter'] ?? '',
+                'brand_name' => $footer_components['brand_name'] ?? '',
+                'brand_description' => $footer_components['brand_description'] ?? '',
+                'company_title' => $footer_components['company_title'] ?? 'Company',
+                'policy_title' => $footer_components['policy_title'] ?? 'Policy',
+                'copyright_template' => $footer_components['copyright_template'] ?? '',
+                'back_to_top' => $footer_components['back_to_top'] ?? 'Back to top',
             )
         ),
         
@@ -1587,6 +1685,9 @@ function eatisfamily_get_global_settings($request) {
         
         // Background Images
         'backgrounds' => $customizer_settings['backgrounds'],
+        
+        // UI Icons
+        'icons' => $customizer_settings['icons'] ?? array(),
     );
     
     return rest_ensure_response($settings);

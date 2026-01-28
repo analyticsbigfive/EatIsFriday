@@ -60,6 +60,7 @@ onMounted(async () => {
       delay: 0.2
     })
   }
+
 })
 </script>
 
@@ -96,7 +97,7 @@ onMounted(async () => {
           <!-- Wistia Video Background -->
           <div v-else-if="heroVideoType === 'wistia' && heroWistiaId" class="hero-video-wrapper">
             <iframe
-              :src="`https://fast.wistia.net/embed/iframe/${heroWistiaId}?autoplay=1&muted=1&loop=1&silentAutoPlay=true&controlsVisibleOnLoad=false&playbar=false&fullscreenButton=false&playButton=false&settingsControl=false&volumeControl=false&smallPlayButton=false`"
+              :src="`https://fast.wistia.net/embed/iframe/${heroWistiaId}?autoPlay=true&silentAutoPlay=true&muted=true&endVideoBehavior=loop&controlsVisibleOnLoad=false&playbar=false&fullscreenButton=false&playButton=false&settingsControl=false&volumeControl=false&smallPlayButton=false&fitStrategy=cover`"
               frameborder="0"
               allow="autoplay; fullscreen"
               allowfullscreen
@@ -180,7 +181,7 @@ onMounted(async () => {
                 <div class="col-lg-6 col-md-6 rounded p-2 service-desc">
                   <div class="innerService rounded p-2">
                     <h3 class="recoleta preserve-lines">{{ service.title }}</h3>
-                    <p class="recoleta mt-4 mb-4 preserve-lines">{{ service.description }}</p>
+                    <div class="recoleta mt-4 mb-4 preserve-lines"><p v-html="service.description"></p></div>
                     <NuxtLink :to="service.linkTo">
                       <NuxtImg :src="service.btnImage" alt="En savoir plus sur nos services" />
                     </NuxtLink>

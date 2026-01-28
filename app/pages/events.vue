@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import type { Event } from '~/composables/useEvents'
 const { getSiteContent } = useSiteContent()
 const { getContentByPath, getHomepageContent } = usePageContent()
@@ -9,6 +9,14 @@ const pageContent = ref<any>(null)
 const content = ref<any>(null)
 const events = ref<Event[]>([])
 const loading = ref(true)
+
+// Computed property for events gallery with fallback
+const eventsGalleryImages = computed(() => {
+  // Try events-specific gallery first, then fallback to about.gallery_section2
+  return siteContent.value?.about?.events_gallery?.images 
+    || siteContent.value?.about?.gallery_section2?.images 
+    || []
+})
 
 onMounted(async () => {
   // Charger le contenu de la page
@@ -79,9 +87,9 @@ useHead(() => ({
               :event="event" :color-index="index" />
           </div>
 
-          <!-- Gallery component in the middle -->
-          <GalleryGrid v-if="siteContent?.about?.gallery_section2?.images"
-            :images="siteContent.about.gallery_section2.images" />
+          <!-- Gallery component in the middle - uses events-specific gallery with fallback -->
+          <GalleryGrid v-if="eventsGalleryImages.length > 0"
+            :images="eventsGalleryImages" />
           <!-- Second half of events (even) -->
           <div class="events-grid">
             <CardsEventCard v-for="(event, index) in events.slice(Math.ceil(events.length / 2))" :key="event.id"
@@ -99,9 +107,9 @@ useHead(() => ({
         :partners="homepageContent.partners.map((p: any) => ({ ...p, name: p.alt }))" />
     </section>
     <section class="mt-4">
-      
-      <GalleryGrid v-if="siteContent?.about?.gallery_section2?.images"
-        :images="siteContent.about.gallery_section2.images" />
+      <!-- Second gallery for events page - uses events-specific gallery with fallback -->
+      <GalleryGrid v-if="eventsGalleryImages.length > 0"
+        :images="eventsGalleryImages" />
     </section>
   </div>
 </template>
