@@ -1852,6 +1852,11 @@ function eatisfamily_data_management_page() {
                         <td><?php echo $blog_count; ?></td>
                         <td><a href="<?php echo admin_url('edit.php'); ?>" class="button"><?php _e('View All', 'eatisfamily'); ?></a></td>
                     </tr>
+                    <tr>
+                        <td><strong><?php _e('Timeline Events', 'eatisfamily'); ?></strong></td>
+                        <td><?php echo wp_count_posts('timeline_event')->publish; ?></td>
+                        <td><a href="<?php echo admin_url('edit.php?post_type=timeline_event'); ?>" class="button"><?php _e('View All', 'eatisfamily'); ?></a></td>
+                    </tr>
                 </tbody>
             </table>
         </div>

@@ -1,847 +1,348 @@
-{
-  "homepage": {
-    "seo": {
-      "title": "Eat Is Family - Concessionnaire restauration grand public",
-      "description": "Concessionnaire restauration grand public pour les plus grandes enceintes sportives et culturelles en France. Stades, arénas, festivals.",
-      "keywords": "restauration grand public, concessionnaire, stades, arénas, festivals, événements sportifs, événements culturels, France",
-      "og_title": "Eat Is Family - La restauration des grands événements",
-      "og_description": "Concessionnaire restauration grand public pour les plus grandes enceintes sportives et culturelles.",
-      "og_image": "/images/og-home.jpg",
-      "twitter_card": "summary_large_image",
-      "canonical": "/"
-    },
-    "hero_section": {
-      "bg": "images/unsplash_6vfYbDwOuMo.jpg",
-      "right": {
-        "title": "Nourrir les moments qui rassemblent.\nLa restauration des grands événements.",
-        "text": "Concessionnaire restauration grand public pour les plus grandes enceintes sportives et culturelles.",
-        "button": "Explorer la carte interactive",
-        "buttonLink": "#map"
-      },
-      "left": {
-        "title": "Trouvez le poste qui vous correspond",
-        "text": "Découvrez plus de 100 offres d'emploi partout en France",
-        "button": "En savoir plus sur nous",
-        "buttonLink": "/about"
-      }
-    },
-    "intro_section": {
-      "texte": "<strong>Nous sommes Eat is Family !</strong> Concessionnaires en restauration grand public, nous opérons partout en France sur des événements sportifs et culturels. Notre mission : servir vite et bien, avec une restauration de qualité, généreuse et de saison. Parce que sur un événement, la nourriture fait partie de l'expérience. Stades, arénas ou lieux culturels : nous nous adaptons à chaque enceinte pour embellir l'événement et en faire un moment mémorable.",
-      "button": "En savoir plus sur nous",
-      "buttonLink": "/about"
-    },
-    "map_section": {
-      "title": "Explorez où nous opérons",
-      "description": "Cliquez sur un marqueur pour voir les stades et enceintes que nous accompagnons pour leur restauration grand public",
-      "filterLabel": "Filtrer par type d'événement",
-      "filters": [
-        "Stade",
-        "Festival",
-        "Aréna"
-      ],
-      "stats": [
-        {
-          "number": "300+",
-          "label": "Événements Food & Beverage en 2025"
-        },
-        {
-          "number": "1 million+",
-          "label": "Personnes servies en 2024"
-        },
-        {
-          "number": "80 %",
-          "label": "Fait maison"
-        },
-        {
-          "number": "50+",
-          "label": "Clients et partenaires B2B"
-        }
-      ]
-    },
-    "services_section": {
-      "tag": "NOS SERVICES",
-      "title": "Une restauration grand public pensée pour l'émotion des événements",
-      "services": [
-        {
-          "title": "Nourrir l'énergie de chaque événement",
-          "description": "Nous opérons des dispositifs de restauration grand public au sein de stades, arénas et grandes enceintes culturelles, partout en France. De la production en cuisine au service au public, nous maîtrisons l'ensemble de la chaîne.\n\nNos équipes sont formées aux environnements à forte intensité, où le rythme, la qualité et la fluidité du service sont essentiels. Jour de match, concert ou grand rendez-vous culturel : nous assurons une restauration organisée, efficace et cohérente, capable de suivre l'énergie de l'événement.\n\nParce que dans ces lieux, tout va vite et rien ne doit être laissé au hasard.",
-          "thumbnail": "images/unsplash_6vfYbDwOuMo.jpg",
-          "btnImage": "images/btnGetInouchPartner.svg",
-          "btnText": "Nous contacter",
-          "linkTo": "/contact"
-        },
-        {
-          "title": "Une expertise Food & Beverage grand public ancrée dans la réalité du terrain",
-          "description": "Chez Eat is Family, notre expertise Food & Beverage grand public s'est construite sur le terrain, au cœur des stades, arénas et grandes enceintes.\n\nNous accompagnons les opérateurs et gestionnaires de lieux sur l'ensemble des enjeux F&B : organisation des cuisines, structuration des équipes, logistique, flux, rapidité de service et qualité de l'offre.\n\nNous savons ce que signifie produire et servir à grande échelle, sous contrainte de temps, de volume et de pression.\n\nNotre valeur ajoutée repose sur une connaissance concrète du fonctionnement réel d'une restauration grand public, quand chaque détail compte et que l'efficacité est essentielle.",
-          "btnImage": "images/btnGetInouchConsult.svg",
-          "btnText": "Parlons Food & Beverage",
-          "thumbnail": "images/unsplash_6vfYbDwOuMo.png",
-          "linkTo": "/contact"
-        }
-      ]
-    },
-    "cta_section": {
-      "title": "",
-      "description": "Nous opérons des dispositifs de restauration grand public de A à Z, pensés pour chaque temps de l'événement : avant, pendant et après.\n\nEn amont, nous analysons le site et ses contraintes : diagnostics techniques, organisation des ressources, logistique, implantation et préparation opérationnelle.\n\nPendant l'événement, nous assurons une restauration fluide, efficace et qualitative, capable de suivre les rythmes et les pics de fréquentation.\n\nÀ chaque étape, nous prenons en charge chaque détail, pour que la restauration fonctionne sans friction et s'intègre naturellement à l'événement."
-    },
-    "gallery_section": {
-      "images": [
-        {
-          "src": "images/buger.jpg",
-          "alt": "Burger gourmet"
-        },
-        {
-          "src": "images/image5.jpg",
-          "alt": "Salade fraiche"
-        },
-        {
-          "src": "images/neicurz.jpg",
-          "alt": "Plat gastronomique"
-        }
-      ]
-    },
-    "sustainable_service_title": "Notre engagement pour une restauration plus responsable",
-    "sustainable_service": [
-      {
-        "background": "sus1.svg",
-        "icone": "images/🔄.png",
-        "title": "Des solutions réutilisables au cœur du service",
-        "description": "Nous privilégions, lorsque c'est possible, des contenants et équipements réutilisables afin de limiter les plastiques à usage unique et réduire les déchets liés au service."
-      },
-      {
-        "background": "sus2.svg",
-        "icone": "images/♻️.png",
-        "title": "Un approvisionnement responsable et moins de déchets",
-        "description": "Nous sélectionnons nos ingrédients avec attention, en privilégiant des produits locaux et de saison, et travaillons à réduire le gaspillage en adaptant les volumes, les flux et l'organisation aux réalités de chaque enceinte."
-      },
-      {
-        "background": "sus3.svg",
-        "icone": "images/📦.png",
-        "title": "Des emballages éco-conçus",
-        "description": "Lorsque le réutilisable n'est pas possible, nous utilisons des emballages biodégradables ou compostables, adaptés aux contraintes de la restauration grand public et des grands événements."
-      }
-    ],
-    "beautiful": {
-      "title": "Faites de vos manifestations sportives et culturelles un succès gustatif avec Eat is Family.",
-      "text": "Chaque événement est une occasion de créer un moment marquant. Goût, fraîcheur, convivialité et efficacité se retrouvent dans nos points de vente pour renforcer l'expérience de l'événement, sans jamais en perturber le déroulé. Que ce soit à l'Adidas Arena, au Stade Jean-Bouin, à Roland-Garros ou aux 24 Heures du Mans, nous opérons en tant que concessionnaire sur plus de 250 événements par an. Notre famille de foodies met son expertise culinaire et logistique au service de chaque enceinte pour faire de vos événements de véritables réussites gastronomiques.",
-      "image": "images/image3.jpg"
-    },
-    "examples": [
-      {
-        "title": "Concession restauration grand public",
-        "texte": "Des stades aux arénas, nous déployons des dispositifs de restauration pensés pour les grands flux, les temps forts et les attentes du public.\n\nNous opérons les concessions Food & Beverage de nombreuses enceintes sportives et culturelles partout en France, avec une priorité constante : qualité des produits, efficacité du service et satisfaction des spectateurs.",
-        "btn": "images/btnViewOurEvents.svg",
-        "btnText": "Voir nos concessions",
-        "link": "/activities"
-      },
-      {
-        "title": "Au service des grands événements publics",
-        "texte": "Nous accompagnons des événements sportifs et culturels majeurs, en assurant une restauration capable de tenir l'intensité, les volumes et la pression du terrain.\n\nJO Paris 2024, Coupe du Monde de Rugby 2023, 24 Heures du Mans, Hellfest, Défilé Balmain, Golden Coast Festival : autant de contextes très différents, avec un même niveau d'exigence opérationnelle.\n\nJeux, compétitions, concerts ou festivals, nous apportons rigueur, organisation fluide et exigence culinaire pour que la restauration s'intègre naturellement à l'événement et accompagne pleinement l'expérience du public.",
-        "btn": "images/btnGetInTouchAlt.svg",
-        "btnText": "Voir nos événements",
-        "link": "/events"
-      }
-    ],
-    "partners_title": "Ils nous ont fait confiance pour leurs événements, ils n'ont pas regretté leurs choix :",
-    "partners": [
-      {
-        "logo": "images/LOGO.svg",
-        "alt": "Adidas Logo"
-      },
-      {
-        "logo": "images/LOGO.svg",
-        "alt": "Rugby World Cup Logo"
-      },
-      {
-        "logo": "images/LOGO.svg",
-        "alt": "Le Mans Logo"
-      },
-      {
-        "logo": "images/LOGO.svg",
-        "alt": "Hellfest Logo"
-      },
-      {
-        "logo": "images/LOGO.svg",
-        "alt": "Balmain Logo"
-      },
-      {
-        "logo": "images/LOGO.svg",
-        "alt": "Golden Coast Logo"
-      }
-    ],
-    "homepageCTA": {
-      "title": "Prêt à faire la différence ?",
-      "image": "images/image4.jpg",
-      "description": "Rejoignez une équipe qui fait vivre la restauration grand public au cœur des plus grands événements sportifs et culturels, partout en France. Chez Eat is Family, chaque poste compte.\nSur le terrain, en cuisine ou en coordination, vous contribuez directement à la réussite de l'événement et à l'expérience du public.",
-      "link": "/careers",
-      "button": "images/btnGetInouchConsult.svg",
-      "buttonText": "Découvrir nos offres et postuler",
-      "additionalTitle": "Le souci du détail fait la différence",
-      "additionalText": "Sur un événement, rien ne doit être laissé au hasard.\nLa restauration doit être bien pensée, bien exécutée et parfaitement maîtrisée.\n\nChez Eat is Family, nous opérons une restauration grand public de qualité, faite maison, de saison et adaptée à chaque public :\néquipes techniques, spectateurs, invités ou publics VIP.\n\nOrganisation fluide, service efficace, exigence sur le goût :\nnous prenons en charge la restauration pour que vous puissiez vous concentrer sur l'essentiel — la réussite de l'événement.",
-      "button2": "images/btnContactUS.svg",
-      "buttonText2": "Contactez-nous",
-      "link2": "/contact"
-    }
-  },
-  "about": {
-    "hero": {
-      "title": "La food, au cœur de ce qui se vit",
-      "subtitle": "",
-      "description": "Sur un événement, la food n'est jamais un détail.\nElle rythme les temps forts, accompagne les émotions et reste dans les mémoires. Chez Eat is Family, on l'a compris depuis le début.\nC'est ce qui guide notre manière de concevoir, d'organiser et d'opérer la restauration événementielle, à grande échelle comme dans le détail.",
-      "image": {
-        "src": "images/unsplash_6vfYbDwOuMocopie.png",
-        "alt": "Équipe en cuisine"
-      },
-      "buttonText": "Nous contacter"
-    },
-    "section_titles": {
-      "values": "Nos valeurs",
-      "team": "Notre équipe"
-    },
-    "seo": {
-      "title": "À propos - Eat Is Family",
-      "description": "Découvrez Eat Is Family, notre histoire et notre vision de la food événementielle.",
-      "keywords": "Eat Is Family, restauration événementielle, food événementielle, stades, arénas, festivals, France",
-      "og_title": "Eat Is Family - La food, au cœur de ce qui se vit",
-      "og_description": "Découvrez notre parcours et notre vision engagée de la food événementielle.",
-      "og_image": "/images/og-about.jpg",
-      "twitter_card": "summary_large_image",
-      "canonical": "/about"
-    }
-  },
-  "careers": {
-    "seo": {
-      "title": "Carrières - Rejoignez notre équipe | Eat Is Family",
-      "description": "Rejoignez une équipe qui fait vivre la restauration grand public au cœur des plus grands événements sportifs et culturels, partout en France.",
-      "keywords": "emploi restauration, carrières événementiel, jobs stades, emploi festivals, cuisinier événementiel, France",
-      "og_title": "Carrières - Eat Is Family",
-      "og_description": "Découvrez nos offres d'emploi dans la restauration événementielle partout en France.",
-      "og_image": "/images/og-careers.jpg",
-      "twitter_card": "summary_large_image",
-      "canonical": "/careers"
-    },
-    "map_loading": "Chargement de la carte...",
-    "hero_default": {
-      "title_line_1": "Prêt à faire ",
-      "title_line_2": "la différence ?",
-      "image": "/images/honneur.png",
-      "background_image": "/images/dida.svg"
-    },
-    "join_box": {
-      "title": "Trouvez le poste qui vous correspond",
-      "description": "Découvrez plus de 100 offres d'emploi partout en France. Sur le terrain, en cuisine ou en coordination, vous contribuez directement à la réussite de l'événement et à l'expérience du public."
-    },
-    "hero_with_venue": {
-      "tag": "Nous recrutons",
-      "title_prefix": "Rejoignez notre équipe à",
-      "subtitle": "Découvrez des opportunités passionnantes dans l'hôtellerie et l'excellence culinaire",
-      "stats": {
-        "open_positions_label": "Postes ouverts",
-        "locations_label": "Sites"
-      }
-    },
-    "hero_section": {
-      "tag": "NOUS RECRUTONS",
-      "title_template": "Rejoignez notre équipe à {venue_name}",
-      "open_positions_suffix": "Postes ouverts"
-    },
-    "search_section": {
-      "search_placeholder": "Rechercher par titre ou catégorie",
-      "all_sites_label": "Tous les sites",
-      "job_types": [
-        "Tous les types",
-        "Temps plein",
-        "Temps partiel",
-        "Contrat",
-        "Freelance"
-      ]
-    },
-    "job_listing": {
-      "positions_available_singular": "Poste",
-      "positions_available_plural": "Postes",
-      "positions_available_suffix": "disponible(s)",
-      "posted_prefix": "Publié",
-      "department_prefix": "Département",
-      "apply_button": "Postuler",
-      "view_details_button": "Voir les détails"
-    },
-    "no_results": {
-      "title": "Aucun poste trouvé sur ce site",
-      "description": "Essayez de sélectionner un autre site ou d'ajuster vos filtres",
-      "clear_filters_button": "Effacer tous les filtres"
-    },
-    "cta_section": {
-      "title": "Vous ne trouvez pas votre poste idéal ?",
-      "description": "Nous sommes toujours à la recherche de personnes talentueuses pour rejoindre notre équipe. Découvrez les postes sur d'autres sites ou soumettez une candidature spontanée.",
-      "explore_venues_button": "Explorer tous les sites",
-      "general_application_button": "Candidature spontanée"
-    },
-    "_note_data": "Jobs and venues data are now in jobs.json and venues.json - use useJobs() and useVenues() composables"
-  },
-  "contact": {
-    "seo": {
-      "title": "Contact Us - Eat Is Family",
-      "description": "Get in touch with Eat Is Family. Ready to elevate your event with exceptional catering? Share your vision and we'll bring it to life.",
-      "keywords": "contact catering, event catering quote, catering inquiry, food service contact, Paris catering",
-      "og_title": "Contact Eat Is Family - Let's Create Something Amazing",
-      "og_description": "Ready to elevate your event? Get in touch and let's create unforgettable food experiences together.",
-      "og_image": "/images/og-contact.jpg",
-      "twitter_card": "summary_large_image",
-      "canonical": "/contact"
-    },
-    "hero_section": {
-      "title": {
-        "line_1": "Reach",
-        "line_1_highlight": "Out",
-        "line_2": "Let's Create",
-        "line_3": "Something",
-        "line_3_highlight": "Amazing"
-      },
-      "description": "Ready to elevate your event with exceptional catering? Share your vision and we'll bring it to life.",
-      "image": {
-        "src": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1200&auto=format&fit=crop",
-        "alt": "Delicious food spread"
-      }
-    },
-    "form": {
-      "name_placeholder": "Enter Name",
-      "email_placeholder": "Enter Email Adress",
-      "event_type_placeholder": "Event Type",
-      "location_placeholder": "Enter Location",
-      "date_placeholder": "Date of Event",
-      "guests_placeholder": "Number of Guests",
-      "message_placeholder": "Message",
-      "submit_button": "Send Message"
-    }
-  },
-  "blog": {
-    "seo": {
-      "title": "Blog - Insights From The Kitchen | Eat Is Family",
-      "description": "Stories about food, events, and the people who make it happen. Read about industry trends, behind-the-scenes insights, and culinary inspiration.",
-      "keywords": "food blog, catering blog, culinary insights, event catering trends, stadium food, chef stories",
-      "og_title": "Insightful Stories From The Kitchen - Eat Is Family Blog",
-      "og_description": "Explore recipes, tips, and stories from the world of event catering.",
-      "og_image": "/images/og-blog.jpg",
-      "twitter_card": "summary_large_image",
-      "canonical": "/blog"
-    },
-    "index": {
-      "section_title": "Our Blog",
-      "section_subtitle": "Stories about food, events, and the people who make it happen.",
-      "read_article_link": "Read Article",
-      "load_more_button": "Load More Articles",
-      "articles": [
-        {
-          "title": "The Future Of Stadium Catering: 5 Trends Reshaping The Industry",
-          "excerpt": "From sustainable packaging to tech-enabled ordering, discover how big venues are changing the game.",
-          "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000&auto=format&fit=crop",
-          "date": "Posted 3 hours ago",
-          "tag": "Trends"
-        },
-        {
-          "title": "Behind The Scenes: Feeding 50,000 Fans At Stade de France",
-          "excerpt": "An exclusive look at the logistics, passion, and teamwork required to pull off a major matchday service.",
-          "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1000&auto=format&fit=crop",
-          "date": "Posted 1 day ago",
-          "tag": "Case Study"
-        },
-        {
-          "title": "Meet The Chef: Sarah Jenkins On Elevating VIP Hospitality",
-          "excerpt": "Our Head Chef discusses her inspiration and the challenge of creating fine dining experiences in a stadium setting.",
-          "image": "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=1000&auto=format&fit=crop",
-          "date": "Posted 2 days ago",
-          "tag": "People"
-        },
-        {
-          "title": "Sustainability In Food Service: Our Commitment To The Planet",
-          "excerpt": "How Eat is Family is reducing waste and sourcing locally to create a greener future for events.",
-          "image": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1000&auto=format&fit=crop",
-          "date": "Posted 4 days ago",
-          "tag": "Sustainability"
-        },
-        {
-          "title": "Top 10 Street Food Concepts Taking Over Corporate Events",
-          "excerpt": "Why street food stations are becoming the most popular choice for business gatherings.",
-          "image": "https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?q=80&w=1000&auto=format&fit=crop",
-          "date": "Posted 1 week ago",
-          "tag": "Menu Ideas"
-        },
-        {
-          "title": "The Art Of Plating: Visual Storytelling On A Plate",
-          "excerpt": "Visual appeal is just as important as taste. Learn how our chefs design dishes that wow.",
-          "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1000&auto=format&fit=crop",
-          "date": "Posted 1 week ago",
-          "tag": "Culinary Arts"
-        }
-      ]
-    },
-    "detail": {
-      "back_link": "Back to all articles",
-      "share_button": "Share Article",
-      "next_article_button": "Next Article",
-      "featured_image_alt": "Article featured image"
-    }
-  },
-  "job_detail": {
-    "seo": {
-      "title_template": "{job_title} - Careers | Eat Is Family",
-      "description_template": "Apply for {job_title} at {location}. Join our team and be part of creating unforgettable food experiences.",
-      "keywords": "job opening, career opportunity, catering job, food service position, France employment",
-      "og_title_template": "{job_title} at {location} - Eat Is Family",
-      "og_description_template": "Join our team as {job_title}. Build your career in event catering.",
-      "og_image": "/images/og-careers.jpg",
-      "twitter_card": "summary_large_image"
-    },
-    "cta_banner": {
-      "title": "Ready To Join Our Team?",
-      "subtitle": "Apply now and be part of something special",
-      "apply_button": "Apply for this position"
-    },
-    "life_at_location": {
-      "title_template": "Life at {location}"
-    },
-    "job_description": {
-      "section_title": "Job Description And Requirement",
-      "what_you_do_title": "What You'll Do",
-      "what_you_do_intro": "You'll do the following:",
-      "requirements_title": "What We're Looking For",
-      "requirements_intro": "The following requirement is what we are looking for"
-    },
-    "why_join_us": {
-      "title": "Why Join Us"
-    },
-    "quick_facts": {
-      "title": "Quick Facts",
-      "location_label": "Location",
-      "department_label": "Department",
-      "employment_type_label": "Employment Type",
-      "available_positions_label": "Available Positions"
-    },
-    "share_section": {
-      "title": "Do You Know Someone That Is Perfect For This Position?",
-      "subtitle": "Kindly Share This Job To The Person",
-      "share_button": "Share this job"
-    },
-    "final_cta": {
-      "title": "Ready To Make An Impact?",
-      "description": "Join our team and be part of creating unforgettable experiences at one of France's most exciting venues.",
-      "apply_button": "Apply for this position",
-      "back_button": "Go back to jobs"
-    },
-    "sample_job": {
-      "title": "Head Chef At VIP Hospitality",
-      "location": "Stade Jean Bouin, Paris",
-      "department": "Culinary",
-      "type": "Part time",
-      "salary": "$50 - $200 / Hour",
-      "slots": "2 Slots",
-      "description": "Lead our VIP culinary team delivering exceptional fine dining experiences for luxury boxes and corporate hospitality suites during major sporting events and concerts. Oversee family-friendly dining areas, create kid-friendly menus, and ensure welcoming atmosphere for all ages.",
-      "what_you_do": [
-        "Lead daily operations and ensure quality standards",
-        "Collaborate with team members to deliver excellence",
-        "Maintain safety and hygiene protocols",
-        "Contribute to menu planning and innovation",
-        "Train and mentor junior staff members"
-      ],
-      "requirements": [
-        "At least 5 years experience in high volume fine dining",
-        "Culinary degree or equivalent certification",
-        "Experience with event catering",
-        "Ability to manage teams of 10-15 chefs",
-        "Fluent in French and English"
-      ],
-      "why_join_us": [
-        "Work at one of France's most iconic venues",
-        "Be part of major sporting and entertainment events",
-        "Competitive compensation and benefits",
-        "Career growth and professional development",
-        "Dynamic and supportive team environment"
-      ],
-      "images": [
-        "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=600&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=600&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=600&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1581299894007-aaa50297cf16?q=80&w=600&auto=format&fit=crop"
-      ]
-    }
-  },
-  "job_detail_slug": {
-    "seo": {
-      "title_template": "{job_title} - Careers | Eat Is Family",
-      "description_template": "Apply for {job_title} position. Join Eat Is Family and be part of France's leading event catering team.",
-      "keywords": "job application, career, catering position, food service job",
-      "og_image": "/images/og-careers.jpg",
-      "twitter_card": "summary_large_image"
-    },
-    "section_titles": {
-      "about_position": "About the Position",
-      "requirements": "Requirements",
-      "benefits": "Benefits"
-    },
-    "sidebar": {
-      "title": "Interested?",
-      "subtitle": "Apply for this position and join our team!"
-    },
-    "loading_text": "Loading job details..."
-  },
-  "apply_activities": {
-    "seo": {
-      "title": "Activités - Restauration grand public | Eat Is Family",
-      "description": "La restauration grand public, au cœur des grandes enceintes. Découvrez notre expertise Food & Beverage pour stades, arénas et festivals.",
-      "keywords": "restauration grand public, Food & Beverage, stades, arénas, festivals, concessions, événements sportifs, événements culturels",
-      "og_title": "Activités - Eat Is Family",
-      "og_description": "La restauration grand public, au cœur des grandes enceintes sportives et culturelles.",
-      "og_image": "/images/og-activities.jpg",
-      "twitter_card": "summary_large_image",
-      "canonical": "/apply-activities"
-    },
-    "page_hero": {
-      "title": "La restauration grand public, au cœur des grandes enceintes",
-      "image": {
-        "src": "images/bgActivities.jpg",
-        "alt": "Restauration grand public"
-      }
-    },
-    "section2": {
-      "text": "Chez Eat is Family, chaque événement grand public est une occasion de faire vivre une food experience réfléchie et à forte présence.\n\nDe la gestion complète de la restauration et boissons grand public, nous sommes présents sur des formats très variés, sportifs ou culturels, avec une approche cohérente et engagée. En tant qu'acteur reconnu du Food & Beverage, nous opérons dans des enceintes emblématiques, pour des publics nombreux et exigeants, avec des dispositifs pensés pour accompagner le rythme des événements.\n\nProduits faits maison, sobriété environnementale et ancrage local guident nos choix, tout en maintenant une expérience food fluide, accessible et maîtrisée.\n\nNotre offre se décline autour de formats adaptés (food trucks, comptoirs mobiles, containers aménagés…) et s'intègre à l'écosystème événementiel grâce à une organisation opérationnelle solide",
-      "btn1": "images/btnApplyJobs.svg",
-      "btn1Text": "Postuler",
-      "link1": "/careers",
-      "btn2": "images/btnExploreMaps.svg",
-      "btn2Text": "Explorer nos sites",
-      "link2": "#map"
-    },
-    "map_section": {
-      "title": "Explorez où nous opérons",
-      "description": "Cliquez sur un marqueur pour voir les stades et enceintes que nous accompagnons pour leur restauration grand public",
-      "filterLabel": "Filtrer par type d'événement",
-      "filters": [
-        "Stade",
-        "Festival",
-        "Aréna"
-      ]
-    },
-    "expertise_section": {
-      "title": "Une expertise Food & Beverage ancrée dans le réel",
-      "description": "Chez Eat is Family, notre expertise ne vient pas de recommandations théoriques, mais de l'exploitation quotidienne de concessions de restauration grand public.\n\nNous accompagnons les stades, arénas et enceintes culturelles dans la structuration et l'optimisation de leurs dispositifs Food & Beverage : organisation des cuisines, flux de service, gestion des équipes, logistique et performance opérationnelle.\n\nNotre approche repose sur le terrain : comment on produit à grande échelle, comment les équipes travaillent sous pression, et comment le service reste fluide quand les volumes explosent.\n\nParce qu'une concession performante se construit dans le réel, pas sur le papier.",
-      "btn": "images/btnContacts.svg",
-      "btnText": "Nous contacter",
-      "link": "/contact"
-    },
-    "interventions_section": {
-      "title": "Nous intervenons sur :",
-      "items": [
-        {
-          "title": "L'optimisation des cuisines et du service",
-          "description": "Organisation des postes, fluidité des flux et efficacité opérationnelle."
-        },
-        {
-          "title": "La création ou l'évolution d'offres de restauration",
-          "description": "Concepts adaptés au lieu, au public et aux contraintes de volume."
-        },
-        {
-          "title": "La structuration et la formation des équipes",
-          "description": "Méthodes de travail, coordination terrain et montée en compétence."
-        },
-        {
-          "title": "La construction des menus et des systèmes de production",
-          "description": "Offres lisibles, recettes adaptées à la grande échelle et production maîtrisée."
-        },
-        {
-          "title": "La mise en place de dispositifs de restauration événementielle",
-          "description": "Adaptés aux pics de fréquentation et aux temps forts."
-        },
-        {
-          "title": "Le pilotage des coûts et de la qualité",
-          "description": "Maîtrise des marges, régularité du service et exigence produit."
-        }
-      ],
-      "footer": "Des solutions sur mesure, pensées pour les réalités de chaque enceinte et de chaque événement."
-    },
-    "trusted_by": {
-      "title": "Ils nous ont fait confiance pour leur restauration grand public, ils n'ont pas regretté leurs choix :"
-    },
-    "cta_section": {
-      "title": "Prêt à faire la différence ?",
-      "description": "Rejoignez une équipe qui fait vivre la restauration grand public au cœur des plus grands événements sportifs et culturels, partout en France. Chez Eat is Family, chaque poste compte.\nSur le terrain, en cuisine ou en coordination, vous contribuez directement à la réussite de l'événement et à l'expérience du public.",
-      "btn": "images/btnApplyJobs.svg",
-      "btnText": "Découvrir nos offres et postuler",
-      "link": "/careers"
-    },
-    "detail_section": {
-      "title": "Le souci du détail fait la différence",
-      "description": "Sur un événement, rien ne doit être laissé au hasard.\nLa restauration doit être bien pensée, bien exécutée et parfaitement maîtrisée.\n\nChez Eat is Family, nous opérons une restauration grand public de qualité, faite maison, de saison et adaptée à chaque public :\néquipes techniques, spectateurs, invités ou publics VIP.\n\nOrganisation fluide, service efficace, exigence sur le goût :\nnous prenons en charge la restauration pour que vous puissiez vous concentrer sur l'essentiel — la réussite de l'événement.",
-      "btn": "images/btnContactUS.svg",
-      "btnText": "Contactez-nous",
-      "link": "/contact"
-    },
-    "_note_locations": "Venues data is now in venues.json - use useVenues() composable"
-  },
-  "apply_jobs": {
-    "page_hero": {
-      "title": "Job Opportunities",
-      "subtitle": "Find your next career opportunity in the food industry"
-    },
-    "loading_text": "Loading jobs...",
-    "seo": {
-      "title": "Job Opportunities - Eat Is Family",
-      "description": "Explore career opportunities in the food industry. Join our team and build your culinary career.",
-      "keywords": "job opportunities, culinary careers, food industry jobs, catering positions, chef jobs, hospitality careers",
-      "og_title": "Job Opportunities - Eat Is Family",
-      "og_description": "Find your next career opportunity in the food industry. Join our passionate team.",
-      "og_image": "/images/og-careers.jpg",
-      "twitter_card": "summary_large_image",
-      "canonical": "/apply-jobs"
-    }
-  },
-  "events": {
-    "page_hero": {
-      "title": "La food, au service du moment.",
-      "subtitle": "Des événements différents, une même exigence : faire de la food une vraie partie de l'expérience.",
-      "btn": "images/btnContactUS.svg",
-      "btnText": "Nous contacter",
-      "link": "/contact"
-    },
-    "intro_text": "Chez Eat is Family, nous accompagnons des événements très différents, mais toujours avec la même conviction :\nla food n'est pas un à-côté, elle participe pleinement à l'expérience vécue sur place.\n\nFestivals, Fan zone, événements sportifs ; chaque événement impose son rythme, ses contraintes, ses publics. Notre rôle est de concevoir et d'opérer des dispositifs food capables de s'y intégrer naturellement, sans jamais casser la dynamique.",
-    "portfolio_title": "Notre portfolio d'événements",
-    "events_portfolio": [
-      {
-        "id": "hellfest",
-        "title": "Hellfest",
-        "description": "Sur l'un des plus grands festivals de musique en Europe, notre offre s'est imposée comme un acteur incontournable depuis deux années consécutives. Chaque jour, ce sont plus de 2 000 burgers vendus, une énergie en continu et une capacité à absorber des flux très importants. En 2023, notre smash burger a même été élu meilleur du festival, une reconnaissance de notre engagement sur le terrain. Au Hellfest, l'enjeu n'est pas juste de nourrir, c'est de participer à l'expérience globale, intense et collective, dans un contexte exigeant et hautement fréquenté.",
-        "image": "images/events/hellfest.jpg"
-      },
-      {
-        "id": "lemans",
-        "title": "Les éditions du Mans",
-        "description": "Aux 24 Heures du Mans, on vient pour la course… et on reste aussi pour l'expérience autour. Depuis plus de cinq ans, on y fait évoluer notre offre à chaque édition, avec une idée simple : faire de chaque pause une vraie parenthèse food.\n\nStreet food faite maison, pensée pour tous les publics, et construite avec des produits de saison sourcés auprès de fournisseurs locaux.\n\nBarbecue texan, classiques français, hot-dogs, pizzas : plusieurs univers, une seule exigence de terrain.",
-        "image": "images/events/lemans.jpg"
-      },
-      {
-        "id": "rugby2023",
-        "title": "Coupe du monde du Rugby 2023",
-        "description": "À la Place de la Concorde, nous avons piloté l'ensemble de l'offre Food & Beverage du Village Rugby. Un site emblématique, une exploitation longue durée et une affluence massive dès l'ouverture, avec 40 000 personnes accueillies dès la première soirée. Plus de 200 mètres de bars, une coordination de food trucks partenaires et 8 containers opérés par nos équipes ont permis d'absorber les flux en continu. Au cœur du dispositif, la Tente Bouillon proposait une hospitalité premium autour d'une cuisine française faite maison. Un projet qui illustre notre capacité à conjuguer échelle internationale, exigence opérationnelle et qualité d'expérience.",
-        "image": "images/events/rugby2023.jpg"
-      },
-      {
-        "id": "jo2024",
-        "title": "Jeux Olympiques 2024",
-        "description": "Les Jeux Olympiques ont imposé un rythme inédit. Pendant plusieurs semaines, nous avons opéré la food sur quatre sites en simultané, entre arenas, fan zones, catering et restaurant flottant. Artistes, volontaires, spectateurs : chaque public avait ses usages, ses temps forts, ses contraintes.\n\nPlus de 200 000 repas servis, dans une logique de fluidité, de qualité et d'adaptation permanente.\n\nStreet food, bars, offres premium et fait maison ont cohabité dans un dispositif cohérent.\n\nUne expérience reconnue par une distinction Top 3 des meilleures expériences spectateurs des JO dans une enceinte sportive.",
-        "image": "images/events/jo2024.jpg"
-      },
-      {
-        "id": "parisbasket",
-        "title": "Paris Basket Ball",
-        "description": "Depuis la création du Paris Basketball, nous accompagnons le club sur l'ensemble de ses matchs à domicile.\n\nNous opérons une offre food pensée pour l'expérience spectateur : burgers, hot-dogs et formats efficaces, adaptés au rythme du jeu.\n\nLe dispositif est calibré pour absorber les flux et les temps forts, sans rupture.\n\nAujourd'hui, Paris Basketball et Eat is Family sont résidents de l'Adidas Arena, un lieu qui structure et prolonge cette collaboration.\n\nUne présence food intégrée à l'expérience match, à chaque rencontre.",
-        "image": "images/events/parisbasket.jpg"
-      },
-      {
-        "id": "balmain",
-        "title": "Balmain Festival",
-        "description": "Au Balmain Festival, nous avons déployé une approche food 360°, réunissant l'ensemble de nos expertises sur un événement unique.\n\nPour le grand public, une offre de street food pensée pour le rythme et l'énergie de la soirée.\n\nCôté VIP, une expérience plus exclusive, imaginée en collaboration avec Adrien Cachot, entre exigence culinaire et sens du détail.\n\nEn parallèle, un dispositif de catering fluide pour accompagner les équipes et les invités.\n\nUne soirée, plusieurs publics, une seule vision : offrir une expérience food complète et cohérente.",
-        "image": "images/events/balmain.jpg"
-      }
-    ],
-    "trusted_by": {
-      "title": "Ils nous ont fait confiance"
-    },
-    "loading_text": "Chargement des événements...",
-    "seo": {
-      "title": "Nos événements - Eat Is Family",
-      "description": "La food, au service du moment. Découvrez notre portfolio d'événements : Hellfest, 24 Heures du Mans, Coupe du Monde de Rugby, JO Paris 2024 et plus.",
-      "keywords": "événements food, festivals, stades, Hellfest, 24 Heures du Mans, JO Paris 2024, Coupe du Monde Rugby, restauration événementielle",
-      "og_title": "Nos événements - Eat Is Family",
-      "og_description": "Des événements différents, une même exigence : faire de la food une vraie partie de l'expérience.",
-      "og_image": "/images/og-events.jpg",
-      "twitter_card": "summary_large_image",
-      "canonical": "/events"
-    }
-  },
-  "components": {
-    "header": {
-      "logo": "LOGO",
-      "nav_links": {
-        "careers": "Careers",
-        "blogs": "Blogs",
-        "get_in_touch": "Get in touch",
-        "about": "About",
-        "activities": "Activities",
-        "events": "Our Events"
-      }
-    },
-    "navbar": {
-      "brand_name": "Eat is",
-      "brand_highlight": "Family",
-      "nav_links": [
-        {
-          "text": "About Us",
-          "to": "/about"
-        },
-        {
-          "text": "Activities",
-          "to": "/activities"
-        },
-        {
-          "text": "Careers",
-          "to": "/careers"
-        },
-        {
-          "text": "Blog",
-          "to": "/blog"
-        }
-      ],
-      "cta_desktop": "Get in touch",
-      "cta_mobile": "Contact"
-    },
-    "contact_modal": {
-      "title": "Get in Touch",
-      "subtitle": "We'd love to hear from you!"
-    },
-    "footer": {
-      "logoFooter": "/images/logoEIF.svg",
-      "brand_name": "Eat is Family",
-      "brand_description": "Creating unforgettable culinary experiences that bring people together and celebrate life's special moments.",
-      "contact_email": "hello@eatsfamily.fr",
-      "contact_phone": "+33 1 23 5 67 89",
-      "company_title": "Company",
-      "company_links": [
-        {
-          "text": "About us",
-          "to": "/about"
-        },
-        {
-          "text": "Activities",
-          "to": "/activities"
-        },
-        {
-          "text": "Our Events",
-          "to": "/events"
-        },
-        {
-          "text": "Careers",
-          "to": "/careers"
-        },
-        {
-          "text": "Blogs",
-          "to": "/blog"
-        },
-        {
-          "text": "Contact us",
-          "to": "/contact"
-        }
-      ],
-      "policy_title": "Policy Info",
-      "policy_links": [
-        {
-          "text": "Privacy Statement",
-          "to": "/privacy"
-        },
-        {
-          "text": "Terms and condition",
-          "to": "/terms"
-        },
-        {
-          "text": "Cookies policy",
-          "to": "/cookies"
-        }
-      ],
-      "social_links": [
-        {
-          "icon": "/images/linkedin.svg",
-          "url": "https://linkedin.com/eatisfamily"
-        },
-        {
-          "icon": "/images/instagram.svg",
-          "url": "https://instagram.com/eatisfamily"
-        },
-        {
-          "icon": "/images/twitter.svg",
-          "url": "https://twitter.com/eatisfamily"
-        }
-      ],
-      "copyright_template": "© 2025 Eat is Family. All Rights Reserved.",
-      "back_to_top": "Back to top"
-    },
-    "footer_alt": {
-      "brand_title": "Eat Is Family",
-      "quick_links_title": "Quick Links",
-      "contact_title": "Contact",
-      "follow_us_title": "Follow Us",
-      "social_links": {
-        "facebook": "Facebook",
-        "instagram": "Instagram",
-        "twitter": "Twitter"
-      }
-    }
-  },
-  "forms": {
-    "job_search": {
-      "title": "Find Your Perfect Role",
-      "subtitle": "Explore open positions across France",
-      "job_title_placeholder": "Select job title",
-      "site_placeholder": "Select sites",
-      "all_jobs_label": "All job titles",
-      "all_sites_label": "All sites",
-      "search_button": "Search",
-      "loading_text": "Loading..."
-    },
-    "contact_form": {
-      "name_label": "Name *",
-      "name_placeholder": "Your name",
-      "email_label": "Email *",
-      "email_placeholder": "your@email.com",
-      "subject_label": "Subject *",
-      "subject_placeholder": "How can we help?",
-      "message_label": "Message *",
-      "message_placeholder": "Your message...",
-      "submit_button": "Send Message",
-      "submitting_button": "Sending...",
-      "success_message": "Message sent successfully! We'll get back to you soon."
-    },
-    "job_application_form": {
-      "title": "Apply for this Job",
-      "name_label": "Full Name *",
-      "name_placeholder": "John Doe",
-      "email_label": "Email *",
-      "email_placeholder": "john@example.com",
-      "phone_label": "Phone Number *",
-      "phone_placeholder": "+33 6 12 34 56 78",
-      "resume_label": "Resume/CV *",
-      "cover_letter_label": "Cover Letter",
-      "cover_letter_placeholder": "Tell us why you're interested in this position...",
-      "submit_button": "Submit Application",
-      "submitting_button": "Submitting...",
-      "success_message": "Application submitted successfully! We will contact you soon."
-    },
-    "activity_registration_form": {
-      "title": "Register for this Activity",
-      "name_label": "Full Name *",
-      "name_placeholder": "John Doe",
-      "email_label": "Email *",
-      "email_placeholder": "john@example.com",
-      "phone_label": "Phone Number *",
-      "phone_placeholder": "+33 6 12 34 56 78",
-      "participants_label": "Number of Participants *",
-      "dietary_restrictions_label": "Dietary Restrictions",
-      "dietary_restrictions_placeholder": "Any allergies or dietary preferences...",
-      "additional_info_label": "Additional Information",
-      "additional_info_placeholder": "Any questions or special requests...",
-      "submit_button": "Register Now",
-      "submitting_button": "Submitting...",
-      "success_message": "Registration successful! Check your email for confirmation."
-    }
-  },
-  "cards": {
-    "job_card": {
-      "view_details_button": "View Details"
-    },
-    "activity_card": {
-      "spots_available_template": "{available_spots} / {capacity} spots available"
-    }
-  },
-  "map": {
-    "venue_popup": {
-      "open_positions_template": "{count} open positions"
-    }
-  }
+﻿{
+    "homepage":  {
+                     "seo":  {
+                                 "title":  "Eat Is Family - Concessionnaire restauration grand public",
+                                 "description":  "",
+                                 "keywords":  ""
+                             },
+                     "hero_section":  {
+                                          "video_type":  "wistia",
+                                          "bg":  "http://localhost:8080/wp-content/uploads/2026/01/unsplash_6vfYbDwOuMo.jpg",
+                                          "youtube_id":  "",
+                                          "wistia_id":  "tkmmubrsbk",
+                                          "video_url":  "",
+                                          "title":  {
+                                                        "line_1":  "Nourrir les moments qui rassemblent",
+                                                        "line_2":  "La restauration des grands événements",
+                                                        "line_3":  "Concessionnaire restauration grand public pour les plus grandes enceintes sportives et culturelles."
+                                                    }
+                                      },
+                     "intro_section":  {
+                                           "texte":  "\u003cp\u003eNous sommes \u003cstrong\u003eEat is Family\u003c/strong\u003e ! Concessionnaires en restauration grand public, nous opérons partout en France sur des événements sportifs et culturels.\u003c/p\u003e\u003cp\u003eNotre mission : servir vite et bien, avec une restauration de qualité, généreuse et de saison.\u003c/p\u003e\u003cp\u003eParce que sur un événement, la nourriture fait partie de l’expérience. Stades, arénas ou lieux culturels : nous nous adaptons à chaque enceinte pour embellir l’événement et en faire un moment mémorable.\u003c/p\u003e"
+                                       },
+                     "services_section":  {
+                                              "tag":  "OUR SERVICES",
+                                              "title":  {
+                                                            "line_1":  "B2B Experiences Built With Precision",
+                                                            "highlight":  "",
+                                                            "line_2":  "And Energy"
+                                                        },
+                                              "services":  [
+                                                               {
+                                                                   "title":  "Nourrir l’énergie de chaque événement",
+                                                                   "description":  "Nous opérons des dispositifs de restauration grand public au sein de stades, arénas et grandes enceintes culturelles, partout en France. De la production en cuisine au service au public, nous maîtrisons l’ensemble de la chaîne.\r\nNos équipes sont formées aux environnements à forte intensité, où le rythme, la qualité et la fluidité du service sont essentiels. Jour de match, concert ou grand rendez-vous culturel : nous assurons une restauration organisée, efficace et cohérente, capable de suivre l’énergie de l’événement.\r\nParce que dans ces lieux, tout va vite et rien ne doit être laissé au hasard.",
+                                                                   "thumbnail":  "http://localhost:8080/wp-content/uploads/2026/01/image3-2.jpg",
+                                                                   "btnImage":  "http://localhost:8080/wp-content/uploads/2026/01/btnGetInouchPartner.svg",
+                                                                   "linkTo":  "/contact"
+                                                               },
+                                                               {
+                                                                   "title":  "Une expertise Food \u0026amp; Beverage grand public ancrée dans la réalité du terrain",
+                                                                   "description":  "Chez Eat is Family, notre expertise \u003cstrong\u003eFood \u0026amp; Beverage\u003c/strong\u003e grand public s’est construite sur le terrain, au cœur des stades, arénas et grandes enceintes.\r\nNous accompagnons les opérateurs et gestionnaires de lieux sur l’\u003cstrong\u003eensemble des enjeux F\u0026amp;B :\u003c/strong\u003e organisation des cuisines, structuration des équipes, logistique, flux, rapidité de service et qualité de l’offre.\r\nNous savons ce que signifie produire et servir à grande échelle, sous contrainte de temps, de volume et de pression.\r\nNotre valeur ajoutée repose sur une connaissance concrète du\u003cstrong\u003e fonctionnement réel d’une restauration grand public\u003c/strong\u003e, quand chaque détail compte et que l’efficacité est essentielle.",
+                                                                   "thumbnail":  "http://localhost:8080/wp-content/uploads/2026/01/image24-1.jpg",
+                                                                   "btnImage":  "http://localhost:8080/wp-content/uploads/2026/01/btnGetInouchConsult.svg",
+                                                                   "linkTo":  "/contact"
+                                                               }
+                                                           ]
+                                          },
+                     "cta_section":  {
+                                         "title":  "",
+                                         "description":  "\u003cp\u003eNous opérons des dispositifs de \u003cstrong\u003erestauration grand public de A à Z\u003c/strong\u003e, pensés pour chaque temps de l’événement : \u003cstrong\u003eavant, pendant et après\u003c/strong\u003e.\u003c/p\u003e\u003cp\u003eEn amont, nous analysons le site et ses contraintes : diagnostics techniques, organisation des ressources, logistique, implantation et préparation opérationnelle.\u003c/p\u003e\u003cp\u003ePendant l’événement, nous assurons une \u003cstrong\u003erestauration fluide, efficace et qualitative,\u003c/strong\u003e capable de suivre les rythmes et les pics de fréquentation.\u003c/p\u003e\u003cp\u003eÀ chaque étape, nous prenons en charge \u003cstrong\u003echaque détail,\u003c/strong\u003e pour que la restauration fonctionne sans friction et s’intègre naturellement à l’événement.\u003c/p\u003e"
+                                     },
+                     "sustainable_service_title":  "Notre engagement pour une restauration plus responsable",
+                     "beautiful":  {
+                                       "title":  "\u003cp\u003eFaites de vos\u003cstrong\u003e manifestations sportives et culturelles\u003c/strong\u003e un succès gustatif avec \u003cstrong\u003eEat is Family\u003c/strong\u003e.\u003c/p\u003e",
+                                       "text":  "\u003cp\u003eChaque événement est une occasion de \u003cstrong\u003ecréer un moment marquant\u003c/strong\u003e. Goût, fraîcheur, convivialité et efficacité se retrouvent dans nos points de vente pour \u003cstrong\u003erenforcer l’expérience de l’événement\u003c/strong\u003e, sans jamais en perturber le déroulé. Que ce soit à l’\u003cstrong\u003eAdidas Arena\u003c/strong\u003e, au \u003cstrong\u003eStade Jean-Bouin,\u003c/strong\u003e à \u003cstrong\u003eRoland-Garros\u003c/strong\u003e ou aux \u003cstrong\u003e24 Heures du Mans\u003c/strong\u003e, nous opérons en tant que concessionnaire sur\u003cstrong\u003e plus de 250 événements par an\u003c/strong\u003e. Notre famille de foodies met son\u003cstrong\u003e expertise culinaire et logistique\u003c/strong\u003e au service de chaque enceinte pour faire de vos événements de \u003cstrong\u003evéritables réussites gastronomiques.\u003c/strong\u003e\u003c/p\u003e",
+                                       "image":  "http://localhost:8080/wp-content/uploads/2026/01/image20-2.jpg"
+                                   },
+                     "partners_title":  "",
+                     "homepageCTA":  {
+                                         "title":  "",
+                                         "image":  "",
+                                         "description":  "\u003cp\u003eRejoignez une équipe qui fait vivre la\u003cstrong\u003e restauration grand public\u003c/strong\u003e au cœur des \u003cstrong\u003eplus grands événements sportifs et culturels\u003c/strong\u003e, partout en France. Chez \u003cstrong\u003eEat is Family,\u003c/strong\u003e chaque poste compte.\u003cbr /\u003eSur le terrain, en cuisine ou en coordination, vous contribuez directement à la réussite de l’événement et à l’expérience du public.\u003c/p\u003e",
+                                         "additionalText":  "\u003cp\u003e\u003cstrong\u003eLe souci du détail fait la différence\u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003eSur un événement, rien ne doit être laissé au hasard. La restauration doit être \u003cstrong\u003ebien pensée, bien exécutée et parfaitement maîtrisée. \u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003eChez \u003cstrong\u003eEat is Family\u003c/strong\u003e, nous opérons une \u003cstrong\u003erestauration grand public de qualité,\u003c/strong\u003e faite maison, de saison et adaptée à chaque public : équipes techniques, spectateurs, invités ou publics VIP.\u003c/p\u003e\n\u003cp\u003eOrganisation fluide, service efficace, exigence sur le goût : nous prenons en charge la restauration pour que vous puissiez vous concentrer sur l’essentiel —\u003cstrong\u003e la réussite de l’événement.\u003c/strong\u003e\u003c/p\u003e",
+                                         "link":  "",
+                                         "button":  "http://localhost:8080/wp-content/uploads/2026/01/btnGetInouchConsult2.svg",
+                                         "button2":  "http://localhost:8080/wp-content/uploads/2026/01/btnContactUS-1.svg"
+                                     },
+                     "examples":  [
+                                      {
+                                          "title":  "Concession restauration grand public",
+                                          "texte":  "\u003cp\u003eDes \u003cstrong\u003estades aux arénas\u003c/strong\u003e, nous déployons des dispositifs de restauration pensés pour les \u003cstrong\u003egrands flux, les temps forts et les attentes du public.\u003c/strong\u003e\u003cbr /\u003eNous opérons les concessions Food \u0026amp; Beverage de nombreuses \u003cstrong\u003eenceintes sportives et culturelles\u003c/strong\u003e partout en France, avec une priorité constante : \u003cstrong\u003equalité des produits, efficacité du service et satisfaction des spectateurs.\u003c/strong\u003e\u003c/p\u003e",
+                                          "btn":  "http://localhost:8080/wp-content/uploads/2026/01/btnViewOurEvents-1.svg",
+                                          "link":  "#mapPreview"
+                                      },
+                                      {
+                                          "title":  "Au service des grands événements publics",
+                                          "texte":  "\u003cp\u003eNous accompagnons des \u003cstrong\u003eévénements sportifs et culturels majeurs,\u003c/strong\u003e en assurant une restauration capable de tenir l’intensité, les volumes et la pression du terrain.\u003cbr /\u003e\u003cstrong\u003eJO Paris 2024, Coupe du Monde de Rugby 2023, 24 Heures du Mans, Hellfest, Défilé Balmain, Golden Coast Festival :\u003c/strong\u003e autant de contextes très différents, avec un même niveau d’exigence opérationnelle.\u003cbr /\u003eJeux, compétitions, concerts ou festivals, nous apportons \u003cstrong\u003erigueur, organisation fluide et exigence culinaire\u003c/strong\u003e pour que la restauration s’intègre naturellement à l’événement et accompagne pleinement l’expérience du public.\u003c/p\u003e",
+                                          "btn":  "http://localhost:8080/wp-content/uploads/2026/01/btnGetInTouchAlt-1.svg",
+                                          "link":  "/events"
+                                      }
+                                  ],
+                     "gallery_section":  {
+                                             "images":  [
+                                                            {
+                                                                "src":  "http://localhost:8080/wp-content/uploads/2026/01/image27-2.jpg",
+                                                                "alt":  ""
+                                                            },
+                                                            {
+                                                                "src":  "http://localhost:8080/wp-content/uploads/2026/01/image19.png",
+                                                                "alt":  ""
+                                                            },
+                                                            {
+                                                                "src":  "http://localhost:8080/wp-content/uploads/2026/01/image12-2.jpg",
+                                                                "alt":  ""
+                                                            }
+                                                        ]
+                                         },
+                     "sustainable_service":  [
+                                                 {
+                                                     "title":  "Des solutions réutilisables au cœur du service",
+                                                     "description":  "Nous privilégions, lorsque c’est possible, des \u003cstrong\u003econtenants et équipements réutilisables\u003c/strong\u003e afin de limiter les plastiques à usage unique et réduire les déchets liés au service.",
+                                                     "icone":  "http://localhost:8080/wp-content/uploads/2026/01/🔄.png",
+                                                     "background":  ""
+                                                 },
+                                                 {
+                                                     "title":  "Un approvisionnement responsable et moins de déchets",
+                                                     "description":  "Nous sélectionnons nos ingrédients avec attention, en privilégiant des \u003cstrong\u003eproduits locaux et de saison,\u003c/strong\u003e et travaillons à\u003cstrong\u003e réduire le gaspillage\u003c/strong\u003e en adaptant les volumes, les flux et l’organisation aux réalités de chaque enceinte.",
+                                                     "icone":  "http://localhost:8080/wp-content/uploads/2026/01/♻️.png",
+                                                     "background":  ""
+                                                 },
+                                                 {
+                                                     "title":  "Des emballages éco-conçus",
+                                                     "description":  "Lorsque le réutilisable n’est pas possible, nous utilisons des \u003cstrong\u003eemballages biodégradables ou compostables\u003c/strong\u003e, adaptés aux contraintes de la restauration grand public et des grands événements.",
+                                                     "icone":  "http://localhost:8080/wp-content/uploads/2026/01/📦.png",
+                                                     "background":  ""
+                                                 }
+                                             ]
+                 },
+    "about":  {
+                  "hero":  {
+                               "title":  "",
+                               "subtitle":  "",
+                               "description":  "",
+                               "image":  {
+                                             "src":  ""
+                                         }
+                           },
+                  "section_titles":  {
+                                         "values":  "",
+                                         "team":  ""
+                                     }
+              },
+    "contact":  {
+                    "hero":  {
+                                 "title":  "",
+                                 "subtitle":  ""
+                             },
+                    "form_title":  "",
+                    "form_subtitle":  ""
+                },
+    "careers":  {
+                    "seo":  {
+                                "title":  "",
+                                "description":  "",
+                                "keywords":  ""
+                            },
+                    "hero_default":  {
+                                         "title_line_1":  "",
+                                         "title_line_2":  "",
+                                         "image":  "",
+                                         "background_image":  ""
+                                     },
+                    "join_box":  {
+                                     "title":  "",
+                                     "description":  ""
+                                 },
+                    "hero_with_venue":  {
+                                            "tag":  "Now Hiring",
+                                            "title_prefix":  "Join Our Team At",
+                                            "subtitle":  "",
+                                            "stats":  {
+                                                          "open_positions_label":  "Open Positions",
+                                                          "locations_label":  "Locations"
+                                                      }
+                                        },
+                    "search_section":  {
+                                           "search_placeholder":  "Search Job title and category here",
+                                           "all_sites_label":  "All Sites",
+                                           "job_types":  [
+                                                             "All job types",
+                                                             "Full time",
+                                                             "Part time",
+                                                             "Contract",
+                                                             "Freelance"
+                                                         ]
+                                       },
+                    "job_listing":  {
+                                        "positions_available_singular":  "Position",
+                                        "positions_available_plural":  "Positions",
+                                        "positions_available_suffix":  "Available",
+                                        "posted_prefix":  "Posted",
+                                        "apply_button":  "Apply Now",
+                                        "view_details_button":  "View details"
+                                    },
+                    "no_results":  {
+                                       "title":  "No jobs found at this venue",
+                                       "description":  "Try selecting a different venue or adjusting your filters",
+                                       "clear_filters_button":  "Clear all filters"
+                                   },
+                    "cta_section":  {
+                                        "title":  "",
+                                        "description":  "",
+                                        "explore_venues_button":  "Explore all venues",
+                                        "general_application_button":  "Submit general application"
+                                    }
+                },
+    "events":  {
+                   "seo":  {
+                               "title":  "",
+                               "description":  ""
+                           },
+                   "page_hero":  {
+                                     "title":  "",
+                                     "subtitle":  "",
+                                     "btn":  "",
+                                     "link":  "/contact"
+                                 },
+                   "section2":  "",
+                   "eventslist":  {
+                                      "description":  ""
+                                  },
+                   "loading_text":  "Loading events..."
+               },
+    "blog":  {
+                 "index":  {
+                               "section_title":  "",
+                               "section_subtitle":  "",
+                               "read_article_link":  "Read Article",
+                               "load_more_button":  "Load More"
+                           },
+                 "detail":  {
+                                "back_link":  "Back to Blog",
+                                "share_button":  "Share",
+                                "next_article_button":  "Next Article"
+                            }
+             },
+    "job_detail":  {
+                       "cta_banner":  {
+                                          "title":  "",
+                                          "subtitle":  "",
+                                          "apply_button":  "Apply Now"
+                                      },
+                       "job_description":  {
+                                               "section_title":  "Job Description",
+                                               "what_you_do_title":  "What You\u0027ll Do",
+                                               "requirements_title":  "Requirements"
+                                           },
+                       "quick_facts":  {
+                                           "title":  "Quick Facts",
+                                           "location_label":  "Location",
+                                           "department_label":  "Department",
+                                           "employment_type_label":  "Employment Type"
+                                       }
+                   },
+    "apply_activities":  {
+                             "page_hero":  {
+                                               "title":  "",
+                                               "image":  {
+                                                             "src":  ""
+                                                         }
+                                           },
+                             "page_text":  {
+                                               "title":  "",
+                                               "subtitle":  "",
+                                               "description":  ""
+                                           }
+                         },
+    "forms":  {
+                  "job_search":  {
+                                     "title":  "Trouvez le poste qui vous correspond",
+                                     "subtitle":  "Découvrez plus de 100 offres d’emploi partout en France",
+                                     "job_title_placeholder":  "Poste",
+                                     "site_placeholder":  "Localisation",
+                                     "all_jobs_label":  "Tous les postes",
+                                     "all_sites_label":  "Tous les lieux",
+                                     "search_button":  "Recherche",
+                                     "loading_text":  "Chargement.."
+                                 },
+                  "contact_form":  {
+                                       "name_label":  "Your Name",
+                                       "name_placeholder":  "Enter your name",
+                                       "email_label":  "Email Address",
+                                       "email_placeholder":  "Enter your email",
+                                       "subject_label":  "Subject",
+                                       "subject_placeholder":  "What is this about?",
+                                       "message_label":  "Message",
+                                       "message_placeholder":  "Write your message...",
+                                       "submit_button":  "Send Message",
+                                       "submitting_button":  "Sending...",
+                                       "success_message":  "Thank you! Your message has been sent.",
+                                       "error_message":  "Sorry, there was an error. Please try again."
+                                   },
+                  "job_application":  {
+                                          "title":  "Apply for this Position",
+                                          "firstname_label":  "First Name",
+                                          "firstname_placeholder":  "Enter your first name",
+                                          "lastname_label":  "Last Name",
+                                          "lastname_placeholder":  "Enter your last name",
+                                          "email_label":  "Email",
+                                          "email_placeholder":  "Enter your email",
+                                          "phone_label":  "Phone Number",
+                                          "phone_placeholder":  "Enter your phone number",
+                                          "resume_label":  "Upload Resume/CV",
+                                          "resume_placeholder":  "Choose file (PDF, DOC, DOCX)",
+                                          "coverletter_label":  "Cover Letter (Optional)",
+                                          "coverletter_placeholder":  "Tell us why you would be great for this role...",
+                                          "submit_button":  "Submit Application",
+                                          "submitting_button":  "Submitting...",
+                                          "success_message":  "Application submitted successfully!",
+                                          "error_message":  "Error submitting application. Please try again."
+                                      },
+                  "activity_registration":  {
+                                                "title":  "Register for Activity",
+                                                "name_label":  "Full Name",
+                                                "name_placeholder":  "Enter your full name",
+                                                "email_label":  "Email",
+                                                "email_placeholder":  "Enter your email",
+                                                "phone_label":  "Phone",
+                                                "phone_placeholder":  "Enter your phone number",
+                                                "participants_label":  "Number of Participants",
+                                                "dietary_label":  "Dietary Restrictions",
+                                                "dietary_placeholder":  "Any allergies or dietary requirements?",
+                                                "additional_label":  "Additional Information",
+                                                "additional_placeholder":  "Anything else we should know?",
+                                                "submit_button":  "Register",
+                                                "success_message":  "Registration successful!"
+                                            }
+              },
+    "components":  {
+                       "navbar":  {
+                                      "brand_name":  "Eat Is",
+                                      "brand_highlight":  "Friday",
+                                      "cta_desktop":  "Contact Us",
+                                      "cta_mobile":  "Contact"
+                                  },
+                       "footer":  {
+                                      "logoFooter":  "",
+                                      "brand_name":  "Eat Is Friday",
+                                      "brand_description":  "",
+                                      "contact_email":  "",
+                                      "contact_phone":  "",
+                                      "company_title":  "Company",
+                                      "policy_title":  "Policy",
+                                      "copyright_template":  "© {year} Eat Is Friday. All rights reserved.",
+                                      "back_to_top":  "Back to top"
+                                  },
+                       "header":  {
+                                      "logo":  "Eat Is Friday",
+                                      "nav_links":  {
+                                                        "about":  "A propos",
+                                                        "activities":  "Activités",
+                                                        "events":  "Evenements",
+                                                        "careers":  "Carrières",
+                                                        "blogs":  "Blog",
+                                                        "contact":  "Contact"
+                                                    }
+                                  }
+                   }
 }

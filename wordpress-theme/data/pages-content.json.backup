@@ -1,0 +1,773 @@
+{
+  "homepage": {
+    "seo": {
+      "title": "Eat Is Family - Event Catering & Culinary Experiences",
+      "description": "We create food experiences where people gather, celebrate, and connect. From stadiums to festivals, discover our passion for exceptional catering across France.",
+      "keywords": "event catering, food experiences, stadium catering, festival food, VIP hospitality, France, Paris",
+      "og_title": "Eat Is Family - Where Every Day Feels Like Friday",
+      "og_description": "Creating unforgettable culinary experiences at stadiums, arenas, and festivals across France.",
+      "og_image": "/images/og-home.jpg",
+      "twitter_card": "summary_large_image",
+      "canonical": "/"
+    },
+    "hero_section": {
+      "bg": "images/unsplash_6vfYbDwOuMo.jpg",
+      "tag": "NEW LOCATIONS",
+      "title": {
+        "line_1": "Feeding\nExperiences.\n",
+        "line_2": "Serving\nMoments",
+        "line_3": "From intimate gatherings to grand celebrations, we craft\nunforgettable culinary experiences that bring people\n together and create lasting memories."
+      },
+      "description": "We don't just serve food — we create experiences. From the bustling concessions at your favorite stadium to the elegant spreads at VIP events, we craft culinary moments that bring people together.",
+      "cta_primary": {
+        "text": "Start a Project",
+        "link": "/contact"
+      },
+      "cta_secondary": {
+        "text": "Join Our Team",
+        "link": "/careers"
+      },
+      "images": [
+        {
+          "src": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=600&auto=format&fit=crop",
+          "alt": "Grilled food presentation"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=600&auto=format&fit=crop",
+          "alt": "Gourmet breakfast plate"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=600&auto=format&fit=crop",
+          "alt": "Fresh pizza"
+        }
+      ],
+      "experience_badge": {
+        "number": "15+",
+        "label": "Years Experience"
+      },
+      "floating_badge": "Open for Events"
+    },
+    "intro_section": {
+      "texte": "<strong>We Are Eat Is Family!</strong>&nbsp;We create&nbsp;<span>food experiences</span>&nbsp;where people gather, celebrate, and connect. From kitchen operations to service delivery, our teams bring passion, precision, and genuine hospitality to every venue we support."
+    },
+    "_note_locations": "Venues data is now in venues.json - use useVenues() composable",
+    "services_section": {
+      "tag": "OUR SERVICES",
+      "title": {
+        "line_1": "B2B Experiences Built With",
+        "highlight": "Precision",
+        "line_2": "And Energy"
+      },
+      "services": [
+        {
+          "title": "Feeding the Energy of \nEvery Moment",
+          "description": "We operate food and beverage programs inside stadiums, arenas, and large-scale cultural events—managing everything from kitchen production to guest service. \n\nOur teams are trained for fast-paced environments where quality, timing, and atmosphere matter. Whether it’s matchday energy or festival crowds, we create experiences that feel human, organized, and memorable.",
+          "thumbnail": "images/unsplash_6vfYbDwOuMo.jpg",
+          "btnImage": "images/btnGetInouchPartner.svg",
+          "linkTo": "/"
+        },
+        {
+          "title": "Consulting Rooted in\nReal World Expertisery Moment",
+          "description": "We  support venue operators through operational consulting—helping optimize kitchen workflows, staffing structures, logistics, and service delivery. \n\nOur approach is grounded in real field expertise: the way teams communicate, how meals are prepared at scale, and how service truly runs when the pressure is high..",
+          "btnImage": "images/btnGetInouchConsult.svg",
+          "thumbnail": "images/unsplash_6vfYbDwOuMo.png",
+          "linkTo": "/"
+        }
+      ],
+      "learn_more_button": "Learn more"
+    },
+    "cta_section": {
+      "title": "Ready to Make an Impact?",
+      "description": "<strong>We deliver end to end catering experiences designed for every stage of your event — before, during, and after.</strong> From pre event planning that includes technical diagnosis, resource strategy, logistics, setup, and branding, to on-site moments filled with vibrant service, entertainment, and cocktails, and finally post event disassembly, we handle every detail with precision and flair."
+    },
+    "gallery_section": {
+      "images": [
+        {
+          "src": "images/buger.jpg",
+          "alt": "Burger gourmet"
+        },
+        {
+          "src": "images/image5.jpg",
+          "alt": "Salade fraiche"
+        },
+        {
+          "src": "images/neicurz.jpg",
+          "alt": "Plat gastronomique"
+        }
+      ]
+    },
+    "sustainable_service_title": "Our Commitment To Sustainable\nService",
+    "sustainable_service": [
+      {
+        "background":"sus1.svg",
+        "icone":"images/🔄.png",
+        "title":"Reusable Service\nSolutions at the core",
+        "description":"Implementing reusable containers and serviceware wherever possible to reduce single-use plastics.We minimize waste and source ingredients"
+      },
+      {
+        "background":"sus2.svg",
+        "icone":"images/♻️.png",
+        "title":"Our Responsible Sourcing\nand Waste Reduction",
+        "description":"We minimize waste and source ingredients responsibly to reduce environmental impact. We minimize waste and source ingredients responsibly to reduce environmental impact."
+      },
+      {
+        "background":"sus3.svg",
+        "icone":"images/📦.png",
+        "title":"We practise Eco\nConscious Packaging",
+        "description":"Biodegradable and compostable packaging options for all our service operations. We minimize waste and source ingredients responsibly to reduce environmental impact."
+      }
+     ],
+     "beautiful":{
+      "title":"Beautiful Moments We’ve\nHelped Create",
+     "text":"We see every event as an opportunity to create memorable moments around the table.  We give your venue a unique setting with our food and drink stands – where taste, freshness and conviviality come together to enhance the catering experience of your events.",
+     "image":"images/image3.jpg"
+     },
+     "examples":[
+      {
+        "title":"Concession for Public\nCatering",
+        "texte":"From stadiums to arenas, we bring energy, flavor, and flawless service to every match and concert.\n\n We manage food and beverage concessions across major venues like the adidas Arena, Jean Bouin Stadium, Abbé-Deschamps Stadium, and Aix Arena. Our goal is to deliver high-quality, efficient, and crowd-pleasing service that enhances every spectator’s experience.",
+        "btn":"images/btnViewOurEvents.svg",
+        "link":"/events"
+      },
+      {
+        "title":"Powering Great Public\nEvents",
+        "texte":"From the Olympics to music festivals, we deliver large-scale catering that fuels excitement and connection.\n\n We proudly cater to some of the most prestigious public events in France, including the Paris 2024, Olympics, Rugby World Cup 2023, 24 Hours of Le Mans, Hellfest, Balmain Fashion Show, and Golden Coast Festival. bringing flavor, precision, and seamless service to every moment..", 
+        "btn":"images/btnGetInTouchAlt.svg",
+        "link":"/contact"
+      }
+     ],
+     "partners_title":"They trusted us for their restoration by the\ngeneral public, they did not regret their choices:",
+     "partners":[
+      {
+        "logo":"images/LOGO.svg",
+        "alt":"Adidas Logo"
+      },
+      {
+        "logo":"images/LOGO.svg",
+        "alt":"Rugby World Cup Logo"
+      },
+      {
+        "logo":"images/LOGO.svg",
+        "alt":"Le Mans Logo"
+      },
+      {
+        "logo":"images/LOGO.svg",
+        "alt":"Hellfest Logo"
+      },
+      {
+        "logo":"images/LOGO.svg",
+        "alt":"Balmain Logo"
+      },
+      {
+        "logo":"images/LOGO.svg",
+        "alt":"Golden Coast Logo"
+      }
+     ],
+     "homepageCTA":{
+      "title":"Ready to Make an Impact?",
+      "image":"images/image4.jpg",
+      "description":"Explore all available positions and join a team that's redefining event\nfood experiences across France",
+      "link":"/careers",
+      "button":"images/btnGetInouchConsult.svg",
+      "additionalText":"Your attention to detail? Entrust it to us, that's our added value!\n\nAs an event caterer , we offer a personalized, homemade, seasonal and balanced catering service for your technical teams, the general public and the guests at your reception.\n\nOpt for stress free restaurant management, and your fingers will tell you: \"Mmm, that's delicious...\"",
+      "button2":"images/btnContactUS.svg",
+      "link2":"/contact"
+    }
+     
+  },   
+  "about": {
+    "hero": {
+      "title": "Bursting With Flavour. Built With Passion.",
+      "subtitle":"We are Eat Is Family",
+      "description": "We bring handcrafted food, bold flavour and reliable operations to stadiums, arenas and the biggest festivals in France. Our work mixes human warmth with professional scale — and our story is worth a look.",
+      "image": {
+        "src": "images/unsplash_6vfYbDwOuMocopie.png",
+        "alt": "Team working in kitchen"
+      }
+    },
+    "section_titles": {
+      "values": "Our Values",
+      "team": "Meet Our Team"
+    },
+    "seo": {
+      "title": "About Us - Eat Is Family",
+      "description": "Learn about Eat Is Family, our mission, vision, and the team behind our culinary experiences.",
+      "keywords": "about Eat Is Family, event catering company, catering team, food service history, France catering",
+      "og_title": "About Eat Is Family - Bursting With Flavour, Built With Passion",
+      "og_description": "Discover our journey from a single food truck to France's leading event catering company.",
+      "og_image": "/images/og-about.jpg",
+      "twitter_card": "summary_large_image",
+      "canonical": "/about"
+    }
+  },
+  "careers": {
+    "seo": {
+      "title": "Careers - Join Our Team | Eat Is Family",
+      "description": "Build your career in event catering. Explore job opportunities at stadiums, arenas, and festivals across France. Join a passionate team making food magic happen.",
+      "keywords": "catering jobs, food service careers, chef jobs France, stadium jobs, event staff, hospitality careers, culinary jobs Paris",
+      "og_title": "Careers at Eat Is Family - Join Our Team",
+      "og_description": "Explore exciting career opportunities in event catering across France's top venues.",
+      "og_image": "/images/og-careers.jpg",
+      "twitter_card": "summary_large_image",
+      "canonical": "/careers"
+    },
+    "map_loading": "Loading map...",
+    "hero_default": {
+      "title_line_1": "Join France's Leading ",
+      "title_line_2": "Catering Company",
+      "image": "/images/honneur.png",
+      "background_image": "/images/dida.svg"
+    },
+    "join_box": {
+      "title": "Find Your Perfect Role",
+      "description": "We're looking for passionate people who want to create unforgettable experiences. Explore more than 100 open positions across France"
+    },
+    "hero_with_venue": {
+      "tag": "Now Hiring",
+      "title_prefix": "Join Our Team At",
+      "subtitle": "Discover exciting opportunities in hospitality & culinary excellence",
+      "stats": {
+        "open_positions_label": "Open Positions",
+        "locations_label": "Locations"
+      }
+    },
+    "hero_section": {
+      "tag": "NOW HIRING",
+      "title_template": "Join Our Team At {venue_name}",
+      "open_positions_suffix": "Open Positions"
+    },
+    "search_section": {
+      "search_placeholder": "Search Job title and category here",
+      "all_sites_label": "All Sites",
+      "job_types": [
+        "All job types",
+        "Full time",
+        "Part time",
+        "Contract",
+        "Freelance"
+      ]
+    },
+    "job_listing": {
+      "positions_available_singular": "Position",
+      "positions_available_plural": "Positions",
+      "positions_available_suffix": "Available",
+      "posted_prefix": "Posted",
+      "department_prefix": "Department",
+      "apply_button": "Apply Now",
+      "view_details_button": "View details"
+    },
+    "no_results": {
+      "title": "No jobs found at this venue",
+      "description": "Try selecting a different venue or adjusting your filters",
+      "clear_filters_button": "Clear all filters"
+    },
+    "cta_section": {
+      "title": "Don't See Your Perfect Role?",
+      "description": "We are always looking for talented individuals to join our team. Discover and explore positions at other venues or submit a general application.",
+      "explore_venues_button": "Explore all venues",
+      "general_application_button": "Submit general application"
+    },
+    "_note_data": "Jobs and venues data are now in jobs.json and venues.json - use useJobs() and useVenues() composables"
+  },
+  "contact": {
+    "seo": {
+      "title": "Contact Us - Eat Is Family",
+      "description": "Get in touch with Eat Is Family. Ready to elevate your event with exceptional catering? Share your vision and we'll bring it to life.",
+      "keywords": "contact catering, event catering quote, catering inquiry, food service contact, Paris catering",
+      "og_title": "Contact Eat Is Family - Let's Create Something Amazing",
+      "og_description": "Ready to elevate your event? Get in touch and let's create unforgettable food experiences together.",
+      "og_image": "/images/og-contact.jpg",
+      "twitter_card": "summary_large_image",
+      "canonical": "/contact"
+    },
+    "hero_section": {
+      "title": {
+        "line_1": "Reach",
+        "line_1_highlight": "Out",
+        "line_2": "Let's Create",
+        "line_3": "Something",
+        "line_3_highlight": "Amazing"
+      },
+      "description": "Ready to elevate your event with exceptional catering? Share your vision and we'll bring it to life.",
+      "image": {
+        "src": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1200&auto=format&fit=crop",
+        "alt": "Delicious food spread"
+      }
+    },
+    "form": {
+      "name_placeholder": "Enter Name",
+      "email_placeholder": "Enter Email Adress",
+      "event_type_placeholder": "Event Type",
+      "location_placeholder": "Enter Location",
+      "date_placeholder": "Date of Event",
+      "guests_placeholder": "Number of Guests",
+      "message_placeholder": "Message",
+      "submit_button": "Send Message"
+    }
+  },
+  "events": {
+    "page_hero": {
+      "title": "Food Events",
+      "subtitle": "Discover and join our upcoming culinary events and celebrations"
+    },
+    "loading_text": "Loading events...",
+    "seo": {
+      "title": "Events - Eat Is Family",
+      "description": "Join our food festivals, tastings, and culinary celebrations. Discover upcoming events and book your spot.",
+      "keywords": "food events, culinary events, food festivals, tastings, cooking events, France events",
+      "og_title": "Food Events - Eat Is Family",
+      "og_description": "Discover and join our upcoming culinary events and celebrations across France.",
+      "og_image": "/images/og-events.jpg",
+      "twitter_card": "summary_large_image",
+      "canonical": "/events"
+    }
+  },
+  "blog": {
+    "seo": {
+      "title": "Blog - Insights From The Kitchen | Eat Is Family",
+      "description": "Stories about food, events, and the people who make it happen. Read about industry trends, behind-the-scenes insights, and culinary inspiration.",
+      "keywords": "food blog, catering blog, culinary insights, event catering trends, stadium food, chef stories",
+      "og_title": "Insightful Stories From The Kitchen - Eat Is Family Blog",
+      "og_description": "Explore recipes, tips, and stories from the world of event catering.",
+      "og_image": "/images/og-blog.jpg",
+      "twitter_card": "summary_large_image",
+      "canonical": "/blog"
+    },
+    "index": {
+      "section_title": "Our Blog",
+      "section_subtitle": "Stories about food, events, and the people who make it happen.",
+      "read_article_link": "Read Article",
+      "load_more_button": "Load More Articles",
+      "articles": [
+        {
+          "title": "The Future Of Stadium Catering: 5 Trends Reshaping The Industry",
+          "excerpt": "From sustainable packaging to tech-enabled ordering, discover how big venues are changing the game.",
+          "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000&auto=format&fit=crop",
+          "date": "Posted 3 hours ago",
+          "tag": "Trends"
+        },
+        {
+          "title": "Behind The Scenes: Feeding 50,000 Fans At Stade de France",
+          "excerpt": "An exclusive look at the logistics, passion, and teamwork required to pull off a major matchday service.",
+          "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1000&auto=format&fit=crop",
+          "date": "Posted 1 day ago",
+          "tag": "Case Study"
+        },
+        {
+          "title": "Meet The Chef: Sarah Jenkins On Elevating VIP Hospitality",
+          "excerpt": "Our Head Chef discusses her inspiration and the challenge of creating fine dining experiences in a stadium setting.",
+          "image": "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=1000&auto=format&fit=crop",
+          "date": "Posted 2 days ago",
+          "tag": "People"
+        },
+        {
+          "title": "Sustainability In Food Service: Our Commitment To The Planet",
+          "excerpt": "How Eat is Family is reducing waste and sourcing locally to create a greener future for events.",
+          "image": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1000&auto=format&fit=crop",
+          "date": "Posted 4 days ago",
+          "tag": "Sustainability"
+        },
+        {
+          "title": "Top 10 Street Food Concepts Taking Over Corporate Events",
+          "excerpt": "Why street food stations are becoming the most popular choice for business gatherings.",
+          "image": "https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?q=80&w=1000&auto=format&fit=crop",
+          "date": "Posted 1 week ago",
+          "tag": "Menu Ideas"
+        },
+        {
+          "title": "The Art Of Plating: Visual Storytelling On A Plate",
+          "excerpt": "Visual appeal is just as important as taste. Learn how our chefs design dishes that wow.",
+          "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1000&auto=format&fit=crop",
+          "date": "Posted 1 week ago",
+          "tag": "Culinary Arts"
+        }
+      ]
+    },
+    "detail": {
+      "back_link": "Back to all articles",
+      "share_button": "Share Article",
+      "next_article_button": "Next Article",
+      "featured_image_alt": "Article featured image"
+    }
+  },
+  "job_detail": {
+    "seo": {
+      "title_template": "{job_title} - Careers | Eat Is Family",
+      "description_template": "Apply for {job_title} at {location}. Join our team and be part of creating unforgettable food experiences.",
+      "keywords": "job opening, career opportunity, catering job, food service position, France employment",
+      "og_title_template": "{job_title} at {location} - Eat Is Family",
+      "og_description_template": "Join our team as {job_title}. Build your career in event catering.",
+      "og_image": "/images/og-careers.jpg",
+      "twitter_card": "summary_large_image"
+    },
+    "cta_banner": {
+      "title": "Ready To Join Our Team?",
+      "subtitle": "Apply now and be part of something special",
+      "apply_button": "Apply for this position"
+    },
+    "life_at_location": {
+      "title_template": "Life at {location}"
+    },
+    "job_description": {
+      "section_title": "Job Description And Requirement",
+      "what_you_do_title": "What You'll Do",
+      "what_you_do_intro": "You'll do the following:",
+      "requirements_title": "What We're Looking For",
+      "requirements_intro": "The following requirement is what we are looking for"
+    },
+    "why_join_us": {
+      "title": "Why Join Us"
+    },
+    "quick_facts": {
+      "title": "Quick Facts",
+      "location_label": "Location",
+      "department_label": "Department",
+      "employment_type_label": "Employment Type",
+      "available_positions_label": "Available Positions"
+    },
+    "share_section": {
+      "title": "Do You Know Someone That Is Perfect For This Position?",
+      "subtitle": "Kindly Share This Job To The Person",
+      "share_button": "Share this job"
+    },
+    "final_cta": {
+      "title": "Ready To Make An Impact?",
+      "description": "Join our team and be part of creating unforgettable experiences at one of France's most exciting venues.",
+      "apply_button": "Apply for this position",
+      "back_button": "Go back to jobs"
+    },
+    "sample_job": {
+      "title": "Head Chef At VIP Hospitality",
+      "location": "Stade Jean Bouin, Paris",
+      "department": "Culinary",
+      "type": "Part time",
+      "salary": "$50 - $200 / Hour",
+      "slots": "2 Slots",
+      "description": "Lead our VIP culinary team delivering exceptional fine dining experiences for luxury boxes and corporate hospitality suites during major sporting events and concerts. Oversee family-friendly dining areas, create kid-friendly menus, and ensure welcoming atmosphere for all ages.",
+      "what_you_do": [
+        "Lead daily operations and ensure quality standards",
+        "Collaborate with team members to deliver excellence",
+        "Maintain safety and hygiene protocols",
+        "Contribute to menu planning and innovation",
+        "Train and mentor junior staff members"
+      ],
+      "requirements": [
+        "At least 5 years experience in high volume fine dining",
+        "Culinary degree or equivalent certification",
+        "Experience with event catering",
+        "Ability to manage teams of 10-15 chefs",
+        "Fluent in French and English"
+      ],
+      "why_join_us": [
+        "Work at one of France's most iconic venues",
+        "Be part of major sporting and entertainment events",
+        "Competitive compensation and benefits",
+        "Career growth and professional development",
+        "Dynamic and supportive team environment"
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=600&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=600&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=600&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1581299894007-aaa50297cf16?q=80&w=600&auto=format&fit=crop"
+      ]
+    }
+  },
+  "job_detail_slug": {
+    "seo": {
+      "title_template": "{job_title} - Careers | Eat Is Family",
+      "description_template": "Apply for {job_title} position. Join Eat Is Family and be part of France's leading event catering team.",
+      "keywords": "job application, career, catering position, food service job",
+      "og_image": "/images/og-careers.jpg",
+      "twitter_card": "summary_large_image"
+    },
+    "section_titles": {
+      "about_position": "About the Position",
+      "requirements": "Requirements",
+      "benefits": "Benefits"
+    },
+    "sidebar": {
+      "title": "Interested?",
+      "subtitle": "Apply for this position and join our team!"
+    },
+    "loading_text": "Loading job details..."
+  },
+  "apply_activities": {
+    "seo": {
+      "title": "Activities & Consulting Services - Eat Is Family",
+      "description": "Discover our consulting services for restaurants, event venues, and food businesses. We help optimize workflows, scale operations, and launch new concepts.",
+      "keywords": "food consulting, restaurant consulting, catering consulting, kitchen operations, food business optimization, event catering expertise",
+      "og_title": "Consulting Services Rooted in Real World Expertise - Eat Is Family",
+      "og_description": "We don't just cook - we help teams build systems that work. Professional consulting for food businesses.",
+      "og_image": "/images/og-activities.jpg",
+      "twitter_card": "summary_large_image",
+      "canonical": "/apply-activities"
+    },
+    "page_hero": {
+      "title": "Bursting With Flavour.\nBuilt With Passion.",
+      "image": {
+        "src": "images/bgActivities.jpg",
+        "alt": "Team working in kitchen"
+      }
+    },
+    "section2":{
+      "text":"Eat Is Family runs a streamlined, scalable operational structure designed to support events, venues, and high-volume food experiences.\n\nWe combine efficiency, creativity, and bold execution to deliver consistent quality across every location.",
+      "btn1":"images/btnApplyJobs.svg",
+      "link1":"/activities",
+      "btn2":"images/btnExploreMaps.svg",
+      "link2":"/careers"
+    },
+    "section3":{
+      "title":"We help with:",
+      "liste":[
+        "Streamlining kitchen and service operations",
+        "Launching or revamping food concepts",
+        "Staff training  workflow alignment",
+        "Menu structure and production systems",
+        "Event scale food service setup",
+        "Cost control, quality control process optimisation"
+      ],
+      "image":"images/unsplash_6vfYbDwOuMos.jpg",
+      "sous":"Custom solutions tailored to your specific needs and challenges."
+    },
+    "textedelapage": {
+      "title": "Consulting services  Rooted in Real World Expertise",
+      "subtitle":"We dont just cook — we help teams build systems that work.",
+      "image":"images/unsplash_6vfYbDwOuMo2.jpg",
+      "description": "Our consulting service supports restaurants, event venues, and food businesses looking to optimise workflows, scale operations, improve quality or launch new concepts.\n\nOur approach is grounded in real field expertise: the way teams communicate, how meals are prepared at scale, and how service truly runs when the pressure is high.",
+      "btn":"images/btnContacts.svg",
+      "link":"/contact"
+    },
+    "weHelpWith":{
+      "title":"We help with:",
+      "items":[
+        "Streamlining kitchen and service operations",
+        "Launching or revamping food concepts",
+        "Staff training  workflow alignment",
+        "Menu structure and production systems",
+        "Event scale food service setup",
+        "Cost control, quality control process optimisation"
+      ],
+      "image":"images/unsplash_6vfYbDwOuMos.jpg",
+      "sous":"Custom solutions tailored to your specific needs and challenges."
+    },
+    "_note_locations": "Venues data is now in venues.json - use useVenues() composable"
+  },
+  "apply_jobs": {
+    "page_hero": {
+      "title": "Job Opportunities",
+      "subtitle": "Find your next career opportunity in the food industry"
+    },
+    "loading_text": "Loading jobs...",
+    "seo": {
+      "title": "Job Opportunities - Eat Is Family",
+      "description": "Explore career opportunities in the food industry. Join our team and build your culinary career.",
+      "keywords": "job opportunities, culinary careers, food industry jobs, catering positions, chef jobs, hospitality careers",
+      "og_title": "Job Opportunities - Eat Is Family",
+      "og_description": "Find your next career opportunity in the food industry. Join our passionate team.",
+      "og_image": "/images/og-careers.jpg",
+      "twitter_card": "summary_large_image",
+      "canonical": "/apply-jobs"
+    }
+  },
+"events": {
+    "page_hero": {
+      "title": "Memorable Events,\nUnforgettable Food",
+      "subtitle": "From high energy festivals to intimate VIP lounges, explore how we bring scale,\ncreativity, and operational excellence to every event.",
+      "btn":"images/btnContactUS.svg",
+      "link":"/contact"
+    },
+    "section2":"At our event catering company , we see every event as an opportunity to create memorable moments around the table. With over 50 events per year, our dedicated team uses its culinary expertise to ensure that every gathering is a gastronomic success.\n\nAt Eat is Family, we believe in the importance of trusted partnerships. Our strong relationships with our clients and suppliers are the secret to our success. We work closely with you to understand your needs and are committed to exceeding them at every event.",
+    "loading_text": "Loading events...",
+    "eventslist":{
+      "description":"Dive into our portfolio of unforgettable\nevents"
+    },
+    "seo": {
+      "title": "Our Events - Eat Is Family",
+      "description": "Explore our portfolio of memorable events. From high-energy festivals to intimate VIP lounges, see how we deliver food excellence across France.",
+      "keywords": "event catering, stadium events, festival catering, concert food, sports events catering, VIP hospitality France",
+      "og_title": "Memorable Events, Unforgettable Food - Eat Is Family",
+      "og_description": "From stadiums to festivals, discover how we bring flavour and operational excellence to every event.",
+      "og_image": "/images/og-events.jpg",
+      "twitter_card": "summary_large_image",
+      "canonical": "/events"
+    }
+  },
+  "components": {
+    "header": {
+      "logo": "LOGO",
+      "nav_links": {
+        "careers": "Careers",
+        "blogs": "Blogs",
+        "get_in_touch": "Get in touch",
+        "about": "About",
+        "activities": "Activities",
+        "events": "Our Events"
+      }
+    },
+    "navbar": {
+      "brand_name": "Eat is",
+      "brand_highlight": "Family",
+      "nav_links": [
+        {
+          "text": "About Us",
+          "to": "/about"
+        },
+        {
+          "text": "Activities",
+          "to": "/activities"
+        },
+        {
+          "text": "Careers",
+          "to": "/careers"
+        },
+        {
+          "text": "Blog",
+          "to": "/blog"
+        }
+      ],
+      "cta_desktop": "Get in touch",
+      "cta_mobile": "Contact"
+    },
+    "contact_modal": {
+      "title": "Get in Touch",
+      "subtitle": "We'd love to hear from you!"
+    },
+    "footer": {
+      "logoFooter":"/images/logoEIF.svg",
+      "brand_name": "Eat is Family",
+      "brand_description": "Creating unforgettable culinary experiences that bring people together and celebrate life's special moments.",
+      "contact_email": "hello@eatsfamily.fr",
+      "contact_phone": "+33 1 23 5 67 89",
+      "company_title": "Company",
+      "company_links": [
+        {
+          "text": "About us",
+          "to": "/about"
+        },
+        {
+          "text": "Activities",
+          "to": "/activities"
+        },
+        {
+          "text": "Our Events",
+          "to": "/events"
+        },
+        {
+          "text": "Careers",
+          "to": "/careers"
+        },
+        {
+          "text": "Blogs",
+          "to": "/blog"
+        },
+        {
+          "text": "Contact us",
+          "to": "/contact"
+        }
+      ],
+      "policy_title": "Policy Info",
+      "policy_links": [
+        {
+          "text": "Privacy Statement",
+          "to": "/privacy"
+        },
+        {
+          "text": "Terms and condition",
+          "to": "/terms"
+        },
+        {
+          "text": "Cookies policy",
+          "to": "/cookies"
+        }
+      ],
+      "social_links": [
+        {
+          "icon": "/images/linkedin.svg",
+          "url": "https://linkedin.com/eatisfamily"
+        },
+        {
+          "icon": "/images/instagram.svg",
+          "url": "https://instagram.com/eatisfamily"
+        },
+        {
+          "icon": "/images/twitter.svg",
+          "url": "https://twitter.com/eatisfamily"
+        }
+      ],
+      "copyright_template": "© 2025 Eat is Family. All Rights Reserved.",
+      "back_to_top": "Back to top"
+    },
+    "footer_alt": {
+      "brand_title": "Eat Is Family",
+      "quick_links_title": "Quick Links",
+      "contact_title": "Contact",
+      "follow_us_title": "Follow Us",
+      "social_links": {
+        "facebook": "Facebook",
+        "instagram": "Instagram",
+        "twitter": "Twitter"
+      }
+    }
+  },
+  "forms": {
+    "contact_form": {
+      "name_label": "Name *",
+      "name_placeholder": "Your name",
+      "email_label": "Email *",
+      "email_placeholder": "your@email.com",
+      "subject_label": "Subject *",
+      "subject_placeholder": "How can we help?",
+      "message_label": "Message *",
+      "message_placeholder": "Your message...",
+      "submit_button": "Send Message",
+      "submitting_button": "Sending...",
+      "success_message": "Message sent successfully! We'll get back to you soon."
+    },
+    "job_application_form": {
+      "title": "Apply for this Job",
+      "name_label": "Full Name *",
+      "name_placeholder": "John Doe",
+      "email_label": "Email *",
+      "email_placeholder": "john@example.com",
+      "phone_label": "Phone Number *",
+      "phone_placeholder": "+33 6 12 34 56 78",
+      "resume_label": "Resume/CV *",
+      "cover_letter_label": "Cover Letter",
+      "cover_letter_placeholder": "Tell us why you're interested in this position...",
+      "submit_button": "Submit Application",
+      "submitting_button": "Submitting...",
+      "success_message": "Application submitted successfully! We will contact you soon."
+    },
+    "activity_registration_form": {
+      "title": "Register for this Activity",
+      "name_label": "Full Name *",
+      "name_placeholder": "John Doe",
+      "email_label": "Email *",
+      "email_placeholder": "john@example.com",
+      "phone_label": "Phone Number *",
+      "phone_placeholder": "+33 6 12 34 56 78",
+      "participants_label": "Number of Participants *",
+      "dietary_restrictions_label": "Dietary Restrictions",
+      "dietary_restrictions_placeholder": "Any allergies or dietary preferences...",
+      "additional_info_label": "Additional Information",
+      "additional_info_placeholder": "Any questions or special requests...",
+      "submit_button": "Register Now",
+      "submitting_button": "Submitting...",
+      "success_message": "Registration successful! Check your email for confirmation."
+    }
+  },
+  "cards": {
+    "job_card": {
+      "view_details_button": "View Details"
+    },
+    "activity_card": {
+      "spots_available_template": "{available_spots} / {capacity} spots available"
+    }
+  },
+  "map": {
+    "venue_popup": {
+      "open_positions_template": "{count} open positions"
+    }
+  }
+}

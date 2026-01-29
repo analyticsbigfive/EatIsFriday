@@ -1,483 +1,161 @@
-{
-  "site": {
-    "name": "Eat Is Family",
-    "tagline": "Celebrate Food, Every Friday and Beyond",
-    "description": "Your destination for culinary experiences, food events, and gastronomic adventures.",
-    "seo": {
-      "default_title": "Eat Is Family - Event Catering & Food Experiences in France",
-      "title_template": "%s | Eat Is Family",
-      "default_description": "Eat Is Family delivers exceptional catering for stadiums, arenas, and festivals across France. From VIP hospitality to large-scale events, we create unforgettable food experiences.",
-      "keywords": "event catering, stadium catering, food service, VIP hospitality, festival catering, corporate events, France, Paris, culinary experiences, food and beverage",
-      "og_type": "website",
-      "og_site_name": "Eat Is Family",
-      "og_image": "/images/og-default.jpg",
-      "twitter_card": "summary_large_image",
-      "twitter_site": "@eatisfamily",
-      "robots": "index, follow",
-      "language": "fr",
-      "canonical_base": "https://eatisfamily.fr"
-    },
-    "contact": {
-      "email": "hello@eatisfamily.fr",
-      "phone": "+33 1 23 5 67 89"
-    },
-    "social": {
-      "facebook": "https://facebook.com/eatisfamily",
-      "instagram": "https://instagram.com/eatisfamily",
-      "twitter": "https://twitter.com/eatisfamily",
-      "linkedin": "https://linkedin.com/company/eatisfamily"
-    }
-  },
-  "about": {
-    "seo": {
-      "title": "À propos - Eat Is Family",
-      "description": "Découvrez Eat Is Family, notre histoire et notre vision de la food événementielle. De la restauration grand public pensée pour l'émotion des événements.",
-      "keywords": "Eat Is Family, restauration événementielle, food événementielle, stades, arénas, festivals, France",
-      "og_title": "Eat Is Family - La food, au cœur de ce qui se vit",
-      "og_description": "Découvrez notre parcours et notre vision engagée de la food événementielle.",
-      "og_image": "/images/og-about.jpg"
-    },
-    "hero": {
-      "title": "La food, au cœur de ce qui se vit",
-      "subtitle": "",
-      "description": "Sur un événement, la food n'est jamais un détail.\nElle rythme les temps forts, accompagne les émotions et reste dans les mémoires. Chez Eat is Family, on l'a compris depuis le début.\nC'est ce qui guide notre manière de concevoir, d'organiser et d'opérer la restauration événementielle, à grande échelle comme dans le détail.",
-      "image": {
-        "src": "images/unsplash_6vfYbDwOuMocopie.png",
-        "alt": "Équipe en cuisine"
-      },
-      "buttonContact": "images/btnContactAbout.svg",
-      "buttonText": "Nous contacter"
-    },
-    "timeline": {
-      "title": "Notre histoire, dans le temps",
-      "subtitle": "Faites glisser le curseur ou cliquez sur les repères pour explorer",
-      "events": [
-        {
-          "id": 1,
-          "year": "2016 – 2017",
-          "title": "Les débuts",
-          "event": "Deux parcours, une même envie.\nL'un vient de la restauration, l'autre de la publicité.\nLa rencontre fait sens. Eat is Family naît.",
-          "eventImage": "images/timeline/01.png"
-        },
-        {
-          "id": 2,
-          "year": "2017 – 2020",
-          "title": "Le terrain",
-          "event": "On démarre par le catering événementiel.\nNourrir les équipes techniques, avant, pendant et après les events.\nBeaucoup de terrain, beaucoup d'apprentissage.\nEt un projet marquant pour Chanel, sur deux mois.",
-          "eventImage": "images/timeline/02.png"
-        },
-        {
-          "id": 3,
-          "year": "2021 – 2022",
-          "title": "L'ouverture",
-          "event": "Un troisième associé rejoint l'aventure, issu de la food événementielle. Les festivals et concerts entrent dans le jeu. Les Éditions du Mans prennent de l'ampleur.",
-          "eventImage": "images/timeline/03.png"
-        },
-        {
-          "id": 4,
-          "year": "2023 – 2024",
-          "title": "Changement d'échelle",
-          "event": "On passe un cap.\nFan zone de la Coupe du Monde de Rugby. Première concession à l'Arena de la Chapelle. Et fin 2024, les Jeux Olympiques, sur 4 sites en simultané.",
-          "eventImage": "images/timeline/04.png"
-        },
-        {
-          "id": 5,
-          "year": "2025",
-          "title": "Accélération",
-          "event": "Des mois d'appels d'offres. Cinq concessions remportées. La suite s'écrit maintenant.",
-          "eventImage": "images/timeline/05.png"
-        }
-      ]
-    },
-    "mission": {
-      "title": "Une vision engagée de la food événementielle",
-      "image": "images/image3.jpg",
-      "encadres": [
-        {
-          "title": "Notre approche",
-          "desc": "Chez Eat is Family, la food fait partie intégrante de l'expérience.\nDans les stades, les arenas ou les festivals, elle accompagne le rythme, le moment, l'émotion. C'est pourquoi nous la pensons avec autant d'attention que l'événement lui-même : formats adaptés, exécution maîtrisée, équipes engagées sur le terrain.",
-          "btn": "",
-          "link": "",
-          "color": "green"
-        },
-        {
-          "title": "Notre philosophie",
-          "desc": "Du fait maison, autant que possible, et toujours avec intention.\nUn vrai engagement sur ce que l'on sert et sur la façon dont on le fait.\nLe sens du collectif, allié à l'exigence du terrain. Parce qu'à grande échelle aussi, les choses peuvent être bien faites.",
-          "btn": "images/btnGetInTouchAlt.svg",
-          "btnText": "Nous contacter",
-          "link": "/contact",
-          "color": "blue"
-        }
-      ]
-    },
-    "chiffresCles": {
-      "stats": [
-        {
-          "number": "250",
-          "label": "Événements F&B en 2024"
-        },
-        {
-          "number": "300 000",
-          "label": "personnes nourries en 2024"
-        },
-        {
-          "number": "100%",
-          "label": "fait maison"
-        },
-        {
-          "number": "250",
-          "label": "Clients & Collaborations"
-        }
-      ]
-    },
-    "consulting": {
-      "title": "Le souci du détail, on s'en occupe",
-      "description": "En restauration événementielle, la food fait la différence.\n\nDu fait maison, pensé pour le terrain, pour les équipes comme pour le public. Une gestion fluide, sans stress.\n\nEt une expérience qui se savoure, tout simplement.",
-      "cta": {
-        "text": "Nous contacter",
-        "link": "/contact"
-      }
-    },
-    "gallery_section": {
-      "images": [
-        {
-          "src": "images/unsplash_6vfYbDwOuMo.jpg",
-          "alt": "Présentation culinaire"
-        },
-        {
-          "src": "images/image5.jpg",
-          "alt": "Plat gastronomique"
-        },
-        {
-          "src": "images/neicurz.jpg",
-          "alt": "Pizza fraîche"
-        }
-      ]
-    },
-    "trusted_by": {
-      "title": "Ils nous ont fait confiance",
-      "logos": [
-        "LOGO",
-        "LOGO",
-        "LOGO",
-        "LOGO",
-        "LOGO",
-        "LOGO"
-      ]
-    }
-  },
-  "activities": {
-    "seo": {
-      "title": "Activités - Restauration grand public | Eat Is Family",
-      "description": "La restauration grand public, au cœur des grandes enceintes. Découvrez notre expertise Food & Beverage pour stades, arénas et festivals.",
-      "keywords": "restauration grand public, Food & Beverage, stades, arénas, festivals, concessions, événements sportifs, événements culturels",
-      "og_title": "Activités - Eat Is Family",
-      "og_description": "La restauration grand public, au cœur des grandes enceintes sportives et culturelles.",
-      "og_image": "/images/og-activities.jpg"
-    },
-    "hero": {
-      "title": "La restauration grand public, au cœur des grandes enceintes",
-      "subtitle": "",
-      "description": "Découvrez notre expertise Food & Beverage"
-    }
-  },
-  "events": {
-    "seo": {
-      "title": "Nos événements - Eat Is Family",
-      "description": "La food, au service du moment. Découvrez notre portfolio d'événements : Hellfest, 24 Heures du Mans, Coupe du Monde de Rugby, JO Paris 2024 et plus.",
-      "keywords": "événements food, festivals, stades, Hellfest, 24 Heures du Mans, JO Paris 2024, Coupe du Monde Rugby, restauration événementielle",
-      "og_title": "Nos événements - Eat Is Family",
-      "og_description": "Des événements différents, une même exigence : faire de la food une vraie partie de l'expérience.",
-      "og_image": "/images/og-events.jpg"
-    },
-    "hero": {
-      "title": "La food, au service du moment.",
-      "subtitle": "Des événements différents, une même exigence",
-      "description": "faire de la food une vraie partie de l'expérience."
-    }
-  },
-  "careers": {
-    "seo": {
-      "title": "Carrières - Rejoignez notre équipe | Eat Is Family",
-      "description": "Rejoignez une équipe qui fait vivre la restauration grand public au cœur des plus grands événements sportifs et culturels, partout en France.",
-      "keywords": "emploi restauration, carrières événementiel, jobs stades, emploi festivals, cuisinier événementiel, France",
-      "og_title": "Carrières - Eat Is Family",
-      "og_description": "Découvrez nos offres d'emploi dans la restauration événementielle partout en France.",
-      "og_image": "/images/og-careers.jpg"
-    },
-    "hero": {
-      "title": "Prêt à faire la différence ?",
-      "subtitle": "Rejoignez notre équipe",
-      "description": "Rejoignez une équipe qui fait vivre la restauration grand public au cœur des plus grands événements sportifs et culturels, partout en France."
-    }
-  },
-  "blog": {
-    "seo": {
-      "title": "Blog - Insights From The Kitchen | Eat Is Family",
-      "description": "Stories about food, events, and the people who make it happen. Read about industry trends, behind-the-scenes insights, and culinary inspiration.",
-      "keywords": "food blog, catering blog, culinary insights, event catering trends, stadium food, chef stories, food industry news",
-      "og_title": "Insightful Stories From The Kitchen - Eat Is Family Blog",
-      "og_description": "Explore recipes, tips, and stories from the world of event catering.",
-      "og_image": "/images/og-blog.jpg"
-    },
-    "hero": {
-      "title": "Insightful Stories From The Kitchen",
-      "subtitle": "Explore our latest articles and insights"
-    },
-    "featured": {
-      "title": "Most Recent Insights",
-      "articles": [
-        {
-          "id": 1,
-          "title": "The Future of Stadium Catering: 5 Trends Reshaping the Industry",
-          "excerpt": "The stadium food experience has evolved dramatically over the past decade. Gone are the days when a basic hot dog and warm beer were the only options. Today's fans expect quality, variety, and convenience — and technology is making it all possible.",
-          "image": "images/blog/stadium-catering.jpg",
-          "category": "Industry Insights",
-          "date": "Posted 3 hours ago",
-          "link": "/blog/stadium-catering-trends"
-        },
-        {
-          "id": 2,
-          "title": "Our Sustainability Journey: From 5 percent to 87 percent Waste Diversion",
-          "excerpt": "The stadium food experience has evolved dramatically over the past decade. Gone are the days when a basic hot dog and warm beer were the only options. Today's fans expect quality, variety, and convenience — and technology is making it all possible.",
-          "image": "images/blog/sustainability.jpg",
-          "category": "Sustainability",
-          "link": "/blog/sustainability-journey"
-        },
-        {
-          "id": 3,
-          "title": "Behind the Scenes: Feeding 250,000 Fans at the 24 Hours of Le Mans",
-          "excerpt": "The stadium food experience has evolved dramatically over the past decade. Gone are the days when a basic hot dog and warm beer were the only options. Today's fans expect quality, variety, and convenience — and technology is making it all possible.",
-          "image": "images/blog/le-mans.jpg",
-          "category": "Events",
-          "link": "/blog/le-mans-behind-scenes"
-        }
-      ]
-    },
-    "all_articles": {
-      "title": "Explore All Insight",
-      "articles": [
-        {
-          "id": 4,
-          "title": "Behind The Scenes: Feeding 250,000 Fans At The 24 Hours Of Le Mans",
-          "excerpt": "The stadium food experience has evolved dramatically over the past decade. Gone are the days when a basic hot dog and warm beer were the only options. Today's fans expect quality, variety, and convenience — and technology is making it all possible.",
-          "image": "images/blog/article-1.jpg",
-          "link": "/blog/le-mans-behind-scenes"
-        },
-        {
-          "id": 5,
-          "title": "The Future Of Stadium Catering: 5 Trends Reshaping The Industry",
-          "excerpt": "The stadium food experience has evolved dramatically over the past decade. Gone are the days when a basic hot dog and warm beer were the only options. Today's fans expect quality, variety, and convenience — and technology is making it all possible.",
-          "image": "images/blog/article-2.jpg",
-          "link": "/blog/stadium-catering-trends"
-        },
-        {
-          "id": 6,
-          "title": "The Future Of Stadium Catering: 5 Trends Reshaping The Industry",
-          "excerpt": "The stadium food experience has evolved dramatically over the past decade. Gone are the days when a basic hot dog and warm beer were the only options. Today's fans expect quality, variety, and convenience — and technology is making it all possible.",
-          "image": "images/blog/article-3.jpg",
-          "link": "/blog/stadium-catering-trends"
-        },
-        {
-          "id": 7,
-          "title": "The Future Of Stadium Catering: 5 Trends Reshaping The Industry",
-          "excerpt": "The stadium food experience has evolved dramatically over the past decade. Gone are the days when a basic hot dog and warm beer were the only options. Today's fans expect quality, variety, and convenience — and technology is making it all possible.",
-          "image": "images/blog/article-4.jpg",
-          "link": "/blog/stadium-catering-trends"
-        }
-      ]
-    }
-  },
-  "blog_detail": {
-    "article": {
-      "title": "The Future Of Stadium Catering: 5 Trends Reshaping The Industry",
-      "date": "Posted 3 hours ago",
-      "image": "images/blog/detail-hero.jpg",
-      "content": [
-        {
-          "type": "paragraph",
-          "text": "The stadium food experience has evolved dramatically over the past decade. Gone are the days when a basic hot dog and warm beer were the only options. Today's fans expect quality, variety, and convenience — and technology is making it all possible."
-        },
-        {
-          "type": "paragraph",
-          "text": "The stadium food experience has evolved dramatically over the past decade. Gone are the days when a basic hot dog and warm beer were the only options. Today's fans expect quality, variety, and convenience — and technology is making it all possible. The stadium food experience has evolved dramatically over the past decade. Gone are the days when a basic hot dog and warm beer were the only options. Today's fans expect quality, variety, and convenience — and technology is making it all possible."
-        },
-        {
-          "type": "paragraph",
-          "text": "The stadium food experience has evolved dramatically over the past decade. Gone are the days when a basic hot dog and warm beer were the only options. Today's fans expect quality, variety, and convenience — and technology is making it all possible. The stadium food experience has evolved dramatically over the past decade. Gone are the days when a basic hot dog and warm beer were the only options. Today's fans expect quality, variety, and convenience — and technology is making it all possible. The stadium food experience has evolved dramatically over the past decade. Gone are the days when a basic hot dog and warm beer were the only options. Today's fans expect quality, variety, and convenience — and technology is making it all possible."
-        },
-        {
-          "type": "paragraph",
-          "text": "The stadium food experience has evolved dramatically over the past decade. Gone are the days when a basic hot dog and warm beer were the only options. Today's fans expect quality, variety, and convenience — and technology is making it all possible. The stadium food experience has evolved dramatically over the past decade. Gone are the days when a basic hot dog and warm beer were the only options. Today's fans expect quality, variety, and convenience — and technology is making it all possible. The stadium food experience has evolved dramatically over the past decade. Gone are the days when a basic hot dog and warm beer were the only options. Today's fans expect quality, variety, and convenience — and technology is making it all possible."
-        }
-      ]
-    }
-  },
-  "contact": {
-    "seo": {
-      "title": "Contact Us - Eat Is Family",
-      "description": "Get in touch with Eat Is Family. Ready to elevate your event with exceptional catering? Share your vision and we'll bring it to life.",
-      "keywords": "contact catering, event catering quote, catering inquiry, food service contact, Paris catering contact",
-      "og_title": "Contact Eat Is Family - Let's Create Something Amazing",
-      "og_description": "Ready to elevate your event? Get in touch and let's create unforgettable food experiences together.",
-      "og_image": "/images/og-contact.jpg"
-    },
-    "hero": {
-      "title": "Reach Out Let's Create Something Amazing",
-      "subtitle": "Ready to elevate your event with exceptional catering? Share your vision and we'll bring it to life.",
-      "image": "images/contact-hero.jpg"
-    },
-    "form": {
-      "fields": [
-        {
-          "name": "name",
-          "label": "Enter Name",
-          "type": "text",
-          "required": true
-        },
-        {
-          "name": "email",
-          "label": "Enter Email Address",
-          "type": "email",
-          "required": true
-        },
-        {
-          "name": "event_type",
-          "label": "Event Type",
-          "type": "select",
-          "required": true
-        },
-        {
-          "name": "location",
-          "label": "Enter Location",
-          "type": "text",
-          "required": true
-        },
-        {
-          "name": "date",
-          "label": "Date of Event",
-          "type": "date",
-          "required": true
-        },
-        {
-          "name": "guests",
-          "label": "Number of Guests",
-          "type": "number",
-          "required": true
-        },
-        {
-          "name": "message",
-          "label": "Message",
-          "type": "textarea",
-          "required": false
-        }
-      ],
-      "submit_button": "Reach out"
-    },
-    "info": {
-      "address": "123 Rue de la Gastronomie, 75001 Paris, France",
-      "phone": "+33 1 23 5 67 89",
-      "email": "hello@eatisfamily.fr",
-      "hours": "Monday - Friday: 9:00 AM - 6:00 PM"
-    },
-    "social": {
-      "facebook": "https://facebook.com/eatisfamily",
-      "instagram": "https://instagram.com/eatisfamily",
-      "twitter": "https://twitter.com/eatisfamily",
-      "linkedin": "https://linkedin.com/company/eatisfamily"
-    },
-    "map": {
-      "latitude": 48.8566,
-      "longitude": 2.3522,
-      "zoom": 15
-    }
-  },
-  "footer": {
-    "tagline": "Creating unforgettable culinary experiences that bring people together and celebrate life's special moments.",
-    "contact": {
-      "email": "hello@eatisfamily.fr",
-      "phone": "+33 1 23 5 67 89"
-    },
-    "company_links": {
-      "title": "Company",
-      "links": [
-        {
-          "text": "About us",
-          "link": "/about"
-        },
-        {
-          "text": "Activities",
-          "link": "/apply-activities"
-        },
-        {
-          "text": "Our Events",
-          "link": "/events"
-        },
-        {
-          "text": "Careers",
-          "link": "/careers"
-        },
-        {
-          "text": "Blogs",
-          "link": "/blog"
-        },
-        {
-          "text": "Contact us",
-          "link": "/contact"
-        }
-      ]
-    },
-    "policy_links": {
-      "title": "Policy Info",
-      "links": [
-        {
-          "text": "Privacy Statement",
-          "link": "/privacy"
-        },
-        {
-          "text": "Terms and condition",
-          "link": "/terms"
-        },
-        {
-          "text": "Cookies policy",
-          "link": "/cookies"
-        }
-      ]
-    },
-    "social": {
-      "linkedin": "#",
-      "instagram": "#",
-      "twitter": "#"
-    },
-    "copyright": "© 2025 Eat is Family. All Rights Reserved.",
-    "back_to_top": true
-  },
-  "navigation": {
-    "main": [
-      {
-        "text": "About",
-        "link": "/about"
-      },
-      {
-        "text": "Activities",
-        "link": "/apply-activities"
-      },
-      {
-        "text": "Our Events",
-        "link": "/events"
-      },
-      {
-        "text": "Careers",
-        "link": "/careers"
-      },
-      {
-        "text": "Blogs",
-        "link": "/blog"
-      }
-    ],
-    "cta": {
-      "text": "Get in touch",
-      "link": "/contact"
-    }
-  }
+﻿{
+    "brand":  {
+                  "logo":  "",
+                  "logo_dark":  "",
+                  "favicon":  "",
+                  "name":  "Eat is",
+                  "highlight":  "Family",
+                  "site_name":  "Eat Is Family",
+                  "tagline":  "Celebrate Food, Every Friday and Beyond"
+              },
+    "header":  {
+                   "background_image":  "",
+                   "sticky":  true,
+                   "cta_text":  "Get in touch",
+                   "cta_text_mobile":  "Contact",
+                   "cta_link":  "/contact",
+                   "logo":  "Eat Is Friday"
+               },
+    "navigation":  {
+                       "links":  [
+                                     {
+                                         "text":  "A propos",
+                                         "to":  "/about"
+                                     },
+                                     {
+                                         "text":  "Activités",
+                                         "to":  "/activities"
+                                     },
+                                     {
+                                         "text":  "Evenements",
+                                         "to":  "/events"
+                                     },
+                                     {
+                                         "text":  "Carrières",
+                                         "to":  "/careers"
+                                     },
+                                     {
+                                         "text":  "Blog",
+                                         "to":  "/blog"
+                                     },
+                                     {
+                                         "text":  "Contact",
+                                         "to":  "/contact"
+                                     }
+                                 ]
+                   },
+    "footer":  {
+                   "logo":  "",
+                   "tagline":  "",
+                   "copyright":  "© {year} Eat is Family.",
+                   "show_back_to_top":  true,
+                   "back_to_top_text":  "Back to top",
+                   "company_title":  "Company",
+                   "policy_title":  "Policy",
+                   "contact_email":  "",
+                   "contact_phone":  "",
+                   "logoFooter":  "",
+                   "brand_name":  "Eat Is Friday",
+                   "brand_description":  "",
+                   "copyright_template":  "© {year} Eat Is Friday. All rights reserved.",
+                   "back_to_top":  "Back to top"
+               },
+    "map":  {
+                "maptiler_key":  "",
+                "maptiler_style":  "https://api.maptiler.com/maps/streets/style.json",
+                "center":  [
+                               2,
+                               48.5
+                           ],
+                "zoom":  5
+            },
+    "markers":  {
+                    "type":  "custom",
+                    "stadium":  "",
+                    "arena":  "",
+                    "festival":  "",
+                    "default":  ""
+                },
+    "seo":  {
+                "default_title":  "Eat Is Family",
+                "title_template":  "http://localhost:8080/wp-content/themes/eatisfamily | Eat Is Family",
+                "default_description":  "",
+                "keywords":  "",
+                "og_image":  "",
+                "twitter_site":  "",
+                "canonical_base":  ""
+            },
+    "social":  {
+                   "facebook":  "",
+                   "instagram":  "",
+                   "twitter":  "",
+                   "linkedin":  "",
+                   "youtube":  "",
+                   "tiktok":  ""
+               },
+    "contact":  {
+                    "email":  "",
+                    "phone":  "",
+                    "address":  "",
+                    "hours":  "",
+                    "legal_email":  ""
+                },
+    "config":  {
+                   "jobs_per_page":  6,
+                   "events_per_page":  9,
+                   "blog_per_page":  6,
+                   "locale":  "fr"
+               },
+    "strings":  {
+                    "loading":  "",
+                    "no_results":  "",
+                    "error_generic":  "",
+                    "submit_button":  "",
+                    "send_message":  "",
+                    "sending":  "",
+                    "message_sent":  "",
+                    "thank_you":  "",
+                    "apply_now":  "",
+                    "view_details":  "",
+                    "read_more":  "",
+                    "back_to_jobs":  "",
+                    "job_not_found":  "",
+                    "all_job_titles":  "",
+                    "all_sites":  "",
+                    "search_placeholder":  ""
+                },
+    "backgrounds":  {
+                        "hero_default":  "",
+                        "about_hero":  "",
+                        "contact_hero":  "",
+                        "careers_hero":  "",
+                        "events_hero":  "",
+                        "blog_hero":  "",
+                        "decoration_1":  "",
+                        "decoration_2":  "",
+                        "vector_bg":  ""
+                    },
+    "icons":  {
+                  "icon_briefcase":  "",
+                  "icon_moneybag":  "",
+                  "icon_apply_for_this":  "",
+                  "icon_share_job":  "",
+                  "btn_apply_position":  "",
+                  "btn_go_back_jobs":  "",
+                  "btn_apply":  "",
+                  "btn_view":  "",
+                  "btn_discover_apply":  "",
+                  "btn_explore":  "",
+                  "btn_learn_more":  "",
+                  "btn_get_in_touch":  "",
+                  "btn_read_more":  "",
+                  "btn_search_form":  "",
+                  "btn_join_now":  "",
+                  "icon_chevron_down":  "",
+                  "icon_map":  "",
+                  "icon_calendar":  "",
+                  "icon_info":  "",
+                  "icon_shop":  "",
+                  "icon_food":  ""
+              }
 }

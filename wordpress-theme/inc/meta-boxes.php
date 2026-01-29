@@ -73,6 +73,16 @@ function eatisfamily_register_meta_boxes() {
         'normal',
         'high'
     );
+    
+    // Timeline Events Meta Box
+    add_meta_box(
+        'eatisfamily_timeline_details',
+        __('Timeline Event Details', 'eatisfamily'),
+        'eatisfamily_timeline_meta_box_callback',
+        'timeline_event',
+        'normal',
+        'high'
+    );
 }
 add_action('add_meta_boxes', 'eatisfamily_register_meta_boxes');
 
@@ -1116,6 +1126,101 @@ add_action('save_post_post', 'eatisfamily_save_blog_meta_box');
 
 /**
  * ============================================================================
+ * TIMELINE EVENT META BOX
+ * ============================================================================
+ */
+
+/**
+ * Timeline event meta box callback
+ */
+function eatisfamily_timeline_meta_box_callback($post) {
+    wp_nonce_field('eatisfamily_timeline_meta_box', 'eatisfamily_timeline_meta_box_nonce');
+    
+    // Get current values
+    $event_date = get_post_meta($post->ID, 'event_date', true);
+    $event_description = get_post_meta($post->ID, 'event_description', true);
+    $display_order = get_post_meta($post->ID, 'display_order', true);
+    
+    ?>
+    <div class="eatisfamily-meta-box">
+        <p class="description"><?php _e('Timeline events appear on the About page in chronological order. Use the Featured Image for the event image.', 'eatisfamily'); ?></p>
+        
+        <div class="field-row">
+            <label for="event_date"><?php _e('Event Date', 'eatisfamily'); ?></label>
+            <div>
+                <?php
+                // Convert stored "DD MONTH YYYY" format to YYYY-MM-DD for the date picker
+                $date_value = '';
+                if ($event_date) {
+                    $timestamp = strtotime($event_date);
+                    if ($timestamp) {
+                        $date_value = date('Y-m-d', $timestamp);
+                    }
+                }
+                ?>
+                <input type="date" name="event_date" id="event_date" value="<?php echo esc_attr($date_value); ?>" class="regular-text">
+                <p class="description"><?php _e('Select the date for this timeline event.', 'eatisfamily'); ?></p>
+            </div>
+        </div>
+
+        <div class="field-row">
+            <label for="event_description"><?php _e('Event Description', 'eatisfamily'); ?></label>
+            <div>
+                <?php eatisfamily_render_wysiwyg('event_description', $event_description, __('A detailed description of this milestone or event in your company\'s history.', 'eatisfamily')); ?>
+            </div>
+        </div>
+        
+        <div class="field-row">
+            <label for="display_order"><?php _e('Display Order', 'eatisfamily'); ?></label>
+            <div>
+                <?php eatisfamily_render_number_field('display_order', $display_order ?: 1, 1, 100, 1, __('Lower numbers appear first in the timeline.', 'eatisfamily')); ?>
+            </div>
+        </div>
+    </div>
+    <?php
+}
+
+/**
+ * Save timeline event meta box data
+ */
+function eatisfamily_save_timeline_meta_box($post_id) {
+    // Verify nonce
+    if (!isset($_POST['eatisfamily_timeline_meta_box_nonce']) || !wp_verify_nonce($_POST['eatisfamily_timeline_meta_box_nonce'], 'eatisfamily_timeline_meta_box')) {
+        return;
+    }
+    
+    // Check autosave
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+    
+    // Check permissions
+    if (!current_user_can('edit_post', $post_id)) {
+        return;
+    }
+    
+    // Save event_date: convert from YYYY-MM-DD input to "DD MONTH YYYY" for API compatibility
+    if (isset($_POST['event_date']) && !empty($_POST['event_date'])) {
+        $timestamp = strtotime(sanitize_text_field($_POST['event_date']));
+        if ($timestamp) {
+            $display_date = strtoupper(date('d F Y', $timestamp));
+            update_post_meta($post_id, 'event_date', $display_date);
+        }
+    } elseif (isset($_POST['event_date'])) {
+        update_post_meta($post_id, 'event_date', '');
+    }
+    // Save event_description: use wp_kses_post to preserve HTML from WYSIWYG
+    if (isset($_POST['event_description'])) {
+        update_post_meta($post_id, 'event_description', wp_kses_post($_POST['event_description']));
+    }
+    if (isset($_POST['display_order'])) {
+        update_post_meta($post_id, 'display_order', intval($_POST['display_order']));
+    }
+}
+add_action('save_post_timeline_event', 'eatisfamily_save_timeline_meta_box');
+
+/**
+ * ============================================================================
  * ADMIN SCRIPTS AND STYLES
  * ============================================================================
  */
@@ -1126,7 +1231,7 @@ add_action('save_post_post', 'eatisfamily_save_blog_meta_box');
 function eatisfamily_admin_scripts($hook) {
     global $post_type;
     
-    $allowed_post_types = array('job', 'venue', 'activity', 'event', 'post');
+    $allowed_post_types = array('job', 'venue', 'activity', 'event', 'post', 'timeline_event');
     
     if (($hook === 'post.php' || $hook === 'post-new.php') && in_array($post_type, $allowed_post_types)) {
         // Enqueue media uploader
