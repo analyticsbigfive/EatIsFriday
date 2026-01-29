@@ -1,10 +1,10 @@
-<template>
+-<template>
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-section">
-          <div v-if="content" class="titlewrapper d-flex align-items-center justify-content-start mb-4">
-            <img :src="content.logoFooter || '/images/imageLogo.png'" alt="Logo" />
+          <div v-if="content" class="titlewrapper d-flex align-items-start justify-content-start mb-4">
+            <img :src="content.logoFooter || '/images/imageLogo.png'" alt="Logo" height="50"/>
             <h3 class="mb-0">{{ content.brand_name }}</h3>
           </div>
           <p v-if="content" v-html="content.brand_description"></p>
@@ -171,5 +171,10 @@ onMounted(async () => {
   letter-spacing: normal;
   text-align: center;
   color: #fff;
+}
+.titlewrapper{
+h3{
+  padding-left: 1rem;
+}
 }
 </style>
