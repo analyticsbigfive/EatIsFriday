@@ -33,6 +33,8 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./wordpress-theme/
           server-dir: ${{ secrets.FTP_THEME_PATH }}
+          state-name: .ftp-deploy-sync-state.json
+          dangerous-clean-slate: ${{ github.event.inputs.deploy_all == 'true' }}
           exclude: |
             **/.git*
             **/.git*/**
@@ -41,6 +43,7 @@ jobs:
             **/Thumbs.db
             **/*.md
             **/*.log
+            .ftp-deploy-sync-state.json
           log-level: standard
 
       - name: ✅ Deployment complete
