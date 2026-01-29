@@ -163,7 +163,7 @@ const goToMenuPage = (page: number) => {
           <!-- Recent event banner -->
           <div class="venue-event-banner">
             <div class="venue-event-item">
-              <span class="venue-event-label" style="text-transform: uppercase;">Evenememnts récents</span>
+              <span class="venue-event-label" style="text-transform: uppercase;">ÉVÉNEMENTS RÉCENTS</span>
               <span class="venue-event-value">{{ selectedVenue.recent_event }}</span>
             </div>
             <div class="venue-event-item">
