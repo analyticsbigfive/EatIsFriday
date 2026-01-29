@@ -1037,7 +1037,6 @@ function eatisfamily_render_gallery_row($index, $image) {
 }
 
 /**
-/**
  * ============================================
  * EXTENDED PAGES CONTENT PAGE
  * ============================================
