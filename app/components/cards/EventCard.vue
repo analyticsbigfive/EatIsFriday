@@ -1,4 +1,4 @@
-<template>
+-<template>
   <div class="event-card" :class="[colorClass, { 'is-even': !isEven, 'is-odd': isEven }]">
     <div class="card-image">
       <img v-if="event.image" :src="event.image" :alt="event.title" loading="lazy" />
@@ -13,7 +13,7 @@
     >
       <div class="torn-edge" :class="{ 'torn-edge-right': isEven, 'torn-edge-left': !isEven }"></div>
       <h3 class="preserve-lines">{{ event.title }}</h3>
-      <p class="description preserve-lines">{{ event.description }}</p>
+      <p class="description preserve-lines" v-html="event.description"></p>
       <NuxtLink :to="`/contact`">
         <img
           :src="isEven ? '/images/contact-even.svg' : '/images/contact-odd.svg'"
