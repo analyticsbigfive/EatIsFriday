@@ -111,10 +111,10 @@
         :button-image2="homepageContent.homepageCTA.button2"
       /> -->
     <section v-if="siteContent?.about?.vision" id="vision" class="my-5">
-      <div class="container-fluid">
-        <h3 class="font-header text-align-center text-center d-flex justify-content-center align-items-center"> {{ siteContent.about.vision.title }} </h3>
+      <div id="inver" class="container-fluid">
+        <h3 class="font-header text-align-center text-center d-flex justify-content-center align-items-center"> Le souci du détail fait la différence </h3>
         <!-- Consulting section from pages-content -->
-        <div v-if="pageContent?.consulting" class="consulting-section text-center p-4 cta-block d-flex flex-column justify-content-center align-items-center text-center p-4 mx-auto mt-4"> 
+        <!-- <div v-if="pageContent?.consulting" class="consulting-section text-center p-4 cta-block d-flex flex-column justify-content-center align-items-center text-center p-4 mx-auto mt-4"> 
           <p v-html="pageContent.consulting.description" class="preserve-lines mb-4"></p>
           <NuxtLink 
             v-if="pageContent.consulting.cta?.link" 
@@ -129,9 +129,20 @@
             />
             <span v-else>{{ pageContent.consulting.cta?.text || 'Nous contacter' }}</span>
           </NuxtLink>
-        </div>
+        </div> -->
+             <HomepageCTA
+      v-if="homepageContent?.homepageCTA"
+      :image="homepageContent.homepageCTA.image"
+      :title="homepageContent.homepageCTA.title"
+      :description="homepageContent.homepageCTA.description"
+      :link="homepageContent.homepageCTA.link"
+      :button-image="homepageContent.homepageCTA.button"
+      :additional-text="homepageContent.homepageCTA.additionalText"
+      :button-image2="homepageContent.homepageCTA.button2"
+    />
       </div>
     </section>
+   
       <!-- gallery grid 2 - Activities specific -->
      <!--  <GalleryGrid
         v-if="activitiesGalleryImages2.length > 0"
@@ -194,6 +205,7 @@ useHead(() => ({
 </script>
 
 <style scoped lang="scss">
+
 .loading {
   text-align: center;
   padding: 4rem 0;
@@ -330,4 +342,5 @@ useHead(() => ({
     max-width:800px;
   }
 }
+
 </style>
