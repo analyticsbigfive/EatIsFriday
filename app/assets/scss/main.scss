@@ -1274,3 +1274,833 @@ body {
   }
 }
 }
+
+
+
+// =============================================
+// RESPONSIVE STYLES
+// =============================================
+@media (min-width: 1024px){
+ 
+  .mobile-only{
+    display:none !important;
+  }
+}
+@media (max-width: 1024px){
+  .desktop-only{
+    display:none !important;
+  }
+  .mobile-only{
+    display:block !important;
+  }
+ .header-grid{
+  a{
+    height:58px !important;
+img{
+      height:58px !important;
+
+}
+  }
+  }
+}
+// ----- TABLET LANDSCAPE (max-width: 1200px) -----
+@media (max-width: 1200px) {
+  .recoletaTitle {
+    font-size: 40px;
+  }
+  .font-heading {
+    font-size: 40px;
+  }
+  .font-header {
+    font-size: 40px;
+  }
+  .damsnt {
+    font-size: 40px;
+  }
+  .kemiseba {
+    font-size: 28px;
+  }
+  .kemiseba-alt {
+    font-size: 28px;
+  }
+  .alain p {
+    font-size: 28px;
+  }
+  #hero {
+    min-height: 600px;
+  }
+  #heroTitle::before {
+    max-width: 300px;
+    max-height: 60px;
+  }
+  .heroTextContainer {
+    max-width: 450px;
+    max-height: 380px;
+    padding: 1.5em;
+    h2 {
+      font-size: 22px;
+    }
+    p {
+      font-size: 18px;
+    }
+  }
+  #services {
+    .font-heading {
+      font-size: 40px;
+    }
+    h3 {
+      font-size: 40px;
+    }
+  }
+  .service {
+    min-height: 600px;
+  }
+  #lasalle {
+    .example {
+      .inner-example {
+        padding: 2.5em;
+        min-height: 600px;
+      }
+      h4 {
+        font-size: 40px;
+      }
+    }
+  }
+  .decradr .inner-encadre {
+    padding: 2.5em;
+    min-height: 550px;
+    h3 {
+      font-size: 40px;
+    }
+  }
+  #weHelpwith {
+    #seeAboutYa {
+      max-width: 380px;
+      height: 550px;
+      h3 {
+        font-size: 24px;
+      }
+    }
+  }
+  #timeline h3 {
+    font-size: 40px;
+  }
+}
+
+// ----- TABLET PORTRAIT (max-width: 991px) -----
+@media (max-width: 991px) {
+  .recoletaTitle {
+    font-size: 34px;
+  }
+  .font-heading {
+    font-size: 36px;
+  }
+  .font-header {
+    font-size: 36px;
+  }
+  .damsnt {
+    font-size: 36px;
+  }
+  .kemiseba {
+    font-size: 24px;
+    max-width: 90vw;
+  }
+  .kemiseba-alt {
+    font-size: 24px;
+  }
+  .alain {
+    max-width: 90vw;
+    margin: 2em auto;
+    p {
+      font-size: 24px;
+    }
+  }
+  #hero {
+    min-height: auto;
+  }
+  #blusy {
+    background-position: right bottom;
+  }
+  .heroTextContainer {
+    max-width: 100%;
+    width: 100%;
+    max-height: none;
+    height: auto;
+    padding: 1.5em;
+    background-size: cover;
+    a {
+      width: 220px;
+      height: 60px;
+    }
+  }
+  .txtWrapper p {
+    font-size: 16px;
+  }
+  #presentationEatIsFamily {
+    min-height: 400px;
+  }
+  #services {
+    .font-heading,
+    h3 {
+      font-size: 34px;
+    }
+    .innerService {
+      padding: 20px !important;
+    }
+  }
+  .service {
+    min-height: auto;
+    a {
+      width: 240px;
+      height: 62px;
+      margin-top: 40px !important;
+    }
+    .sanga {
+      margin-top: 40px !important;
+    }
+  }
+  #service-1 .lefun {
+    order: 0;
+  }
+  #lasalle {
+    a {
+      width: 220px;
+      height: 62px;
+    }
+    .example {
+      .inner-example {
+        padding: 2em;
+        min-height: 500px;
+      }
+      h4 {
+        font-size: 34px;
+      }
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+  .decradr .inner-encadre {
+    padding: 2em;
+    min-height: auto;
+    h3 {
+      font-size: 34px;
+    }
+  }
+  #weHelpwith {
+    #seeAboutYa {
+      position: relative;
+      right: auto;
+      top: auto;
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+      padding: 1.5em;
+      background-size: cover;
+      ul {
+        max-height: none;
+        overflow-y: visible;
+      }
+    }
+  }
+  #timeline {
+    h3 {
+      font-size: 34px;
+    }
+    h4 {
+      font-size: 16px;
+    }
+  }
+  #baks {
+    margin-bottom: 4em !important;
+    h3 {
+      top: 40px;
+    }
+  }
+  #tromp img {
+    width: 220px;
+  }
+  .page-hero {
+    padding: 4rem 0 3rem;
+    h1 {
+      font-size: 2.25rem;
+    }
+    p {
+      font-size: 1.1rem;
+    }
+  }
+  .page-content {
+    padding: 3rem 0;
+  }
+  #btnExplore {
+    width: 250px;
+    height: 60px;
+  }
+  #ludacris {
+    a {
+      height: 60px;
+      margin: 2em auto;
+      img {
+        height: 60px;
+      }
+    }
+  }
+  #leforme a {
+    width: 260px !important;
+    height: 62px !important;
+  }
+}
+
+// ----- MOBILE LANDSCAPE / SMALL TABLET (max-width: 768px) -----
+@media (max-width: 768px) {
+  .recoletaTitle {
+    font-size: 28px;
+    line-height: 1.3;
+  }
+  .font-heading {
+    font-size: 28px;
+  }
+  .font-header {
+    font-size: 28px;
+    white-space: normal;
+  }
+  .damsnt {
+    font-size: 32px;
+  }
+  .kemi {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .kemiseba {
+    font-size: 20px;
+    max-width: 95vw;
+    line-height: 1.4;
+  }
+  .kemiseba-alt {
+    font-size: 20px;
+    text-align: center;
+    &::before {
+      max-width: 250px;
+      max-height: 50px;
+    }
+  }
+  .alain {
+    margin: 1.5em auto;
+    p {
+      font-size: 20px;
+    }
+  }
+  #hero {
+    min-height: auto;
+    p {
+      line-height: 1.2em;
+    }
+  }
+  #heroTitle {
+    font-size: 32px;
+    &::before {
+      max-width: 250px;
+      max-height: 50px;
+    }
+  }
+  #blusy {
+    background-size: 60%;
+    background-position: right bottom;
+  }
+  .heroTextContainer {
+    padding: 1em;
+    margin-top: 1rem;
+    h2 {
+      font-size: 20px;
+    }
+    p {
+      font-size: 18px;
+    }
+    a {
+      width: 200px;
+      height: 55px;
+    }
+  }
+  .txtWrapper p {
+    font-size: 15px;
+  }
+  #presentationEatIsFamily {
+    min-height: 300px;
+    background-size: cover;
+  }
+  #services {
+    .font-heading,
+    h3 {
+      font-size: 28px;
+    }
+    p {
+      font-size: 16px;
+    }
+    .innerService {
+      padding: 15px !important;
+    }
+  }
+  .service {
+    min-height: auto;
+    h3 {
+      font-size: 28px;
+    }
+    a {
+      width: 200px;
+      height: 55px;
+      margin-top: 30px !important;
+    }
+    .sanga {
+      margin-top: 30px !important;
+    }
+  }
+  #service-0 h3::before,
+  #baks h3::before {
+    max-width: 250px;
+    max-height: 50px;
+  }
+  #lasalle {
+    a {
+      width: 200px;
+      height: 55px;
+    }
+    .example {
+      .inner-example {
+        padding: 1.5em;
+        min-height: auto;
+      }
+      h4 {
+        font-size: 28px;
+        padding-bottom: 0.5em;
+      }
+      p {
+        font-size: 15px;
+        padding-bottom: 0.5em;
+      }
+    }
+    #example-0 .inner-example::before {
+      width: 150px;
+      height: 130px;
+    }
+  }
+  .decradr {
+    .inner-encadre {
+      padding: 1.5em;
+      min-height: auto;
+      h3 {
+        font-size: 28px;
+      }
+      p {
+        font-size: 16px;
+      }
+    }
+    &:nth-of-type(1) h3::after {
+      max-width: 250px;
+      max-height: 50px;
+    }
+    &:nth-of-type(2) .inner-encadre::after {
+      width: 120px;
+    }
+  }
+  #weHelpwith #seeAboutYa {
+    padding: 1em;
+    h3 {
+      font-size: 22px;
+    }
+    p {
+      font-size: 14px;
+    }
+    ul li {
+      font-size: 16px;
+      padding-left: 1.5rem;
+      &::before {
+        width: 1.2rem;
+        height: 1.2rem;
+      }
+    }
+  }
+  #timeline {
+    padding: 0.5em;
+    h3 {
+      font-size: 28px;
+    }
+    h4 {
+      font-size: 14px;
+    }
+  }
+  #baks {
+    margin-bottom: 3em !important;
+    h3 {
+      top: 30px;
+    }
+  }
+  #tromp img {
+    width: 180px;
+  }
+  .page-hero {
+    padding: 3rem 0 2rem;
+    h1 {
+      font-size: 1.75rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
+  .page-content {
+    padding: 2rem 0;
+  }
+  .card-organic {
+    padding: 1.25rem;
+  }
+  .tag-pink {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.5rem;
+  }
+  .tag-yellow,
+  .tag-lime {
+    font-size: 13px;
+    padding: 7px 12px;
+  }
+  .tag-blue {
+    font-size: 15px;
+  }
+  #btnExplore {
+    width: 220px;
+    height: 55px;
+  }
+  #ludacris {
+    p {
+      font-size: 16px;
+    }
+    a {
+      height: 55px;
+      margin: 1.5em auto;
+      img {
+        height: 55px;
+      }
+    }
+  }
+  #leforme a {
+    width: 220px !important;
+    height: 60px !important;
+  }
+  .blue {
+    background-size: 50%;
+    background-position: right bottom;
+  }
+  .btn-primary,
+  .btn-secondary,
+  .btn-lime,
+  .btn-cta {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.9rem;
+  }
+  .input-organic {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+  .textarea-organic {
+    min-height: 100px;
+  }
+}
+
+// ----- MOBILE PORTRAIT (max-width: 576px) -----
+@media (max-width: 576px) {
+  .recoletaTitle {
+    font-size: 24px;
+    line-height: 1.25;
+  }
+  .font-heading {
+    font-size: 24px;
+  }
+  .font-header {
+    font-size: 24px;
+    white-space: normal;
+  }
+  .damsnt {
+    font-size: 26px;
+  }
+  .kemi {
+    font-size: 15px;
+  }
+  .kemiseba {
+    font-size: 18px;
+    max-width: 100%;
+  }
+  .kemiseba-alt {
+    font-size: 18px;
+    text-align: center !important;
+    &::before {
+      max-width: 200px;
+      max-height: 40px;
+    }
+  }
+  .alain {
+    margin: 1em auto;
+    p {
+      font-size: 18px;
+    }
+  }
+  #hero {
+    min-height: auto;
+  }
+  #heroTitle {
+    font-size: 26px;
+    &::before {
+      max-width: 200px;
+      max-height: 40px;
+    }
+  }
+  #blusy {
+    background-size: 80%;
+    background-position: center bottom;
+  }
+  .heroTextContainer {
+    max-width: 100%;
+    padding: 0.75em;
+    h2 {
+      font-size: 18px;
+    }
+    p {
+      font-size: 16px;
+    }
+    a {
+      width: 180px;
+      height: 50px;
+    }
+  }
+  .txtWrapper p {
+    font-size: 14px;
+  }
+  #presentationEatIsFamily {
+    min-height: 200px;
+  }
+  #services {
+    .font-heading,
+    h3 {
+      font-size: 24px;
+    }
+    p {
+      font-size: 15px;
+    }
+  }
+  .service {
+    min-height: auto;
+    h3 {
+      font-size: 24px;
+    }
+    a {
+      width: 100%;
+      max-width: 250px;
+      height: 50px;
+      margin-top: 20px !important;
+    }
+    .sanga {
+      margin-top: 20px !important;
+    }
+  }
+  #service-0 h3::before,
+  #baks h3::before {
+    max-width: 200px;
+    max-height: 40px;
+  }
+  #lasalle {
+    a {
+      width: 180px;
+      height: 50px;
+    }
+    .example {
+      .inner-example {
+        padding: 1em;
+        min-height: auto;
+      }
+      h4 {
+        font-size: 24px;
+      }
+      p {
+        font-size: 14px;
+      }
+    }
+    #example-0 .inner-example::before {
+      width: 100px;
+      height: 88px;
+    }
+  }
+  .decradr {
+    .inner-encadre {
+      padding: 1em;
+      min-height: auto;
+      h3 {
+        font-size: 24px;
+      }
+      p {
+        font-size: 15px;
+      }
+    }
+    &:nth-of-type(1) h3::after {
+      max-width: 200px;
+      max-height: 40px;
+    }
+    &:nth-of-type(2) .inner-encadre::after {
+      width: 80px;
+    }
+  }
+  #weHelpwith #seeAboutYa {
+    padding: 0.75em;
+    h3 {
+      font-size: 20px;
+      letter-spacing: 1px;
+    }
+    p {
+      font-size: 13px;
+    }
+    ul li {
+      font-size: 15px;
+      margin-bottom: 0.75em;
+    }
+  }
+  #timeline {
+    h3 {
+      font-size: 24px;
+    }
+    h4 {
+      font-size: 13px;
+    }
+  }
+  #baks {
+    margin-bottom: 2em !important;
+    h3 {
+      top: 20px;
+    }
+  }
+  #tromp img {
+    width: 150px;
+  }
+  .page-hero {
+    padding: 2rem 0 1.5rem;
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+  .page-content {
+    padding: 1.5rem 0;
+  }
+  .card-organic {
+    padding: 1rem;
+  }
+  .tag-yellow,
+  .tag-lime {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+  .tag-blue {
+    font-size: 13px;
+  }
+  #btnExplore {
+    width: 100%;
+    max-width: 260px;
+    height: 50px;
+  }
+  #ludacris {
+    p {
+      font-size: 15px;
+      &:nth-of-type(1) {
+        font-size: 15px;
+      }
+    }
+    a {
+      height: 50px;
+      margin: 1em auto;
+      img {
+        height: 50px;
+      }
+    }
+  }
+  #leforme a {
+    width: 100% !important;
+    max-width: 260px !important;
+    height: 55px !important;
+  }
+  .blue {
+    background-size: 100%;
+    background-position: center bottom;
+  }
+  .container {
+    padding: 0 0.75rem;
+  }
+  .btn-primary,
+  .btn-secondary,
+  .btn-lime,
+  .btn-cta {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    width: 100%;
+    max-width: 280px;
+  }
+  .input-organic {
+    padding: 0.65rem 0.85rem;
+    font-size: 0.85rem;
+  }
+  .torn-paper,
+  .torn-paper-bottom {
+    clip-path: none;
+  }
+}
+
+// ----- VERY SMALL SCREENS (max-width: 400px) -----
+@media (max-width: 400px) {
+  .recoletaTitle {
+    font-size: 20px;
+  }
+  .font-heading {
+    font-size: 20px;
+  }
+  .font-header {
+    font-size: 20px;
+  }
+  .damsnt {
+    font-size: 22px;
+  }
+  .kemiseba,
+  .kemiseba-alt {
+    font-size: 16px;
+  }
+  .alain p {
+    font-size: 16px;
+  }
+  #heroTitle {
+    font-size: 22px;
+    &::before {
+      display: none;
+    }
+  }
+  .heroTextContainer {
+    h2 {
+      font-size: 16px;
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+  #services {
+    .font-heading,
+    h3 {
+      font-size: 20px;
+    }
+  }
+  .service h3 {
+    font-size: 20px;
+  }
+  #lasalle .example h4 {
+    font-size: 20px;
+  }
+  .decradr .inner-encadre h3 {
+    font-size: 20px;
+  }
+  #timeline h3 {
+    font-size: 20px;
+  }
+  #weHelpwith #seeAboutYa h3 {
+    font-size: 18px;
+  }
+}

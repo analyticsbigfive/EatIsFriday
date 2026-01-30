@@ -37,8 +37,14 @@ onMounted(async () => {
   jobs.value = await getJobs()
 })
 
+// Helper pour valider si un titre SEO est valide (pas une URL)
+const isValidSeoTitle = (title: string | undefined) => {
+  if (!title) return false
+  return !title.includes('http') && !title.includes('wp-content') && !title.includes('themes')
+}
+
 useHead(() => ({
-  title: content.value?.seo?.title || 'Job Opportunities - Eat Is Family',
+  title: isValidSeoTitle(content.value?.seo?.title) ? content.value.seo.title : 'Job Opportunities - Eat Is Family',
   meta: [
     { name: 'description', content: content.value?.seo?.meta_description || '' }
   ]

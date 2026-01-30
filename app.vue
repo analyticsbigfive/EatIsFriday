@@ -33,7 +33,7 @@ useHead({
   </div>
 </template>
 
-<style>
+<style lang="scss">
 /* Global resets or transitions can go here if not in main.css */
 .page-enter-active,
 .page-leave-active {
@@ -44,4 +44,6 @@ useHead({
   opacity: 0;
   filter: blur(1rem);
 }
+
+
 </style>

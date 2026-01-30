@@ -3,7 +3,9 @@
     <TornPaperContainer variant="white">
       <div class="container header-grid">
         <!-- Left Navigation -->
-
+  <div class="mobile-toggle">
+          <LayoutNavigation />
+        </div>
         <nav class="nav-right desktop-only">
           <NuxtLink to="/about" class="nav-link" :class="{ 'nav-active': isActiveLink('/about') }">{{ content.nav_links.about }}</NuxtLink>
           <NuxtLink to="/apply-activities" class="nav-link" :class="{ 'nav-active': isActiveLink('/apply-activities') }">{{ content.nav_links.activities }}</NuxtLink>
@@ -30,9 +32,13 @@
         </nav>
 
         <!-- Mobile Menu Toggle -->
-        <div class="mobile-toggle">
-          <LayoutNavigation />
-        </div>
+      <NuxtLink to="/contact" class="contact-button-wrapper mobile-only">
+            <NuxtImg
+              :src="btnGetInTouch"
+              alt="Get in touch"
+              class="contact-image"
+            />
+          </NuxtLink>
       </div>
     </TornPaperContainer>
   </header>

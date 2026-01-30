@@ -497,8 +497,14 @@ const goToPrevEvent = () => {
   }
 }
 
+// Helper pour valider si un titre SEO est valide (pas une URL)
+const isValidSeoTitle = (title: string | undefined) => {
+  if (!title) return false
+  return !title.includes('http') && !title.includes('wp-content') && !title.includes('themes')
+}
+
 useHead(() => ({
-  title: pageContent.value?.seo?.title || 'About Us - Eat Is Family',
+  title: isValidSeoTitle(pageContent.value?.seo?.title) ? pageContent.value.seo.title : 'About Us - Eat Is Family',
   meta: [
     { name: 'description', content: pageContent.value?.seo?.meta_description || 'Learn about Eat Is Family, our mission, vision, and the team behind our culinary experiences.' }
   ]

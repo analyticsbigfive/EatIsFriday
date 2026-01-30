@@ -45,8 +45,14 @@ onMounted(async () => {
   loading.value = false
 })
 
+// Helper pour valider si un titre SEO est valide (pas une URL)
+const isValidSeoTitle = (title: string | undefined) => {
+  if (!title) return false
+  return !title.includes('http') && !title.includes('wp-content') && !title.includes('themes')
+}
+
 useHead(() => ({
-  title: content.value?.seo?.title || 'Events - Eat Is Family',
+  title: isValidSeoTitle(content.value?.seo?.title) ? content.value.seo.title : 'Events - Eat Is Family',
   meta: [
     { name: 'description', content: content.value?.seo?.description || 'Discover our food events and culinary experiences across France.' }
   ]
