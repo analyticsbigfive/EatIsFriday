@@ -615,7 +615,7 @@ useHead(() => ({
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 16px;
   text-align: center;
-  margin-top: 40px;
+  margin-top: 147px;
   color: rgba(0, 0, 0, 0.5);
   font-style: italic;
 }
