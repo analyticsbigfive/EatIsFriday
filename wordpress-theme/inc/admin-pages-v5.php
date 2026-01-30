@@ -2641,8 +2641,25 @@ function eatisfamily_pages_content_page_v5() {
             <!-- APPLY ACTIVITIES PAGE -->
             <div id="apply-activities" class="tab-content" style="display: none;">
                 <h3><?php _e('🎯 Apply Activities Page', 'eatisfamily'); ?></h3>
+                
+                <!-- SEO Section -->
                 <div class="eatisfamily-section">
-                    <h4><?php _e('Page Hero', 'eatisfamily'); ?></h4>
+                    <h4><?php _e('🔍 SEO', 'eatisfamily'); ?></h4>
+                    <table class="form-table">
+                        <tr>
+                            <th scope="row"><label for="apply_activities_seo_title"><?php _e('Meta Title', 'eatisfamily'); ?></label></th>
+                            <td><input type="text" name="apply_activities_seo_title" id="apply_activities_seo_title" value="<?php echo esc_attr($apply_activities['seo']['title'] ?? ''); ?>" class="large-text"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="apply_activities_seo_description"><?php _e('Meta Description', 'eatisfamily'); ?></label></th>
+                            <td><textarea name="apply_activities_seo_description" id="apply_activities_seo_description" rows="3" class="large-text"><?php echo esc_textarea($apply_activities['seo']['description'] ?? ''); ?></textarea></td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <!-- Page Hero -->
+                <div class="eatisfamily-section">
+                    <h4><?php _e('🎬 Page Hero', 'eatisfamily'); ?></h4>
                     <table class="form-table">
                         <tr>
                             <th scope="row"><label for="apply_activities_hero_title"><?php _e('Title', 'eatisfamily'); ?></label></th>
@@ -2653,27 +2670,146 @@ function eatisfamily_pages_content_page_v5() {
                             <td>
                                 <input type="text" name="apply_activities_hero_image" id="apply_activities_hero_image" value="<?php echo esc_attr($apply_activities['page_hero']['image']['src'] ?? ''); ?>" class="regular-text">
                                 <button type="button" class="button eatisfamily-upload-media" data-target="apply_activities_hero_image"><?php _e('Select', 'eatisfamily'); ?></button>
+                                <?php if (!empty($apply_activities['page_hero']['image']['src'])): ?>
+                                <div class="image-preview" style="margin-top: 10px;"><img src="<?php echo esc_url($apply_activities['page_hero']['image']['src']); ?>" style="max-width: 200px;"></div>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="apply_activities_hero_image_alt"><?php _e('Image Alt Text', 'eatisfamily'); ?></label></th>
+                            <td><input type="text" name="apply_activities_hero_image_alt" id="apply_activities_hero_image_alt" value="<?php echo esc_attr($apply_activities['page_hero']['image']['alt'] ?? ''); ?>" class="regular-text"></td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <!-- Section 2 - CTA Zone -->
+                <div class="eatisfamily-section">
+                    <h4><?php _e('📝 Section 2 - CTA Zone', 'eatisfamily'); ?></h4>
+                    <table class="form-table">
+                        <tr>
+                            <th scope="row"><label for="apply_activities_section2_text"><?php _e('Text (WYSIWYG)', 'eatisfamily'); ?></label></th>
+                            <td><?php eatisfamily_wysiwyg_editor('apply_activities_section2_text', $apply_activities['section2']['text'] ?? ''); ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="apply_activities_section2_btn1"><?php _e('Button 1 Image', 'eatisfamily'); ?></label></th>
+                            <td>
+                                <input type="text" name="apply_activities_section2_btn1" id="apply_activities_section2_btn1" value="<?php echo esc_attr($apply_activities['section2']['btn1'] ?? ''); ?>" class="regular-text">
+                                <button type="button" class="button eatisfamily-upload-media" data-target="apply_activities_section2_btn1"><?php _e('Select', 'eatisfamily'); ?></button>
+                                <?php if (!empty($apply_activities['section2']['btn1'])): ?>
+                                <div class="image-preview" style="margin-top: 10px;"><img src="<?php echo esc_url($apply_activities['section2']['btn1']); ?>" style="max-width: 150px;"></div>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="apply_activities_section2_link1"><?php _e('Button 1 Link', 'eatisfamily'); ?></label></th>
+                            <td><input type="text" name="apply_activities_section2_link1" id="apply_activities_section2_link1" value="<?php echo esc_attr($apply_activities['section2']['link1'] ?? ''); ?>" class="regular-text"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="apply_activities_section2_btn2"><?php _e('Button 2 Image', 'eatisfamily'); ?></label></th>
+                            <td>
+                                <input type="text" name="apply_activities_section2_btn2" id="apply_activities_section2_btn2" value="<?php echo esc_attr($apply_activities['section2']['btn2'] ?? ''); ?>" class="regular-text">
+                                <button type="button" class="button eatisfamily-upload-media" data-target="apply_activities_section2_btn2"><?php _e('Select', 'eatisfamily'); ?></button>
+                                <?php if (!empty($apply_activities['section2']['btn2'])): ?>
+                                <div class="image-preview" style="margin-top: 10px;"><img src="<?php echo esc_url($apply_activities['section2']['btn2']); ?>" style="max-width: 150px;"></div>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="apply_activities_section2_link2"><?php _e('Button 2 Link', 'eatisfamily'); ?></label></th>
+                            <td><input type="text" name="apply_activities_section2_link2" id="apply_activities_section2_link2" value="<?php echo esc_attr($apply_activities['section2']['link2'] ?? ''); ?>" class="regular-text"></td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <!-- Texte de la Page -->
+                <div class="eatisfamily-section">
+                    <h4><?php _e('📄 Texte de la Page', 'eatisfamily'); ?></h4>
+                    <table class="form-table">
+                        <tr>
+                            <th scope="row"><label for="apply_activities_texte_title"><?php _e('Title', 'eatisfamily'); ?></label></th>
+                            <td><input type="text" name="apply_activities_texte_title" id="apply_activities_texte_title" value="<?php echo esc_attr($apply_activities['textedelapage']['title'] ?? ''); ?>" class="large-text"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="apply_activities_texte_subtitle"><?php _e('Subtitle', 'eatisfamily'); ?></label></th>
+                            <td><input type="text" name="apply_activities_texte_subtitle" id="apply_activities_texte_subtitle" value="<?php echo esc_attr($apply_activities['textedelapage']['subtitle'] ?? ''); ?>" class="large-text"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="apply_activities_texte_description"><?php _e('Description (WYSIWYG)', 'eatisfamily'); ?></label></th>
+                            <td><?php eatisfamily_wysiwyg_editor('apply_activities_texte_description', $apply_activities['textedelapage']['description'] ?? ''); ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="apply_activities_texte_link"><?php _e('Link Text', 'eatisfamily'); ?></label></th>
+                            <td><input type="text" name="apply_activities_texte_link" id="apply_activities_texte_link" value="<?php echo esc_attr($apply_activities['textedelapage']['link'] ?? ''); ?>" class="regular-text"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="apply_activities_texte_btn"><?php _e('Button Image', 'eatisfamily'); ?></label></th>
+                            <td>
+                                <input type="text" name="apply_activities_texte_btn" id="apply_activities_texte_btn" value="<?php echo esc_attr($apply_activities['textedelapage']['btn'] ?? ''); ?>" class="regular-text">
+                                <button type="button" class="button eatisfamily-upload-media" data-target="apply_activities_texte_btn"><?php _e('Select', 'eatisfamily'); ?></button>
+                                <?php if (!empty($apply_activities['textedelapage']['btn'])): ?>
+                                <div class="image-preview" style="margin-top: 10px;"><img src="<?php echo esc_url($apply_activities['textedelapage']['btn']); ?>" style="max-width: 150px;"></div>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="apply_activities_texte_image"><?php _e('Section Image', 'eatisfamily'); ?></label></th>
+                            <td>
+                                <input type="text" name="apply_activities_texte_image" id="apply_activities_texte_image" value="<?php echo esc_attr($apply_activities['textedelapage']['image'] ?? ''); ?>" class="regular-text">
+                                <button type="button" class="button eatisfamily-upload-media" data-target="apply_activities_texte_image"><?php _e('Select', 'eatisfamily'); ?></button>
+                                <?php if (!empty($apply_activities['textedelapage']['image'])): ?>
+                                <div class="image-preview" style="margin-top: 10px;"><img src="<?php echo esc_url($apply_activities['textedelapage']['image']); ?>" style="max-width: 200px;"></div>
+                                <?php endif; ?>
                             </td>
                         </tr>
                     </table>
                 </div>
+                
+                <!-- We Help With Section -->
                 <div class="eatisfamily-section">
-                    <h4><?php _e('Page Text Section', 'eatisfamily'); ?></h4>
+                    <h4><?php _e('🤝 We Help With', 'eatisfamily'); ?></h4>
                     <table class="form-table">
                         <tr>
-                            <th scope="row"><label for="apply_activities_text_title"><?php _e('Title', 'eatisfamily'); ?></label></th>
-                            <td><input type="text" name="apply_activities_text_title" id="apply_activities_text_title" value="<?php echo esc_attr($apply_activities['page_text']['title'] ?? ''); ?>" class="large-text"></td>
+                            <th scope="row"><label for="apply_activities_help_image"><?php _e('Section Image', 'eatisfamily'); ?></label></th>
+                            <td>
+                                <input type="text" name="apply_activities_help_image" id="apply_activities_help_image" value="<?php echo esc_attr($apply_activities['weHelpWith']['image'] ?? ''); ?>" class="regular-text">
+                                <button type="button" class="button eatisfamily-upload-media" data-target="apply_activities_help_image"><?php _e('Select', 'eatisfamily'); ?></button>
+                                <?php if (!empty($apply_activities['weHelpWith']['image'])): ?>
+                                <div class="image-preview" style="margin-top: 10px;"><img src="<?php echo esc_url($apply_activities['weHelpWith']['image']); ?>" style="max-width: 200px;"></div>
+                                <?php endif; ?>
+                            </td>
                         </tr>
                         <tr>
-                            <th scope="row"><label for="apply_activities_text_subtitle"><?php _e('Subtitle', 'eatisfamily'); ?></label></th>
-                            <td><input type="text" name="apply_activities_text_subtitle" id="apply_activities_text_subtitle" value="<?php echo esc_attr($apply_activities['page_text']['subtitle'] ?? ''); ?>" class="large-text"></td>
+                            <th scope="row"><label for="apply_activities_help_title"><?php _e('Title', 'eatisfamily'); ?></label></th>
+                            <td><input type="text" name="apply_activities_help_title" id="apply_activities_help_title" value="<?php echo esc_attr($apply_activities['weHelpWith']['title'] ?? ''); ?>" class="large-text"></td>
                         </tr>
                         <tr>
-                            <th scope="row"><label for="apply_activities_text_description"><?php _e('Description', 'eatisfamily'); ?> <span class="wysiwyg-label-badge">HTML</span></label></th>
-                            <td><?php eatisfamily_wysiwyg_editor('apply_activities_text_description', $apply_activities['page_text']['description'] ?? ''); ?></td>
+                            <th scope="row"><label for="apply_activities_help_sous"><?php _e('Subtitle (sous)', 'eatisfamily'); ?></label></th>
+                            <td><input type="text" name="apply_activities_help_sous" id="apply_activities_help_sous" value="<?php echo esc_attr($apply_activities['weHelpWith']['sous'] ?? ''); ?>" class="large-text"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label><?php _e('Help Items', 'eatisfamily'); ?></label></th>
+                            <td>
+                                <div id="apply_activities_help_items_container">
+                                    <?php 
+                                    $help_items = $apply_activities['weHelpWith']['items'] ?? array();
+                                    if (empty($help_items)) $help_items = array('');
+                                    foreach ($help_items as $index => $item): 
+                                    ?>
+                                    <div class="help-item-row" style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                                        <input type="text" name="apply_activities_help_items[]" value="<?php echo esc_attr($item); ?>" class="regular-text" placeholder="<?php _e('Enter help item', 'eatisfamily'); ?>">
+                                        <button type="button" class="button" onclick="this.closest('.help-item-row').remove();"><?php _e('Remove', 'eatisfamily'); ?></button>
+                                    </div>
+                                    <?php endforeach; ?>
+                                </div>
+                                <button type="button" class="button" onclick="var c=document.getElementById('apply_activities_help_items_container');var r=document.createElement('div');r.className='help-item-row';r.style.cssText='margin-bottom:8px;display:flex;align-items:center;gap:8px;';r.innerHTML='<input type=text name=apply_activities_help_items[] class=regular-text placeholder=Enter help item><button type=button class=button onclick=this.closest(\'.help-item-row\').remove();>Remove</button>';c.appendChild(r);"><?php _e('+ Add Item', 'eatisfamily'); ?></button>
+                            </td>
                         </tr>
                     </table>
                 </div>
+                
+                <p class="description" style="margin-top: 15px; padding: 10px; background: #f0f0f1; border-left: 4px solid #2271b1;">
+                    <strong><?php _e('Note:', 'eatisfamily'); ?></strong> <?php _e('The activities list (HomeExploreSection) is managed through the Activities custom post type.', 'eatisfamily'); ?>
+                </p>
             </div>
             
             <?php submit_button(__('Save Pages Content', 'eatisfamily')); ?>
@@ -3115,16 +3251,37 @@ function eatisfamily_build_pages_content_v5($data) {
             ),
         ),
         'apply_activities' => array(
+            'seo' => array(
+                'title' => sanitize_text_field($data['apply_activities_seo_title'] ?? ''),
+                'description' => sanitize_textarea_field($data['apply_activities_seo_description'] ?? ''),
+            ),
             'page_hero' => array(
                 'title' => sanitize_text_field(wp_strip_all_tags($data['apply_activities_hero_title'] ?? '')),
                 'image' => array(
                     'src' => esc_url_raw($data['apply_activities_hero_image'] ?? ''),
+                    'alt' => sanitize_text_field($data['apply_activities_hero_image_alt'] ?? ''),
                 ),
             ),
-            'page_text' => array(
-                'title' => sanitize_text_field($data['apply_activities_text_title'] ?? ''),
-                'subtitle' => sanitize_text_field($data['apply_activities_text_subtitle'] ?? ''),
-                'description' => wp_kses_post($data['apply_activities_text_description'] ?? ''),
+            'section2' => array(
+                'text' => wp_kses_post($data['apply_activities_section2_text'] ?? ''),
+                'btn1' => esc_url_raw($data['apply_activities_section2_btn1'] ?? ''),
+                'link1' => sanitize_text_field($data['apply_activities_section2_link1'] ?? ''),
+                'btn2' => esc_url_raw($data['apply_activities_section2_btn2'] ?? ''),
+                'link2' => sanitize_text_field($data['apply_activities_section2_link2'] ?? ''),
+            ),
+            'textedelapage' => array(
+                'title' => sanitize_text_field($data['apply_activities_texte_title'] ?? ''),
+                'subtitle' => sanitize_text_field($data['apply_activities_texte_subtitle'] ?? ''),
+                'description' => wp_kses_post($data['apply_activities_texte_description'] ?? ''),
+                'link' => sanitize_text_field($data['apply_activities_texte_link'] ?? ''),
+                'btn' => esc_url_raw($data['apply_activities_texte_btn'] ?? ''),
+                'image' => esc_url_raw($data['apply_activities_texte_image'] ?? ''),
+            ),
+            'weHelpWith' => array(
+                'image' => esc_url_raw($data['apply_activities_help_image'] ?? ''),
+                'title' => sanitize_text_field($data['apply_activities_help_title'] ?? ''),
+                'items' => isset($data['apply_activities_help_items']) ? array_filter(array_map('sanitize_text_field', (array)$data['apply_activities_help_items'])) : array(),
+                'sous' => sanitize_text_field($data['apply_activities_help_sous'] ?? ''),
             ),
         ),
     );

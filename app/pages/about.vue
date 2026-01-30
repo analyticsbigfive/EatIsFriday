@@ -172,8 +172,8 @@
     </section>
     <GalleryGrid v-if="siteContent?.about?.gallery_section?.images"
       :images="siteContent.about.gallery_section.images" />
-    <PartnersSection v-if="homepageContent?.partners" :title="homepageContent.partners_title"
-      :partners="homepageContent.partners.map((p: any) => ({ ...p, name: p.alt }))" />
+    <PartnersSection v-if="homepageContent" :title="homepageContent.partners_title"
+      :partners="(homepageContent.partners || []).map((p: any) => ({ ...p, name: p.alt }))" />
     
       <GalleryGrid v-if="siteContent?.about?.gallery_section2?.images"
       :images="siteContent.about.gallery_section2.images" />

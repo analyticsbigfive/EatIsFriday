@@ -105,8 +105,8 @@ useHead(() => ({
       </div>
     </section>
     <section class="mt-4">
-      <PartnersSection v-if="homepageContent?.partners" :title="homepageContent.partners_title"
-        :partners="homepageContent.partners.map((p: any) => ({ ...p, name: p.alt }))" />
+      <PartnersSection v-if="homepageContent" :title="homepageContent.partners_title"
+        :partners="(homepageContent.partners || []).map((p: any) => ({ ...p, name: p.alt }))" />
     </section>
     <section class="mt-4">
       <!-- Second gallery for events page - uses events-specific gallery with fallback -->

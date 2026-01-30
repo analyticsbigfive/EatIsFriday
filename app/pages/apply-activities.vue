@@ -6,12 +6,9 @@
         <img v-if="content.page_hero.image?.src" :src="content.page_hero.image.src" :alt="content.page_hero.image.alt">
       </div>
     </section>
-        <section v-if="activities" class="explore-section">
-      <HomeExploreSection />
-    </section>
     <section v-if="content?.section2" id="mouf" class="booba">
-      <div id="denzel" class="container">
-        <h1 class="preserve-lines">{{ content.section2.text }}</h1>
+      <div id="denzel" class="container justify-content-center align-items d-flex">
+        <h1 class="preserve-lines justify-content-center align-items d-flex" v-html="content.section2.text"></h1>
         <div id="rohff" class="d-flex justify-content-center align-items-center text-center gap-4 flex-wrap">
           <NuxtLink :to="content.section2.link1">
             <img :src="content.section2.btn1">
@@ -22,6 +19,10 @@
         </div>
       </div>
     </section>
+    <section v-if="activities" class="explore-section">
+      <HomeExploreSection />
+    </section>
+  
     <section class="mb-5" v-if="activities && content?.textedelapage">
       <div id="baks" class="row container-fluid p-0 m-0 d-flex align-items-center">
         <div id="ludacris" class="col-6 p-5">
@@ -49,8 +50,8 @@
 </section>
     <section class="mt-4">
       <!-- parteners  -->
-      <PartnersSection v-if="homepageContent?.partners" :title="homepageContent.partners_title"
-        :partners="homepageContent.partners.map((p: any) => ({ ...p, name: p.alt }))" />
+      <PartnersSection v-if="homepageContent" :title="homepageContent.partners_title"
+        :partners="(homepageContent.partners || []).map((p: any) => ({ ...p, name: p.alt }))" />
       <!-- gallery grid -->
       <GalleryGrid v-if="siteContent?.about?.gallery_section2?.images"
         :images="siteContent.about.gallery_section2.images" />
@@ -172,6 +173,7 @@ useHead(() => ({
   background-repeat: no-repeat;
   position: relative;
   min-height: 66vh;
+  margin-top:-10px;
 
   &:after {
     background: url("/images/concession.svg");
