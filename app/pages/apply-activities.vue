@@ -6,29 +6,30 @@
         <img v-if="content.page_hero.image?.src" :src="content.page_hero.image.src" :alt="content.page_hero.image.alt">
       </div>
     </section>
-    <section v-if="content?.section2" id="mouf" class="booba">
-      <div id="denzel" class="container justify-content-center align-items d-flex">
-        <h1 class="preserve-lines justify-content-center align-items d-flex" v-html="content.section2.text"></h1>
+    <section v-if="content?.section2" id="mouf" class="booba mb-4">
+      <div id="denzel" class="container d-flex flex-column justify-content-center align-items-center">
+        <h1 class="preserve-lines text-center" v-html="content.section2.text"></h1>
         <div id="rohff" class="d-flex justify-content-center align-items-center text-center gap-4 flex-wrap">
-          <NuxtLink :to="content.section2.link1">
-            <img :src="content.section2.btn1">
+          <NuxtLink v-if="content.section2.btn1" :to="content.section2.link1 || '#'">
+            <img :src="content.section2.btn1" alt="Button 1">
           </NuxtLink>
-          <NuxtLink :to="content.section2.link2">
-            <img :src="content.section2.btn2">
+          <NuxtLink v-if="content.section2.btn2" :to="content.section2.link2 || '#'">
+            <img :src="content.section2.btn2" alt="Button 2">
           </NuxtLink>
         </div>
       </div>
     </section>
-    <section v-if="activities" class="explore-section">
+    <section v-if="activities" class="explore-section mt-4">
       <HomeExploreSection />
     </section>
   
     <section class="mb-5" v-if="activities && content?.textedelapage">
       <div id="baks" class="row container-fluid p-0 m-0 d-flex align-items-center">
-        <div id="ludacris" class="col-6 p-5">
           <h3 class="font-header">{{ content.textedelapage.title }}</h3>
-          <p>{{ content.textedelapage.subtitle }}</p>
-          <p>{{ content.textedelapage.description }}</p>
+
+        <div id="ludacris" class="col-6 p-5">
+          <p v-html="content.textedelapage.subtitle"></p>
+          <p v-html="content.textedelapage.description"></p>
            <NuxtLink :to="content.textedelapage.link">
             <img :src="content.textedelapage.btn">
           </NuxtLink>
@@ -174,7 +175,7 @@ useHead(() => ({
   position: relative;
   min-height: 66vh;
   margin-top:-10px;
-
+margin-bottom:4em !important;
   &:after {
     background: url("/images/concession.svg");
     content: "";
@@ -205,6 +206,18 @@ useHead(() => ({
 #rohff {
   margin-top: 15px;
   padding: 20px 0;
+  
+  a {
+    display: inline-block;
+    min-width: 150px;
+    
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      min-height: 70px;
+    }
+  }
 }
 
 </style>
