@@ -199,14 +199,14 @@ onMounted(async () => {
     </section>
 
     <!-- CTA Section -->
-    <section class="py-5 bg-white">
+    <section id="mouff" class="py-5 bg-white">
       <div class="container">
         <div class="kemiseba-alt" v-html="content.cta_section?.description"></div>
       </div>
     </section>
 
     <!-- Food Gallery Section -->
-    <GalleryGrid :images="content.gallery_section?.images || []" />
+    <GalleryGrid id="homepageGallery" :images="content.gallery_section?.images || []" />
     <!-- sustainable service  -->
     <section id="sustan" class="py-5 bg-white">
       <!-- une loop qui affiche les services durables -->

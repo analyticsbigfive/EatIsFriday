@@ -31,7 +31,8 @@
 // Custom Font Face
 @font-face {
   font-family: FONTSPRINGDEMO-Recoleta;
-  src: url("/fonts/Recoleta-Regular.woff2") format("woff2"),
+  src:
+    url("/fonts/Recoleta-Regular.woff2") format("woff2"),
     url("/fonts/Recoleta-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
@@ -39,7 +40,8 @@
 }
 @font-face {
   font-family: FONTSPRINGDEMO-Recoleta-Regular;
-  src: url("/fonts/Recoleta-Regular.woff2") format("woff2"),
+  src:
+    url("/fonts/Recoleta-Regular.woff2") format("woff2"),
     url("/fonts/Recoleta-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
@@ -47,7 +49,8 @@
 }
 @font-face {
   font-family: FONTSPRINGDEMO-Recoleta-Medium;
-  src: url("/fonts/Recoleta-Regular.woff2") format("woff2"),
+  src:
+    url("/fonts/Recoleta-Regular.woff2") format("woff2"),
     url("/fonts/Recoleta-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
@@ -56,7 +59,8 @@
 
 @font-face {
   font-family: FONTSPRINGDEMO-RecoletaMedium;
-  src: url("/fonts/Recoleta-Medium.woff2") format("woff2"),
+  src:
+    url("/fonts/Recoleta-Medium.woff2") format("woff2"),
     url("/fonts/Recoleta-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
@@ -65,7 +69,8 @@
 
 @font-face {
   font-family: FONTSPRINGDEMO-RecoletaSemiBold-Regular;
-  src: url("/fonts/Recoleta-SemiBold.woff2") format("woff2"),
+  src:
+    url("/fonts/Recoleta-SemiBold.woff2") format("woff2"),
     url("/fonts/Recoleta-SemiBold.woff") format("woff");
   font-weight: 600;
   font-style: normal;
@@ -73,7 +78,8 @@
 }
 @font-face {
   font-family: FONTSPRINGDEMO-RecoletaSemiBold;
-  src: url("/fonts/Recoleta-SemiBold.woff2") format("woff2"),
+  src:
+    url("/fonts/Recoleta-SemiBold.woff2") format("woff2"),
     url("/fonts/Recoleta-SemiBold.woff") format("woff");
   font-weight: 600;
   font-style: normal;
@@ -81,7 +87,8 @@
 }
 @font-face {
   font-family: FONTSPRINGDEMO-RecoletaBold;
-  src: url("/fonts/Recoleta-Bold.woff2") format("woff2"),
+  src:
+    url("/fonts/Recoleta-Bold.woff2") format("woff2"),
     url("/fonts/Recoleta-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
@@ -167,7 +174,9 @@ body {
 }
 
 .shadow-organic-hover {
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 
   &:hover {
     box-shadow: $shadow-organic-hover;
@@ -213,7 +222,7 @@ body {
 }
 
 .tag-blue {
-     font-family: FONTSPRINGDEMO-RecoletaMedium;
+  font-family: FONTSPRINGDEMO-RecoletaMedium;
   font-size: 17px;
   font-weight: normal;
   font-stretch: normal;
@@ -224,24 +233,24 @@ body {
   color: #000;
 }
 
-.tag-yellow {  
-    flex-grow: 0;
+.tag-yellow {
+  flex-grow: 0;
   padding: 9px 16px;
   border-radius: 30px;
   border: solid 1px #ffe600;
   background-color: #ffe600;
-    font-family: FONTSPRINGDEMO-RecoletaMedium;
+  font-family: FONTSPRINGDEMO-RecoletaMedium;
   font-size: 15px;
 }
 
 .tag-lime {
-   padding: 9px 16px 9px 17px;
+  padding: 9px 16px 9px 17px;
   border-radius: 30px;
   border: solid 1px #a7f49d;
   background-color: #a7f49d;
-    font-family: FONTSPRINGDEMO-RecoletaMedium;
+  font-family: FONTSPRINGDEMO-RecoletaMedium;
   font-size: 15px;
-  color:black;
+  color: black;
 }
 
 // Buttons
@@ -564,21 +573,21 @@ body {
   position: relative;
   z-index: 21;
   white-space: pre-line;
-   &::before {
-      z-index: -1;
-      position: absolute;
-      content: "";
-      background: url(/images/decoHeaderBg.svg);
-      background-size: contain;
-      width: 100vw;
-      max-width: 400px;
-      height: 100vh;
-      max-height: 80px;
-      background-repeat: no-repeat;
-      top: 1vh;
-      left: -1vw;
-    }
+  &::before {
+    z-index: -1;
+    position: absolute;
+    content: "";
+    background: url(/images/decoHeaderBg.svg);
+    background-size: contain;
+    width: 100vw;
+    max-width: 400px;
+    height: 100vh;
+    max-height: 80px;
+    background-repeat: no-repeat;
+    top: 1vh;
+    left: -1vw;
   }
+}
 
 .txtWrapper {
   position: relative;
@@ -624,18 +633,18 @@ body {
   -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
 }
 .kemiseba {
-    max-width: 80vw;
-    text-align: center;
-    margin: 0 auto;
-    display: block;
-    font-family: FONTSPRINGDEMO-Recoleta-Regular;
-    font-size: 34px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.59;
-    letter-spacing: normal;
-    color: #000000;
+  max-width: 80vw;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  font-family: FONTSPRINGDEMO-Recoleta-Regular;
+  font-size: 34px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.59;
+  letter-spacing: normal;
+  color: #000000;
   strong {
     font-weight: normal;
     color: #f9375b;
@@ -824,9 +833,9 @@ body {
   .example {
     padding: 5px;
     .inner-example {
-    padding: 4em;
-    border-radius: 20px;
-    min-height: 760px;
+      padding: 4em;
+      border-radius: 20px;
+      min-height: 760px;
     }
     h4 {
       font-family: FONTSPRINGDEMO-RecoletaBold;
@@ -859,7 +868,7 @@ body {
       background-repeat: no-repeat;
       background-position: right bottom;
       position: relative;
-      background-size:cover;
+      background-size: cover;
       &::before {
         content: "";
         background-image: url(/images/concession.svg);
@@ -895,8 +904,8 @@ body {
     .inner-example {
       background: url(/images/bgRE.svg);
       background-repeat: no-repeat;
-      background-size:cover;      position: relative;
-
+      background-size: cover;
+      position: relative;
     }
   }
 }
@@ -1130,14 +1139,14 @@ body {
   }
 }
 #ludacris {
-  a{
-      display: flex;
+  a {
+    display: flex;
     justify-content: flex-start;
     align-items: center;
     height: 70px;
     margin: 4em auto;
-    img{
-    height:70px;
+    img {
+      height: 70px;
     }
   }
   p {
@@ -1159,7 +1168,7 @@ body {
 #baks {
   margin-bottom: 7em !important;
   h3 {
-        top: 75px;
+    top: 75px;
     position: relative;
     z-index: 0;
     &::before {
@@ -1182,7 +1191,7 @@ body {
 #weHelpwith {
   position: relative;
   #seeAboutYa {
-      background: url(/images/bgContainer.svg);
+    background: url(/images/bgContainer.svg);
     background-repeat: no-repeat;
     position: absolute;
     right: 10px;
@@ -1213,8 +1222,8 @@ body {
       list-style: none;
       padding-left: 0;
       border-bottom: solid 2px #d1d5dc;
-      max-height:610px;
-      overflow-y:scroll;
+      max-height: 610px;
+      overflow-y: scroll;
       li {
         font-family: FONTSPRINGDEMO-Recoleta-Regular;
         font-size: 18px;
@@ -1256,209 +1265,202 @@ body {
     }
   }
 }
-#leforme{
-  a{
-    width:316px !important;
-    height:74px !important;
-    img{
-        width:100% !important;
+#leforme {
+  a {
+    width: 316px !important;
+    height: 74px !important;
+    img {
+      width: 100% !important;
     }
   }
 }
 
-
-#inver{
-#ready-to-make-an-impact{
-  #leforme,#mero{
-    display:none !important;
+#inver {
+  #ready-to-make-an-impact {
+    #leforme,
+    #mero {
+      display: none !important;
+    }
   }
 }
-}
-
-
 
 // =============================================
 // RESPONSIVE STYLES
 // =============================================
-@mixin mobileHeight(){
-  
-      height:100vh !important;
-      max-height:600px !important;
+@mixin mobileHeight() {
+  height: 100vh !important;
+  max-height: 600px !important;
 }
-@mixin mobileHeightFull(){
-  
-      height:100vh !important;
-      max-height:100vh !important;
+@mixin mobileHeightFull() {
+  height: 100vh !important;
+  max-height: 100vh !important;
 }
-@media (min-width: 1024px){
- 
-  .mobile-only{
-    display:none !important;
+@media (min-width: 1024px) {
+  .mobile-only {
+    display: none !important;
   }
 }
-@media (max-width: 1024px){
-  
-  .desktop-only{
-    display:none !important;
+@media (max-width: 1024px) {
+  .desktop-only {
+    display: none !important;
   }
-  .mobile-only{
-    display:block !important;
+  .mobile-only {
+    display: block !important;
   }
-  .hero-video-wrapper{
-    display:flex;
-    align-items:flex-end;
-    position:relative !important;
-    
+  .hero-video-wrapper {
+    display: flex;
+    align-items: flex-end;
+    position: relative !important;
   }
- .menu-toggle{
-    border:none !important;
-     background:none !important;
-    span{
-      color:black !important;
-      background:black !important;
+  .menu-toggle {
+    border: none !important;
+    background: none !important;
+    span {
+      color: black !important;
+      background: black !important;
     }
   }
- .header-grid{
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  .logo-container{
-    justify-self: center !important;
-  }
-  a.contact-wrapper{
-    height:100% !important;
-    display: flex !important;
-    img{
-    height:31px !important;
+  .header-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    .logo-container {
+      justify-self: center !important;
+    }
+    a.contact-wrapper {
+      height: 100% !important;
+      display: flex !important;
+      img {
+        height: 31px !important;
+      }
     }
   }
-  }
-  #heroTitle, #heroTitleAlt{
+  #heroTitle,
+  #heroTitleAlt {
     font-size: 50px !important;
     line-height: 1.3 !important;
-}
-//presentation eat is famaily
-    #presentationEatIsFamily{
-  background:url(images/rashawna.jpg) !important;
-      background-size: contain !important;
-    background-repeat:no-repeat !important;
   }
-  .job-search-form{
-    max-width:95vw !important;
-    bottom:5vh !important;
-    max-height:44vh !important;
-    position:absolute !important;
-    margin:auto !important;
-    left:0 !important;
-    right:0 !important;
-    margin:auto !important;
-    h2{
-  font-size: 24px !important;
-    }
-    .select-field{
-      max-width:100% !important;
-      width:100% !important;
-      margin-bottom:10px !important;
-    }
-    .search-button{
-      display:flex !important;
-      justify-content:flex-start !important;
-      background:none !important;
-    }
-    .dropdown-menu{
-      width:80vw !important;
-    }
+  //presentation eat is famaily
+  #presentationEatIsFamily {
+    background: url(images/rashawna.jpg) !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
   }
-  #hero{
-    margin:0 !important;
-    padding:0 !important;
-    width:100vw !important;
-    min-width:100vw !important;
-    p{
-      font-size:16px !important;
-      margin-bottom:4px !important;
+  .job-search-form {
+    max-width: 95vw !important;
+    bottom: 5vh !important;
+    max-height: 44vh !important;
+    position: absolute !important;
+    margin: auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: auto !important;
+    h2 {
+      font-size: 24px !important;
     }
-    .row{
-      
-    width:100vw !important;
-      margin:0 !important;
-      padding:0 !important;
+    .select-field {
+      max-width: 100% !important;
+      width: 100% !important;
+      margin-bottom: 10px !important;
     }
-   #marr{
-        height: 100vh !important;
-        max-height: 80vh !important;
-        min-height: 0 !important;
+    .search-button {
+      display: flex !important;
+      justify-content: flex-start !important;
+      background: none !important;
     }
-    #blusy{
-        height: 100vh !important;
-        max-height: 80vh !important;
-  
-        justify-content: flex-start !important;
-    min-height: 0 !important;
-    background-size: 128vw;
-    background-position: 87% 104%;
+    .dropdown-menu {
+      width: 80vw !important;
     }
   }
-   .footer-grid {
-    display: flex!important;
- flex-wrap: wrap !important;   
+  #hero {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100vw !important;
+    min-width: 100vw !important;
+    p {
+      font-size: 16px !important;
+      margin-bottom: 4px !important;
+    }
+    .row {
+      width: 100vw !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    #marr {
+      height: 100vh !important;
+      max-height: 80vh !important;
+      min-height: 0 !important;
+    }
+    #blusy {
+      height: 100vh !important;
+      max-height: 80vh !important;
+
+      justify-content: flex-start !important;
+      min-height: 0 !important;
+      background-size: 128vw;
+      background-position: 87% 104%;
+    }
+  }
+  .footer-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
     .footer-section:first-child {
       width: 100% !important;
     }
-    
+
     .footer-section:nth-child(2),
     .footer-section:nth-child(3) {
       width: 50% !important;
     }
   }
-  #btnExplore{
-    width:100% !important;
-    max-width:100% !important;
-    height:69px !important;
+  #btnExplore {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 69px !important;
   }
-  a.contact-button-wrapper.mobile-only{
-       display: flex !important;
+  a.contact-button-wrapper.mobile-only {
+    display: flex !important;
     justify-content: center;
     align-items: flex-end;
   }
-  .contact-image{
-    height:38px !important;
+  .contact-image {
+    height: 38px !important;
   }
-  .kemiseba{
-      p {
-    font-size: 24px;
-    line-height: 1.67;
+  .kemiseba {
+    p {
+      font-size: 24px;
+      line-height: 1.67;
     }
   }
-      #tromp img {
-        width: 224px !important;
-    }
-    .explore-map{
-     
-      @include mobileHeight();
-    }
-    .explore-title{
-      font-size:38px !important;
-    }
-    .venue-filter-btn{
-      width:33% !important;
-      .venue-filter-image{
-    height: 116px !important;
-    width: 100% !important;      }
-    }
-    .explore-stats{
-      .col-3{
-        width:50% !important;
-        padding:1em !important;
-      }
-    }
-  .job-search-form-wrapper{
-    z-index:1000000;
+  #tromp img {
+    width: 224px !important;
   }
-  .venue-image{
-    max-height:170px !important;
+  .explore-map {
+    @include mobileHeight();
   }
-  .venue-event-banner{
-      flex-direction: column !important;
+  .explore-title {
+    font-size: 38px !important;
+  }
+  .venue-filter-btn {
+    width: 33% !important;
+    .venue-filter-image {
+      height: 116px !important;
+      width: 100% !important;
+    }
+  }
+  .explore-stats {
+    .col-3 {
+      width: 50% !important;
+      padding: 1em !important;
+    }
+  }
+  .job-search-form-wrapper {
+    z-index: 1000000;
+  }
+  .venue-image {
+    max-height: 170px !important;
+  }
+  .venue-event-banner {
+    flex-direction: column !important;
     display: flex !important;
     background: url(/images/charcot.svg) !important;
     background-repeat: no-repeat;
@@ -1467,25 +1469,86 @@ body {
     min-height: 151px !important;
     max-height: 151px !important;
     gap: 0 !important;
-    gap:0 !important;
-    margin-bottom:10px !important;
+    gap: 0 !important;
+    margin-bottom: 10px !important;
 
-  .venue-event-item{
-    margin:0 !important;
-    padding:0 !important;
-    gap:0 !important;
-    display:flex !important;
-    justify-content:center !important;
+    .venue-event-item {
+      margin: 0 !important;
+      padding: 0 !important;
+      gap: 0 !important;
+      display: flex !important;
+      justify-content: center !important;
+    }
   }
-    
+  .service {
+    &:nth-of-type(1) {
+      .lefun {
+        order: 1 !important;
+      }
+      .service-desc {
+        order: 2 !important;
+      }
+    }
+    &:nth-of-type(2) {
+      .lefun {
+        order: 2 !important;
+      }
+      .service-desc {
+        order: 1 !important;
+      }
+    }
   }
-  #services .font-heading, #services h3{
+  #services .font-heading,
+  #services h3 {
     font-size: 30px !important;
-  
   }
-  #makepe{
+  #services {
+    padding: 2em 1em 0em 1em !important;
+    margin: 0 !important;
+    .innerService {
+      padding: 2em 1em 4em 1em !important;
+    }
+    p {
+      font-size: 16px !important;
+      line-height: 1.44 !important;
+      margin-bottom: 0 !important;
+    }
+    a {
+      margin-top: 0 !important;
+    }
+    .lefun {
+      min-height: 520px !important;
+      padding: 0 !important;
+    }
+    .service-desc {
+      padding: 0 !important;
+      margin-top: 10px !important;
+      margin-bottom: 10px !important;
+    }
+  }
+  #makepe {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  #mouff{
+    padding-bottom:0em !important;
+  }
+  .kemiseba-alt{
+     padding-top:0 !important; 
+    p{
+      font-size:24px !important;
+    }
+  }
+  #homepageGallery{
+    padding-top:60px !important;
+    .container{
       padding:0 !important;
-    margin:0 !important;
+      .gallery-item-wrapper{
+        img{
+        
+        }
+      }
+    }
   }
 }
 // ----- TABLET LANDSCAPE (max-width: 1200px) -----
@@ -1558,7 +1621,7 @@ body {
       font-size: 40px;
     }
   }
-  
+
   #weHelpwith {
     #seeAboutYa {
       max-width: 380px;
@@ -1629,9 +1692,6 @@ body {
     .font-heading,
     h3 {
       font-size: 34px;
-    }
-    .innerService {
-      padding: 20px !important;
     }
   }
   .service {
@@ -1823,7 +1883,6 @@ body {
       font-size: 16px;
     }
     .innerService {
-      padding: 15px !important;
     }
   }
   .service {
@@ -2289,6 +2348,4 @@ body {
   #weHelpwith #seeAboutYa h3 {
     font-size: 18px;
   }
-
-
 }
