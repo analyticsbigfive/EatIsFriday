@@ -1550,6 +1550,12 @@ body {
       }
     }
   }
+  .substainable-service-item{
+    .inner{
+          background-size: contain !important;
+          max-width: 92vw !important;
+    }
+  }
 }
 // ----- TABLET LANDSCAPE (max-width: 1200px) -----
 @media (max-width: 1200px) {
