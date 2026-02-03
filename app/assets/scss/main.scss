@@ -1409,7 +1409,7 @@ body {
 
     .footer-section:nth-child(2),
     .footer-section:nth-child(3) {
-      width: 50% !important;
+      width: 43% !important;
     }
   }
   #btnExplore {
@@ -1530,42 +1530,272 @@ body {
     padding: 0 !important;
     margin: 0 !important;
   }
-  #mouff{
-    padding-bottom:0em !important;
+  #mouff {
+    padding-bottom: 0em !important;
   }
-  .kemiseba-alt{
-     padding-top:0 !important; 
-    p{
-      font-size:24px !important;
+  .kemiseba-alt {
+    padding-top: 0 !important;
+    p {
+      font-size: 24px !important;
     }
   }
-  #homepageGallery{
-    padding-top:60px !important;
-    .container{
-      padding:0 !important;
-      .gallery-item-wrapper{
-        img{
-        
+  #homepageGallery {
+    padding-top: 60px !important;
+    .container {
+      padding: 0 !important;
+      .gallery-item-wrapper {
+        img {
         }
       }
     }
   }
-  .sustainable-service-item{
-    padding-bottom:0 !important;
-    .inner{
-        background-size: contain !important;
-    max-width: 90vw !important;
-    margin: 0 auto !important;
-    max-height: none !important;
-    padding: 20px !important;
+  .sustainable-service-item {
+    padding-bottom: 0 !important;
+    max-height: 410px !important;
+    .inner {
+      background-size: contain !important;
+      max-width: 90vw !important;
+      margin: 0 auto !important;
+      max-height: none !important;
+      padding: 20px !important;
+      h4 {
+        padding: 0 !important;
+        margin: 0 !important;
+      }
     }
   }
-  #sustan{
-    background:url(/images/leuremercon.svg) white !important;
-    h3{
-      font-size:30px !important;
+  #sustan {
+    background: url(../images/leuremercon.svg) #fff !important;
+    background-repeat: no-repeat !important;
+    background-position: top right !important;
+    background-size: auto !important;
+    h3 {
+      font-size: 24px !important;
     }
   }
+  #lasalle {
+    h4 {
+      font-size: 30px !important;
+    }
+  }
+  //section avec les diférentes cta
+  #ready-to-make-an-impact {
+    padding-top: 0em !important;
+    #leforme {
+      background-color: #f83156;
+      border: 3px solid #ed2e52;
+      border-radius: 20px;
+      height: auto !important;
+      inset: 0;
+      margin: auto !important;
+      max-width: 1098px;
+      position: absolute;
+      width: 100vw;
+      position: relative !important;
+      max-height: none !important;
+      position: relative !important;
+      h2 {
+        font-size: 30px !important;
+      }
+      p {
+        font-size: 16px !important;
+      }
+    }
+  }
+
+  //mise à jour du menu sur le mobile
+  .header-grid .logo-container {
+    z-index: 10000000000000;
+  }
+
+  .nav-content {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      &:nth-of-type(1) {
+        order: 5;
+      }
+      &:nth-of-type(2) {
+        order: 6;
+      }
+      &:nth-of-type(3) {
+        order: 1;
+      }
+      &:nth-of-type(4) {
+        order: 2;
+      }
+      &:nth-of-type(5) {
+        order: 3;
+      }
+      &:nth-of-type(6) {
+        order: 6;
+        border: none;
+        background: none;
+        height: 64px;
+        margin-top: 0px;
+        padding: 0;
+        background: url(/images/btnGetInTouch.svg) no-repeat center center;
+      }
+      text-decoration: none !important;
+    }
+  }
+  #lasalle {
+    .example {
+      .inner-example {
+        padding-bottom: 4em !important;
+      }
+    }
+  }
+  #partners {
+    padding: 1em !important;
+  }
+  //about page
+  .page-hero {
+    padding: 2em 1rem 1em 1rem !important;
+    h1 {
+      font-size: 30px !important;
+    }
+  }
+  #heroTitle {
+    .row {
+      display: flex;
+      flex-direction: column;
+      .col-6 {
+        width: 100% !important;
+      }
+    }
+  }
+  .font-heading {
+    font-size: 30px !important;
+  }
+  .timeline-wrapper {
+    .sound-wave-container {
+      width: 45vw !important;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  .heroTextContainer {
+    padding: 2rem !important;
+    border-radius: 20px;
+    background-size: contain !important;
+    background-color: #93cbff;
+  }
+  #aboutHero {
+    h1 {
+      font-size: 50px !important;
+    }
+    .col-12 {
+      &:nth-of-type(2) {
+        margin-top: 1rem !important;
+      }
+    }
+  }
+
+  #mission {
+    img {
+      border-radius: 10px !important;
+    }
+  }
+  #lasalle {
+    padding-top: 0em !important;
+    margin-top: 0px !important;
+    .decradr {
+      margin: 0 0 1em 0 !important;
+      padding: 0 !important;
+    }
+  }
+  #encadres-1 {
+    .djoib {
+      margin-bottom: 3rem !important;
+    }
+    .btn {
+      margin: 0em !important;
+    }
+  }
+
+  //grille des chiffrs
+  .chiffres-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+    .chiffre-card {
+      width: 100% !important;
+      margin: 0 !important;
+    }
+  }
+  .decradr .inner-encadre p {
+    font-size: 16px !important;
+    font-weight: normal !important;
+    font-stretch: normal !important;
+    font-style: normal !important;
+    line-height: 1.44 !important;
+    letter-spacing: normal !important;
+    text-align: left !important;
+    color: #000 !important;
+  }
+  .gallery-section {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    .container {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  }
+  #partners {
+    margin: 0 !important;
+    padding: 0 !important;
+    h3 {
+      padding: 1em !important;
+    }
+    .partners-carousel {
+      margin-top: 0em !important;
+    }
+  }
+  #future {
+    min-height: 0vh !important;
+    height: auto !important;
+    padding-top: 120px !important;
+  }
+  #mouf {
+    h1{}
+    p {
+      margin: 0 0 40px !important;
+      font-family: FONTSPRINGDEMO-RecoletaMedium !important;
+      font-size: 24px !important;
+      font-weight: normal !important;
+      font-stretch: normal !important;
+      font-style: normal !important;
+      line-height: 1.67 !important;
+      letter-spacing: normal !important;
+      text-align: center !important;
+    }
+    &::after{
+      display:none !important;
+    }
+  }
+  #baks{
+    padding:1em !important;
+    p{
+      font-size:16px !important;
+    }
+  }
+  #weHelpwith #seeAboutYa {
+       max-width: 399px !important;
+    overflow-y: scroll !important;
+    max-height: 533px !important;
+    width: 100vw !important;
+    height: 100vh !important;
+
+
+    
+        ul{
+          height: 480px !important;
+        
+           li{
+    font-size:14px !important;
+  }}}
 }
 // ----- TABLET LANDSCAPE (max-width: 1200px) -----
 @media (max-width: 1200px) {

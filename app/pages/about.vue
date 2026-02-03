@@ -9,7 +9,7 @@
         <h1 class="heroTitle">{{ siteContent.about.hero.title }}</h1>
         <div class="d-flex container">
           <div class="row">
-            <div class="col-6 col-xs-12 d-flex flex-column">
+            <div class="col-12 col-md-6 d-flex flex-column">
               <div class="heroTextContainer d-flex flex-column">
                 <h2 class="heroSubtitle">{{ siteContent.about.hero.subtitle }}</h2>
                 <p class="heroDescription" v-html="siteContent.about.hero.description"></p>
@@ -19,7 +19,7 @@
                 </nuxt-link>
               </div>
             </div>
-            <div class="col-6 col-xs-12 d-flex justify-content-center align-items-center">
+            <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
               <img :src="siteContent.about.hero.image.src" :alt="siteContent.about.hero.image.alt"
                 class="img-fluid heroImage rounded-pill" />
             </div>
@@ -32,7 +32,7 @@
       <h3 class="timeline-title white-text recoleta preserve-lines">{{ siteContent.about.timeline.title }}</h3>
 
       <div class="timeline-wrapper">
-        <!-- Navigation arrows -->
+        <!-- Navigation arrows (desktop only) -->
         <button v-if="allEvents.length > 1" class="timeline-nav timeline-nav-prev" :class="{ disabled: !canGoPrev }"
           :disabled="!canGoPrev" @click="goToPrevEvent">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,13 +48,32 @@
           </svg>
         </button>
 
-        <!-- Sound Wave with Playhead -->
+        <!-- Mobile Vertical Timeline -->
+        <div class="mobile-timeline-events">
+          <div 
+            v-for="(event, index) in allEvents" 
+            :key="'mobile-' + event.id" 
+            class="mobile-event-item"
+            :style="{ '--marker-color': getMarkerColor(index as number) }"
+          >
+            <span class="mobile-event-year">{{ getYearFromDate(event.year) }}</span>
+            <div v-if="event.eventImage" class="mobile-event-image">
+              <nuxt-img :src="event.eventImage" :alt="event.title" />
+            </div>
+            <h4 class="mobile-event-title">{{ event.title }}</h4>
+            <p class="mobile-event-date">{{ event.year }}</p>
+            <p class="mobile-event-description" v-html="event.event"></p>
+          </div>
+        </div>
+
+        <!-- Sound Wave with Playhead (desktop & mobile vertical) -->
         <div ref="soundWaveContainer" class="sound-wave-container">
           <!-- Dashed center line -->
           <div class="center-line"></div>
 
-          <!-- Playhead (moves horizontally like a cursor) -->
-          <div class="playhead" :class="{ 'dragging': isDragging }" :style="{ left: playheadX + '%' }"
+          <!-- Playhead (moves horizontally on desktop, vertically on mobile) -->
+          <div class="playhead" :class="{ 'dragging': isDragging }" 
+            :style="isMobile ? { top: playheadY + '%', left: '50%' } : { left: playheadX + '%' }"
             @mousedown="startDrag" @touchstart="startDrag">
             <!-- Top square -->
             <div class="playhead-top-marker"></div>
@@ -108,14 +127,15 @@
           <!-- Sound wave bars - Organic waveform with cosine curve -->
                             <div class="sound-wave">
             <div v-for="(bar, i) in waveBarData" :key="i" class="wave-bar-wrapper">
-              <div class="wave-bar" :style="{ height: bar.height + '%' }"></div>
+              <div class="wave-bar" :style="isMobile ? { width: bar.height + '%', height: '2px' } : { height: bar.height + '%' }"></div>
             </div>
           </div>
 
           <!-- Event markers (dots on the center line at peaks) -->
           <div v-for="(event, index) in allEvents" :key="'marker-' + event.id" class="wave-marker"
             :class="{ active: selectedEvent?.id === event.id }"
-            :style="{ left: getMarkerPosition(index as number) + '%' }" @click="selectEvent(event, index as number)">
+            :style="isMobile ? { top: getMarkerPosition(index as number) + '%', left: '50%' } : { left: getMarkerPosition(index as number) + '%' }" 
+            @click="selectEvent(event, index as number)">
             <div class="wave-marker-dot" :style="{ background: getMarkerColor(index as number) }"></div>
           </div>
         </div>
@@ -133,7 +153,7 @@
           class="col-md-6 decradr">
           <div class="inner-encadre">
             <h3 class="mb-2">{{ encadre.title }}</h3>
-            <p class="mt-5 mb-5">{{ encadre.desc }}</p>
+            <p class="djoib mt-5 mb-5">{{ encadre.desc }}</p>
             <a v-if="encadre.link && encadre.btn" :href="encadre.link" class="btn"><img :src="encadre.btn" alt=""></a>
           </div>
         </div>
@@ -196,11 +216,13 @@ const siteContent = ref<any>(null)
 const pageContent = ref<any>(null)
 const homepageContent = ref<any>(null)
 const selectedEvent = ref<any>(null)
-const playheadX = ref<number>(10) // Initial position at first event
+const playheadX = ref<number>(10) // Initial position at first event (horizontal)
+const playheadY = ref<number>(10) // Initial position for vertical mobile
 const isLastEvent = ref<boolean>(false) // To position card on left for last event
 const playheadColor = ref<string>('#FFD600') // Default playhead color (yellow)
 const selectedEventIndex = ref<number>(0) // Track current event index
 const isCardVisible = ref<boolean>(false) // Control card visibility
+const isMobile = ref<boolean>(false) // Track if mobile view
 
 // Organic wave pattern configuration
 // More bars between peaks for denser waveform like in the reference image
@@ -209,6 +231,11 @@ const PEAK_DISTANCE = BARS_BETWEEN_PEAKS + 1
 const PADDING_BARS = 20 // Bars before first and after last peak
 const MIN_HEIGHT = 8   // Hauteur du creux (en %) - plus petit pour contraste
 const MAX_HEIGHT = 100 // Hauteur du pic (en %)
+
+// Check if mobile
+const checkMobile = () => {
+  isMobile.value = window.innerWidth <= 768
+}
 
 // Total bars needed
 const totalBars = computed(() => {
@@ -248,8 +275,13 @@ const parseSuffix = (str: string): string => {
   return ''
 }
 
-// Format number with commas
+// Format number with commas (or K format on mobile for large numbers)
 const formatNumber = (num: number): string => {
+  // Sur mobile, convertir les grands nombres en format K (ex: 300000 -> 300K)
+  if (isMobile.value && num >= 1000) {
+    const thousands = num / 1000
+    return thousands.toLocaleString('en-US', { maximumFractionDigits: 0 }) + 'K'
+  }
   return num.toLocaleString('en-US', { maximumFractionDigits: 0 })
 }
 
@@ -281,12 +313,17 @@ onMounted(async () => {
   pageContent.value = await getContentByPath('about')
   homepageContent.value = await getHomepageContent()
 
+  // Check mobile on mount
+  checkMobile()
+  window.addEventListener('resize', checkMobile)
+
   // Initialize playhead position to first event (but don't show card)
   if (siteContent.value?.about?.timeline?.events?.length > 0) {
     const firstEvent = siteContent.value.about.timeline.events[0]
     selectedEvent.value = firstEvent
     selectedEventIndex.value = 0
     playheadX.value = getMarkerPosition(0)
+    playheadY.value = getMarkerPosition(0)
     playheadColor.value = '#FFD600' // Keep playhead yellow
     isCardVisible.value = false // Don't show card initially
   }
@@ -320,6 +357,7 @@ onUnmounted(() => {
   document.removeEventListener('mouseup', handleMouseUp)
   document.removeEventListener('touchmove', handleTouchMove)
   document.removeEventListener('touchend', handleTouchEnd)
+  window.removeEventListener('resize', checkMobile)
 })
 
 // Extract year from date string like "13 JUNE 2015"
@@ -406,8 +444,10 @@ const getMarkerColor = (index: number): string => {
 const selectEvent = (event: any, index: number) => {
   selectedEvent.value = event
   selectedEventIndex.value = index
-  // Move playhead to the marker position
-  playheadX.value = getMarkerPosition(index)
+  // Move playhead to the marker position (both horizontal and vertical)
+  const position = getMarkerPosition(index)
+  playheadX.value = position
+  playheadY.value = position
   // Playhead color stays yellow
   playheadColor.value = '#FFD600'
   // Check if this is the last event (for card positioning)
@@ -429,12 +469,20 @@ const startDrag = (e: MouseEvent | TouchEvent) => {
 
 const handleMouseMove = (e: MouseEvent) => {
   if (!isDragging.value) return
-  updatePlayheadPosition(e.clientX)
+  if (isMobile.value) {
+    updatePlayheadPositionVertical(e.clientY)
+  } else {
+    updatePlayheadPosition(e.clientX)
+  }
 }
 
 const handleTouchMove = (e: TouchEvent) => {
   if (!isDragging.value || !e.touches[0]) return
-  updatePlayheadPosition(e.touches[0].clientX)
+  if (isMobile.value) {
+    updatePlayheadPositionVertical(e.touches[0].clientY)
+  } else {
+    updatePlayheadPosition(e.touches[0].clientX)
+  }
 }
 
 const handleMouseUp = () => {
@@ -461,6 +509,16 @@ const updatePlayheadPosition = (clientX: number) => {
   playheadX.value = percentage
 }
 
+const updatePlayheadPositionVertical = (clientY: number) => {
+  const container = soundWaveContainer.value
+  if (!container) return
+
+  const rect = container.getBoundingClientRect()
+  const y = clientY - rect.top
+  const percentage = Math.max(0, Math.min(100, (y / rect.height) * 100))
+  playheadY.value = percentage
+}
+
 const snapToNearestEvent = () => {
   const events = allEvents.value
   if (!events || events.length === 0) return
@@ -468,10 +526,11 @@ const snapToNearestEvent = () => {
   // Find nearest event marker
   let nearestIndex = 0
   let nearestDistance = Infinity
+  const currentPosition = isMobile.value ? playheadY.value : playheadX.value
 
   events.forEach((_event: any, index: number) => {
-    const markerX = getMarkerPosition(index)
-    const distance = Math.abs(playheadX.value - markerX)
+    const markerPos = getMarkerPosition(index)
+    const distance = Math.abs(currentPosition - markerPos)
     if (distance < nearestDistance) {
       nearestDistance = distance
       nearestIndex = index
@@ -497,6 +556,7 @@ const goToPrevEvent = () => {
   }
 }
 
+
 // Helper pour valider si un titre SEO est valide (pas une URL)
 const isValidSeoTitle = (title: string | undefined) => {
   if (!title) return false
@@ -512,12 +572,31 @@ useHead(() => ({
 </script>
 
 <style scoped lang="scss">
+@media (max-width:1024px){
+   #aboutHero{
+    background:url('/images/bgMobile.svg') center 0% #a7f49d !important;
+    background-size:contain !important;
+    background-repeat:no-repeat !important;
+    height:auto !important;
+    font-size:50px !important;
+  }
+}
+@media (min-width:1024px){
+  #aboutHero {
+      background: url(/images/vectorBgAbout.svg) no-repeat center 20% #a7f49d !important;
+      .d-flex{
+
+       .col-6{
+        width:100% !important;
+       }
+      }
+  }
+}
 #aboutHero {
   height: 930px;
   margin: 0 0 14px;
   padding: 22px 60.4px 56px 70px;
   border-radius: 2px;
-  background: url(/images/vectorBgAbout.svg) no-repeat center 20% #a7f49d !important;
 
   h1 {
     font-family: FONTSPRINGDEMO-RecoletaBold;
@@ -637,6 +716,11 @@ useHead(() => ({
   max-width: 1600px;
   margin: 0 auto;
   padding: 0 80px;
+}
+
+/* Mobile timeline - hidden on desktop */
+.mobile-timeline-events {
+  display: none;
 }
 
 /* Event Card - positioned relative to playhead */
@@ -1087,7 +1171,14 @@ useHead(() => ({
   }
 
   .timeline-wrapper {
-    padding: 0 40px;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-height: 550px;
+    position: relative;
+    overflow: visible;
   }
 
   .timeline-instruction {
@@ -1095,63 +1186,210 @@ useHead(() => ({
     margin-top: 30px;
   }
 
-  .event-card-content {
-    width: 280px;
+  /* Hide mobile simple list - we keep waveform */
+  .mobile-timeline-events {
+    display: none;
+  }
+
+  /* Vertical Sound Wave Container */
+  .sound-wave-container {
+    display: flex !important;
     flex-direction: column;
-    padding: 15px;
+    width: 70px;
+    height: 480px;
+    margin: 0;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  /* Vertical center line */
+  .center-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    border-top: none;
+    border-left: 1px dashed rgba(0, 0, 0, 0.15);
+    transform: translateX(-50%);
+  }
+
+  /* Vertical Sound Wave */
+  .sound-wave {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    gap: 1px;
+    margin-top: 0;
+    padding: 5px 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .wave-bar-wrapper {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    flex: 1;
+    min-width: auto;
+    min-height: 1px;
+    display: flex;
+  }
+
+  .wave-bar {
+    height: 2px !important;
+    min-height: 2px;
+    border-radius: 20px;
+    background: #D81B60;
+  }
+
+  /* Vertical Playhead */
+  .playhead {
+    position: absolute;
+    left: 50% !important;
+    transform: translate(-50%, -50%);
+    flex-direction: row;
+    transition: top 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 30;
+
+    &.dragging {
+      transition: none;
+    }
+  }
+
+  .playhead-top-marker {
+    display: none;
+  }
+
+  .playhead-line {
+    width: calc(90vw - 100px);
+    height: 3px;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #FFD600;
+  }
+
+  .playhead-circle {
+    display: block !important;
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: 0;
+    width: 16px;
+    height: 16px;
+    background: #FFD600;
+    border-radius: 50%;
+    z-index: 5;
+  }
+
+  .playhead-year {
+    position: absolute;
+    left: -55px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    padding: 4px 6px;
+    white-space: nowrap;
+    background: #FFD600;
+  }
+
+  /* Event Card - positioned to the right of vertical timeline */
+  .event-card {
+    position: absolute;
+    left: 30px;
+    top: 0;
+    transform: none;
+    animation: fadeInRight 0.4s ease-out;
+    z-index: 20;
+  }
+
+  .event-card.event-card-left {
+    left: 30px;
+    right: auto;
+    transform: none;
+  }
+
+  .event-card-content {
+    width: calc(100vw - 130px);
+    max-width: 280px;
+    flex-direction: column;
+    padding: 12px;
+    max-height: 380px;
+    overflow-y: auto;
   }
 
   .event-card-image {
     width: 100%;
-    height: 150px;
+    height: 100px;
   }
 
   .event-card-title {
-    font-size: 18px;
+    font-size: 14px;
   }
 
   .event-card-description {
-    font-size: 12px;
+    font-size: 11px;
+    max-height: 60px;
+    overflow-y: auto;
   }
 
-  .sound-wave-container {
-    height: 140px;
-    margin-top: 320px;
+  .event-card-date {
+    font-size: 10px;
   }
 
-  .playhead {
-    top: -280px;
+  /* Wave markers - vertical positioning */
+  .wave-marker {
+    left: 50% !important;
+    top: auto;
+    transform: translate(-50%, -50%);
   }
 
-  .playhead-line {
-    height: 300px;
-  }
-
-  .playhead-circle {
-    margin-top: 140px;
-  }
-
-  .playhead-year {
-    font-size: 12px;
-    padding: 6px 10px;
-  }
-
+  /* Navigation arrows - vertical positioning */
   .timeline-nav {
-    width: 36px;
-    height: 36px;
+    display: flex;
+    position: absolute;
+    left: 35px;
+    transform: translateX(-50%);
+    width: 32px;
+    height: 32px;
+    z-index: 40;
 
     svg {
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
+      transform: rotate(90deg);
     }
   }
 
   .timeline-nav-prev {
-    left: 5px;
+    top: -45px;
+    left: 35px;
   }
 
   .timeline-nav-next {
-    right: 5px;
+    bottom: -45px;
+    top: auto;
+    left: 35px;
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 }
 

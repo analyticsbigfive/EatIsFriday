@@ -51,14 +51,14 @@
       <div id="baks" class="container p-0 mx-auto d-flex flex-column">
         <h3 class="font-header">{{ content.textedelapage.title }}</h3>
         <div id="viber" class="row  d-flex flex-wrap">
-          <div id="ludacris" class="col-6 pt-0 pb-0">
+          <div id="ludacris" class="col-12 col-lg-6 col-md-6 pt-0 pb-0">
             <p v-html="content.textedelapage.subtitle"></p>
             <p v-html="content.textedelapage.description"></p>
             <NuxtLink :to="content.textedelapage.link">
               <img :src="content.textedelapage.btn" />
             </NuxtLink>
           </div>
-          <div class="col-6 p-0 m-0">
+          <div class="col-12 col-lg-6 col-md-6  p-0 m-0">
             <img
               :src="content.textedelapage.image"
               alt="Services illustration"
@@ -72,8 +72,9 @@
       v-if="content?.weHelpWith"
       id="weHelpwith"
       class="container mx-auto mb-5"
+      :style="{ '--bg-image': `url(${content.weHelpWith.image})` }"
     >
-      <img :src="content.weHelpWith.image" alt="" class="img-fluid" />
+      <img :src="content.weHelpWith.image" alt="" class="img-fluid weHelpWith-image" />
       <div id="seeAboutYa">
         <h3>{{ content.weHelpWith.title }}</h3>
         <ul>
@@ -351,6 +352,50 @@ useHead(() => ({
 #baks{
   h3{
     max-width:800px;
+  }
+}
+
+/* Section weHelpWith - Mobile background image */
+#weHelpwith {
+  position: relative;
+  
+  .weHelpWith-image {
+    display: block;
+  }
+}
+
+@media (max-width: 1024px) {
+  #weHelpwith {
+      background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 400px 20px 40px 20px;
+    border-radius: 12px;
+    position: relative;
+    /* Overlay pour améliorer la lisibilité du texte */
+  /*   &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 12px;
+      z-index: 0;
+    } */
+    
+    /* Cacher l'image sur mobile */
+    .weHelpWith-image {
+      display: none !important;
+    }
+    
+    /* S'assurer que le contenu est au-dessus de l'overlay */
+    #seeAboutYa {
+      position: relative;
+      z-index: 1;
+    }
   }
 }
 
